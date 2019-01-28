@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hisab.BL", "Hisab.BL\Hisab.BL.csproj", "{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Hisab.Database", "Hisab.Database\Hisab.Database.sqlproj", "{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C728D2D-CB86-41E4-BA66-CE58D699B4D0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57DCA10E-4461-4D7F-9DD9-40954040860D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Event] (
+    [Id]     UNIQUEIDENTIFIER NOT NULL,
+    [UserId] UNIQUEIDENTIFIER NOT NULL,
+    [Name]   VARCHAR (50)     NOT NULL,
+    CONSTRAINT [PK_Event] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
