@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[ApplicationRole] (
-    [Id]             UNIQUEIDENTIFIER NOT NULL,
+    [Id]             INT NOT NULL,
     [Name]           NVARCHAR (256)   NOT NULL,
     [NormalizedName] NVARCHAR (256)   NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
