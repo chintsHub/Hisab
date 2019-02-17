@@ -9,6 +9,10 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Hisab.Database", "Hisab.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.Dapper", "Hisab.Dapper\Hisab.Dapper.csproj", "{43308B3E-F6FE-4777-9D24-A19308EF7F13}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{993D91D4-5F06-41A3-9575-3263E896BA51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hisab.Database.Test", "Hisab.Database.Test\Hisab.Database.Test.csproj", "{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,9 +33,16 @@ Global
 		{43308B3E-F6FE-4777-9D24-A19308EF7F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43308B3E-F6FE-4777-9D24-A19308EF7F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43308B3E-F6FE-4777-9D24-A19308EF7F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E} = {993D91D4-5F06-41A3-9575-3263E896BA51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57DCA10E-4461-4D7F-9DD9-40954040860D}
