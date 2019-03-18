@@ -81,5 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RefrenceScripts\AccountType.Data.sql" />
+    <None Include="RefrenceScripts\ApplicationRole.Data.sql" />
   </ItemGroup>
 </Project>

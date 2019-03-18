@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <section class="min-height=100%">
+        @RenderBody()
+    </section>
+    
+<footer>
+
+</footer>
+
+
+<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+@RenderSection("scripts",false) 
+
+</body>
+</html>

@@ -11,14 +11,18 @@ namespace Hisab.Database.Test
     public class AccountRepositoryShould
     {
         [Fact]
-        public void NotReturnNullForAccountTypes()
+        public async void NotReturnNullForAccountTypes()
         {
+            IDbConnectionProvider connection = new DbConnectionProvider(@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
+
             IList<AccountType> accountTypes = null;
-            using (var uow = new UnitofWork())
+            using (var uow = new HisabDbContext(connection))
             {
+                await uow.Initialize();
                 accountTypes = uow.AccountTypeRepository.GetAccountTypes();
                 
             }
+            
             Assert.NotNull(accountTypes);
 
 
@@ -27,7 +31,8 @@ namespace Hisab.Database.Test
         public void ReturnTwoAccountTypes()
         {
             IList<AccountType> accountTypes = null;
-            using (var uow = new UnitofWork())
+            IDbConnectionProvider connection = new DbConnectionProvider(@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
+            using (var uow = new HisabDbContext(connection))
             {
                 accountTypes = uow.AccountTypeRepository.GetAccountTypes();
 
