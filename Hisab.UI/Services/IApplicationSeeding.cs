@@ -26,7 +26,7 @@ namespace Hisab.UI.Services
             {
                 Email = "admin@hisab.io",
                 EmailConfirmed = true,
-                UserName = "admin"
+                UserName = "admin@hisab.io"
 
             };
             var result = await _userManager.CreateAsync(user, "01hisabS!");

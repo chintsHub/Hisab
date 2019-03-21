@@ -37,12 +37,13 @@ namespace Hisab.UI
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
 
             services.AddMvc();
   
               
 
-            //services.AddScoped<IUserStore<ApplicationUser>, UserStore>();
+            
             services.AddScoped<IDbConnectionProvider>(sp => new DbConnectionProvider(connectionString));
 
             services.AddScoped<IApplicationSeeding>(sp =>
@@ -51,7 +52,7 @@ namespace Hisab.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationSeeding appSeeding)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

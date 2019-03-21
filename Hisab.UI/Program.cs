@@ -23,7 +23,7 @@ namespace Hisab.UI
 
             //https://andrewlock.net/running-async-tasks-on-app-startup-in-asp-net-core-part-1/
 
-            //  appSeeding.CreateAdminUser();
+            
 
             using (var scope = webHost.Services.CreateScope())
             {

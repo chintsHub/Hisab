@@ -52,9 +52,10 @@ namespace Hisab.Dapper.Repository
         {
             const string command = "SELECT * " +
                                    "FROM dbo.Users " +
-                                   "WHERE Id = @Id;";
+                                   "WHERE Id = @userId;";
 
-           return await Connection.QuerySingleOrDefaultAsync<ApplicationUser>(command, transaction: Transaction);
+            return await Connection.QuerySingleOrDefaultAsync<ApplicationUser>($@"SELECT * FROM [ApplicationUser]
+                    WHERE [Id] = @{nameof(userId)}", new { userId },Transaction);
         }
 
         public async Task<ApplicationUser> FindByNameAsync(string normalizedUserName)

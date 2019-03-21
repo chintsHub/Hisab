@@ -29,3 +29,4 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\_marketingView.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\_login.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScripts.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Index.g.cshtml.cs
