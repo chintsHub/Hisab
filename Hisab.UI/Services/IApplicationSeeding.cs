@@ -16,6 +16,8 @@ namespace Hisab.UI.Services
     public class ApplicationSeeding : IApplicationSeeding
     {
         private UserManager<ApplicationUser> _userManager;
+       
+
         public ApplicationSeeding(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
@@ -26,14 +28,21 @@ namespace Hisab.UI.Services
             {
                 Email = "admin@hisab.io",
                 EmailConfirmed = true,
-                UserName = "admin@hisab.io"
+                UserName = "admin@hisab.io",
+                NickName = "admin"
 
             };
+            
             var result = await _userManager.CreateAsync(user, "01hisabS!");
-
+            
             if (result.Succeeded)
             {
-                //log sucess
+               // log user created
+               var r = await _userManager.AddToRoleAsync(user, "Admin");
+                if (r.Succeeded)
+                {
+                    //log user added to role
+                }
             }
             
         }

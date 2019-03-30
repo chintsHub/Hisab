@@ -1,45 +1,61 @@
 ﻿@using Hisab.UI.ViewModels;
-@model LoginVM
+@model HomePageVM
 
 <div class="card card-body mx-1">
     <form asp-controller="Home" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
         <div asp-validation-summary="ModelOnly"></div>
         <div class="form-group">
-            <label asp-for="Email">Email:</label>
-            <input asp-for="Email" class="form-control" type="email"/>
-            <span asp-validation-for="Email"></span>
+            <label asp-for="@Model.LoginVm.Email">Email:</label>
+            <input asp-for="@Model.LoginVm.Email" class="form-control" type="email"/>
+            <span asp-validation-for="@Model.LoginVm.Email"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Password">Password:</label>
-            <input asp-for="Password" type="password" class="form-control"/>
-            <span asp-validation-for="Password"></span>
+            <label asp-for="@Model.LoginVm.Password">Password:</label>
+            <input asp-for="@Model.LoginVm.Password" type="password" class="form-control"/>
+            <span asp-validation-for="@Model.LoginVm.Password"></span>
         </div>
        
         <div class="form-group">
             <div class="checkbox">
-                <label asp-for="RememberMe">
-                    <input asp-for="RememberMe"/>
-                    @Html.DisplayNameFor(m => m.RememberMe)
+                <label asp-for="@Model.LoginVm.RememberMe">
+                    <input asp-for="@Model.LoginVm.RememberMe"/>
+                    @Html.DisplayNameFor(m => m.LoginVm.RememberMe)
                 </label>
             </div>
         </div>
         
         <div class="form-group">
             <button class="btn btn-primary">Login</button>
-            
         </div>
     </form>
-    <div class="form-group">
-            Third party login providers
-     </div>
-    <div class="form-group">
-        <a href="">Register</a>
-        <a href="">Forgot password</a>
+
+    <div>
+        <div id="toggleRegister">Register</div>
+        <form class="popupForm" asp-controller="Home" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.RegisterUserVm.NickName">Nickname:</label>
+                <input asp-for="@Model.RegisterUserVm.NickName" class="form-control"/>
+                <span asp-validation-for="@Model.RegisterUserVm.NickName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.RegisterUserVm.Email">Email:</label>
+                <input asp-for="@Model.RegisterUserVm.Email" class="form-control" type="email"/>
+                <span asp-validation-for="@Model.RegisterUserVm.Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.RegisterUserVm.Password">Password:</label>
+                <input asp-for="@Model.RegisterUserVm.Password" type="password" class="form-control"/>
+                <span asp-validation-for="@Model.RegisterUserVm.Password"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Register</button>
+            </div>
+
+        </form>
     </div>
+  
+    
+    
             
    
 </div>
-@section scripts{ 
-    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
-}

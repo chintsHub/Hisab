@@ -6,10 +6,13 @@ namespace Hisab.Dapper
 {
     public interface IHisabDbContext : IDisposable
     {
-        Task Initialize();
+        Task InitializeWithTransaction();
+        
 
         IAccountTypeRepository AccountTypeRepository { get; }
         IApplicationUserRepository ApplicationUserRepository { get; }
+
+        IApplicationRoleRepository ApplicationRoleRepository { get; }
 
         void SaveChanges();
     }

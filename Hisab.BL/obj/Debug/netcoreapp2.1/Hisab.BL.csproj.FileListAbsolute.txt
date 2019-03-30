@@ -6,3 +6,4 @@ C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.AssemblyInfoInpu
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.AssemblyInfo.cs
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.dll
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.pdb
+C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.csprojAssemblyReference.cache

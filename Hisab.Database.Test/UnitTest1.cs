@@ -18,7 +18,7 @@ namespace Hisab.Database.Test
             IList<AccountType> accountTypes = null;
             using (var uow = new HisabDbContext(connection))
             {
-                await uow.Initialize();
+                await uow.InitializeWithTransaction();
                 accountTypes = uow.AccountTypeRepository.GetAccountTypes();
                 
             }

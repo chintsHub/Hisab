@@ -8,6 +8,9 @@ using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using WebApp.Services;
 
 namespace Hisab.UI.Controllers
 {
@@ -15,11 +18,19 @@ namespace Hisab.UI.Controllers
     {
         private IDbConnectionProvider _connectionProvider;
         private SignInManager<ApplicationUser> _signInManager;
+        private UserManager<ApplicationUser> _userManager;
+        private IEmailSender _emailSender;
 
-        public HomeController(IDbConnectionProvider connectionProvider, SignInManager<ApplicationUser> signInManager)
+        public HomeController(IDbConnectionProvider connectionProvider, 
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager
+            //IEmailSender emailSender
+            )
         {
             _connectionProvider = connectionProvider;
             _signInManager = signInManager;
+            _userManager = userManager;
+            //_emailSender = emailSender;
         }
         public IActionResult Index(string returnUrl = null)
         {
@@ -64,8 +75,57 @@ namespace Hisab.UI.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View("Index",loginVm);
+            
+            return View("Index",new HomePageVM());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterUserVm registerUserVm, string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    Email = registerUserVm.Email,
+                    EmailConfirmed = true,
+                    UserName = registerUserVm.Email,
+                    NickName = registerUserVm.NickName
+
+                };
+                var result = await _userManager.CreateAsync(user, registerUserVm.Password);
+                if (result.Succeeded)
+                {
+                    //_logger.LogInformation("User created a new account with password.");
+
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    //await _emailSender.SendEmailConfirmationAsync(registerUserVm.Email, callbackUrl);
+                    var roleResult = await _userManager.AddToRoleAsync(user, "App User");
+                    if (roleResult.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                    }
+                    
+                    //_logger.LogInformation("User created a new account with password.");
+                    return RedirectToLocal(returnUrl);
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            //return View(registerUserVm);
+            return null;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            return null;
+        }
+  
+
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
@@ -77,6 +137,14 @@ namespace Hisab.UI.Controllers
             else
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
     }

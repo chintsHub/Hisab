@@ -13,6 +13,7 @@ namespace Hisab.Dapper
 
         private IAccountTypeRepository _accountTypeRepository;
         private IApplicationUserRepository _applicationUserRepository;
+        private IApplicationRoleRepository _applicationRoleRepository;
         private bool _disposed;
         
 
@@ -24,14 +25,15 @@ namespace Hisab.Dapper
             
         }
 
-        public async  Task Initialize()
+        public async  Task InitializeWithTransaction()
         {
             _connection = await _connectionProvider.CreateConnectionAsync();
          
             _transaction = _connection.BeginTransaction();
         }
+
         
-      
+        
 
         public IAccountTypeRepository AccountTypeRepository
         {
@@ -59,6 +61,21 @@ namespace Hisab.Dapper
 
                 return _applicationUserRepository;
             }
+        }
+
+        public IApplicationRoleRepository ApplicationRoleRepository
+        {
+            get
+            {
+                if (_applicationRoleRepository == null)
+                {
+                    _applicationRoleRepository = new ApplicationRoleRepository(_transaction);
+                }
+
+                return _applicationRoleRepository;
+            }
+
+
         }
 
         public void SaveChanges()

@@ -1,0 +1,13 @@
+﻿body {
+    background-color: black
+}
+
+#toggleRegister {
+    cursor: pointer;
+    
+}
+
+.popupForm {
+    border: 2px black inset;
+    display: none;
+}

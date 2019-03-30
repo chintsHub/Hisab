@@ -1,7 +1,4 @@
-﻿
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -12,19 +9,26 @@
 
 <body>
 
-<div class="row">
-    <div class="col-md-8">
-        <partial name="_marketingView"/>
-    </div>
-    <div class="col-md-4 mt-5">
-        
-        <partial name="_login" />
-        
-      
-    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <partial name="_marketingView" />
+        </div>
+        <div class="col-md-4 mt-5">
 
-</div>
+            <partial name="_login" />
+
+
+        </div>
+
+    </div>
 
 
 </body>
+
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/home.js"></script>
+}
+
 </html>

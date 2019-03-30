@@ -34,7 +34,10 @@ namespace Hisab.UI
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, RoleStore>();
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>(config =>
+                {
+                    config.SignIn.RequireConfirmedEmail = false; //default value is false
+                })
                 .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
@@ -58,6 +61,9 @@ namespace Hisab.UI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseNodeModules(env);
 

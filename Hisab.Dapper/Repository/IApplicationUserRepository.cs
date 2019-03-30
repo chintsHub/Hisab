@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,11 @@ namespace Hisab.Dapper.Repository
         Task<ApplicationUser> FindByIdAsync(string userId);
         Task<ApplicationUser> FindByNameAsync(string normalizedUserName);
         Task<IdentityResult> CreateAsync(ApplicationUser user, CancellationToken cancellationToken);
+        Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken);
+
+        Task<IdentityResult> AddUserToRole(int userId, int roleId);
+        Task<bool> IsUserInRole(int userId, int roleId);
+        Task<IList<string>> GetRolesAsync(int userId);
     }
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
@@ -27,13 +33,42 @@ namespace Hisab.Dapper.Repository
         {
             string command = $@"
 
-            INSERT INTO [ApplicationUser] ([UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled])
+            INSERT INTO [ApplicationUser] ([UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [NickName])
                     VALUES (@{nameof(ApplicationUser.UserName)}, @{nameof(ApplicationUser.NormalizedUserName)}, @{nameof(ApplicationUser.Email)},
                     @{nameof(ApplicationUser.NormalizedEmail)}, @{nameof(ApplicationUser.EmailConfirmed)}, @{nameof(ApplicationUser.PasswordHash)},
-                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)});
+                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)}, @{nameof(ApplicationUser.NickName)});
                     SELECT CAST(SCOPE_IDENTITY() as int)";
 
             user.Id = await Connection.QuerySingleAsync<int>(command, user, transaction: Transaction);
+
+            return IdentityResult.Success;
+        }
+
+        public async Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken)
+        {
+            await Connection.ExecuteAsync($@"UPDATE [ApplicationUser] SET
+                    [UserName] = @{nameof(ApplicationUser.UserName)},
+                    [NormalizedUserName] = @{nameof(ApplicationUser.NormalizedUserName)},
+                    [Email] = @{nameof(ApplicationUser.Email)},
+                    [NormalizedEmail] = @{nameof(ApplicationUser.NormalizedEmail)},
+                    [EmailConfirmed] = @{nameof(ApplicationUser.EmailConfirmed)},
+                    [PasswordHash] = @{nameof(ApplicationUser.PasswordHash)},
+                    [PhoneNumber] = @{nameof(ApplicationUser.PhoneNumber)},
+                    [PhoneNumberConfirmed] = @{nameof(ApplicationUser.PhoneNumberConfirmed)},
+                    [TwoFactorEnabled] = @{nameof(ApplicationUser.TwoFactorEnabled)},
+                    [NickName] = @{nameof(ApplicationUser.NickName)}
+                    WHERE [Id] = @{nameof(ApplicationUser.Id)}", user,Transaction);
+
+             return IdentityResult.Success;
+        }
+
+        public async Task<IdentityResult> AddUserToRole(int userId, int roleId)
+        {
+            string command = $@"INSERT INTO [ApplicationUserRole] ([UserId], [RoleId])
+                    VALUES (@{nameof(userId)}, @{nameof(roleId)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            var rows = await Connection.ExecuteAsync(command, new{ userId , roleId }, transaction: Transaction);
 
             return IdentityResult.Success;
         }
@@ -93,6 +128,22 @@ namespace Hisab.Dapper.Repository
         public Task<IdentityResult> UpdateAsync(ApplicationUser user)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> IsUserInRole(int userId, int roleId)
+        {
+            var result =  await Connection.ExecuteScalarAsync<int>($@"SELECT count(*) FROM [ApplicationUserRole]
+                    WHERE [UserId] = @{nameof(userId)} and [RoleId] = @{nameof(roleId)}", new { userId, roleId }, Transaction);
+
+            return result > 0;
+        }
+
+        public async Task<IList<string>> GetRolesAsync(int userId)
+        {
+            var queryResults = await Connection.QueryAsync<string>("SELECT r.[Name] FROM [ApplicationRole] r INNER JOIN [ApplicationUserRole] ur ON ur.[RoleId] = r.Id " +
+                                                                   "WHERE ur.UserId = @userId", new { userId },Transaction);
+
+            return queryResults.ToList();
         }
     }
 }

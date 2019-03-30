@@ -12,6 +12,8 @@ namespace Hisab.Dapper.Identity
 
         public string UserName { get; set; }
 
+        public  string NickName { get; set; }
+
         public string NormalizedUserName { get; set; }
 
         public string Email { get; set; }

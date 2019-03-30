@@ -8,6 +8,8 @@ namespace Hisab.Dapper
     {
         private string _connectionString;
 
+
+
         public DbConnectionProvider(string connectionString)
         {
             _connectionString = connectionString;

@@ -9,6 +9,7 @@
     [PhoneNumber]          NVARCHAR (50)    NULL,
     [PhoneNumberConfirmed] BIT              NOT NULL,
     [TwoFactorEnabled]     BIT              NOT NULL,
+    [NickName] NCHAR(256) NOT NULL DEFAULT user, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Hisab.Dapper.IdentityStores
 {
-    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>
+    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>, IUserRoleStore<ApplicationUser>
     {
         
         private IDbConnectionProvider dbConnectionProvider;
@@ -24,7 +24,7 @@ namespace Hisab.Dapper.IdentityStores
         {
             using (var context = dbConnectionProvider.GetContext())
             {
-                await context.Initialize();
+                await context.InitializeWithTransaction();
 
                 var result =  await context.ApplicationUserRepository.CreateAsync(user, cancellationToken);
 
@@ -53,7 +53,7 @@ namespace Hisab.Dapper.IdentityStores
 
             using (var context = dbConnectionProvider.GetContext())
             {
-                await context.Initialize();
+                await context.InitializeWithTransaction();
 
                 return  await context.ApplicationUserRepository.FindByIdAsync(userId);
 
@@ -65,9 +65,13 @@ namespace Hisab.Dapper.IdentityStores
         {
             using (var context = dbConnectionProvider.GetContext())
             {
-                await context.Initialize();
+                await context.InitializeWithTransaction();
 
-                return await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
+                var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
+
+                context.SaveChanges();
+
+                return user;
 
             }
         }
@@ -98,9 +102,21 @@ namespace Hisab.Dapper.IdentityStores
             throw new NotImplementedException();
         }
 
-        public Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken)
+        public async Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            using (var context = dbConnectionProvider.GetContext())
+            {
+                await context.InitializeWithTransaction();
+
+                var result = await context.ApplicationUserRepository.UpdateAsync(user, cancellationToken);
+
+                if (result.Succeeded)
+                {
+                    context.SaveChanges();
+                }
+
+                return result;
+            }
         }
 
         public Task SetPasswordHashAsync(ApplicationUser user, string passwordHash, CancellationToken cancellationToken)
@@ -117,6 +133,60 @@ namespace Hisab.Dapper.IdentityStores
         public Task<bool> HasPasswordAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
             return Task.FromResult(user.PasswordHash != null);
+        }
+
+        public async Task AddToRoleAsync(ApplicationUser user, string roleName, CancellationToken cancellationToken)
+        {
+            using (var context = dbConnectionProvider.GetContext())
+            {
+                await context.InitializeWithTransaction();
+                var role = await context.ApplicationRoleRepository.FindByRoleNameAsync(roleName);
+
+
+                var result =  await context.ApplicationUserRepository.AddUserToRole(user.Id, role.Id);
+
+                context.SaveChanges();
+                 
+            }
+        }
+
+        public Task RemoveFromRoleAsync(ApplicationUser user, string roleName, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IList<string>> GetRolesAsync(ApplicationUser user, CancellationToken cancellationToken)
+        {
+            
+            using (var context = dbConnectionProvider.GetContext())
+            {
+                await context.InitializeWithTransaction();
+
+                return await context.ApplicationUserRepository.GetRolesAsync(user.Id);
+            }
+        }
+
+        public async Task<bool> IsInRoleAsync(ApplicationUser user, string roleName, CancellationToken cancellationToken)
+        {
+            using (var context = dbConnectionProvider.GetContext())
+            {
+                await context.InitializeWithTransaction();
+                var role = await context.ApplicationRoleRepository.FindByRoleNameAsync(roleName);
+
+                if (role == null)
+                {
+                    return false;
+                }
+
+                return await context.ApplicationUserRepository.IsUserInRole(user.Id, role.Id);
+
+
+            }
+        }
+
+        public Task<IList<ApplicationUser>> GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }
