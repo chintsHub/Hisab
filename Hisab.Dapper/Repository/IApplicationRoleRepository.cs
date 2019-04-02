@@ -15,7 +15,7 @@ namespace Hisab.Dapper.Repository
 
     internal class ApplicationRoleRepository : RepositoryBase, IApplicationRoleRepository
     {
-        public ApplicationRoleRepository(IDbTransaction transaction) : base(transaction)
+        public ApplicationRoleRepository(IDbConnection connection, IDbTransaction transaction) : base(connection, transaction)
         {
 
         }

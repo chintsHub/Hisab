@@ -8,7 +8,7 @@ namespace Hisab.Dapper
     {
         private IDbConnection _connection;
         private IDbTransaction _transaction;
-        private IDbConnectionProvider _connectionProvider;
+       
 
 
         private IAccountTypeRepository _accountTypeRepository;
@@ -17,23 +17,16 @@ namespace Hisab.Dapper
         private bool _disposed;
         
 
-        public HisabDbContext(IDbConnectionProvider connectionProvider)
+        public HisabDbContext(IDbConnection connection, IDbTransaction transaction)
         {
-            _connectionProvider = connectionProvider;
-                //@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
+            _connection = connection;
+            _transaction = transaction;
+            //@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
 
-            
+
         }
 
-        public async  Task InitializeWithTransaction()
-        {
-            _connection = await _connectionProvider.CreateConnectionAsync();
-         
-            _transaction = _connection.BeginTransaction();
-        }
-
-        
-        
+   
 
         public IAccountTypeRepository AccountTypeRepository
         {
@@ -41,7 +34,7 @@ namespace Hisab.Dapper
             {
                 if (_accountTypeRepository == null)
                 {
-                    _accountTypeRepository = new AccountTypeRepository(_transaction);
+                    _accountTypeRepository = new AccountTypeRepository(_connection,_transaction);
                     
                 }
 
@@ -55,7 +48,7 @@ namespace Hisab.Dapper
             {
                 if (_applicationUserRepository == null)
                 {
-                    _applicationUserRepository = new ApplicationUserRepository(_transaction);
+                    _applicationUserRepository = new ApplicationUserRepository(_connection, _transaction);
 
                 }
 
@@ -69,7 +62,7 @@ namespace Hisab.Dapper
             {
                 if (_applicationRoleRepository == null)
                 {
-                    _applicationRoleRepository = new ApplicationRoleRepository(_transaction);
+                    _applicationRoleRepository = new ApplicationRoleRepository(_connection, _transaction);
                 }
 
                 return _applicationRoleRepository;
@@ -92,9 +85,10 @@ namespace Hisab.Dapper
             finally
             {
                 _transaction.Dispose();
-                _transaction = _connection.BeginTransaction();
                 resetRepositories();
             }
+
+            //SELECT * FROM sys.sysprocesses WHERE open_tran = 1
         }
 
         private void resetRepositories()

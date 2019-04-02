@@ -22,7 +22,7 @@ namespace Hisab.Dapper.Repository
     {
       
 
-        public AccountTypeRepository(IDbTransaction transaction):base(transaction)
+        public AccountTypeRepository(IDbConnection connection, IDbTransaction transaction):base(connection, transaction)
         {
             
             

@@ -7,11 +7,22 @@ namespace Hisab.Dapper.Repository
     {
         protected IDbTransaction Transaction { get; private set; }
 
-        protected IDbConnection Connection => Transaction.Connection;
+        private IDbConnection _connection;
+        protected IDbConnection Connection
+        {
+            get
+            {
+                if (Transaction == null)
+                    return _connection;
 
-        public RepositoryBase(IDbTransaction transaction)
+               return Transaction.Connection;
+            }
+        }
+
+        public RepositoryBase(IDbConnection connection, IDbTransaction transaction)
         {
             Transaction = transaction;
+            _connection = connection;
         }
     }
     

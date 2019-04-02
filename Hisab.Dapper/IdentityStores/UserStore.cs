@@ -22,9 +22,9 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task<IdentityResult> CreateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                //await context.InitializeWithTransaction();
 
                 var result =  await context.ApplicationUserRepository.CreateAsync(user, cancellationToken);
 
@@ -51,9 +51,9 @@ namespace Hisab.Dapper.IdentityStores
         public async Task<ApplicationUser> FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
 
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                //await context.InitializeWithTransaction();
 
                 return  await context.ApplicationUserRepository.FindByIdAsync(userId);
 
@@ -63,13 +63,11 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                //await context.InitializeWithTransaction();
 
                 var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
-
-                context.SaveChanges();
 
                 return user;
 
@@ -104,9 +102,9 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                //await context.InitializeWithTransaction();
 
                 var result = await context.ApplicationUserRepository.UpdateAsync(user, cancellationToken);
 
@@ -137,9 +135,9 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task AddToRoleAsync(ApplicationUser user, string roleName, CancellationToken cancellationToken)
         {
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                
                 var role = await context.ApplicationRoleRepository.FindByRoleNameAsync(roleName);
 
 
@@ -158,19 +156,18 @@ namespace Hisab.Dapper.IdentityStores
         public async Task<IList<string>> GetRolesAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
             
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
-
+                
                 return await context.ApplicationUserRepository.GetRolesAsync(user.Id);
             }
         }
 
         public async Task<bool> IsInRoleAsync(ApplicationUser user, string roleName, CancellationToken cancellationToken)
         {
-            using (var context = dbConnectionProvider.GetContext())
+            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
             {
-                await context.InitializeWithTransaction();
+                
                 var role = await context.ApplicationRoleRepository.FindByRoleNameAsync(roleName);
 
                 if (role == null)

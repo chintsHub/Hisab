@@ -7,7 +7,7 @@ namespace Hisab.Dapper
     {
         Task<IDbConnection> CreateConnectionAsync();
 
-        IHisabDbContext GetContext();
+        //IHisabDbContext GetContext();
 
         string GetConnectionString();
     }

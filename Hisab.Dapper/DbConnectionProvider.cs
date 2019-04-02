@@ -32,10 +32,7 @@ namespace Hisab.Dapper
             }
         }
 
-        public IHisabDbContext GetContext()
-        {
-            return new HisabDbContext(this);
-        }
+       
 
         public string GetConnectionString()
         {

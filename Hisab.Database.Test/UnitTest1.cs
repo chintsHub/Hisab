@@ -16,12 +16,12 @@ namespace Hisab.Database.Test
             IDbConnectionProvider connection = new DbConnectionProvider(@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
 
             IList<AccountType> accountTypes = null;
-            using (var uow = new HisabDbContext(connection))
-            {
-                await uow.InitializeWithTransaction();
-                accountTypes = uow.AccountTypeRepository.GetAccountTypes();
+            //using (var uow = new HisabDbContext(connection))
+            //{
+            //    await uow.InitializeWithTransaction();
+            //    accountTypes = uow.AccountTypeRepository.GetAccountTypes();
                 
-            }
+            //}
             
             Assert.NotNull(accountTypes);
 
@@ -32,11 +32,11 @@ namespace Hisab.Database.Test
         {
             IList<AccountType> accountTypes = null;
             IDbConnectionProvider connection = new DbConnectionProvider(@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
-            using (var uow = new HisabDbContext(connection))
-            {
-                accountTypes = uow.AccountTypeRepository.GetAccountTypes();
+            //using (var uow = new HisabDbContext(connection))
+            //{
+            //    accountTypes = uow.AccountTypeRepository.GetAccountTypes();
 
-            }
+            //}
 
 
             Assert.Equal(2, accountTypes.Count);

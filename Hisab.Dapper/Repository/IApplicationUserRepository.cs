@@ -25,7 +25,7 @@ namespace Hisab.Dapper.Repository
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
     {
-        public ApplicationUserRepository(IDbTransaction transaction) : base(transaction)
+        public ApplicationUserRepository(IDbConnection connection, IDbTransaction transaction) : base(connection,transaction)
         {
 
         }
