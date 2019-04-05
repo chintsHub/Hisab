@@ -8,8 +8,8 @@ using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Logging;
 using WebApp.Services;
 
 namespace Hisab.UI.Controllers
@@ -20,22 +20,27 @@ namespace Hisab.UI.Controllers
         private SignInManager<ApplicationUser> _signInManager;
         private UserManager<ApplicationUser> _userManager;
         private IEmailSender _emailSender;
+        private ILogger _logger;
 
         public HomeController(IDbConnectionProvider connectionProvider, 
             SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager
+            UserManager<ApplicationUser> userManager,
+            ILogger<HomeController> logger
             //IEmailSender emailSender
             )
         {
             _connectionProvider = connectionProvider;
             _signInManager = signInManager;
             _userManager = userManager;
+            _logger = logger;
             //_emailSender = emailSender;
         }
         public IActionResult Index(string returnUrl = null)
         {
             //setting up ReturnUrl
             ViewData["ReturnUrl"] = returnUrl;
+
+            
 
             if (!User.Identity.IsAuthenticated)
                 return View();
@@ -54,7 +59,7 @@ namespace Hisab.UI.Controllers
 
                 if (result.Succeeded)
                 {
-                    //redirect
+                    _logger.LogInformation("User logged in successfully");
 
                     // Returnurl - or can be passed in as Login method parameter
                     if (Request.Query.Keys.Contains("ReturnUrl"))
@@ -70,7 +75,7 @@ namespace Hisab.UI.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View("Index", loginVm);
+                    return View("Index", new HomePageVM(){LoginVm = loginVm});
                 }
             }
 
@@ -109,7 +114,7 @@ namespace Hisab.UI.Controllers
                     }
                     
                     //_logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("/AppHome");
                 }
                 AddErrors(result);
             }
