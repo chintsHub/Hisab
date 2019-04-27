@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "f7185b837a8e805d38a7d91e215392c02afd6c8e"
+    "signature": "138897b052f4d72d6762c0acc106691b45ecee5c"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.1": {
       "Hisab.UI/1.0.0": {
         "dependencies": {
+          "Hisab.AWS": "1.0.0",
           "Hisab.Dapper": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
@@ -36,6 +37,31 @@
         },
         "compile": {
           "Hisab.UI.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.3.100.7": {
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.100.7"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.Core.dll": {}
+        }
+      },
+      "AWSSDK.SimpleEmail/3.3.100.7": {
+        "dependencies": {
+          "AWSSDK.Core": "3.3.100.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.SimpleEmail.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.100.7"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.SimpleEmail.dll": {}
         }
       },
       "Dapper/1.50.5": {
@@ -1631,6 +1657,18 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
+        }
+      },
+      "Hisab.AWS/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Core": "3.3.100.7",
+          "AWSSDK.SimpleEmail": "3.3.100.7"
+        },
+        "runtime": {
+          "Hisab.AWS.dll": {}
+        },
+        "compile": {
+          "Hisab.AWS.dll": {}
         }
       },
       "Hisab.Dapper/1.0.0": {
@@ -4578,6 +4616,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AWSSDK.Core/3.3.100.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IYldqaS6mtf3KU7j+nZN0uIQ6WroOL+gXzbsvyN/vyv86evhYYvEShzSBSgUn6vI//S+LDMWfbHiKlrl6i7kEw==",
+      "path": "awssdk.core/3.3.100.7",
+      "hashPath": "awssdk.core.3.3.100.7.nupkg.sha512"
+    },
+    "AWSSDK.SimpleEmail/3.3.100.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EKMwUpTHd+y7cxMrC17G9bGSjWHutD9WQ3KUKQUS0ogzk3+IOfO+fE5E0VAEFpy1rjhuWiHSuI2gH2oYtTDPJQ==",
+      "path": "awssdk.simpleemail/3.3.100.7",
+      "hashPath": "awssdk.simpleemail.3.3.100.7.nupkg.sha512"
+    },
     "Dapper/1.50.5": {
       "type": "package",
       "serviceable": true,
@@ -5123,6 +5175,11 @@
       "sha512": "sha512-SpcAYi5gkWLQTVQltkulSFLKsLM8BqHTFhKWQx+HYGKh7yaYy2YnVqJUWCIUpva3NUdGKpr/HKHx9WKu8h4LxQ==",
       "path": "windowsazure.storage/8.1.4",
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
+    },
+    "Hisab.AWS/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Hisab.Dapper/1.0.0": {
       "type": "project",

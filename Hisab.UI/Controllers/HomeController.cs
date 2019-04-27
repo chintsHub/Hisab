@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Hisab.AWS;
 using Hisab.Dapper;
 using Hisab.Dapper.Identity;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -19,21 +22,21 @@ namespace Hisab.UI.Controllers
         private IDbConnectionProvider _connectionProvider;
         private SignInManager<ApplicationUser> _signInManager;
         private UserManager<ApplicationUser> _userManager;
-        private IEmailSender _emailSender;
+        private IEmailService _emailService;
         private ILogger _logger;
 
         public HomeController(IDbConnectionProvider connectionProvider, 
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
-            ILogger<HomeController> logger
-            //IEmailSender emailSender
+            ILogger<HomeController> logger,
+            IEmailService emailService
             )
         {
             _connectionProvider = connectionProvider;
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
-            //_emailSender = emailSender;
+            _emailService = emailService;
         }
         public IActionResult Index(string returnUrl = null)
         {
@@ -46,7 +49,7 @@ namespace Hisab.UI.Controllers
                 return View();
             else
             {
-                return RedirectToLocal("/AppHome");
+                return RedirectToAction("Index", "AppHome");
             }
         }
 
@@ -68,7 +71,7 @@ namespace Hisab.UI.Controllers
                     }
                     else
                     {
-                        return RedirectToLocal("/AppHome");
+                        return RedirectToAction("Index", "AppHome");
                     }
                     
                 }
@@ -94,62 +97,158 @@ namespace Hisab.UI.Controllers
                 var user = new ApplicationUser
                 {
                     Email = registerUserVm.Email,
-                    EmailConfirmed = true,
+                    EmailConfirmed = false,
                     UserName = registerUserVm.Email,
                     NickName = registerUserVm.NickName
 
                 };
+                
+
                 var result = await _userManager.CreateAsync(user, registerUserVm.Password);
                 if (result.Succeeded)
                 {
-                    //_logger.LogInformation("User created a new account with password.");
-
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    //await _emailSender.SendEmailConfirmationAsync(registerUserVm.Email, callbackUrl);
+                    // Add to role
                     var roleResult = await _userManager.AddToRoleAsync(user, "App User");
-                    if (roleResult.Succeeded)
+
+                    // send email
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    var emailResponse = await _emailService.SendRegistrationEmail(user.Email, callbackUrl);
+
+                   
+                    if (roleResult.Succeeded && emailResponse == HttpStatusCode.OK)
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        ViewBag.RegisterSuccessMessage = "You are successfully registered." +
+                                                         "We have sent a verification email.";
+
+                        ModelState.Clear();
+                        return View("Index", new HomePageVM());
+                        
                     }
-                    
-                    //_logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal("/AppHome");
+                    else
+                    {
+                        throw new ApplicationException($"Error in Registering user:{user.Email}");
+                    }
+
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
-            //return View(registerUserVm);
-            return null;
+            return View("Index", new HomePageVM(){RegisterUserVm = registerUserVm});
+           
+        }
+
+        public async Task<IActionResult> ConfirmEmail(int userId, string code)
+        {
+            if (userId <= 0 || code == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (result.Succeeded)
+                return View("ConfirmEmail");
+
+
+            return RedirectToAction("HandleError","Error",new {StatusCode = 500});
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVm)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(forgotPasswordVm.Email);
+
+                if (user != null)
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    
+                   
+                    var resetUrl = Url.ResetPasswordCallbackLink(user.Id, token,Request.Scheme);
+
+
+                    //send email
+                    var emailResponse = await _emailService.SendForgotPasswordLink(user.Email, resetUrl);
+
+                    if (emailResponse == HttpStatusCode.OK)
+                    {
+                        ViewBag.ForgotPasswordSuccessMessage = "We have sent a reset password link to your email.";
+
+                        ModelState.Clear();
+                        return View("Index", new HomePageVM());
+                    }
+                    else
+                    {
+                        throw new ApplicationException("We couldn't send you forgot password link");
+                    }
+
+                    
+                }
+                else
+                {
+                    //send email - You are not registered with hisab.io
+                }
+
+                
+            }
+
+            return View("Index", new HomePageVM() { ForgotPasswordVm = forgotPasswordVm });
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        public async Task<IActionResult> ResetPassword(string token = null)
         {
-            return null;
+            if(String.IsNullOrEmpty(token))
+            {
+                throw new ApplicationException("You must provide a token");
+            }
+
+            var resetPasswordVM = new ResetPasswordVm() { Token = token };
+            return View("ResetPassword", resetPasswordVM);
         }
-  
 
-
-        private IActionResult RedirectToLocal(string returnUrl)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVm model)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            ViewBag.ResetSuccessMessage = "";
+
+            if (!ModelState.IsValid)
             {
-               // return RedirectToAction(returnUrl);
-               return RedirectToAction("Index", "AppHome");
+                return View(model);
             }
-            else
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                throw new ApplicationException("We could not reset your password.");
+                
             }
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+            if (result.Succeeded)
+            {
+                ViewBag.ResetSuccessMessage = "Your password is successfully updated.";
+            }
+            AddErrors(result);
+            return View();
         }
+
 
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
+                
             }
         }
     }

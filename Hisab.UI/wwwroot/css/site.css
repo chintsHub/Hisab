@@ -1,13 +1,19 @@
 ﻿body {
-    background-color: black
+    background-color: #f7f7f7
 }
 
-#toggleRegister {
+.MarketingPlaceholder {
+    min-height: 700px;
+    background-color: #0072ac;
+    color: #f7f7f7;
+    padding: 20px;
+}
+
+.popupFormLink {
     cursor: pointer;
-    
 }
 
 .popupForm {
-    border: 2px black inset;
+    border: 2px #0072ac inset;
     display: none;
 }

@@ -15,6 +15,7 @@ namespace Hisab.Dapper.Repository
     {
         Task<ApplicationUser> FindByIdAsync(string userId);
         Task<ApplicationUser> FindByNameAsync(string normalizedUserName);
+        Task<ApplicationUser> FindByEmailAsync(string normalizedEmail);
         Task<IdentityResult> CreateAsync(ApplicationUser user, CancellationToken cancellationToken);
         Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken);
 
@@ -29,6 +30,9 @@ namespace Hisab.Dapper.Repository
         {
 
         }
+
+        
+
         public async Task<IdentityResult> CreateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
             string command = $@"
@@ -81,6 +85,14 @@ namespace Hisab.Dapper.Repository
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ApplicationUser> FindByEmailAsync(string normalizedEmail)
+        {
+            
+
+            return await Connection.QuerySingleOrDefaultAsync<ApplicationUser>($@"SELECT * FROM [ApplicationUser]
+                    WHERE [NormalizedUserName] = @{nameof(normalizedEmail)}", new { normalizedEmail }, Transaction);
         }
 
         public async Task<ApplicationUser> FindByIdAsync(string userId)

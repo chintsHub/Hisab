@@ -30,3 +30,8 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\_marketi
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\_login.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScripts.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Index.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\ResetPassword.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.AWS.dll
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.AWS.pdb
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\ConfirmEmail.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Error\HandleError.g.cshtml.cs

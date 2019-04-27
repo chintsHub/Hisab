@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{993D91D4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.Database.Test", "Hisab.Database.Test\Hisab.Database.Test.csproj", "{5F8EDC23-8A1C-47FA-9A5E-8CB23E56A25E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hisab.UI", "Hisab.UI\Hisab.UI.csproj", "{644E6307-D859-4297-8A06-88C3B8D74664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.UI", "Hisab.UI\Hisab.UI.csproj", "{644E6307-D859-4297-8A06-88C3B8D74664}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hisab.AWS", "Hisab.AWS\Hisab.AWS.csproj", "{9806DC3D-EF58-44D1-AC53-12C65D736B74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{644E6307-D859-4297-8A06-88C3B8D74664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644E6307-D859-4297-8A06-88C3B8D74664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{644E6307-D859-4297-8A06-88C3B8D74664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9806DC3D-EF58-44D1-AC53-12C65D736B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9806DC3D-EF58-44D1-AC53-12C65D736B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9806DC3D-EF58-44D1-AC53-12C65D736B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9806DC3D-EF58-44D1-AC53-12C65D736B74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

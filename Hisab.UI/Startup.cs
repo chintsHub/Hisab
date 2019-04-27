@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hisab.AWS;
 using Hisab.Dapper;
 using Hisab.Dapper.Identity;
 using Hisab.Dapper.IdentityStores;
 using Hisab.UI.Services;
+using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,15 +33,19 @@ namespace Hisab.UI
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = _configuration.GetConnectionString("hisabDb");
+            var emailCredentials = _configuration.GetSection("EmailServiceCredentials").Get<EmailServiceCredentials>();
 
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, RoleStore>();
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(config =>
                 {
-                    config.SignIn.RequireConfirmedEmail = false; //default value is false
+                    config.SignIn.RequireConfirmedEmail = true; //default value is false
                 })
                 .AddDefaultTokenProviders();
+
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+                options.TokenLifespan = TimeSpan.FromHours(24));
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
 
@@ -53,19 +59,22 @@ namespace Hisab.UI
             services.AddScoped<IApplicationSeeding>(sp =>
                 new ApplicationSeeding(sp.GetService<UserManager<ApplicationUser>>()));
 
+            services.AddScoped<IEmailService>(sp => new EmailService(emailCredentials.AccessKey, emailCredentials.SecretKey));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            
+            app.UseExceptionHandler("/Error/500");
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
                 
-            }
+            //}
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
