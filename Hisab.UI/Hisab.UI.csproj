@@ -10,10 +10,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
     <PackageReference Include="OdeToCode.UseNodeModules" Version="1.0.6" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hisab.AWS\Hisab.AWS.csproj" />
+    <ProjectReference Include="..\Hisab.Common\Hisab.Common.csproj" />
     <ProjectReference Include="..\Hisab.Dapper\Hisab.Dapper.csproj" />
   </ItemGroup>
 

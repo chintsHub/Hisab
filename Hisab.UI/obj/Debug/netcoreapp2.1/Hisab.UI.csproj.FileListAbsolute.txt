@@ -35,3 +35,5 @@ C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.AWS.dll
 C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.AWS.pdb
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\ConfirmEmail.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Error\HandleError.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.Common.pdb

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Hisab.AWS;
+using Hisab.Common.Log;
 using Hisab.Dapper;
 using Hisab.Dapper.Identity;
 using Hisab.UI.Services;
@@ -13,7 +14,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
 using WebApp.Services;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace Hisab.UI.Controllers
 {
@@ -43,9 +47,7 @@ namespace Hisab.UI.Controllers
             //setting up ReturnUrl
             ViewData["ReturnUrl"] = returnUrl;
 
-            
-
-            if (!User.Identity.IsAuthenticated)
+           if (!User.Identity.IsAuthenticated)
                 return View();
             else
             {
@@ -62,7 +64,8 @@ namespace Hisab.UI.Controllers
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in successfully");
+                    Log.Write(LogEventLevel.Information,"{@LogDetail}", LogHelper.CreateLogDetail(LogType.Usage, "User Logged in", username: loginVm.Email));
+                    
 
                     // Returnurl - or can be passed in as Login method parameter
                     if (Request.Query.Keys.Contains("ReturnUrl"))
