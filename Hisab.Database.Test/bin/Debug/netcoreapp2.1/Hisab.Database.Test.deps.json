@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "0c79c111eb344c12aefa3d5831133b1cfdc3dbe0"
+    "signature": "184358248bd6d752672b1bb92dc782a6f3883c59"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,6 +10,8 @@
         "dependencies": {
           "Hisab.Dapper": "1.0.0",
           "Microsoft.NET.Test.Sdk": "15.9.0",
+          "Serilog": "2.8.0",
+          "Serilog.Sinks.XUnit": "1.0.8",
           "xunit": "2.4.0",
           "xunit.runner.visualstudio": "2.4.0"
         },
@@ -3149,6 +3151,29 @@
           }
         }
       },
+      "Serilog/2.8.0": {
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.8.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.XUnit/1.0.8": {
+        "dependencies": {
+          "Serilog": "2.8.0",
+          "xunit.abstractions": "2.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Serilog.Sinks.XUnit.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.0.8.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.11": {
         "dependencies": {
           "SQLitePCLRaw.core": "1.1.11",
@@ -6103,6 +6128,20 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "Serilog/2.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zjuKXW5IQws43IHX7VY9nURsaCiBYh2kyJCWLJRSWrTsx/syBKHV8MibWe2A+QH3Er0AiwA+OJmO3DhFJDY1+A==",
+      "path": "serilog/2.8.0",
+      "hashPath": "serilog.2.8.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.XUnit/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z3daeSC/+vCQ9pHDZuw4IKxhrScOfk52DoryPYzLoA3zC1lE4rkD2MtOAHZBhHLmAT0kifoF1CPa01l9RiICGg==",
+      "path": "serilog.sinks.xunit/1.0.8",
+      "hashPath": "serilog.sinks.xunit.1.0.8.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_green/1.1.11": {
       "type": "package",

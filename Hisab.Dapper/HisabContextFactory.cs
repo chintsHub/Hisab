@@ -1,9 +1,11 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace Hisab.Dapper
 {
-    public class HisabContextFactory
+    public static class HisabContextFactory
     {
         public static async Task<IHisabDbContext> InitializeUnitOfWorkAsync(IDbConnectionProvider connectionProvider)
         {
@@ -25,16 +27,40 @@ namespace Hisab.Dapper
 
         private static async Task<IDbTransaction> InitializeWithTransaction(IDbConnectionProvider connectionProvider)
         {
-            var connection = await connectionProvider.CreateConnectionAsync();
+            try
+            {
+                var sqlConnection = new SqlConnection(connectionProvider.GetConnectionString());
+                await sqlConnection.OpenAsync();
 
-            var transaction = connection.BeginTransaction();
-            return transaction;
+                var transaction = sqlConnection.BeginTransaction();
+                return transaction;
+
+            }
+            catch( Exception ex)
+            {
+                throw ex;
+            }
+
+            
+
+           
         }
 
         private static async Task<IDbConnection> Initialize(IDbConnectionProvider connectionProvider)
         {
-            var connection = await connectionProvider.CreateConnectionAsync();
-            return connection;
+            try
+            {
+                var sqlConnection = new SqlConnection(connectionProvider.GetConnectionString());
+                await sqlConnection.OpenAsync();
+
+                
+                return sqlConnection;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 

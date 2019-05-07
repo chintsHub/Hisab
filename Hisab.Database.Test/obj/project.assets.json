@@ -3699,6 +3699,32 @@
           }
         }
       },
+      "Serilog/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.NonGeneric": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.dll": {}
+        }
+      },
+      "Serilog.Sinks.XUnit/1.0.8": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Serilog": "2.6.0",
+          "xunit.abstractions": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/Serilog.Sinks.XUnit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Serilog.Sinks.XUnit.dll": {}
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.11": {
         "type": "package",
         "dependencies": {
@@ -9742,6 +9768,47 @@
         "version.txt"
       ]
     },
+    "Serilog/2.8.0": {
+      "sha512": "zjuKXW5IQws43IHX7VY9nURsaCiBYh2kyJCWLJRSWrTsx/syBKHV8MibWe2A+QH3Er0AiwA+OJmO3DhFJDY1+A==",
+      "type": "package",
+      "path": "serilog/2.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.pdb",
+        "lib/net45/Serilog.xml",
+        "lib/net46/Serilog.dll",
+        "lib/net46/Serilog.pdb",
+        "lib/net46/Serilog.xml",
+        "lib/netstandard1.0/Serilog.dll",
+        "lib/netstandard1.0/Serilog.pdb",
+        "lib/netstandard1.0/Serilog.xml",
+        "lib/netstandard1.3/Serilog.dll",
+        "lib/netstandard1.3/Serilog.pdb",
+        "lib/netstandard1.3/Serilog.xml",
+        "lib/netstandard2.0/Serilog.dll",
+        "lib/netstandard2.0/Serilog.pdb",
+        "lib/netstandard2.0/Serilog.xml",
+        "serilog.2.8.0.nupkg.sha512",
+        "serilog.nuspec"
+      ]
+    },
+    "Serilog.Sinks.XUnit/1.0.8": {
+      "sha512": "Z3daeSC/+vCQ9pHDZuw4IKxhrScOfk52DoryPYzLoA3zC1lE4rkD2MtOAHZBhHLmAT0kifoF1CPa01l9RiICGg==",
+      "type": "package",
+      "path": "serilog.sinks.xunit/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Serilog.Sinks.XUnit.dll",
+        "lib/net45/Serilog.Sinks.XUnit.xml",
+        "lib/netstandard1.0/Serilog.Sinks.XUnit.dll",
+        "lib/netstandard1.0/Serilog.Sinks.XUnit.xml",
+        "serilog.sinks.xunit.1.0.8.nupkg.sha512",
+        "serilog.sinks.xunit.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_green/1.1.11": {
       "sha512": "HOD1/Jg9VZtrOyPUCD9reQOXHq4r+fNe24qw5nghuiUcKch+9jePeRpt6MqGGUFhg2KW89KvE/RFlhpbfF8pKA==",
       "type": "package",
@@ -15260,6 +15327,8 @@
       "Hisab.Dapper >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
+      "Serilog >= 2.8.0",
+      "Serilog.Sinks.XUnit >= 1.0.8",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
     ]
@@ -15317,6 +15386,14 @@
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "[2.8.0, )"
+          },
+          "Serilog.Sinks.XUnit": {
+            "target": "Package",
+            "version": "[1.0.8, )"
           },
           "xunit": {
             "target": "Package",

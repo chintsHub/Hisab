@@ -15,22 +15,22 @@ namespace Hisab.Dapper
             _connectionString = connectionString;
         }
         
-        public async Task<IDbConnection> CreateConnectionAsync()
-        {
-            try
-            {
-                var sqlConnection = new SqlConnection(_connectionString);
+        //public async Task<IDbConnection> CreateConnectionAsync()
+        //{
+        //    try
+        //    {
+        //        var sqlConnection = new SqlConnection(_connectionString);
 
               
-                await sqlConnection.OpenAsync();
-                return sqlConnection;
+        //        await sqlConnection.OpenAsync();
+        //        return sqlConnection;
 
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
        
 
