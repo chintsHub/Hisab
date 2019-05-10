@@ -1,17 +1,85 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "_AppLayout";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Sucessfully Log in</title>
-</head>
-<body>
-<a asp-controller="AppHome" asp-action="Logout">Logout</a>
-    
-</body>
-</html>
+<div class="row">
+    <div class="col-sm-12">
+        <div id="toggleEvent" class="btn btn-primary">Create New Event</div>
+
+    </div>
+</div>
+<div>
+
+    <form id="CreateEventForm" class="popupForm" asp-controller="Home" asp-action="ForgotPassword" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+
+        <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" type="text" />
+            <span></span>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<div class="card-columns myevents">
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/apphome.js"></script>
+}

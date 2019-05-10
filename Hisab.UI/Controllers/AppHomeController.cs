@@ -32,5 +32,24 @@ namespace Hisab.UI.Controllers
            
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Invites()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UserSettings()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Admin()
+        {
+            return View();
+        }
     }
 }

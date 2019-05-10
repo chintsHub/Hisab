@@ -37,3 +37,7 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Home\ConfirmE
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Error\HandleError.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.Common.dll
 C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.Common.pdb
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AppLayout.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Invites.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\UserSettings.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Admin.g.cshtml.cs

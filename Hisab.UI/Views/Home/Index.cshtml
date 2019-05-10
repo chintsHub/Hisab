@@ -1,34 +1,23 @@
-﻿<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Hisab</title>
-</head>
+﻿
+@{
+    Layout = "_Layout";
+}
 
 
-<body>
+@section LeftSide
+{
+<partial name="_marketingView" />
+}
 
-    <div class="row">
-        <div class="col-md-8">
-            <partial name="_marketingView" />
-        </div>
-        <div class="col-md-4 mt-5">
-
-            <partial name="_login" />
-
-
-        </div>
-
-    </div>
+@section RightSide
+{
+    <partial name="_login" />
+}
 
 
-</body>
 
 @section scripts{
     <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/home.js"></script>
 }
-
-</html>

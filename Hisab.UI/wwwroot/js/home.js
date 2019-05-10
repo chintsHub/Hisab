@@ -3,8 +3,10 @@
     var $registerToggleButton = $("#toggleRegister");
     var $toggleForgotPasswordButton = $("#toggleForgotPassword");
 
+
     var $registerToggleForm = $("#toggleRegisterForm");
     var $forgotPasswordToggleForm = $("#ForgotPasswordForm");
+
 
     var nickName = $("#nickName").val();
     if (nickName.length > 0) {
@@ -25,5 +27,7 @@
             $forgotPasswordToggleForm.toggle(1000);
 
         });
+
+
 
 });

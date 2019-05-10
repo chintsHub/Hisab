@@ -6,13 +6,25 @@
 
 <h2>Error</h2>
 
-<div>
-    @ViewData["ErrorMessage"]
-</div>
+@section LeftSide
+{
+    <div>
+        @ViewData["ErrorMessage"]
+    </div>
+    
+    <div>
+        @ViewData["RouteOfException"]
+    </div>
+}
 
-<div>
-    @ViewData["RouteOfException"]
-</div>
+@section RightSide
+{
+   
+}
+
+
+
+
 
 
 

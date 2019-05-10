@@ -2,6 +2,12 @@
     background-color: #f7f7f7
 }
 
+.appBody {
+    background-color: #f7f7f7;
+    min-height: 700px;
+    padding: 20px;
+}
+
 .MarketingPlaceholder {
     min-height: 700px;
     background-color: #0072ac;
@@ -17,3 +23,20 @@
     border: 2px #0072ac inset;
     display: none;
 }
+
+.myevents {
+    padding: 20px;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
