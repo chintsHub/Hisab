@@ -5825,11 +5825,22 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "Hisab.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Hisab.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hisab.Common.dll": {}
+        }
+      },
       "Hisab.Dapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Dapper": "1.50.5",
+          "Hisab.Common": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.0"
         },
         "compile": {
@@ -15404,6 +15415,11 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "Hisab.Common/1.0.0": {
+      "type": "project",
+      "path": "../Hisab.Common/Hisab.Common.csproj",
+      "msbuildProject": "../Hisab.Common/Hisab.Common.csproj"
     },
     "Hisab.Dapper/1.0.0": {
       "type": "project",

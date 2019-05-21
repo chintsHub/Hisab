@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[ApplicationUser] (Default Constraint)
+     Alter
+       [dbo].[Event] (Table)
+     Create
+       [dbo].[ApplicationUserRole] (Table)
+       Default Constraint: unnamed constraint on [dbo].[ApplicationUser] (Default Constraint)
+       [dbo].[FK_ApplicationUserRole_ApplicationUser] (Foreign Key)
+       [dbo].[FK_ApplicationUserRole_ApplicationRole] (Foreign Key)
+
+** Supporting actions

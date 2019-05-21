@@ -4621,9 +4621,15 @@
           "Microsoft.NET.Test.Sdk": "15.9.0"
         }
       },
+      "Hisab.Common/1.0.0": {
+        "runtime": {
+          "Hisab.Common.dll": {}
+        }
+      },
       "Hisab.Dapper/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Hisab.Common": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.0"
         },
         "runtime": {
@@ -7031,6 +7037,11 @@
       "sha512": "sha512-3eq5cGXbEJkqW9nwLuXwtxy9B5gMA8i7HW4rN63AhAvy5UvEcQbZnve23wx/oPrkyg/4CbfNhxkBezS0b1oUdQ==",
       "path": "xunit.runner.visualstudio/2.4.0",
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
+    },
+    "Hisab.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Hisab.Dapper/1.0.0": {
       "type": "project",

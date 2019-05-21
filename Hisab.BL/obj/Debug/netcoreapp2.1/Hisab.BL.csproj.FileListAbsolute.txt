@@ -7,3 +7,8 @@ C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.AssemblyInfo.cs
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.dll
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.pdb
 C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.csprojAssemblyReference.cache
+C:\Chintan\Code\Hisab\Hisab.BL\bin\Debug\netcoreapp2.1\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.BL\bin\Debug\netcoreapp2.1\Hisab.Dapper.dll
+C:\Chintan\Code\Hisab\Hisab.BL\bin\Debug\netcoreapp2.1\Hisab.Common.pdb
+C:\Chintan\Code\Hisab\Hisab.BL\bin\Debug\netcoreapp2.1\Hisab.Dapper.pdb
+C:\Chintan\Code\Hisab\Hisab.BL\obj\Debug\netcoreapp2.1\Hisab.BL.csproj.CopyComplete

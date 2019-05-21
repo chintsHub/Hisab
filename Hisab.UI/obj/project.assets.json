@@ -5872,6 +5872,20 @@
           "bin/placeholder/Hisab.AWS.dll": {}
         }
       },
+      "Hisab.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Hisab.Common": "1.0.0",
+          "Hisab.Dapper": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hisab.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hisab.BL.dll": {}
+        }
+      },
       "Hisab.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -5887,6 +5901,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Dapper": "1.50.5",
+          "Hisab.Common": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.0"
         },
         "compile": {
@@ -15277,6 +15292,11 @@
       "path": "../Hisab.AWS/Hisab.AWS.csproj",
       "msbuildProject": "../Hisab.AWS/Hisab.AWS.csproj"
     },
+    "Hisab.BL/1.0.0": {
+      "type": "project",
+      "path": "../Hisab.BL/Hisab.BL.csproj",
+      "msbuildProject": "../Hisab.BL/Hisab.BL.csproj"
+    },
     "Hisab.Common/1.0.0": {
       "type": "project",
       "path": "../Hisab.Common/Hisab.Common.csproj",
@@ -15291,6 +15311,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Hisab.AWS >= 1.0.0",
+      "Hisab.BL >= 1.0.0",
       "Hisab.Common >= 1.0.0",
       "Hisab.Dapper >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
@@ -15335,6 +15356,9 @@
           "projectReferences": {
             "C:\\Chintan\\Code\\Hisab\\Hisab.AWS\\Hisab.AWS.csproj": {
               "projectPath": "C:\\Chintan\\Code\\Hisab\\Hisab.AWS\\Hisab.AWS.csproj"
+            },
+            "C:\\Chintan\\Code\\Hisab\\Hisab.BL\\Hisab.BL.csproj": {
+              "projectPath": "C:\\Chintan\\Code\\Hisab\\Hisab.BL\\Hisab.BL.csproj"
             },
             "C:\\Chintan\\Code\\Hisab\\Hisab.Common\\Hisab.Common.csproj": {
               "projectPath": "C:\\Chintan\\Code\\Hisab\\Hisab.Common\\Hisab.Common.csproj"

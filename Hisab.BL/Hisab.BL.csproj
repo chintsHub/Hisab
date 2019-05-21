@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hisab.Common\Hisab.Common.csproj" />
+    <ProjectReference Include="..\Hisab.Dapper\Hisab.Dapper.csproj" />
+  </ItemGroup>
+
 </Project>

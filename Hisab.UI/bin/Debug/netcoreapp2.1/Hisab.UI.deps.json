@@ -25,6 +25,7 @@
       "Hisab.UI/1.0.0": {
         "dependencies": {
           "Hisab.AWS": "1.0.0",
+          "Hisab.BL": "1.0.0",
           "Hisab.Common": "1.0.0",
           "Hisab.Dapper": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
@@ -1803,6 +1804,18 @@
           "Hisab.AWS.dll": {}
         }
       },
+      "Hisab.BL/1.0.0": {
+        "dependencies": {
+          "Hisab.Common": "1.0.0",
+          "Hisab.Dapper": "1.0.0"
+        },
+        "runtime": {
+          "Hisab.BL.dll": {}
+        },
+        "compile": {
+          "Hisab.BL.dll": {}
+        }
+      },
       "Hisab.Common/1.0.0": {
         "runtime": {
           "Hisab.Common.dll": {}
@@ -1814,6 +1827,7 @@
       "Hisab.Dapper/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Hisab.Common": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.0"
         },
         "runtime": {
@@ -5366,6 +5380,11 @@
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
     },
     "Hisab.AWS/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hisab.BL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,6 +1,5 @@
 C:\Chintan\Code\Hisab\Hisab.AWS\bin\Debug\netcoreapp2.1\Hisab.AWS.deps.json
 C:\Chintan\Code\Hisab\Hisab.AWS\bin\Debug\netcoreapp2.1\Hisab.AWS.dll
-C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.1\Hisab.AWS.csprojAssemblyReference.cache
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.1\Hisab.AWS.csproj.CoreCompileInputs.cache
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.1\Hisab.AWS.AssemblyInfoInputs.cache
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.1\Hisab.AWS.AssemblyInfo.cs

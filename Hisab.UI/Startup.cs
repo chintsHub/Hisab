@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.AWS;
+using Hisab.BL;
 using Hisab.Dapper;
 using Hisab.Dapper.Identity;
 using Hisab.Dapper.IdentityStores;
+using Hisab.Dapper.Repository;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +39,7 @@ namespace Hisab.UI
 
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, RoleStore>();
+           
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(config =>
                 {
@@ -60,6 +63,9 @@ namespace Hisab.UI
                 new ApplicationSeeding(sp.GetService<UserManager<ApplicationUser>>()));
 
             services.AddScoped<IEmailService>(sp => new EmailService(emailCredentials.AccessKey, emailCredentials.SecretKey));
+
+
+            services.AddScoped<IEventManager>(sp => new EventManager(sp.GetService<IDbConnectionProvider>()));
 
         }
 

@@ -10,8 +10,10 @@ namespace Hisab.Dapper
 
         IApplicationRoleRepository ApplicationRoleRepository { get; }
 
+        IEventRepository EventRepository { get; }
+
         void SaveChanges();
-    }
+    } 
 
 
 }

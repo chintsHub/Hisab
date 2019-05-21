@@ -15,3 +15,5 @@ C:\Chintan\Code\Hisab\Hisab.Database.Test\obj\Debug\netcoreapp2.1\Hisab.Database
 C:\Chintan\Code\Hisab\Hisab.Database.Test\obj\Debug\netcoreapp2.1\Hisab.Database.Test.csproj.CopyComplete
 C:\Chintan\Code\Hisab\Hisab.Database.Test\obj\Debug\netcoreapp2.1\Hisab.Database.Test.dll
 C:\Chintan\Code\Hisab\Hisab.Database.Test\obj\Debug\netcoreapp2.1\Hisab.Database.Test.pdb
+C:\Chintan\Code\Hisab\Hisab.Database.Test\bin\Debug\netcoreapp2.1\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.Database.Test\bin\Debug\netcoreapp2.1\Hisab.Common.pdb

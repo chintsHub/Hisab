@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hisab.BL;
+using Hisab.Common;
+using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
+using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,15 +17,22 @@ namespace Hisab.UI.Controllers
     public class AppHomeController : Controller
     {
         private SignInManager<ApplicationUser> _signInManager;
-        
-        public AppHomeController(SignInManager<ApplicationUser> signInManager)
+        private IEventManager _eventManager;
+        private UserManager<ApplicationUser> _userManager;
+
+        public AppHomeController(IEventManager eventManager, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
+            _eventManager = eventManager;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var events = await _eventManager.GetEvents(user.Id);
+
+            return View(new AppHomeVm(){userEvents = events});
         }
 
         [HttpGet]
@@ -50,6 +61,23 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> Admin()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateEvent(AppHomeVm eventvm)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            int newEventId = 0;
+
+            if (user != null)
+            {
+                var eventBo = new EventBO() { EventName = eventvm.NewEvent.EventName, UserId = user.Id };
+
+                newEventId = await _eventManager.CreateEvent(eventBo);
+               
+            }
+
+            return RedirectToAction("Dashboard", "Event", new {eventId = newEventId});
         }
     }
 }

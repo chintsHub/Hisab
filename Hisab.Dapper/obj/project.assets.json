@@ -5267,6 +5267,16 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
+      },
+      "Hisab.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Hisab.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hisab.Common.dll": {}
+        }
       }
     }
   },
@@ -13966,11 +13976,17 @@
         "windowsazure.storage.8.1.4.nupkg.sha512",
         "windowsazure.storage.nuspec"
       ]
+    },
+    "Hisab.Common/1.0.0": {
+      "type": "project",
+      "path": "../Hisab.Common/Hisab.Common.csproj",
+      "msbuildProject": "../Hisab.Common/Hisab.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Dapper >= 1.50.5",
+      "Hisab.Common >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
@@ -14004,7 +14020,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Chintan\\Code\\Hisab\\Hisab.Common\\Hisab.Common.csproj": {
+              "projectPath": "C:\\Chintan\\Code\\Hisab\\Hisab.Common\\Hisab.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

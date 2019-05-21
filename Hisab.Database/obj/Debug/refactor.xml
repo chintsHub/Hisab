@@ -21,4 +21,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="58375028-016b-4810-9539-9f19592b135c" ChangeDateTime="05/14/2019 11:47:12" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[Event].[LastModfiedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Event]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastModifiedDate" />
+  </Operation>
 </Operations>

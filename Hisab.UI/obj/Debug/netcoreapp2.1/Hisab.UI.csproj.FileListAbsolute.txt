@@ -41,3 +41,11 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AppLa
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Invites.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\UserSettings.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\AppHome\Admin.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.BL.dll
+C:\Chintan\Code\Hisab\Hisab.UI\bin\Debug\netcoreapp2.1\Hisab.BL.pdb
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Index.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Friends.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Transactions.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Settlement.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Settings.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_EventLayout.g.cshtml.cs

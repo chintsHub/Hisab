@@ -9,6 +9,7 @@
       "Hisab.Dapper/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Hisab.Common": "1.0.0",
           "Microsoft.NETCore.App": "2.1.0"
         },
         "runtime": {
@@ -52,7 +53,12 @@
           "Microsoft.NETCore.Platforms": "2.1.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {}
+      "System.Reflection.TypeExtensions/4.4.0": {},
+      "Hisab.Common/1.0.0": {
+        "runtime": {
+          "Hisab.Common.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -123,6 +129,11 @@
       "sha512": "sha512-BWYdrACMy1Sbq7Kh1oISS+2qKX1dHhXNpRByG3c6M9i2fhU9BZqO3nFYIabmbZuQwd7svR5zfxNHgmgv2XkkIg==",
       "path": "system.reflection.typeextensions/4.4.0",
       "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
+    },
+    "Hisab.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

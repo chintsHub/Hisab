@@ -9,3 +9,6 @@ C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.1\Hisab.Dapper.pdb
 C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.1\Hisab.Dapper.runtimeconfig.json
 C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.1\Hisab.Dapper.runtimeconfig.dev.json
 C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.1\Hisab.Dapper.csprojAssemblyReference.cache
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.1\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.1\Hisab.Common.pdb
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.1\Hisab.Dapper.csproj.CopyComplete

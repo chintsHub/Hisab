@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Hisab.Common.BO;
 
 namespace Hisab.UI.ViewModels
 {
@@ -73,5 +74,17 @@ namespace Hisab.UI.ViewModels
         public string AccessKey { get; set; }
 
         public string SecretKey { get; set; }
+    }
+
+    public class NewEvent
+    {
+        public string EventName { get; set; }
+    }
+
+    public class AppHomeVm
+    {
+        public NewEvent NewEvent { get; set; }
+
+        public List<UserEventBO> userEvents { get; set; }
     }
 }

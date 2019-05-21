@@ -37,6 +37,26 @@ footer p {
     margin-bottom: .25rem;
 }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.eventCardHeader {
+    background-color: #0072ac;
+    color: white;
+}
+
+.eventCardFooter {
+    background-color: #e3f2fd;
+}
+
+.eventContent {
+    padding: 20px;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.cardImage {
+    object-fit: fill;
+    
+}
 
 

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hisab.AWS\Hisab.AWS.csproj" />
+    <ProjectReference Include="..\Hisab.BL\Hisab.BL.csproj" />
     <ProjectReference Include="..\Hisab.Common\Hisab.Common.csproj" />
     <ProjectReference Include="..\Hisab.Dapper\Hisab.Dapper.csproj" />
   </ItemGroup>
