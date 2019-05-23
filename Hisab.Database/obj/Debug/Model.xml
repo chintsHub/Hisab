@@ -85,25 +85,6 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[EventUserAccount].[AccountId]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[EventUserAccount]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
 								<References Name="[dbo].[ApplicationRole].[Id]" />
 							</Entry>
 						</Relationship>
@@ -115,7 +96,7 @@
 					<References Name="[dbo].[ApplicationRole]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -134,7 +115,7 @@
 					<References Name="[dbo].[ApplicationUser]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -162,7 +143,7 @@
 					<References Name="[dbo].[ApplicationUserRole]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AccountType]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -266,7 +247,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="6" />
+			<AttachedAnnotation Disambiguator="5" />
 		</Element>
 		<Element Type="SqlIndex" Name="[dbo].[ApplicationRole].[IX_ApplicationRole_NormalizedName]">
 			<Relationship Name="ColumnSpecifications">
@@ -476,7 +457,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="7" />
+			<AttachedAnnotation Disambiguator="6" />
 		</Element>
 		<Element Type="SqlIndex" Name="[dbo].[ApplicationUser].[IX_ApplicationUser_NormalizedUserName]">
 			<Relationship Name="ColumnSpecifications">
@@ -537,9 +518,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="8" />
+			<AttachedAnnotation Disambiguator="7" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Event]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -630,14 +611,14 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
 		</Element>
-		<Element Type="SqlTable" Name="[dbo].[EventTransactionJournal]">
+		<Element Type="SqlTable" Name="[dbo].[EventFriend]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventTransactionJournal].[EventTransactionId]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[EventId]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -653,229 +634,12 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventTransactionJournal].[EventUserAccountId]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[Email]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventTransactionJournal].[Action]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventTransactionJournal].[DebitAmount]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Scale" Value="2" />
-									<Property Name="Precision" Value="18" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[decimal]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventTransactionJournal].[CreditAmount]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Scale" Value="2" />
-									<Property Name="Precision" Value="18" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[decimal]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
-		</Element>
-		<Element Type="SqlTable" Name="[dbo].[EventUser]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUser].[EventId]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUser].[UserId]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUser].[AdultCount]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUser].[KidCount]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
-		</Element>
-		<Element Type="SqlTable" Name="[dbo].[EventUserAccount]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserAccount].[AccountId]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserAccount].[EventId]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserAccount].[UserId]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserAccount].[AccountType]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserAccount].[Name]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Length" Value="500" />
+									<Property Name="Length" Value="200" />
 									<Relationship Name="Type">
 										<Entry>
 											<References ExternalSource="BuiltIns" Name="[varchar]" />
@@ -886,20 +650,25 @@
 						</Relationship>
 					</Element>
 				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
 				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[NickName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="200" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
 				</Entry>
-			</Relationship>
-			<AttachedAnnotation Disambiguator="5" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
-		</Element>
-		<Element Type="SqlTable" Name="[dbo].[EventUserTransaction]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserTransaction].[Id]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[Status]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -915,7 +684,22 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserTransaction].[EventId]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[AppUserId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[AdultCount]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -931,7 +715,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserTransaction].[EventUserId]">
+					<Element Type="SqlSimpleColumn" Name="[dbo].[EventFriend].[KidsCount]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -939,40 +723,6 @@
 									<Relationship Name="Type">
 										<Entry>
 											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserTransaction].[TransactionDate]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[date]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[EventUserTransaction].[TransactionAmount]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Scale" Value="2" />
-									<Property Name="Precision" Value="18" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[decimal]" />
 										</Entry>
 									</Relationship>
 								</Element>
@@ -986,8 +736,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ApplicationUserRole_ApplicationRole]">
 			<Relationship Name="Columns">
@@ -1010,7 +761,7 @@
 					<References Name="[dbo].[ApplicationRole]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="10" />
+			<AttachedAnnotation Disambiguator="9" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ApplicationUserRole_ApplicationUser]">
 			<Relationship Name="Columns">
@@ -1033,7 +784,7 @@
 					<References Name="[dbo].[ApplicationUser]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="9" />
+			<AttachedAnnotation Disambiguator="8" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Event_User]">
 			<Relationship Name="Columns">
@@ -1056,111 +807,53 @@
 					<References Name="[dbo].[ApplicationUser]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="12" />
+			<AttachedAnnotation Disambiguator="11" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventTransactionJournal_EventUserAccount]">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventFriend_AppUser]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[EventTransactionJournal].[EventUserAccountId]" />
+					<References Name="[dbo].[EventFriend].[AppUserId]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[EventTransactionJournal]" />
+					<References Name="[dbo].[EventFriend]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[EventUserAccount].[AccountId]" />
+					<References Name="[dbo].[ApplicationUser].[Id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[EventUserAccount]" />
+					<References Name="[dbo].[ApplicationUser]" />
 				</Entry>
 			</Relationship>
 			<AttachedAnnotation Disambiguator="14" />
 		</Element>
-		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventTransactionJournal_EventUserTransaction]">
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventFriend_Event]">
 			<Relationship Name="Columns">
 				<Entry>
-					<References Name="[dbo].[EventTransactionJournal].[EventTransactionId]" />
+					<References Name="[dbo].[EventFriend].[EventId]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[EventTransactionJournal]" />
+					<References Name="[dbo].[EventFriend]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[EventUserTransaction].[Id]" />
+					<References Name="[dbo].[Event].[Id]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
 				<Entry>
-					<References Name="[dbo].[EventUserTransaction]" />
+					<References Name="[dbo].[Event]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="15" />
-		</Element>
-		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventUserAccount_EventUser]">
-			<Relationship Name="Columns">
-				<Entry>
-					<References Name="[dbo].[EventUserAccount].[EventId]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EventUserAccount].[UserId]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[EventUserAccount]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignColumns">
-				<Entry>
-					<References Name="[dbo].[EventUser].[EventId]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EventUser].[UserId]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignTable">
-				<Entry>
-					<References Name="[dbo].[EventUser]" />
-				</Entry>
-			</Relationship>
-			<AttachedAnnotation Disambiguator="17" />
-		</Element>
-		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_EventUserTransaction_EventUser]">
-			<Relationship Name="Columns">
-				<Entry>
-					<References Name="[dbo].[EventUserTransaction].[EventId]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EventUserTransaction].[EventUserId]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[EventUserTransaction]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignColumns">
-				<Entry>
-					<References Name="[dbo].[EventUser].[EventId]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[EventUser].[UserId]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForeignTable">
-				<Entry>
-					<References Name="[dbo].[EventUser]" />
-				</Entry>
-			</Relationship>
-			<AttachedAnnotation Disambiguator="19" />
+			<AttachedAnnotation Disambiguator="13" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Event]">
 			<Relationship Name="ColumnSpecifications">
@@ -1179,15 +872,15 @@
 					<References Name="[dbo].[Event]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="11" />
+			<AttachedAnnotation Disambiguator="10" />
 		</Element>
-		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_EventTransactionJournal]">
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_EventFriend]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[EventTransactionJournal].[EventTransactionId]" />
+								<References Name="[dbo].[EventFriend].[EventId]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1196,16 +889,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[EventTransactionJournal].[EventUserAccountId]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[EventTransactionJournal].[Action]" />
+								<References Name="[dbo].[EventFriend].[Email]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1213,57 +897,10 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[EventTransactionJournal]" />
+					<References Name="[dbo].[EventFriend]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="13" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_EventUser]">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[EventUser].[EventId]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[EventUser].[UserId]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[EventUser]" />
-				</Entry>
-			</Relationship>
-			<AttachedAnnotation Disambiguator="16" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_EventUserTransaction]">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[EventUserTransaction].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[EventUserTransaction]" />
-				</Entry>
-			</Relationship>
-			<AttachedAnnotation Disambiguator="18" />
+			<AttachedAnnotation Disambiguator="12" />
 		</Element>
 	</Model>
 </DataSchemaModel>

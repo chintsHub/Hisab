@@ -32,7 +32,19 @@ namespace Hisab.UI.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var events = await _eventManager.GetEvents(user.Id);
 
-            return View(new AppHomeVm(){userEvents = events});
+            var eventsVm = new List<UserEventVm>();
+
+            foreach (var eventBo in events)
+            {
+                eventsVm.Add(new UserEventVm()
+                {
+                    EventId = eventBo.EventId,
+                    EventName = eventBo.EventName,
+                    CreatedUserNickName = eventBo.NickName
+                });
+            }
+
+            return View(new AppHomeVm(){userEvents = eventsVm });
         }
 
         [HttpGet]
@@ -71,7 +83,19 @@ namespace Hisab.UI.Controllers
 
             if (user != null)
             {
-                var eventBo = new EventBO() { EventName = eventvm.NewEvent.EventName, UserId = user.Id };
+                var eventBo = new NewEventBO()
+                {
+                    EventName = eventvm.NewEvent.EventName,
+                    EventOwner = new EventFriendBO()
+                    {
+                        Email = user.Email,
+                        NickName = user.NickName,
+                        UserId = user.Id,
+                        Status = EventFriendStatus.EventOwner
+
+                    },
+                    
+                };
 
                 newEventId = await _eventManager.CreateEvent(eventBo);
                

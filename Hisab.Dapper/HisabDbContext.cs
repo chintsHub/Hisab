@@ -140,7 +140,7 @@ namespace Hisab.Dapper
 
         public void Dispose()
         {
-            dispose(false);
+            dispose(true);
         }
     }
 }

@@ -15,17 +15,19 @@
 
     <form id="CreateEventForm" class="popupForm" asp-controller="AppHome" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
         <div class="form-group">
-            <label asp-for="@Model.NewEvent.EventName">Name:</label>
+            <label asp-for="@Model.NewEvent.EventName">Event Name:</label>
             <input asp-for="@Model.NewEvent.EventName" class="form-control" type="text" />
             <span asp-validation-for="@Model.NewEvent.EventName"></span>
         </div>
+        
+      
 
-        <div class="form-group">
-            <button class="btn btn-primary">Submit</button>
-        </div>
-        <div>
-            <p>You can create maximum 3 Events</p>
-        </div>
+          <div class="form-group">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+            <div>
+                <p>You can create maximum 3 Events</p>
+            </div>
     </form>
 </div>
 
@@ -44,7 +46,9 @@
 
             <div class="card-body">
                 <h5 class="card-title"> @hisabEvent.EventName</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">
+                    This event is created by @hisabEvent.CreatedUserNickName
+                </p>
                 <a class="nav-link" asp-controller="Event" asp-action="Dashboard" asp-route-id="@hisabEvent.EventId">View</a>
             </div>
         </div>

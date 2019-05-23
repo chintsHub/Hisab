@@ -79,12 +79,57 @@ namespace Hisab.UI.ViewModels
     public class NewEvent
     {
         public string EventName { get; set; }
+
+       
     }
 
     public class AppHomeVm
     {
         public NewEvent NewEvent { get; set; }
 
-        public List<UserEventBO> userEvents { get; set; }
+        public List<UserEventVm> userEvents { get; set; }
+    }
+
+    public class EventVm
+    {
+        public int EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public List<EventFriendVm> Friends { get; set; }
+
+        
+    }
+
+    public class UserEventVm
+    {
+        public int EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public string CreatedUserNickName { get; set; }
+
+
+
+    }
+
+    public class EventFriendVm
+    {
+        public int EventId { get; set; }
+
+        public string Email { get; set; }
+
+        public string Name { get; set; }
+
+        public int KidsCount { get; set; }
+
+        public int AdultCount { get; set; }
+
+        public EventFriendStatus Status { get; set; }
+    }
+
+    public class NewEventFriendVm
+    {
+
     }
 }

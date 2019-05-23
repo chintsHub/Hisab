@@ -1,0 +1,28 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[AccountType] (Table)
+       [dbo].[ApplicationRole] (Table)
+       [dbo].[ApplicationRole].[IX_ApplicationRole_NormalizedName] (Index)
+       [dbo].[ApplicationUser] (Table)
+       [dbo].[ApplicationUser].[IX_ApplicationUser_NormalizedUserName] (Index)
+       [dbo].[ApplicationUserRole] (Table)
+       [dbo].[Event] (Table)
+       [dbo].[EventFriend] (Table)
+       Default Constraint: unnamed constraint on [dbo].[ApplicationUser] (Default Constraint)
+       [dbo].[FK_ApplicationUserRole_ApplicationUser] (Foreign Key)
+       [dbo].[FK_ApplicationUserRole_ApplicationRole] (Foreign Key)
+       [dbo].[FK_Event_User] (Foreign Key)
+       [dbo].[FK_EventFriend_Event] (Foreign Key)
+       [dbo].[FK_EventFriend_AppUser] (Foreign Key)
+
+** Supporting actions

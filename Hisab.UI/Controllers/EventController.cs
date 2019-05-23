@@ -26,17 +26,37 @@ namespace Hisab.UI.Controllers
 
         [HttpGet]
         [Route("/Event/Dashboard/{eventId}")]
-        public IActionResult Dashboard(int eventId)
+        public async Task<IActionResult> Dashboard(int eventId)
         {
+
+            //Load event
+            var eventBo = await _eventManager.GetEventById(eventId);
             
-            return View("Index");
+
+            return View("Index",new EventVm(){EventId = eventBo.EventId, EventName = eventBo.EventName});
         }
 
         [HttpGet]
         [Route("Event/Friends/{eventId}")]
-        public IActionResult Friends(int eventId)
+        public async Task<IActionResult> Friends(int eventId)
         {
-            return View();
+            //Load event
+            var eventBo = await _eventManager.GetEventById(eventId);
+            var friendList = new List<EventFriendVm>();
+            foreach (var friend in eventBo.Friends)
+            {
+                friendList.Add(new EventFriendVm()
+                {
+                    Name = friend.NickName,
+                    Email = friend.Email,
+                    AdultCount = friend.AdultCount,
+                    EventId = eventId,
+                    KidsCount = friend.KidsCount,
+                    Status = friend.Status
+                });
+            }
+
+            return View("Friends", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList });
         }
 
         [HttpGet]

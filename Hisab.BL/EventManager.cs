@@ -10,12 +10,16 @@ namespace Hisab.BL
 {
     public interface IEventManager
     {
-        Task<int> CreateEvent(EventBO newEvent);
+        Task<int> CreateEvent(NewEventBO newNewEvent);
 
         Task<List<UserEventBO>> GetEvents(int userId);
 
         Task<List<UserEventBO>> GetAllEvents();
+
+        Task<EventBO> GetEventById(int eventId);
     }
+
+    
 
     public class EventManager : IEventManager
     {
@@ -26,24 +30,37 @@ namespace Hisab.BL
         {
             _connectionProvider = connectionProvider;
         }
-        public async Task<int> CreateEvent(EventBO newEvent)
+        public async Task<int> CreateEvent(NewEventBO newNewEvent)
         {
             //Check total allowed 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
-                var events = context.EventRepository.GetEventsForUser(newEvent.UserId);
+                try
+                {
+                    var events = context.EventRepository.GetEventsForUser(newNewEvent.EventOwner.UserId);
 
-                if (events.Count >= TotalAllowedEventsPerUser)
-                    throw new HisabException("You have reached maximum number of allowed Events");
+                    if (events.Count >= TotalAllowedEventsPerUser)
+                        throw new HisabException("You have reached maximum number of allowed Events");
 
-                newEvent.CreateDateTime = DateTime.Now;
-                newEvent.LastModifiedDateTime = DateTime.Now;
 
-                var id = context.EventRepository.CreateEvent(newEvent);
+                    newNewEvent.Id = context.EventRepository.CreateEvent(newNewEvent);
 
-                context.SaveChanges();
 
-                return id;
+
+                    context.SaveChanges();
+
+                    return newNewEvent.Id;
+                }
+                catch (Exception ex)
+                {
+                    if (context != null)
+                    {
+                        context.Dispose();
+                    }
+
+                    throw ex;
+                }
+             
             }
 
              
@@ -64,6 +81,18 @@ namespace Hisab.BL
         public Task<List<UserEventBO>> GetAllEvents()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<EventBO> GetEventById(int eventId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var events = context.EventRepository.GetEventById(eventId);
+
+
+                return events;
+
+            }
         }
     }
 
