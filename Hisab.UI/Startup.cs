@@ -65,7 +65,8 @@ namespace Hisab.UI
             services.AddScoped<IEmailService>(sp => new EmailService(emailCredentials.AccessKey, emailCredentials.SecretKey));
 
 
-            services.AddScoped<IEventManager>(sp => new EventManager(sp.GetService<IDbConnectionProvider>()));
+            services.AddScoped<IEventManager>(sp => new EventManager(sp.GetService<IDbConnectionProvider>(), 
+                sp.GetService<UserManager<ApplicationUser>>()));
 
         }
 

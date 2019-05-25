@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
+using Hisab.Common;
 using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
+using Hisab.UI.Extensions;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Hisab.UI.Controllers
 {
@@ -33,7 +36,8 @@ namespace Hisab.UI.Controllers
             var eventBo = await _eventManager.GetEventById(eventId);
             
 
-            return View("Index",new EventVm(){EventId = eventBo.EventId, EventName = eventBo.EventName});
+            return View("Index",new EventVm(){EventId = eventBo.EventId, EventName = eventBo.EventName})
+                .WithSuccess("Welcome mate","This is your event");
         }
 
         [HttpGet]
@@ -80,5 +84,46 @@ namespace Hisab.UI.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddFriend(EventFriendVm eventVm)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var newFriend =  await _eventManager.CreateEventFriend(new EventFriendBO()
+                    {
+                        Email = eventVm.Email,
+                        AdultCount = eventVm.AdultCount,
+                        EventId = eventVm.EventId,
+                        KidsCount = eventVm.KidsCount,
+                        NickName = eventVm.Name
+
+                    });
+
+                    eventVm.SuccessMessage = "Sucessfully added Friend to this event.";
+                    return RedirectToAction("Friends", new { eventVm.EventId });
+                }
+                catch (Exception ex)
+                {
+                    if (ex is HisabException)
+                    {
+                        ModelState.AddModelError(string.Empty,ex.Message);
+                        return View("Friends", eventVm);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+               
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid data passed");
+            return RedirectToAction("Friends", new { eventVm.EventId});
+        }
     }
+
+    
 }

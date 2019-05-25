@@ -19,7 +19,7 @@ namespace Hisab.Dapper.Repository
 
         EventBO GetEventById(int eventId);
 
-
+        int CreateEventFriend(EventFriendBO newEventFriend);
 
     }
 
@@ -52,7 +52,8 @@ namespace Hisab.Dapper.Repository
             string eventUserCommand = $@" INSERT INTO [dbo].[EventFriend] 
                                     ([EventId] ,[Email] , [NickName] ,[Status] ,[AppUserId] ,[AdultCount] ,[KidsCount])
                     VALUES (@{nameof(newNewEvent.Id)}, @{nameof(newNewEvent.EventOwner.Email)}, @{nameof(newNewEvent.EventOwner.NickName)}, 
-                                    @{nameof(newNewEvent.EventOwner.Status)}, @{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventOwner.AdultCount)},@{nameof(newNewEvent.EventOwner.KidsCount)});  ";
+                                    @{nameof(newNewEvent.EventOwner.Status)}, @{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventOwner.AdultCount)},@{nameof(newNewEvent.EventOwner.KidsCount)}); 
+                                    SELECT CAST(SCOPE_IDENTITY() as int)";
 
             Connection.Execute(eventUserCommand,
                 new
@@ -95,7 +96,7 @@ namespace Hisab.Dapper.Repository
 	                    e.Id as EventId,
                         e.Name as EventName,
                              
-                        ef.EventId as FriendEventId,
+                        ef.EventFriendId as EventFriendId,
                         ef.Email,
                         ef.NickName as NickName,
                         ef.Email,
@@ -119,17 +120,43 @@ namespace Hisab.Dapper.Repository
                     {
                         eve = eventBO;
                         eve.Friends = new List<EventFriendBO>();
+                        eve.EventId = eventBO.EventId;
                         eventDict.Add(eve.EventId,eve);
                     }
                     eve.Friends.Add(eventFriend);
                   
                     return eve;
                 },
-                new {eventId}, Transaction,splitOn:"FriendEventId").ToList();
+                new {eventId}, Transaction,splitOn: "EventFriendId").ToList();
 
                       
 
             return result.FirstOrDefault();
+        }
+
+        public int CreateEventFriend(EventFriendBO newEventFriend)
+        {
+            string command = $@"INSERT INTO [dbo].[EventFriend] ([EventId] ,[Email] ,[NickName] ,[Status] ,[AppUserId] ,[AdultCount] ,[KidsCount])
+                    VALUES (@{nameof(newEventFriend.EventId)}, @{nameof(newEventFriend.Email)},@{nameof(newEventFriend.NickName)}, @{nameof(newEventFriend.Status)},
+                               @{nameof(newEventFriend.UserId)}, @{nameof(newEventFriend.AdultCount)},@{nameof(newEventFriend.KidsCount)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            newEventFriend.EventFriendId = Connection.QuerySingle<int>(command,
+                new
+                {
+                    newEventFriend.EventId,
+                    newEventFriend.Email,
+                    newEventFriend.NickName,
+                    newEventFriend.Status,
+                    newEventFriend.UserId,
+                    newEventFriend.AdultCount,
+                    newEventFriend.KidsCount
+                    
+                }, transaction: Transaction);
+
+
+
+            return newEventFriend.EventFriendId;
         }
     }
 }

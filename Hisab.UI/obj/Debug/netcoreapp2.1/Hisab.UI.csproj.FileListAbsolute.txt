@@ -49,3 +49,4 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Transac
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Settlement.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Event\Settings.g.cshtml.cs
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_EventLayout.g.cshtml.cs
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ToastMessage.g.cshtml.cs

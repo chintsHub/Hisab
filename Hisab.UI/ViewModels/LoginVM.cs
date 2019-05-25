@@ -8,6 +8,15 @@ using Hisab.Common.BO;
 
 namespace Hisab.UI.ViewModels
 {
+    public class HisabCustomMessage
+    {
+        public bool isValid { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+        public string SuccessMessage { get; set; }
+    }
+
     public class LoginVM
     {
         [Required]
@@ -90,18 +99,21 @@ namespace Hisab.UI.ViewModels
         public List<UserEventVm> userEvents { get; set; }
     }
 
-    public class EventVm
+    public class EventVm : HisabCustomMessage
     {
         public int EventId { get; set; }
 
+        
         public string EventName { get; set; }
 
         public List<EventFriendVm> Friends { get; set; }
 
-        
+        public EventFriendVm NewEventFriend { get; set; }
+
+
     }
 
-    public class UserEventVm
+    public class UserEventVm : HisabCustomMessage
     {
         public int EventId { get; set; }
 
@@ -113,12 +125,14 @@ namespace Hisab.UI.ViewModels
 
     }
 
-    public class EventFriendVm
+    public class EventFriendVm : HisabCustomMessage
     {
         public int EventId { get; set; }
 
+        [Required]
         public string Email { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public int KidsCount { get; set; }
@@ -128,8 +142,5 @@ namespace Hisab.UI.ViewModels
         public EventFriendStatus Status { get; set; }
     }
 
-    public class NewEventFriendVm
-    {
-
-    }
+   
 }

@@ -36,7 +36,12 @@ namespace Hisab.Common.BO
 
     public class EventFriendBO
     {
-        public int UserId { get; set; }
+
+        public int EventFriendId { get; set; }
+
+        public int EventId { get; set; }
+
+        public int? UserId { get; set; }
 
         public string Email { get; set; }
 
