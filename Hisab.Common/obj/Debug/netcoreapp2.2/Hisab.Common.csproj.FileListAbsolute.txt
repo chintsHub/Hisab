@@ -1,0 +1,8 @@
+C:\Chintan\Code\Hisab\Hisab.Common\bin\Debug\netcoreapp2.2\Hisab.Common.deps.json
+C:\Chintan\Code\Hisab\Hisab.Common\bin\Debug\netcoreapp2.2\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.Common\bin\Debug\netcoreapp2.2\Hisab.Common.pdb
+C:\Chintan\Code\Hisab\Hisab.Common\obj\Debug\netcoreapp2.2\Hisab.Common.csproj.CoreCompileInputs.cache
+C:\Chintan\Code\Hisab\Hisab.Common\obj\Debug\netcoreapp2.2\Hisab.Common.AssemblyInfoInputs.cache
+C:\Chintan\Code\Hisab\Hisab.Common\obj\Debug\netcoreapp2.2\Hisab.Common.AssemblyInfo.cs
+C:\Chintan\Code\Hisab\Hisab.Common\obj\Debug\netcoreapp2.2\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.Common\obj\Debug\netcoreapp2.2\Hisab.Common.pdb

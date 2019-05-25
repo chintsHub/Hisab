@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "bde78ba73c0dd53302b9b9ae0c9bbf0a7def9d94"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "Hisab.AWS/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Core": "3.3.100.7",
+          "AWSSDK.SimpleEmail": "3.3.100.7"
+        },
+        "runtime": {
+          "Hisab.AWS.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.3.100.7": {
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.100.7"
+          }
+        }
+      },
+      "AWSSDK.SimpleEmail/3.3.100.7": {
+        "dependencies": {
+          "AWSSDK.Core": "3.3.100.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.SimpleEmail.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.3.100.7"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hisab.AWS/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.Core/3.3.100.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IYldqaS6mtf3KU7j+nZN0uIQ6WroOL+gXzbsvyN/vyv86evhYYvEShzSBSgUn6vI//S+LDMWfbHiKlrl6i7kEw==",
+      "path": "awssdk.core/3.3.100.7",
+      "hashPath": "awssdk.core.3.3.100.7.nupkg.sha512"
+    },
+    "AWSSDK.SimpleEmail/3.3.100.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EKMwUpTHd+y7cxMrC17G9bGSjWHutD9WQ3KUKQUS0ogzk3+IOfO+fE5E0VAEFpy1rjhuWiHSuI2gH2oYtTDPJQ==",
+      "path": "awssdk.simpleemail/3.3.100.7",
+      "hashPath": "awssdk.simpleemail.3.3.100.7.nupkg.sha512"
+    }
+  }
+}

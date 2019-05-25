@@ -1,0 +1,14 @@
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Dapper.deps.json
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Dapper.runtimeconfig.json
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Dapper.runtimeconfig.dev.json
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Dapper.dll
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Dapper.pdb
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Common.dll
+C:\Chintan\Code\Hisab\Hisab.Dapper\bin\Debug\netcoreapp2.2\Hisab.Common.pdb
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.csprojAssemblyReference.cache
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.csproj.CoreCompileInputs.cache
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.AssemblyInfoInputs.cache
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.AssemblyInfo.cs
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.csproj.CopyComplete
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.dll
+C:\Chintan\Code\Hisab\Hisab.Dapper\obj\Debug\netcoreapp2.2\Hisab.Dapper.pdb

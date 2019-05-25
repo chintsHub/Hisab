@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using NToastNotify;
 
 namespace Hisab.UI.Controllers
 {
@@ -20,11 +21,13 @@ namespace Hisab.UI.Controllers
     {
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
+        private IToastNotification _toastNotification;
 
-        public EventController(IEventManager eventManager, UserManager<ApplicationUser> userManager)
+        public EventController(IToastNotification toastNotification, IEventManager eventManager, UserManager<ApplicationUser> userManager)
         {
             _eventManager = eventManager;
             _userManager = userManager;
+            _toastNotification = toastNotification;
         }
 
         [HttpGet]
@@ -34,10 +37,11 @@ namespace Hisab.UI.Controllers
 
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
-            
 
-            return View("Index",new EventVm(){EventId = eventBo.EventId, EventName = eventBo.EventName})
-                .WithSuccess("Welcome mate","This is your event");
+            _toastNotification.AddSuccessToastMessage("blah");
+
+            return View("Index", new EventVm() {EventId = eventBo.EventId, EventName = eventBo.EventName});
+
         }
 
         [HttpGet]
