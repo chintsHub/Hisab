@@ -100,7 +100,8 @@ namespace Hisab.Dapper
             }
             finally
             {
-                _transaction.Dispose();
+                _transaction?.Dispose();
+
                 resetRepositories();
             }
 

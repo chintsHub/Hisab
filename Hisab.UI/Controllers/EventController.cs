@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Hisab.BL;
 using Hisab.Common;
@@ -38,7 +39,8 @@ namespace Hisab.UI.Controllers
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
 
-            _toastNotification.AddSuccessToastMessage("blah");
+            _toastNotification.AddInfoToastMessage("Event loaded!");
+            _toastNotification.AddInfoToastMessage("Event loaded 2!");
 
             return View("Index", new EventVm() {EventId = eventBo.EventId, EventName = eventBo.EventName});
 
@@ -63,6 +65,8 @@ namespace Hisab.UI.Controllers
                     Status = friend.Status
                 });
             }
+
+            _toastNotification.AddInfoToastMessage("Friends loaded!");
 
             return View("Friends", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList });
         }
@@ -89,43 +93,52 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddFriend(EventFriendVm eventVm)
+        public async Task<IActionResult> AddFriend(EventFriendVm newEventFriend)
         {
-
+            _toastNotification.RemoveAll();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var newFriend =  await _eventManager.CreateEventFriend(new EventFriendBO()
+                    
+                    var newFriend = await _eventManager.CreateEventFriend(new EventFriendBO()
                     {
-                        Email = eventVm.Email,
-                        AdultCount = eventVm.AdultCount,
-                        EventId = eventVm.EventId,
-                        KidsCount = eventVm.KidsCount,
-                        NickName = eventVm.Name
+                        Email = newEventFriend.Email,
+                        AdultCount = newEventFriend.AdultCount,
+                        EventId = newEventFriend.EventId,
+                        KidsCount = newEventFriend.KidsCount,
+                        NickName = newEventFriend.Name
 
                     });
 
-                    eventVm.SuccessMessage = "Sucessfully added Friend to this event.";
-                    return RedirectToAction("Friends", new { eventVm.EventId });
+                    if (newFriend)
+                        _toastNotification.AddSuccessToastMessage($"Sucessfully added Friend {newEventFriend.Name} to this event.");
+
+
                 }
                 catch (Exception ex)
                 {
                     if (ex is HisabException)
                     {
-                        ModelState.AddModelError(string.Empty,ex.Message);
-                        return View("Friends", eventVm);
+                        _toastNotification.AddErrorToastMessage("Error:" + ex.Message);
+
                     }
                     else
                     {
                         throw;
                     }
                 }
-               
+
+            }
+            else
+            {
+                _toastNotification.AddErrorToastMessage("Invalid data passed");
             }
 
-            ModelState.AddModelError(string.Empty, "Invalid data passed");
-            return RedirectToAction("Friends", new { eventVm.EventId});
+            
+            
+            
+            return RedirectToAction("Friends", new { newEventFriend.EventId});
         }
     }
 

@@ -119,7 +119,7 @@ namespace Hisab.BL
                 newEventFriend.UserId = user.Id;
             }
 
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 var friend = context.EventRepository.CreateEventFriend(newEventFriend);
                 context.SaveChanges();

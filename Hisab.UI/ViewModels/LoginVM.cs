@@ -8,14 +8,7 @@ using Hisab.Common.BO;
 
 namespace Hisab.UI.ViewModels
 {
-    public class HisabCustomMessage
-    {
-        public bool isValid { get; set; }
-
-        public string ErrorMessage { get; set; }
-
-        public string SuccessMessage { get; set; }
-    }
+   
 
     public class LoginVM
     {
@@ -99,7 +92,7 @@ namespace Hisab.UI.ViewModels
         public List<UserEventVm> userEvents { get; set; }
     }
 
-    public class EventVm : HisabCustomMessage
+    public class EventVm 
     {
         public int EventId { get; set; }
 
@@ -113,7 +106,7 @@ namespace Hisab.UI.ViewModels
 
     }
 
-    public class UserEventVm : HisabCustomMessage
+    public class UserEventVm 
     {
         public int EventId { get; set; }
 
@@ -125,7 +118,7 @@ namespace Hisab.UI.ViewModels
 
     }
 
-    public class EventFriendVm : HisabCustomMessage
+    public class EventFriendVm
     {
         public int EventId { get; set; }
 

@@ -10,6 +10,7 @@ using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 
 namespace Hisab.UI.Controllers
 {
@@ -19,12 +20,14 @@ namespace Hisab.UI.Controllers
         private SignInManager<ApplicationUser> _signInManager;
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
+        private IToastNotification _toastNotification;
 
-        public AppHomeController(IEventManager eventManager, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AppHomeController(IToastNotification toastNotification,IEventManager eventManager, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _eventManager = eventManager;
             _userManager = userManager;
+            _toastNotification = toastNotification;
         }
 
         public async Task<IActionResult> Index()
@@ -100,7 +103,7 @@ namespace Hisab.UI.Controllers
                 newEventId = await _eventManager.CreateEvent(eventBo);
                
             }
-
+            _toastNotification.AddSuccessToastMessage("Congratulations, you have created new Event");
             return RedirectToAction("Dashboard", "Event", new {eventId = newEventId});
         }
     }

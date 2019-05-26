@@ -8,6 +8,9 @@
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     
+    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
 </head>
 
 <body>
@@ -57,12 +60,14 @@
         </div>
     </nav>
 
-    
-   
+
+
 
 
     <section class="appBody">
         @RenderBody()
+
+
     </section>
 
     <footer class="text-muted">
@@ -77,13 +82,14 @@
 
 
 
-    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 
+@await Component.InvokeAsync("NToastNotify")
 
 
     @RenderSection("scripts", false)
+
+   
 
 </body>
 </html>
