@@ -31,7 +31,8 @@ namespace Hisab.Common.BO
         EventOwner = 1,
         PendingRegistration,
         PendingAcceptance,
-        EventFriend
+        EventFriend,
+        EventJoined
     }
 
     public class EventFriendBO
@@ -81,5 +82,16 @@ namespace Hisab.Common.BO
         public List<EventFriendBO> Friends { get; set; }
 
         //http://taylorhutchison.com/2016/03/23/dapper-orm-complex-queries.html
+    }
+
+    public class EventInviteBO
+    {
+        public int EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public string EventOwner { get; set; }
+
+        public int EventFriendId { get; set; }
     }
 }

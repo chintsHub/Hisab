@@ -92,6 +92,25 @@ namespace Hisab.UI.ViewModels
         public List<UserEventVm> userEvents { get; set; }
     }
 
+    public class EventInviteVm
+    {
+        public int EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public string EventOwner { get; set; }
+
+        [Required]
+        public int EventFriendId { get; set; }
+    }
+
+    public class InviteVm
+    {
+        public List<EventInviteVm> Invites { get; set; }
+
+       
+    }
+
     public class EventVm 
     {
         public int EventId { get; set; }

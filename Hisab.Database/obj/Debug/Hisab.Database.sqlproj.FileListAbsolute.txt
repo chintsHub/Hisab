@@ -7,3 +7,4 @@ C:\Chintan\Code\Hisab\Hisab.Database\obj\Debug\Model.xml
 C:\Chintan\Code\Hisab\Hisab.Database\obj\Debug\refactor.xml
 C:\Chintan\Code\Hisab\Hisab.Database\obj\Debug\postdeploy.sql
 C:\Chintan\Code\Hisab\Hisab.Database\obj\Debug\predeploy.sql
+C:\Chintan\Code\Hisab\Hisab.Database\obj\Debug\Hisab.Database.sqlprojAssemblyReference.cache

@@ -23,12 +23,14 @@ namespace Hisab.UI.Controllers
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
         private IToastNotification _toastNotification;
+        
 
         public EventController(IToastNotification toastNotification, IEventManager eventManager, UserManager<ApplicationUser> userManager)
         {
             _eventManager = eventManager;
             _userManager = userManager;
             _toastNotification = toastNotification;
+            
         }
 
         [HttpGet]

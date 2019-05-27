@@ -15,6 +15,7 @@ namespace Hisab.Dapper
         private IApplicationUserRepository _applicationUserRepository;
         private IApplicationRoleRepository _applicationRoleRepository;
         private IEventRepository _eventRepository;
+        private IEventInviteRepository _eventInviteRepository;
         private bool _disposed;
         
 
@@ -82,6 +83,21 @@ namespace Hisab.Dapper
                 }
 
                 return _eventRepository;
+            }
+
+
+        }
+
+        public IEventInviteRepository EventInviteRepository
+        {
+            get
+            {
+                if (_eventInviteRepository == null)
+                {
+                    _eventInviteRepository = new EventInviteRepository(_connection, _transaction);
+                }
+
+                return _eventInviteRepository;
             }
 
 

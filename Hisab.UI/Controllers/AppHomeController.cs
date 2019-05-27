@@ -21,13 +21,16 @@ namespace Hisab.UI.Controllers
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
         private IToastNotification _toastNotification;
+        private IEventInviteManager _eventInviteManager;
 
-        public AppHomeController(IToastNotification toastNotification,IEventManager eventManager, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AppHomeController(IToastNotification toastNotification,IEventManager eventManager, IEventInviteManager eventInviteManager,
+            SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _eventManager = eventManager;
             _userManager = userManager;
             _toastNotification = toastNotification;
+            _eventInviteManager = eventInviteManager;
         }
 
         public async Task<IActionResult> Index()
@@ -62,7 +65,35 @@ namespace Hisab.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> Invites()
         {
-            return View();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var invites = await _eventInviteManager.GetUserInvites(user.Id);
+
+            var inviteVm = new List<EventInviteVm>();
+            foreach (var eventvm in invites)
+            {
+                inviteVm.Add(new EventInviteVm()
+                {
+                    EventId = eventvm.EventId,
+                    EventName = eventvm.EventName,
+                    EventOwner = eventvm.EventOwner,
+                    EventFriendId = eventvm.EventFriendId
+                });
+            }
+
+            var retVal = new InviteVm() {Invites = inviteVm };
+
+            return View(retVal);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> JoinEvent(EventInviteVm inviteVm)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var rows = await _eventInviteManager.JoinEvent(inviteVm.EventFriendId, user.Id);
+            _toastNotification.AddSuccessToastMessage("You have joined new Event. Congratulations!!");
+
+            return RedirectToAction("Dashboard", "Event", new {eventId = inviteVm.EventId});
+            
         }
 
         [HttpGet]

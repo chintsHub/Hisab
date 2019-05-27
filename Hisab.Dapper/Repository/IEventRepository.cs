@@ -158,5 +158,7 @@ namespace Hisab.Dapper.Repository
 
             return newEventFriend.EventFriendId;
         }
+
+        
     }
 }
