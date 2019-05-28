@@ -6,3 +6,4 @@ C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.2\Hisab.AWS.AssemblyInfoIn
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.2\Hisab.AWS.AssemblyInfo.cs
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.2\Hisab.AWS.dll
 C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.2\Hisab.AWS.pdb
+C:\Chintan\Code\Hisab\Hisab.AWS\obj\Debug\netcoreapp2.2\Hisab.AWS.csprojAssemblyReference.cache

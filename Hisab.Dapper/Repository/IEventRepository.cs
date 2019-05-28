@@ -23,6 +23,8 @@ namespace Hisab.Dapper.Repository
 
         int CreateEventFriend(EventFriendBO newEventFriend);
 
+        int UpdateEventName(string newName, int eventId);
+
     }
 
     internal class EventRepository : RepositoryBase, IEventRepository
@@ -178,6 +180,17 @@ namespace Hisab.Dapper.Repository
             return newEventFriend.EventFriendId;
         }
 
-        
+        public int UpdateEventName(string newName, int eventId)
+        {
+            var rows = Connection.Execute($@"UPDATE [Event]
+                    SET
+                    [Name] = @{nameof(newName)}
+                    
+                    
+                    WHERE [Id] = @{nameof(eventId)}", new { newName, eventId }, transaction: Transaction);
+
+
+            return rows;
+        }
     }
 }

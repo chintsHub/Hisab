@@ -115,7 +115,7 @@ namespace Hisab.UI.ViewModels
     {
         public int EventId { get; set; }
 
-        
+        [Required]
         public string EventName { get; set; }
 
         public List<EventFriendVm> Friends { get; set; }
@@ -145,6 +145,24 @@ namespace Hisab.UI.ViewModels
         {
             Events = new List<UserEventVm>();
         }
+    }
+
+    public class UserSettingsVm
+    {
+        public ChangePasswordVm ChangePasswordVm { get; set; }
+
+        public UpdateNickNameVm UpdateNickNameVm { get; set; }
+    }
+
+    public class UpdateNickNameVm
+    {
+        public string NickName { get; set; }
+    }
+
+    public class ChangePasswordVm
+    {
+        public string OldPassword { get; set; }
+        public string NewPassword { get; set; }
     }
 
     public class EventFriendVm

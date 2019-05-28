@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Logging;
 using NToastNotify;
 
 namespace Hisab.UI.Controllers
@@ -89,9 +90,39 @@ namespace Hisab.UI.Controllers
 
         [HttpGet]
         [Route("Event/Settings/{eventId}")]
-        public IActionResult Settings(int eventId)
+        public async Task<IActionResult> Settings(int eventId)
         {
-            return View();
+            //Load event
+            var eventBo = await _eventManager.GetEventById(eventId);
+
+            return View("Settings", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = null });
+        }
+
+        public async Task<IActionResult> UpdateEventName(EventVm eventVm)
+        {
+            if (ModelState.IsValid)
+            {
+               var result = await _eventManager.UpdateEventName(eventVm.EventName, eventVm.EventId);
+
+                if (result)
+                {
+                    _toastNotification.AddSuccessToastMessage("Event name updated sucessfully.");
+                }
+                else
+                {
+                    _toastNotification.AddErrorToastMessage("Couldn't update event name");
+                    return View("Settings", eventVm);
+                }
+                   
+
+            }
+            else
+            {
+                _toastNotification.AddErrorToastMessage("Invalid data passed");
+                return View("Settings", eventVm);
+            }
+
+            return RedirectToAction("Settings", new {eventVm.EventId});
         }
 
         [HttpPost]

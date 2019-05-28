@@ -148,5 +148,17 @@ namespace Hisab.UI.Controllers
             _toastNotification.AddSuccessToastMessage("Congratulations, you have created new Event");
             return RedirectToAction("Dashboard", "Event", new {eventId = newEventId});
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateNickName(UpdateNickNameVm userSettings)
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(ChangePasswordVm userSettings)
+        {
+            return null;
+        }
     }
 }

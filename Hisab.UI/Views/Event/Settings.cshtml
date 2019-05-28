@@ -1,8 +1,27 @@
-﻿
+﻿@model Hisab.UI.ViewModels.EventVm
 @{
     ViewData["Title"] = "Settings";
     Layout = "~/Views/Shared/_EventLayout.cshtml";
 }
 
-<h2>Settings</h2>
 
+
+<div class="card">
+    <form asp-controller="Event" asp-action="UpdateEventName" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <div class="card-header eventCardHeader">Change Event Name</div>
+        <div class="card-body">
+            @Html.ValidationSummary(true, "")
+            <input type="hidden" asp-for="@Model.EventId" value="@Model.EventId" />
+            <div class="form-group">
+                <label asp-for="@Model.EventName">New Event Name:</label>
+                <input asp-for="@Model.EventName" class="form-control" type="text" />
+                <span asp-validation-for="@Model.EventName"></span>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
