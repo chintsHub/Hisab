@@ -22,6 +22,8 @@ namespace Hisab.Dapper.Repository
         Task<IdentityResult> AddUserToRole(int userId, int roleId);
         Task<bool> IsUserInRole(int userId, int roleId);
         Task<IList<string>> GetRolesAsync(int userId);
+
+        int UpdateNickName(string nickName, int userId);
     }
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
@@ -156,6 +158,19 @@ namespace Hisab.Dapper.Repository
                                                                    "WHERE ur.UserId = @userId", new { userId },Transaction);
 
             return queryResults.ToList();
+        }
+
+        public int UpdateNickName(string nickName, int userId)
+        {
+            var rows = Connection.Execute($@"UPDATE [ApplicationUser]
+                    SET
+                    [NickName] = @{nameof(nickName)}
+                    
+                    
+                    WHERE [Id] = @{nameof(userId)}", new { nickName, userId }, transaction: Transaction);
+
+
+            return rows;
         }
     }
 }

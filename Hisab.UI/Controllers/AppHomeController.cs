@@ -22,8 +22,9 @@ namespace Hisab.UI.Controllers
         private UserManager<ApplicationUser> _userManager;
         private IToastNotification _toastNotification;
         private IEventInviteManager _eventInviteManager;
+        private IUserSettingManager _userSettingManager;
 
-        public AppHomeController(IToastNotification toastNotification,IEventManager eventManager, IEventInviteManager eventInviteManager,
+        public AppHomeController(IToastNotification toastNotification,IEventManager eventManager, IEventInviteManager eventInviteManager, IUserSettingManager userSettingManager,
             SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
@@ -31,6 +32,7 @@ namespace Hisab.UI.Controllers
             _userManager = userManager;
             _toastNotification = toastNotification;
             _eventInviteManager = eventInviteManager;
+            _userSettingManager = userSettingManager;
         }
 
         public async Task<IActionResult> Index()
@@ -99,7 +101,12 @@ namespace Hisab.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> UserSettings()
         {
-            return View();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            return View("UserSettings", new UserSettingsVm()
+            {
+                UpdateNickNameVm = new UpdateNickNameVm() { NickName = user.NickName}
+            });
         }
 
         [HttpGet]
@@ -150,9 +157,20 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateNickName(UpdateNickNameVm userSettings)
+        public async Task<IActionResult> UpdateNickName(UserSettingsVm userSettings)
         {
-            return null;
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var result = await _userSettingManager.UpdateNickName(userSettings.UpdateNickNameVm.NickName, user.Id);
+
+            if(result)
+                _toastNotification.AddSuccessToastMessage("Nick name updated");
+            else
+            {
+                _toastNotification.AddErrorToastMessage("Cannot update Nick name");
+                return View("UserSettings");
+            }
+
+            return RedirectToAction("UserSettings");
         }
 
         [HttpPost]

@@ -70,6 +70,8 @@ namespace Hisab.UI
 
             services.AddScoped<IEventInviteManager>(sp => new EventInviteManager(sp.GetService<IDbConnectionProvider>()));
 
+            services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
