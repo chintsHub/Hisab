@@ -19,6 +19,8 @@ namespace Hisab.Dapper.Repository
 
         EventBO GetEventById(int eventId);
 
+        List<UserEventBO> GetAllEvents();
+
         int CreateEventFriend(EventFriendBO newEventFriend);
 
     }
@@ -84,6 +86,23 @@ namespace Hisab.Dapper.Repository
                  ef.AppUserId = @{nameof(userId)}",
                  
                  new { userId }, Transaction);
+
+            return result.ToList();
+        }
+
+        public List<UserEventBO> GetAllEvents()
+        {
+            var result = Connection.Query<UserEventBO>($@"
+                    select 
+	                    e.Id as EventId,
+	                    e.Name as EventName,
+	                    u.NickName as NickName
+	               
+                    from 
+	                [Event] e
+	                    inner join [ApplicationUser] u on u.Id = e.UserId"
+
+                , transaction:Transaction);
 
             return result.ToList();
         }

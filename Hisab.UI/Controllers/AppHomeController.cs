@@ -106,7 +106,18 @@ namespace Hisab.UI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Admin()
         {
-            return View();
+            var events = await _eventManager.GetAllEvents();
+            var retVal = new AdminVm();
+            foreach (var e in events)
+            {
+                retVal.Events.Add(new UserEventVm()
+                {
+                    CreatedUserNickName = e.NickName,
+                    EventId = e.EventId,
+                    EventName = e.EventName
+                });
+            }
+            return View("Admin",retVal);
         }
 
         [HttpPost]

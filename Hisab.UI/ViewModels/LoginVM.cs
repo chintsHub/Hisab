@@ -137,6 +137,16 @@ namespace Hisab.UI.ViewModels
 
     }
 
+    public class AdminVm
+    {
+        public List<UserEventVm> Events { get; set; }
+
+        public AdminVm()
+        {
+            Events = new List<UserEventVm>();
+        }
+    }
+
     public class EventFriendVm
     {
         public int EventId { get; set; }

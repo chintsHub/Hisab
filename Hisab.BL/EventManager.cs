@@ -85,9 +85,16 @@ namespace Hisab.BL
             }
         }
 
-        public Task<List<UserEventBO>> GetAllEvents()
+        public async Task<List<UserEventBO>> GetAllEvents()
         {
-            throw new NotImplementedException();
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var events = context.EventRepository.GetAllEvents();
+
+
+                return events;
+
+            }
         }
 
         public async Task<EventBO> GetEventById(int eventId)
