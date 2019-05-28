@@ -32,13 +32,11 @@
         <div class="card-header eventCardHeader">Change Password</div>
         <div class="card-body">
             @Html.ValidationSummary(true, "")
-            
+            <p>
+                You will be asked to login again after sucessfully updating your password.
+            </p>
 
-            <div class="form-group">
-                <label asp-for="@Model.ChangePasswordVm.OldPassword">Enter existing Password:</label>
-                <input asp-for="@Model.ChangePasswordVm.OldPassword" class="form-control" type="password" />
-                <span asp-validation-for="@Model.ChangePasswordVm.OldPassword"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="@Model.ChangePasswordVm.NewPassword">Enter new Password:</label>
                 <input asp-for="@Model.ChangePasswordVm.NewPassword" class="form-control" type="password" />

@@ -1,0 +1,267 @@
+2019-05-28 23:41:37.963 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 05/28/2019 23:41:37, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:41:38.482 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-05-28 23:41:40.192 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-05-28 23:41:40.240 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 05/28/2019 23:41:38, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1918, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "05/28/2019 23:41:38")] }
+2019-05-28 23:41:42.651 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-28 23:41:42.651 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-05-28 23:41:42.815 +10:00 [Information] Request finished in 202.2459ms 200 
+2019-05-28 23:41:43.515 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:41:43.713 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:41:43.726 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 8.3688ms.
+2019-05-28 23:41:43.823 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:41:46.265 +10:00 [Information] Executed ViewResult - view "Index" executed in 2516.8347ms.
+2019-05-28 23:41:46.273 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 2753.3967ms
+2019-05-28 23:41:46.289 +10:00 [Information] Request finished in 3691.3699ms 200 text/html; charset=utf-8
+2019-05-28 23:41:46.840 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2019-05-28 23:41:46.862 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-28 23:41:46.904 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:41:46.915 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 11.2038ms.
+2019-05-28 23:41:46.920 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-28 23:41:46.926 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 11.1009ms.
+2019-05-28 23:41:46.927 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 64.2651ms
+2019-05-28 23:41:46.927 +10:00 [Information] Request finished in 86.3756ms 404 text/html; charset=utf-8
+2019-05-28 23:42:02.703 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 276
+2019-05-28 23:42:02.736 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:42:02.907 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:42:03.119 +10:00 [Warning] Invalid password for user "4".
+2019-05-28 23:42:03.121 +10:00 [Warning] User "4" failed to provide the correct password.
+2019-05-28 23:42:03.137 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 229.7342ms.
+2019-05-28 23:42:03.155 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:42:03.205 +10:00 [Information] Executed ViewResult - view "Index" executed in 53.76ms.
+2019-05-28 23:42:03.211 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 474.2883ms
+2019-05-28 23:42:03.232 +10:00 [Information] Request finished in 529.4753ms 200 text/html; charset=utf-8
+2019-05-28 23:42:23.429 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 278
+2019-05-28 23:42:23.432 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:42:23.452 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:42:23.922 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-28 23:42:23.929 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/28/2019 23:42:23, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "contactchints@hotmail.com", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:42:23.933 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 480.4462ms.
+2019-05-28 23:42:23.941 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-28 23:42:23.944 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 511.9955ms
+2019-05-28 23:42:23.945 +10:00 [Information] Request finished in 516.2133ms 302 
+2019-05-28 23:42:23.979 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-28 23:42:24.083 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:42:24.197 +10:00 [Information] Authorization was successful.
+2019-05-28 23:42:24.253 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:42:24.548 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 294.0942ms.
+2019-05-28 23:42:24.553 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:42:24.950 +10:00 [Information] Executed ViewResult - view "Index" executed in 401.9574ms.
+2019-05-28 23:42:24.951 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 867.3394ms
+2019-05-28 23:42:24.952 +10:00 [Information] Request finished in 972.1809ms 200 text/html; charset=utf-8
+2019-05-28 23:42:30.350 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/UserSettings  
+2019-05-28 23:42:30.373 +10:00 [Information] Route matched with "{action = \"UserSettings\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserSettings()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:42:30.376 +10:00 [Information] Authorization was successful.
+2019-05-28 23:42:30.436 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:42:30.565 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 128.1353ms.
+2019-05-28 23:42:30.574 +10:00 [Information] Executing ViewResult, running view "UserSettings".
+2019-05-28 23:42:30.656 +10:00 [Information] Executed ViewResult - view "UserSettings" executed in 90.9245ms.
+2019-05-28 23:42:30.658 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" in 284.0193ms
+2019-05-28 23:42:30.659 +10:00 [Information] Request finished in 308.4571ms 200 text/html; charset=utf-8
+2019-05-28 23:42:59.267 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/AppHome/UpdatePassword application/x-www-form-urlencoded 297
+2019-05-28 23:42:59.283 +10:00 [Information] Route matched with "{action = \"UpdatePassword\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdatePassword(Hisab.UI.ViewModels.ChangePasswordVm)" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:42:59.284 +10:00 [Information] Authorization was successful.
+2019-05-28 23:42:59.335 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:43:08.987 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)" in 9703.5394ms
+2019-05-28 23:43:08.992 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: password
+   at Microsoft.AspNetCore.Identity.PasswordValidator`1.ValidateAsync(UserManager`1 manager, TUser user, String password)
+   at Microsoft.AspNetCore.Identity.UserManager`1.ValidatePasswordAsync(TUser user, String password)
+   at Microsoft.AspNetCore.Identity.UserManager`1.UpdatePasswordHash(IUserPasswordStore`1 passwordStore, TUser user, String newPassword, Boolean validatePassword)
+   at Microsoft.AspNetCore.Identity.UserManager`1.ResetPasswordAsync(TUser user, String token, String newPassword)
+   at Hisab.UI.Controllers.AppHomeController.UpdatePassword(ChangePasswordVm userSettings) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\AppHomeController.cs:line 183
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+2019-05-28 23:43:09.187 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-28 23:43:09.256 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:43:09.258 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2.0312ms.
+2019-05-28 23:43:09.259 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-28 23:43:09.264 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 5.7355ms.
+2019-05-28 23:43:09.264 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 76.8704ms
+2019-05-28 23:43:09.265 +10:00 [Information] Request finished in 9997.9643ms 500 text/html; charset=utf-8
+2019-05-28 23:43:58.836 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-28 23:43:58.837 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:43:58.837 +10:00 [Information] Authorization was successful.
+2019-05-28 23:43:58.862 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:43:58.979 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 117.5212ms.
+2019-05-28 23:43:58.980 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:43:58.981 +10:00 [Information] Executed ViewResult - view "Index" executed in 1.8383ms.
+2019-05-28 23:43:58.982 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 144.7895ms
+2019-05-28 23:43:58.982 +10:00 [Information] Request finished in 145.9663ms 200 text/html; charset=utf-8
+2019-05-28 23:44:03.234 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/UserSettings  
+2019-05-28 23:44:03.237 +10:00 [Information] Route matched with "{action = \"UserSettings\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserSettings()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:44:03.238 +10:00 [Information] Authorization was successful.
+2019-05-28 23:44:03.294 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:44:03.349 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 54.5874ms.
+2019-05-28 23:44:03.349 +10:00 [Information] Executing ViewResult, running view "UserSettings".
+2019-05-28 23:44:03.352 +10:00 [Information] Executed ViewResult - view "UserSettings" executed in 2.9024ms.
+2019-05-28 23:44:03.352 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" in 115.0297ms
+2019-05-28 23:44:03.353 +10:00 [Information] Request finished in 119.0531ms 200 text/html; charset=utf-8
+2019-05-28 23:44:26.160 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/AppHome/UpdatePassword application/x-www-form-urlencoded 303
+2019-05-28 23:44:26.161 +10:00 [Information] Route matched with "{action = \"UpdatePassword\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdatePassword(Hisab.UI.ViewModels.ChangePasswordVm)" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:44:26.161 +10:00 [Information] Authorization was successful.
+2019-05-28 23:44:26.199 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:45:36.075 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 05/28/2019 23:45:36, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:45:36.491 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-05-28 23:45:38.156 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-05-28 23:45:38.185 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 05/28/2019 23:45:36, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1841, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "05/28/2019 23:45:36")] }
+2019-05-28 23:45:39.873 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-05-28 23:45:39.873 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-28 23:45:40.037 +10:00 [Information] Request finished in 151.02ms 200 
+2019-05-28 23:45:40.801 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:45:40.988 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:45:41.001 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 8.9333ms.
+2019-05-28 23:45:41.114 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:45:42.431 +10:00 [Information] Executed ViewResult - view "Index" executed in 1403.8125ms.
+2019-05-28 23:45:42.437 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 1631.4123ms
+2019-05-28 23:45:42.453 +10:00 [Information] Request finished in 2590.6477ms 200 text/html; charset=utf-8
+2019-05-28 23:45:42.970 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2019-05-28 23:45:42.996 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-28 23:45:43.037 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:45:43.049 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 11.6695ms.
+2019-05-28 23:45:43.052 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-28 23:45:43.058 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 8.8939ms.
+2019-05-28 23:45:43.058 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 62.1124ms
+2019-05-28 23:45:43.058 +10:00 [Information] Request finished in 88.1453ms 404 text/html; charset=utf-8
+2019-05-28 23:45:56.157 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 278
+2019-05-28 23:45:56.187 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:45:56.317 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:45:56.763 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-28 23:45:56.767 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/28/2019 23:45:56, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "contactchints@hotmail.com", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:45:56.772 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 455.4253ms.
+2019-05-28 23:45:56.783 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-28 23:45:56.786 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 599.2689ms
+2019-05-28 23:45:56.795 +10:00 [Information] Request finished in 638.0624ms 302 
+2019-05-28 23:45:56.802 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-28 23:45:56.863 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:45:56.905 +10:00 [Information] Authorization was successful.
+2019-05-28 23:45:56.921 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:45:57.124 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 203.0752ms.
+2019-05-28 23:45:57.131 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:45:57.415 +10:00 [Information] Executed ViewResult - view "Index" executed in 289.8085ms.
+2019-05-28 23:45:57.415 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 551.5475ms
+2019-05-28 23:45:57.415 +10:00 [Information] Request finished in 613.0302ms 200 text/html; charset=utf-8
+2019-05-28 23:46:00.968 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/UserSettings  
+2019-05-28 23:46:00.995 +10:00 [Information] Route matched with "{action = \"UserSettings\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserSettings()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:46:00.997 +10:00 [Information] Authorization was successful.
+2019-05-28 23:46:01.044 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:01.100 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 56.3127ms.
+2019-05-28 23:46:01.106 +10:00 [Information] Executing ViewResult, running view "UserSettings".
+2019-05-28 23:46:01.172 +10:00 [Information] Executed ViewResult - view "UserSettings" executed in 71.3937ms.
+2019-05-28 23:46:01.173 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" in 176.6656ms
+2019-05-28 23:46:01.173 +10:00 [Information] Request finished in 205.2388ms 200 text/html; charset=utf-8
+2019-05-28 23:46:09.157 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/AppHome/UpdatePassword application/x-www-form-urlencoded 299
+2019-05-28 23:46:09.192 +10:00 [Information] Route matched with "{action = \"UpdatePassword\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdatePassword(Hisab.UI.ViewModels.UserSettingsVm)" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:46:09.192 +10:00 [Information] Authorization was successful.
+2019-05-28 23:46:09.260 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:19.551 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed out.
+2019-05-28 23:46:19.554 +10:00 [Information] AuthenticationScheme: "Identity.External" signed out.
+2019-05-28 23:46:19.555 +10:00 [Information] AuthenticationScheme: "Identity.TwoFactorUserId" signed out.
+2019-05-28 23:46:19.556 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 10295.4974ms.
+2019-05-28 23:46:19.556 +10:00 [Information] Executing RedirectResult, redirecting to "/".
+2019-05-28 23:46:19.557 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UpdatePassword (Hisab.UI)" in 10364.3319ms
+2019-05-28 23:46:19.557 +10:00 [Information] Request finished in 10400.4327ms 302 
+2019-05-28 23:46:19.565 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-28 23:46:19.566 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:46:19.584 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:19.585 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0477ms.
+2019-05-28 23:46:19.585 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:46:19.626 +10:00 [Information] Executed ViewResult - view "Index" executed in 41.6357ms.
+2019-05-28 23:46:19.627 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 59.997ms
+2019-05-28 23:46:19.627 +10:00 [Information] Request finished in 61.8987ms 200 text/html; charset=utf-8
+2019-05-28 23:46:39.759 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 278
+2019-05-28 23:46:39.762 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:46:39.784 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:39.889 +10:00 [Warning] Invalid password for user "4".
+2019-05-28 23:46:39.890 +10:00 [Warning] User "4" failed to provide the correct password.
+2019-05-28 23:46:39.893 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 108.8354ms.
+2019-05-28 23:46:39.894 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:46:39.913 +10:00 [Information] Executed ViewResult - view "Index" executed in 19.6438ms.
+2019-05-28 23:46:39.914 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 151.435ms
+2019-05-28 23:46:39.915 +10:00 [Information] Request finished in 155.6214ms 200 text/html; charset=utf-8
+2019-05-28 23:46:45.464 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 281
+2019-05-28 23:46:45.465 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:46:45.482 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:45.607 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-28 23:46:45.608 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/28/2019 23:46:45, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "contactchints@hotmail.com", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:46:45.608 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 125.6191ms.
+2019-05-28 23:46:45.609 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-28 23:46:45.609 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 144.3862ms
+2019-05-28 23:46:45.610 +10:00 [Information] Request finished in 145.5287ms 302 
+2019-05-28 23:46:45.627 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-28 23:46:45.629 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:46:45.629 +10:00 [Information] Authorization was successful.
+2019-05-28 23:46:45.673 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:46:45.828 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 154.1069ms.
+2019-05-28 23:46:45.829 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:46:45.833 +10:00 [Information] Executed ViewResult - view "Index" executed in 4.302ms.
+2019-05-28 23:46:45.833 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 204.3209ms
+2019-05-28 23:46:45.834 +10:00 [Information] Request finished in 206.2985ms 200 text/html; charset=utf-8
+2019-05-28 23:48:46.029 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 05/28/2019 23:48:46, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:48:46.403 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-05-28 23:48:47.771 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-05-28 23:48:47.790 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 05/28/2019 23:48:46, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1516, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "05/28/2019 23:48:46")] }
+2019-05-28 23:48:49.674 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-05-28 23:48:49.674 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-28 23:48:49.924 +10:00 [Information] Request finished in 251.725ms 200 
+2019-05-28 23:48:50.681 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:48:50.835 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:48:50.848 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 8.8188ms.
+2019-05-28 23:48:50.948 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:48:51.993 +10:00 [Information] Executed ViewResult - view "Index" executed in 1124.1691ms.
+2019-05-28 23:48:51.998 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 1313.0068ms
+2019-05-28 23:48:52.013 +10:00 [Information] Request finished in 2352.3262ms 200 text/html; charset=utf-8
+2019-05-28 23:48:52.749 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2019-05-28 23:48:52.781 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-28 23:48:52.832 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:48:52.849 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 16.4682ms.
+2019-05-28 23:48:52.855 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-28 23:48:52.864 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 15.2637ms.
+2019-05-28 23:48:52.865 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 83.7601ms
+2019-05-28 23:48:52.865 +10:00 [Information] Request finished in 115.3627ms 404 text/html; charset=utf-8
+2019-05-28 23:49:01.111 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 281
+2019-05-28 23:49:01.150 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-28 23:49:01.272 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:49:01.480 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-28 23:49:01.483 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/28/2019 23:49:01, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "contactchints@hotmail.com", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-28 23:49:01.486 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 214.4599ms.
+2019-05-28 23:49:01.494 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-28 23:49:01.498 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 347.8753ms
+2019-05-28 23:49:01.504 +10:00 [Information] Request finished in 393.1086ms 302 
+2019-05-28 23:49:01.512 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-28 23:49:01.548 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:49:01.577 +10:00 [Information] Authorization was successful.
+2019-05-28 23:49:01.609 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:49:01.876 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 266.7762ms.
+2019-05-28 23:49:01.882 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-28 23:49:02.173 +10:00 [Information] Executed ViewResult - view "Index" executed in 296.8591ms.
+2019-05-28 23:49:02.173 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 624.6979ms
+2019-05-28 23:49:02.174 +10:00 [Information] Request finished in 661.7855ms 200 text/html; charset=utf-8
+2019-05-28 23:49:06.710 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/UserSettings  
+2019-05-28 23:49:06.717 +10:00 [Information] Route matched with "{action = \"UserSettings\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UserSettings()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-28 23:49:06.718 +10:00 [Information] Authorization was successful.
+2019-05-28 23:49:06.734 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" - Validation state: Valid
+2019-05-28 23:49:06.777 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 42.2163ms.
+2019-05-28 23:49:06.779 +10:00 [Information] Executing ViewResult, running view "UserSettings".
+2019-05-28 23:49:06.808 +10:00 [Information] Executed ViewResult - view "UserSettings" executed in 30.62ms.
+2019-05-28 23:49:06.808 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.UserSettings (Hisab.UI)" in 90.3159ms
+2019-05-28 23:49:06.808 +10:00 [Information] Request finished in 97.9142ms 200 text/html; charset=utf-8

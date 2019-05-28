@@ -174,9 +174,25 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdatePassword(ChangePasswordVm userSettings)
+        public async Task<IActionResult> UpdatePassword(UserSettingsVm userSettings)
         {
-            return null;
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            
+            var result = await _userManager.ResetPasswordAsync(user, token, userSettings.ChangePasswordVm.NewPassword);
+
+            if (result.Succeeded)
+            {
+                _toastNotification.AddSuccessToastMessage("Password changed. Please log in again.");
+                return await Logout();
+            }
+            else
+            {
+                _toastNotification.AddErrorToastMessage("Could not update password");
+            }
+
+            return View("UserSettings");
         }
     }
 }
