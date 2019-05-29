@@ -185,6 +185,8 @@ namespace Hisab.UI.ViewModels
     {
         public int EventId { get; set; }
 
+        public int EventFriendId { get; set; }
+
         [Required]
         public string Email { get; set; }
 

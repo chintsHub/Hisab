@@ -23,6 +23,8 @@ namespace Hisab.BL
         Task<bool> CreateEventFriend(EventFriendBO newEventFriend);
 
         Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus);
+
+        Task<bool> DisableFriend(int eventFriendId);
     }
 
     
@@ -146,6 +148,21 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 var rows = context.EventRepository.UpdateEvent(newName,eventId, newStatus);
+                context.SaveChanges();
+
+                if (rows == 1)
+                    return true;
+
+                return false;
+
+            }
+        }
+
+        public async Task<bool> DisableFriend(int eventFriendId)
+        {
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var rows = context.EventRepository.DisableFriend(eventFriendId);
                 context.SaveChanges();
 
                 if (rows == 1)

@@ -65,13 +65,29 @@ namespace Hisab.UI.Controllers
                     AdultCount = friend.AdultCount,
                     EventId = eventId,
                     KidsCount = friend.KidsCount,
-                    Status = friend.Status
+                    Status = friend.Status,
+                    EventFriendId = friend.EventFriendId
                 });
             }
 
             _toastNotification.AddInfoToastMessage("Friends loaded!");
 
             return View("Friends", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList });
+        }
+
+        public async Task<IActionResult> DisableFriend(EventFriendVm eventFriendVm)
+        {
+            var result = await _eventManager.DisableFriend(eventFriendVm.EventFriendId);
+
+            if(result)
+                _toastNotification.AddSuccessToastMessage("Friend made InActive");
+
+            return RedirectToAction("Friends", new {eventFriendVm.EventId});
+        }
+
+        public async Task<IActionResult> UpdateFriend(EventFriendVm eventFriendVm)
+        {
+            return null;
         }
 
         [HttpGet]

@@ -1,0 +1,55 @@
+﻿@using Hisab.Common.BO
+@model Hisab.UI.ViewModels.EventFriendVm
+
+
+<div class="card">
+    <div class="card-header eventCardHeader">@Model.Name</div>
+    <div class="card-body">
+        <form asp-controller="Event" asp-action="UpdateFriend" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div class="form-group">
+                <label>Status:@Model.Status</label>
+
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                @if (@Model.Status == EventFriendStatus.EventFriend)
+                {
+                    <input class="form-control" type="text" value="@Model.Email" />
+                }
+                else
+                {
+                    <label>Status:@Model.Email</label>
+                }
+
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label>Adult Count:</label>
+                <input type="number" value="@Model.AdultCount" min="1" max="5" step="1" />
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label>Kids Count:</label>
+                <input type="number" value="@Model.KidsCount" min="0" max="5" step="1" />
+                <span></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-footer">
+        @if (@Model.Status != EventFriendStatus.EventOwner && @Model.Status != EventFriendStatus.Inactive)
+        {
+            <form asp-controller="Event" asp-action="DisableFriend" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <div class="form-group">
+                    <input type="hidden" asp-for="@Model.EventFriendId" value="@Model.EventFriendId" />
+                    <input type="hidden" asp-for="@Model.EventId" value="@Model.EventId" />
+                    <button class="btn btn-danger">Make @Model.Name Inactive</button>
+                </div>
+            </form>
+        }
+
+    </div>
+</div>

@@ -25,6 +25,8 @@ namespace Hisab.Dapper.Repository
 
         int UpdateEvent(string newName, int eventId, EventStatus newStatus);
 
+        int DisableFriend(int eventFriendId);
+
     }
 
     internal class EventRepository : RepositoryBase, IEventRepository
@@ -190,6 +192,18 @@ namespace Hisab.Dapper.Repository
                     [Status] = @{nameof(newStatus)}
                     
                     WHERE [Id] = @{nameof(eventId)}", new { newName, eventId, newStatus }, transaction: Transaction);
+
+
+            return rows;
+        }
+
+        public int DisableFriend(int eventFriendId)
+        {
+            var rows = Connection.Execute($@"UPDATE [EventFriend]
+                    SET
+                      [Status] = 6
+                    
+                    WHERE [EventFriendId] = @{nameof(eventFriendId)}", new { eventFriendId }, transaction: Transaction);
 
 
             return rows;

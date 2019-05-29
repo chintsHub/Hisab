@@ -50,3 +50,4 @@ C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.2\Hisab.UI.Views.pdb
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.2\Hisab.UI.csproj.CopyComplete
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.2\Hisab.UI.dll
 C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.2\Hisab.UI.pdb
+C:\Chintan\Code\Hisab\Hisab.UI\obj\Debug\netcoreapp2.2\Razor\Views\Event\_EventFriend.g.cshtml.cs
