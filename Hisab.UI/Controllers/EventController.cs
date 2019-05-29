@@ -95,14 +95,19 @@ namespace Hisab.UI.Controllers
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
 
-            return View("Settings", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = null });
+            var eventVm = new EventVm() {EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = null};
+            eventVm.StatusList.FirstOrDefault(x => x.Text == eventBo.Status.GetDescription()).Selected = true;
+
+            return View("Settings", eventVm);
         }
 
-        public async Task<IActionResult> UpdateEventName(EventVm eventVm)
+        public async Task<IActionResult> UpdateEvent(EventVm eventVm)
         {
             if (ModelState.IsValid)
             {
-               var result = await _eventManager.UpdateEventName(eventVm.EventName, eventVm.EventId);
+                EventStatus status;
+                Enum.TryParse(eventVm.SelectedStatus,out status);
+                var result = await _eventManager.UpdateEvent(eventVm.EventName, eventVm.EventId, status);
 
                 if (result)
                 {

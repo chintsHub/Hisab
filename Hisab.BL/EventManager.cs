@@ -22,7 +22,7 @@ namespace Hisab.BL
 
         Task<bool> CreateEventFriend(EventFriendBO newEventFriend);
 
-        Task<bool> UpdateEventName(string newName, int eventId);
+        Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus);
     }
 
     
@@ -141,11 +141,11 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> UpdateEventName(string newName, int eventId)
+        public async Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus)
         {
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
-                var rows = context.EventRepository.UpdateEventName(newName,eventId);
+                var rows = context.EventRepository.UpdateEvent(newName,eventId, newStatus);
                 context.SaveChanges();
 
                 if (rows == 1)

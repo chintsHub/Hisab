@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.Common.BO;
+using Hisab.UI.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hisab.UI.ViewModels
 {
@@ -118,9 +120,23 @@ namespace Hisab.UI.ViewModels
         [Required]
         public string EventName { get; set; }
 
+        public string SelectedStatus { get; set; }
+
+        public IEnumerable<SelectListItem> StatusList { get; }
+
         public List<EventFriendVm> Friends { get; set; }
 
         public EventFriendVm NewEventFriend { get; set; }
+
+        public EventVm()
+        {
+            var list = new List<SelectListItem>();
+
+            list.Add(new SelectListItem(){Value = EventStatus.Active.ToString(),Text = EventStatus.Active.GetDescription()});
+            list.Add(new SelectListItem(){Value = EventStatus.Inactive.ToString(), Text = EventStatus.Inactive.GetDescription() });
+
+            StatusList = list.AsEnumerable();
+        }
 
 
     }

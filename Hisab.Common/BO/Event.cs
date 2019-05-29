@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Hisab.Common.BO
@@ -16,6 +17,8 @@ namespace Hisab.Common.BO
 
         public EventFriendBO EventOwner { get; set; }
 
+        public EventStatus Status { get; }
+
         
 
         public NewEventBO()
@@ -23,6 +26,7 @@ namespace Hisab.Common.BO
             
             CreateDateTime = DateTime.Now;
             LastModifiedDateTime = DateTime.Now;
+            Status = EventStatus.Active;
         }
     }
 
@@ -31,8 +35,18 @@ namespace Hisab.Common.BO
         EventOwner = 1,
         PendingRegistration,
         PendingAcceptance,
-        EventFriend,
-        EventJoined
+        EventFriend, //user is not registered with Hisab, its place holder friend
+        EventJoined,
+        Inactive
+    }
+
+    public enum EventStatus
+    {
+        [Description("Active")]
+        Active = 1,
+
+        [Description("Inactive")]
+        Inactive
     }
 
     public class EventFriendBO
@@ -69,7 +83,7 @@ namespace Hisab.Common.BO
 
         public string NickName { get; set; }
 
-
+        public EventStatus Status { get; set; }
 
     }
 
@@ -78,6 +92,8 @@ namespace Hisab.Common.BO
         public int EventId { get; set; }
 
         public string EventName { get; set; }
+
+        public EventStatus Status { get; set; }
 
         public List<EventFriendBO> Friends { get; set; }
 

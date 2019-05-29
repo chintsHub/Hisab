@@ -23,7 +23,7 @@ namespace Hisab.Dapper.Repository
 
         int CreateEventFriend(EventFriendBO newEventFriend);
 
-        int UpdateEventName(string newName, int eventId);
+        int UpdateEvent(string newName, int eventId, EventStatus newStatus);
 
     }
 
@@ -35,15 +35,15 @@ namespace Hisab.Dapper.Repository
         }
         public int CreateEvent(NewEventBO newNewEvent)
         {
-            string command = $@"INSERT INTO [dbo].[Event] ([UserId] ,[Name] ,[CreateDate],[LastModifiedDate])  
-                    VALUES (@{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventName)},@{nameof(newNewEvent.CreateDateTime)}, @{nameof(newNewEvent.LastModifiedDateTime)} );
+            string command = $@"INSERT INTO [dbo].[Event] ([UserId] ,[Name] ,[CreateDate],[LastModifiedDate],[Status])  
+                    VALUES (@{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventName)},@{nameof(newNewEvent.CreateDateTime)}, @{nameof(newNewEvent.LastModifiedDateTime)},  @{nameof(newNewEvent.Status)} );
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
             newNewEvent.Id = Connection.QuerySingle<int>(command,
                 new
                 {
                     newNewEvent.EventOwner.UserId, newNewEvent.EventName, newNewEvent.CreateDateTime,
-                    newNewEvent.LastModifiedDateTime
+                    newNewEvent.LastModifiedDateTime,newNewEvent.Status
                 }, transaction: Transaction);
 
             AddEventOwnerToEvent(newNewEvent);
@@ -78,7 +78,8 @@ namespace Hisab.Dapper.Repository
                     select 
 	                e.Id as EventId,
 	                e.Name as EventName,
-	                u.NickName as NickName
+	                u.NickName as NickName,
+                    e.Status
 	               
                 from 
 	                [dbo].[EventFriend] ef
@@ -98,8 +99,8 @@ namespace Hisab.Dapper.Repository
                     select 
 	                    e.Id as EventId,
 	                    e.Name as EventName,
-	                    u.NickName as NickName
-	               
+	                    u.NickName as NickName,
+	                    e.Status
                     from 
 	                [Event] e
 	                    inner join [ApplicationUser] u on u.Id = e.UserId"
@@ -116,7 +117,8 @@ namespace Hisab.Dapper.Repository
                     select 
 	                    e.Id as EventId,
                         e.Name as EventName,
-                             
+                        e.Status,
+
                         ef.EventFriendId as EventFriendId,
                         ef.Email,
                         ef.NickName as NickName,
@@ -180,14 +182,14 @@ namespace Hisab.Dapper.Repository
             return newEventFriend.EventFriendId;
         }
 
-        public int UpdateEventName(string newName, int eventId)
+        public int UpdateEvent(string newName, int eventId, EventStatus newStatus)
         {
             var rows = Connection.Execute($@"UPDATE [Event]
                     SET
-                    [Name] = @{nameof(newName)}
+                    [Name] = @{nameof(newName)},
+                    [Status] = @{nameof(newStatus)}
                     
-                    
-                    WHERE [Id] = @{nameof(eventId)}", new { newName, eventId }, transaction: Transaction);
+                    WHERE [Id] = @{nameof(eventId)}", new { newName, eventId, newStatus }, transaction: Transaction);
 
 
             return rows;
