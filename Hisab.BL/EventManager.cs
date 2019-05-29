@@ -25,6 +25,8 @@ namespace Hisab.BL
         Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus);
 
         Task<bool> DisableFriend(int eventFriendId);
+
+        Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
     }
 
     
@@ -168,6 +170,34 @@ namespace Hisab.BL
                 if (rows == 1)
                     return true;
 
+                return false;
+
+            }
+        }
+
+        public async Task<bool> UpdateFriend(EventFriendBO eventFriendBo)
+        {
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                int rows =0;
+                if (eventFriendBo.Status == EventFriendStatus.EventOwner || eventFriendBo.Status == EventFriendStatus.EventJoined
+                                                                         || eventFriendBo.Status == EventFriendStatus.PendingAcceptance
+                                                                         || eventFriendBo.Status == EventFriendStatus.PendingRegistration)
+                {
+                    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.EventFriendId);
+                    context.SaveChanges();
+                }
+
+                if (eventFriendBo.Status == EventFriendStatus.EventFriend)
+                {
+                    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.Email, eventFriendBo.EventFriendId);
+                    context.SaveChanges();
+                }
+
+                if (rows == 1)
+                    return true;
+
+               
                 return false;
 
             }

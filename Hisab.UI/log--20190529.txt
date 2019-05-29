@@ -352,3 +352,233 @@
 2019-05-29 15:57:00.704 +10:00 [Information] Executed ViewResult - view "Friends" executed in 68.6667ms.
 2019-05-29 15:57:00.704 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 79.538ms
 2019-05-29 15:57:00.704 +10:00 [Information] Request finished in 83.7011ms 200 text/html; charset=utf-8
+2019-05-29 21:31:14.575 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 05/29/2019 21:31:14, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-29 21:31:15.065 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-05-29 21:31:16.640 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-05-29 21:31:16.653 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 05/29/2019 21:31:14, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1751, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "05/29/2019 21:31:14")] }
+2019-05-29 21:31:18.631 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-05-29 21:31:18.631 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-29 21:31:18.800 +10:00 [Information] Request finished in 168.8025ms 200 
+2019-05-29 21:31:19.442 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-29 21:31:19.662 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:19.679 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 11.3879ms.
+2019-05-29 21:31:19.800 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:31:20.914 +10:00 [Information] Executed ViewResult - view "Index" executed in 1195.5035ms.
+2019-05-29 21:31:20.928 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 1481.6456ms
+2019-05-29 21:31:20.959 +10:00 [Information] Request finished in 2339.4539ms 200 text/html; charset=utf-8
+2019-05-29 21:31:21.521 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2019-05-29 21:31:21.562 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-29 21:31:21.618 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:21.633 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 14.3203ms.
+2019-05-29 21:31:21.635 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-29 21:31:21.642 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 8.6478ms.
+2019-05-29 21:31:21.642 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 79.6452ms
+2019-05-29 21:31:21.642 +10:00 [Information] Request finished in 121.1405ms 404 text/html; charset=utf-8
+2019-05-29 21:31:35.569 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 267
+2019-05-29 21:31:35.598 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-29 21:31:35.755 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:36.239 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-29 21:31:36.242 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/29/2019 21:31:36, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-29 21:31:36.247 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 491.7128ms.
+2019-05-29 21:31:36.254 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-29 21:31:36.257 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 659.2419ms
+2019-05-29 21:31:36.265 +10:00 [Information] Request finished in 696.219ms 302 
+2019-05-29 21:31:36.299 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-29 21:31:36.368 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-29 21:31:36.400 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:36.417 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:36.489 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 71.5122ms.
+2019-05-29 21:31:36.494 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:31:36.848 +10:00 [Information] Executed ViewResult - view "Index" executed in 358.9596ms.
+2019-05-29 21:31:36.849 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 480.7544ms
+2019-05-29 21:31:36.850 +10:00 [Information] Request finished in 550.5345ms 200 text/html; charset=utf-8
+2019-05-29 21:31:39.002 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/Admin  
+2019-05-29 21:31:39.010 +10:00 [Information] Route matched with "{action = \"Admin\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Admin()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-29 21:31:39.010 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:39.013 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:39.032 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:39.078 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 46.3692ms.
+2019-05-29 21:31:39.081 +10:00 [Information] Executing ViewResult, running view "Admin".
+2019-05-29 21:31:39.099 +10:00 [Information] Executed ViewResult - view "Admin" executed in 20.0949ms.
+2019-05-29 21:31:39.099 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" in 88.595ms
+2019-05-29 21:31:39.099 +10:00 [Information] Request finished in 96.8781ms 200 text/html; charset=utf-8
+2019-05-29 21:31:40.505 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/5  
+2019-05-29 21:31:40.510 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:31:40.510 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:40.529 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:40.677 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 147.3368ms.
+2019-05-29 21:31:40.680 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:31:40.696 +10:00 [Information] Executed ViewResult - view "Index" executed in 18.5632ms.
+2019-05-29 21:31:40.696 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 185.9162ms
+2019-05-29 21:31:40.696 +10:00 [Information] Request finished in 191.0906ms 200 text/html; charset=utf-8
+2019-05-29 21:31:42.548 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/5  
+2019-05-29 21:31:42.552 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:31:42.552 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:42.568 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:31:42.600 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 32.4678ms.
+2019-05-29 21:31:42.603 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-05-29 21:31:42.795 +10:00 [Information] Executed ViewResult - view "Friends" executed in 194.6906ms.
+2019-05-29 21:31:42.795 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 243.0466ms
+2019-05-29 21:31:42.796 +10:00 [Information] Request finished in 247.6243ms 200 text/html; charset=utf-8
+2019-05-29 21:31:53.239 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/UpdateFriend application/x-www-form-urlencoded 508
+2019-05-29 21:31:53.248 +10:00 [Information] Route matched with "{action = \"UpdateFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:31:53.248 +10:00 [Information] Authorization was successful.
+2019-05-29 21:31:53.279 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:32:37.304 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 44024.7897ms.
+2019-05-29 21:32:37.305 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends?EventFriendId=45".
+2019-05-29 21:32:37.305 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" in 44056.9363ms
+2019-05-29 21:32:37.305 +10:00 [Information] Request finished in 44066.1195ms 302 
+2019-05-29 21:32:37.313 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends?EventFriendId=45  
+2019-05-29 21:32:37.314 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-29 21:32:37.346 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:32:37.346 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.0638ms.
+2019-05-29 21:32:37.348 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-29 21:32:37.418 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 72.0618ms.
+2019-05-29 21:32:37.418 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 104.3623ms
+2019-05-29 21:32:37.418 +10:00 [Information] Request finished in 105.961ms 404 text/html; charset=utf-8
+2019-05-29 21:34:56.289 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 05/29/2019 21:34:56, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-29 21:34:56.721 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-05-29 21:34:58.124 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-05-29 21:34:58.135 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 05/29/2019 21:34:56, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1562, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "05/29/2019 21:34:56")] }
+2019-05-29 21:34:59.870 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-05-29 21:34:59.870 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-05-29 21:35:00.145 +10:00 [Information] Request finished in 267.558ms 200 
+2019-05-29 21:35:00.813 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-29 21:35:00.988 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:01.002 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 8.158ms.
+2019-05-29 21:35:01.124 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:35:02.410 +10:00 [Information] Executed ViewResult - view "Index" executed in 1377.5724ms.
+2019-05-29 21:35:02.421 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 1601.0201ms
+2019-05-29 21:35:02.444 +10:00 [Information] Request finished in 2584.0438ms 200 text/html; charset=utf-8
+2019-05-29 21:35:02.967 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2019-05-29 21:35:02.989 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-05-29 21:35:03.043 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:03.058 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 14.8965ms.
+2019-05-29 21:35:03.060 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-05-29 21:35:03.067 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 9.263ms.
+2019-05-29 21:35:03.067 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 77.7959ms
+2019-05-29 21:35:03.067 +10:00 [Information] Request finished in 100.8235ms 404 text/html; charset=utf-8
+2019-05-29 21:35:22.158 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Home/Login application/x-www-form-urlencoded 267
+2019-05-29 21:35:22.193 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-05-29 21:35:22.345 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:22.772 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-05-29 21:35:22.778 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 05/29/2019 21:35:22, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-05-29 21:35:22.786 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 440.6856ms.
+2019-05-29 21:35:22.801 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-05-29 21:35:22.805 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 611.9668ms
+2019-05-29 21:35:22.815 +10:00 [Information] Request finished in 656.7085ms 302 
+2019-05-29 21:35:22.832 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-05-29 21:35:22.902 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-29 21:35:22.944 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:22.961 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:23.081 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 119.8835ms.
+2019-05-29 21:35:23.099 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:35:23.398 +10:00 [Information] Executed ViewResult - view "Index" executed in 316.6732ms.
+2019-05-29 21:35:23.398 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 496.0283ms
+2019-05-29 21:35:23.398 +10:00 [Information] Request finished in 565.513ms 200 text/html; charset=utf-8
+2019-05-29 21:35:24.947 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/Admin  
+2019-05-29 21:35:24.955 +10:00 [Information] Route matched with "{action = \"Admin\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Admin()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-29 21:35:24.956 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:24.960 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:24.988 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:24.988 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome/Admin  
+2019-05-29 21:35:24.999 +10:00 [Information] Route matched with "{action = \"Admin\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Admin()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-05-29 21:35:25.000 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:25.000 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:25.029 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:25.085 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 54.7628ms.
+2019-05-29 21:35:25.085 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 89.1387ms.
+2019-05-29 21:35:25.087 +10:00 [Information] Executing ViewResult, running view "Admin".
+2019-05-29 21:35:25.091 +10:00 [Information] Executing ViewResult, running view "Admin".
+2019-05-29 21:35:25.108 +10:00 [Information] Executed ViewResult - view "Admin" executed in 22.7034ms.
+2019-05-29 21:35:25.108 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" in 108.1611ms
+2019-05-29 21:35:25.108 +10:00 [Information] Request finished in 120.5695ms 200 text/html; charset=utf-8
+2019-05-29 21:35:25.115 +10:00 [Information] Executed ViewResult - view "Admin" executed in 30.4676ms.
+2019-05-29 21:35:25.116 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Admin (Hisab.UI)" in 159.7338ms
+2019-05-29 21:35:25.116 +10:00 [Information] Request finished in 168.5873ms 200 text/html; charset=utf-8
+2019-05-29 21:35:26.858 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/5  
+2019-05-29 21:35:26.862 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:35:26.862 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:26.884 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:26.884 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/5  
+2019-05-29 21:35:26.886 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:35:26.886 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:26.909 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:27.287 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 378.0885ms.
+2019-05-29 21:35:27.287 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 402.7272ms.
+2019-05-29 21:35:27.290 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:35:27.290 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-05-29 21:35:27.312 +10:00 [Information] Executed ViewResult - view "Index" executed in 24.5315ms.
+2019-05-29 21:35:27.312 +10:00 [Information] Executed ViewResult - view "Index" executed in 24.6635ms.
+2019-05-29 21:35:27.312 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 449.86ms
+2019-05-29 21:35:27.312 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 426.0185ms
+2019-05-29 21:35:27.313 +10:00 [Information] Request finished in 454.6434ms 200 text/html; charset=utf-8
+2019-05-29 21:35:27.313 +10:00 [Information] Request finished in 428.2211ms 200 text/html; charset=utf-8
+2019-05-29 21:35:30.242 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/5  
+2019-05-29 21:35:30.247 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:35:30.247 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:30.264 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:30.295 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 30.9282ms.
+2019-05-29 21:35:30.297 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-05-29 21:35:30.450 +10:00 [Information] Executed ViewResult - view "Friends" executed in 154.6011ms.
+2019-05-29 21:35:30.450 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 202.3192ms
+2019-05-29 21:35:30.450 +10:00 [Information] Request finished in 208.5533ms 200 text/html; charset=utf-8
+2019-05-29 21:35:41.759 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/UpdateFriend application/x-www-form-urlencoded 533
+2019-05-29 21:35:41.774 +10:00 [Information] Route matched with "{action = \"UpdateFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:35:41.774 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:41.803 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:48.188 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6385.317ms.
+2019-05-29 21:35:48.189 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/5".
+2019-05-29 21:35:48.190 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" in 6415.2592ms
+2019-05-29 21:35:48.190 +10:00 [Information] Request finished in 6430.9025ms 302 
+2019-05-29 21:35:48.196 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/5  
+2019-05-29 21:35:48.197 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:35:48.197 +10:00 [Information] Authorization was successful.
+2019-05-29 21:35:48.214 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:35:48.249 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 34.8933ms.
+2019-05-29 21:35:48.249 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-05-29 21:35:48.275 +10:00 [Information] Executed ViewResult - view "Friends" executed in 25.9632ms.
+2019-05-29 21:35:48.275 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 78.8225ms
+2019-05-29 21:35:48.276 +10:00 [Information] Request finished in 79.9515ms 200 text/html; charset=utf-8
+2019-05-29 21:36:07.401 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/UpdateFriend application/x-www-form-urlencoded 332
+2019-05-29 21:36:07.402 +10:00 [Information] Route matched with "{action = \"UpdateFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:36:07.402 +10:00 [Information] Authorization was successful.
+2019-05-29 21:36:07.425 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:36:09.203 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 1778.1824ms.
+2019-05-29 21:36:09.203 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/5".
+2019-05-29 21:36:09.204 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" in 1801.547ms
+2019-05-29 21:36:09.204 +10:00 [Information] Request finished in 1802.5972ms 302 
+2019-05-29 21:36:09.211 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/5  
+2019-05-29 21:36:09.212 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:36:09.212 +10:00 [Information] Authorization was successful.
+2019-05-29 21:36:09.234 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:36:09.262 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 28.6125ms.
+2019-05-29 21:36:09.263 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-05-29 21:36:09.274 +10:00 [Information] Executed ViewResult - view "Friends" executed in 11.9696ms.
+2019-05-29 21:36:09.275 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 62.5387ms
+2019-05-29 21:36:09.275 +10:00 [Information] Request finished in 63.5726ms 200 text/html; charset=utf-8
+2019-05-29 21:36:33.456 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/UpdateFriend application/x-www-form-urlencoded 342
+2019-05-29 21:36:33.457 +10:00 [Information] Route matched with "{action = \"UpdateFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:36:33.458 +10:00 [Information] Authorization was successful.
+2019-05-29 21:36:33.494 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:36:36.779 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/UpdateFriend application/x-www-form-urlencoded 342
+2019-05-29 21:36:36.780 +10:00 [Information] Route matched with "{action = \"UpdateFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:36:36.788 +10:00 [Information] Authorization was successful.
+2019-05-29 21:36:36.803 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:36:40.061 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6566.9035ms.
+2019-05-29 21:36:40.061 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/5".
+2019-05-29 21:36:40.062 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" in 6604.588ms
+2019-05-29 21:36:40.078 +10:00 [Information] Request finished in 6621.1945ms 302 
+2019-05-29 21:36:40.079 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 3275.8547ms.
+2019-05-29 21:36:40.079 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/5".
+2019-05-29 21:36:40.079 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.UpdateFriend (Hisab.UI)" in 3291.715ms
+2019-05-29 21:36:40.079 +10:00 [Information] Request finished in 3300.9099ms 302 
+2019-05-29 21:36:40.086 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/5  
+2019-05-29 21:36:40.087 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-05-29 21:36:40.087 +10:00 [Information] Authorization was successful.
+2019-05-29 21:36:40.104 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-05-29 21:36:40.132 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 27.8792ms.
+2019-05-29 21:36:40.132 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-05-29 21:36:40.152 +10:00 [Information] Executed ViewResult - view "Friends" executed in 19.1675ms.
+2019-05-29 21:36:40.152 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 65.0918ms
+2019-05-29 21:36:40.153 +10:00 [Information] Request finished in 66.3401ms 200 text/html; charset=utf-8

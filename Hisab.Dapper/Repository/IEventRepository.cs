@@ -27,6 +27,9 @@ namespace Hisab.Dapper.Repository
 
         int DisableFriend(int eventFriendId);
 
+        int UpdateFriend(int kidsCount, int adultCount, int eventFriendId);
+        int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId);
+
     }
 
     internal class EventRepository : RepositoryBase, IEventRepository
@@ -204,6 +207,33 @@ namespace Hisab.Dapper.Repository
                       [Status] = 6
                     
                     WHERE [EventFriendId] = @{nameof(eventFriendId)}", new { eventFriendId }, transaction: Transaction);
+
+
+            return rows;
+        }
+
+        public int UpdateFriend(int kidsCount, int adultCount, int eventFriendId)
+        {
+            var rows = Connection.Execute($@"UPDATE [EventFriend]
+                    SET
+                      [kidsCount] = @{nameof(kidsCount)},
+                      [adultCount] = @{nameof(adultCount)}
+                    
+                    WHERE [EventFriendId] = @{nameof(eventFriendId)}", new { kidsCount, adultCount, eventFriendId }, transaction: Transaction);
+
+
+            return rows;
+        }
+
+        public int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId)
+        {
+            var rows = Connection.Execute($@"UPDATE [EventFriend]
+                    SET
+                      [kidsCount] = @{nameof(kidsCount)},
+                      [adultCount] = @{nameof(adultCount)},
+                      [Email] = @{nameof(email)}
+                    
+                    WHERE [EventFriendId] = @{nameof(eventFriendId)}", new { kidsCount, adultCount, email, eventFriendId }, transaction: Transaction);
 
 
             return rows;

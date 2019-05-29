@@ -87,7 +87,27 @@ namespace Hisab.UI.Controllers
 
         public async Task<IActionResult> UpdateFriend(EventFriendVm eventFriendVm)
         {
-            return null;
+            if (ModelState.IsValid)
+            {
+                var eventFriendBo = new EventFriendBO()
+                {
+                    EventId = eventFriendVm.EventId,
+                    EventFriendId = eventFriendVm.EventFriendId,
+                    AdultCount = eventFriendVm.AdultCount,
+                    Email = eventFriendVm.Email,
+                    KidsCount = eventFriendVm.KidsCount,
+                    Status = eventFriendVm.Status,
+                    NickName = eventFriendVm.Name
+                };
+
+                var result = await _eventManager.UpdateFriend(eventFriendBo);
+
+                if(result)
+                    _toastNotification.AddSuccessToastMessage("Friend updated sucessfully");
+            }
+
+            return RedirectToAction("Friends", new {eventFriendVm.EventId});
+
         }
 
         [HttpGet]
