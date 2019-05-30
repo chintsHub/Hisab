@@ -120,14 +120,15 @@ namespace Hisab.UI.ViewModels
         [Required]
         public string EventName { get; set; }
 
-        public string SelectedStatus { get; set; }
+        public string SelectedEventStatus { get; set; }
 
-        public IEnumerable<SelectListItem> StatusList { get; }
+        public IEnumerable<SelectListItem> EventStatusList { get; }
 
         public List<EventFriendVm> Friends { get; set; }
 
         public EventFriendVm NewEventFriend { get; set; }
 
+        
         public EventVm()
         {
             var list = new List<SelectListItem>();
@@ -135,7 +136,7 @@ namespace Hisab.UI.ViewModels
             list.Add(new SelectListItem(){Value = EventStatus.Active.ToString(),Text = EventStatus.Active.GetDescription()});
             list.Add(new SelectListItem(){Value = EventStatus.Inactive.ToString(), Text = EventStatus.Inactive.GetDescription() });
 
-            StatusList = list.AsEnumerable();
+            EventStatusList = list.AsEnumerable();
         }
 
 

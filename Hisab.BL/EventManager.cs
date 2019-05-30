@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Hisab.Common;
 using Hisab.Common.BO;
@@ -27,6 +28,10 @@ namespace Hisab.BL
         Task<bool> DisableFriend(int eventFriendId);
 
         Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
+
+        Task<bool> CanAccessEvent(int eventId, int userId);
+
+        bool CheckEventAccess(EventBO eventBo, int userId);
     }
 
     
@@ -201,6 +206,28 @@ namespace Hisab.BL
                 return false;
 
             }
+        }
+
+        public async Task<bool> CanAccessEvent(int eventId, int userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var eventBo = context.EventRepository.GetEventById(eventId);
+
+                return CheckEventAccess(eventBo, userId);
+
+
+
+            }
+
+           
+        }
+
+        public bool CheckEventAccess(EventBO eventBo, int userId)
+        {
+            var friend = eventBo.Friends.FirstOrDefault(x => x.UserId != null && x.UserId.Value == userId);
+
+            return friend != null;
         }
     }
 

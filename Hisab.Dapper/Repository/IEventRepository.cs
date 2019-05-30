@@ -30,6 +30,8 @@ namespace Hisab.Dapper.Repository
         int UpdateFriend(int kidsCount, int adultCount, int eventFriendId);
         int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId);
 
+        
+
     }
 
     internal class EventRepository : RepositoryBase, IEventRepository
