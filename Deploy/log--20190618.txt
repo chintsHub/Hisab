@@ -1,0 +1,102 @@
+2019-06-18 13:35:20.516 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 06/18/2019 13:35:20, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "DefaultAppPool", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-06-18 13:35:20.962 +10:00 [Information] User profile not available. Using '"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ASP.NET\4.0.30319.0\AutoGenKeys\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\DataProtection"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-06-18 13:35:21.611 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-06-18 13:35:21.623 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 06/18/2019 13:35:20, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 804, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "06/18/2019 13:35:20")] }
+2019-06-18 13:35:22.992 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/  
+2019-06-18 13:35:23.578 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-06-18 13:35:23.690 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-06-18 13:35:23.700 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 6.944ms.
+2019-06-18 13:35:23.778 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-06-18 13:35:24.689 +10:00 [Information] Executed ViewResult - view "Index" executed in 965.4269ms.
+2019-06-18 13:35:24.692 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 1109.7526ms
+2019-06-18 13:35:24.708 +10:00 [Information] Request finished in 1722.8438ms 200 text/html; charset=utf-8
+2019-06-18 13:35:24.714 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/site.css  
+2019-06-18 13:35:24.715 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/bootstrap/dist/css/bootstrap.min.css  
+2019-06-18 13:35:24.719 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery/dist/jquery.min.js  
+2019-06-18 13:35:24.721 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js  
+2019-06-18 13:35:24.722 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js  
+2019-06-18 13:35:24.723 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js  
+2019-06-18 13:35:24.775 +10:00 [Information] Sending file. Request path: '"/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js"'
+2019-06-18 13:35:24.775 +10:00 [Information] Sending file. Request path: '"/jquery-validation/dist/jquery.validate.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery-validation\dist\jquery.validate.min.js"'
+2019-06-18 13:35:24.775 +10:00 [Information] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\wwwroot\css\site.css"'
+2019-06-18 13:35:24.775 +10:00 [Information] Request finished in 52.9167ms 200 application/javascript
+2019-06-18 13:35:24.775 +10:00 [Information] Request finished in 53.137ms 200 application/javascript
+2019-06-18 13:35:24.775 +10:00 [Information] Request finished in 61.4635ms 200 text/css
+2019-06-18 13:35:24.778 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/home.js  
+2019-06-18 13:35:24.789 +10:00 [Information] Sending file. Request path: '"/bootstrap/dist/js/bootstrap.bundle.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"'
+2019-06-18 13:35:24.789 +10:00 [Information] Sending file. Request path: '"/js/home.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\wwwroot\js\home.js"'
+2019-06-18 13:35:24.789 +10:00 [Information] Sending file. Request path: '"/jquery/dist/jquery.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery\dist\jquery.min.js"'
+2019-06-18 13:35:24.792 +10:00 [Information] Sending file. Request path: '"/bootstrap/dist/css/bootstrap.min.css"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\bootstrap\dist\css\bootstrap.min.css"'
+2019-06-18 13:35:24.794 +10:00 [Information] Request finished in 78.9287ms 200 text/css
+2019-06-18 13:35:24.794 +10:00 [Information] Request finished in 75.1883ms 200 application/javascript
+2019-06-18 13:35:24.794 +10:00 [Information] Request finished in 73.2811ms 200 application/javascript
+2019-06-18 13:35:24.794 +10:00 [Information] Request finished in 16.0163ms 200 application/javascript
+2019-06-18 13:42:59.264 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/  
+2019-06-18 13:42:59.275 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-06-18 13:42:59.277 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-06-18 13:42:59.278 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.1473ms.
+2019-06-18 13:42:59.285 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-06-18 13:42:59.320 +10:00 [Information] Executed ViewResult - view "Index" executed in 41.9926ms.
+2019-06-18 13:42:59.320 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 44.8432ms
+2019-06-18 13:42:59.321 +10:00 [Information] Request finished in 56.5029ms 200 text/html; charset=utf-8
+2019-06-18 13:43:24.030 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost/Hisab/Home/Login application/x-www-form-urlencoded 267
+2019-06-18 13:43:24.072 +10:00 [Information] Route matched with "{action = \"Login\", controller = \"Home\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Hisab.UI.ViewModels.LoginVM)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-06-18 13:43:24.181 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" - Validation state: Valid
+2019-06-18 13:43:24.330 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2019-06-18 13:43:24.333 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 06/18/2019 13:43:24, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-06-18 13:43:24.335 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 154.3917ms.
+2019-06-18 13:43:24.343 +10:00 [Information] Executing RedirectResult, redirecting to "/Hisab/AppHome".
+2019-06-18 13:43:24.345 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Login (Hisab.UI)" in 272.698ms
+2019-06-18 13:43:24.349 +10:00 [Information] Request finished in 319.5091ms 302 
+2019-06-18 13:43:24.356 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/AppHome  
+2019-06-18 13:43:24.378 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-06-18 13:43:24.402 +10:00 [Information] Authorization was successful.
+2019-06-18 13:43:24.403 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-06-18 13:43:24.422 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 19.6401ms.
+2019-06-18 13:43:24.423 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-06-18 13:43:24.683 +10:00 [Information] Executed ViewResult - view "Index" executed in 260.7598ms.
+2019-06-18 13:43:24.683 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 305.024ms
+2019-06-18 13:43:24.684 +10:00 [Information] Request finished in 328.0435ms 200 text/html; charset=utf-8
+2019-06-18 13:43:24.701 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/NToastNotify/js/dist/toastr.js?v=201903200908  
+2019-06-18 13:43:24.702 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/apphome.js  
+2019-06-18 13:43:24.708 +10:00 [Information] Sending file. Request path: '"/js/dist/toastr.js"'. Physical path: '"N/A"'
+2019-06-18 13:43:24.708 +10:00 [Information] Sending file. Request path: '"/js/apphome.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\wwwroot\js\apphome.js"'
+2019-06-18 13:43:24.708 +10:00 [Information] Request finished in 6.7595ms 200 application/javascript
+2019-06-18 13:43:24.708 +10:00 [Information] Request finished in 6.3113ms 200 application/javascript
+2019-06-18 14:04:18.163 +10:00 [Information] Request starting HTTP/1.1 POST http://127.0.0.1:10215/HISAB/iisintegration  0
+2019-06-18 14:04:18.164 +10:00 [Information] Request finished in 0.8464ms 202 
+2019-06-18 18:26:39.885 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 06/18/2019 18:26:39, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "DefaultAppPool", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-06-18 18:26:40.333 +10:00 [Information] User profile not available. Using '"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ASP.NET\4.0.30319.0\AutoGenKeys\S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415\DataProtection"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-06-18 18:26:41.317 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-06-18 18:26:41.331 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 06/18/2019 18:26:40, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1178, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "06/18/2019 18:26:40")] }
+2019-06-18 18:26:42.913 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab  
+2019-06-18 18:26:43.775 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-06-18 18:26:43.955 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-06-18 18:26:43.973 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 12.1916ms.
+2019-06-18 18:26:44.131 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-06-18 18:26:46.090 +10:00 [Information] Executed ViewResult - view "Index" executed in 2084.6468ms.
+2019-06-18 18:26:46.099 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 2318.2517ms
+2019-06-18 18:26:46.132 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/site.css  
+2019-06-18 18:26:46.132 +10:00 [Information] Request finished in 3220.6747ms 200 text/html; charset=utf-8
+2019-06-18 18:26:46.135 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/bootstrap/dist/css/bootstrap.min.css  
+2019-06-18 18:26:46.135 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery/dist/jquery.min.js  
+2019-06-18 18:26:46.137 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js  
+2019-06-18 18:26:46.138 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js  
+2019-06-18 18:26:46.138 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js  
+2019-06-18 18:26:46.192 +10:00 [Information] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\wwwroot\css\site.css"'
+2019-06-18 18:26:46.192 +10:00 [Information] Sending file. Request path: '"/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js"'
+2019-06-18 18:26:46.192 +10:00 [Information] Request finished in 54.4932ms 200 application/javascript
+2019-06-18 18:26:46.192 +10:00 [Information] Request finished in 60.9869ms 200 text/css
+2019-06-18 18:26:46.195 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/home.js  
+2019-06-18 18:26:46.196 +10:00 [Information] Sending file. Request path: '"/jquery-validation/dist/jquery.validate.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery-validation\dist\jquery.validate.min.js"'
+2019-06-18 18:26:46.198 +10:00 [Information] Sending file. Request path: '"/js/home.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\wwwroot\js\home.js"'
+2019-06-18 18:26:46.199 +10:00 [Information] Sending file. Request path: '"/bootstrap/dist/js/bootstrap.bundle.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"'
+2019-06-18 18:26:46.203 +10:00 [Information] Sending file. Request path: '"/bootstrap/dist/css/bootstrap.min.css"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\bootstrap\dist\css\bootstrap.min.css"'
+2019-06-18 18:26:46.204 +10:00 [Information] Sending file. Request path: '"/jquery/dist/jquery.min.js"'. Physical path: '"C:\Chintan\Code\Hisab\Deploy\node_modules\jquery\dist\jquery.min.js"'
+2019-06-18 18:26:46.207 +10:00 [Information] Request finished in 72.6006ms 200 text/css
+2019-06-18 18:26:46.207 +10:00 [Information] Request finished in 69.7354ms 200 application/javascript
+2019-06-18 18:26:46.207 +10:00 [Information] Request finished in 70.577ms 200 application/javascript
+2019-06-18 18:26:46.207 +10:00 [Information] Request finished in 72.6363ms 200 application/javascript
+2019-06-18 18:26:46.207 +10:00 [Information] Request finished in 12.0009ms 200 application/javascript
+2019-06-18 18:47:36.940 +10:00 [Information] Request starting HTTP/1.1 POST http://127.0.0.1:22173/HISAB/iisintegration  0
+2019-06-18 18:47:36.965 +10:00 [Information] Request finished in 24.6838ms 202 

@@ -142,7 +142,7 @@ namespace Hisab.UI.Controllers
                     {
                         Email = user.Email,
                         NickName = user.NickName,
-                        UserId = user.Id,
+                        AppUserId = user.Id,
                         Status = EventFriendStatus.EventOwner
 
                     },

@@ -13,7 +13,9 @@ namespace Hisab.Dapper.Repository
 {
     public interface IEventRepository
     {
-        int CreateEvent(NewEventBO newNewEvent);
+        NewEventBO CreateEvent(NewEventBO newNewEvent);
+
+        int AddEventOwnerToEvent(NewEventBO newNewEvent);
 
         List<UserEventBO> GetEventsForUser(int userId);
 
@@ -30,7 +32,11 @@ namespace Hisab.Dapper.Repository
         int UpdateFriend(int kidsCount, int adultCount, int eventFriendId);
         int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId);
 
-        
+        int CreateCurrentAccount(int eventId);
+
+        int CreateExpenseAccount(int eventId);
+
+        int CreateEventFriendAccount(int eventId, int eventFriendId);
 
     }
 
@@ -40,43 +46,113 @@ namespace Hisab.Dapper.Repository
         {
 
         }
-        public int CreateEvent(NewEventBO newNewEvent)
+        public NewEventBO CreateEvent(NewEventBO newNewEvent)
         {
             string command = $@"INSERT INTO [dbo].[Event] ([UserId] ,[Name] ,[CreateDate],[LastModifiedDate],[Status])  
-                    VALUES (@{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventName)},@{nameof(newNewEvent.CreateDateTime)}, @{nameof(newNewEvent.LastModifiedDateTime)},  @{nameof(newNewEvent.Status)} );
+                    VALUES (@{nameof(newNewEvent.EventOwner.AppUserId)}, @{nameof(newNewEvent.EventName)},@{nameof(newNewEvent.CreateDateTime)}, @{nameof(newNewEvent.LastModifiedDateTime)},  @{nameof(newNewEvent.Status)} );
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
             newNewEvent.Id = Connection.QuerySingle<int>(command,
                 new
                 {
-                    newNewEvent.EventOwner.UserId, newNewEvent.EventName, newNewEvent.CreateDateTime,
-                    newNewEvent.LastModifiedDateTime,newNewEvent.Status
+                    newNewEvent.EventOwner.AppUserId,
+                    newNewEvent.EventName,
+                    newNewEvent.CreateDateTime,
+                    newNewEvent.LastModifiedDateTime,
+                    newNewEvent.Status
                 }, transaction: Transaction);
 
-            AddEventOwnerToEvent(newNewEvent);
 
-            return newNewEvent.Id;
+
+            return newNewEvent;
         }
 
-        private void AddEventOwnerToEvent(NewEventBO newNewEvent)
+        public int CreateCurrentAccount(int eventId)
+        {
+            int? eventFriendId = null;
+            int accountTypeId = 1;
+
+            string command = $@"INSERT INTO [dbo].[EventAccount] ([EventId] ,[EventFriendId] ,[AccountTypeId])
+                    VALUES (@{nameof(eventId)}, @{nameof(eventFriendId)},@{nameof(accountTypeId)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            int accountId = Connection.QuerySingle<int>(command,
+                new
+                {
+                    eventId,
+                    eventFriendId,
+                    accountTypeId
+                 
+                }, transaction: Transaction);
+
+           
+            return accountId;
+        }
+
+        public int CreateExpenseAccount(int eventId)
+        {
+            int? eventFriendId = null;
+            int accountTypeId = 2;
+
+            string command = $@"INSERT INTO [dbo].[EventAccount] ([EventId] ,[EventFriendId] ,[AccountTypeId])
+                    VALUES (@{nameof(eventId)}, @{nameof(eventFriendId)},@{nameof(accountTypeId)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            int accountId = Connection.QuerySingle<int>(command,
+                new
+                {
+                    eventId,
+                    eventFriendId,
+                    accountTypeId
+
+                }, transaction: Transaction);
+
+
+            return accountId;
+        }
+
+        public int CreateEventFriendAccount(int eventId, int eventFriendId)
+        {
+            int accountTypeId = 1;
+
+            string command = $@"INSERT INTO [dbo].[EventAccount] ([EventId] ,[EventFriendId] ,[AccountTypeId])
+                    VALUES (@{nameof(eventId)}, @{nameof(eventFriendId)},@{nameof(accountTypeId)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            int accountId = Connection.QuerySingle<int>(command,
+                new
+                {
+                    eventId,
+                    eventFriendId,
+                    accountTypeId
+
+                }, transaction: Transaction);
+
+
+            return accountId;
+        }
+
+        public int AddEventOwnerToEvent(NewEventBO newNewEvent)
         {
             string eventUserCommand = $@" INSERT INTO [dbo].[EventFriend] 
                                     ([EventId] ,[Email] , [NickName] ,[Status] ,[AppUserId] ,[AdultCount] ,[KidsCount])
                     VALUES (@{nameof(newNewEvent.Id)}, @{nameof(newNewEvent.EventOwner.Email)}, @{nameof(newNewEvent.EventOwner.NickName)}, 
-                                    @{nameof(newNewEvent.EventOwner.Status)}, @{nameof(newNewEvent.EventOwner.UserId)}, @{nameof(newNewEvent.EventOwner.AdultCount)},@{nameof(newNewEvent.EventOwner.KidsCount)}); 
+                                    @{nameof(newNewEvent.EventOwner.Status)}, @{nameof(newNewEvent.EventOwner.AppUserId)}, @{nameof(newNewEvent.EventOwner.AdultCount)},@{nameof(newNewEvent.EventOwner.KidsCount)}); 
                                     SELECT CAST(SCOPE_IDENTITY() as int)";
 
-            Connection.Execute(eventUserCommand,
+            int friendId = Connection.QuerySingle<int>(eventUserCommand,
                 new
                 {
                     newNewEvent.Id,
                     newNewEvent.EventOwner.Email,
                     newNewEvent.EventOwner.NickName,
                     newNewEvent.EventOwner.Status,
-                    newNewEvent.EventOwner.UserId,
+                    newNewEvent.EventOwner.AppUserId,
                     newNewEvent.EventOwner.AdultCount,
                     newNewEvent.EventOwner.KidsCount
                 }, transaction: Transaction);
+
+            return friendId;
         }
 
         public List<UserEventBO> GetEventsForUser(int userId)
@@ -132,7 +208,8 @@ namespace Hisab.Dapper.Repository
                         ef.Email,
                         ef.Status,
                         ef.AdultCount,
-                        ef.KidsCount
+                        ef.KidsCount,
+                        ef.AppUserId
                     from 
 	                    [dbo].[Event] e
                         inner join [dbo].[EventFriend] ef on ef.EventId = e.Id
@@ -151,6 +228,7 @@ namespace Hisab.Dapper.Repository
                         eve = eventBO;
                         eve.Friends = new List<EventFriendBO>();
                         eve.EventId = eventBO.EventId;
+                        
                         eventDict.Add(eve.EventId,eve);
                     }
                     eve.Friends.Add(eventFriend);
@@ -168,7 +246,7 @@ namespace Hisab.Dapper.Repository
         {
             string command = $@"INSERT INTO [dbo].[EventFriend] ([EventId] ,[Email] ,[NickName] ,[Status] ,[AppUserId] ,[AdultCount] ,[KidsCount])
                     VALUES (@{nameof(newEventFriend.EventId)}, @{nameof(newEventFriend.Email)},@{nameof(newEventFriend.NickName)}, @{nameof(newEventFriend.Status)},
-                               @{nameof(newEventFriend.UserId)}, @{nameof(newEventFriend.AdultCount)},@{nameof(newEventFriend.KidsCount)});
+                               @{nameof(newEventFriend.AppUserId)}, @{nameof(newEventFriend.AdultCount)},@{nameof(newEventFriend.KidsCount)});
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
             newEventFriend.EventFriendId = Connection.QuerySingle<int>(command,
@@ -178,7 +256,7 @@ namespace Hisab.Dapper.Repository
                     newEventFriend.Email,
                     newEventFriend.NickName,
                     newEventFriend.Status,
-                    newEventFriend.UserId,
+                    newEventFriend.AppUserId,
                     newEventFriend.AdultCount,
                     newEventFriend.KidsCount
                     

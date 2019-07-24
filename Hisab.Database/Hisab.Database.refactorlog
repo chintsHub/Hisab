@@ -42,4 +42,74 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="FriendId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b5c2ac40-0351-4c8b-aa67-6b74a1685299" ChangeDateTime="07/23/2019 23:00:31">
+    <Property Name="ElementName" Value="[dbo].[EventFriendAccount].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventFriendAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventFriendId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="053f35f0-7fb8-4ef4-92a6-b95a4ad5f2c6" ChangeDateTime="07/23/2019 23:07:28">
+    <Property Name="ElementName" Value="[dbo].[EventTranscationJournal].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTranscationJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="JournalId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="05530982-6f12-43ff-aa29-909efaaf6560" ChangeDateTime="07/23/2019 23:07:37">
+    <Property Name="ElementName" Value="[dbo].[EventTranscationJournal].[JournalId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTranscationJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f042c7e6-5159-45c4-9f90-a2c3504d6d4c" ChangeDateTime="07/23/2019 23:07:50">
+    <Property Name="ElementName" Value="[dbo].[EventTranscationJournal].[TransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTranscationJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="JournalId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a264727-67de-4b97-bb87-acca5dfa15d5" ChangeDateTime="07/23/2019 23:07:55">
+    <Property Name="ElementName" Value="[dbo].[EventTranscationJournal].[Transa]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTranscationJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d1dee0ce-3881-4e39-92ea-7f5574fa3f49" ChangeDateTime="07/24/2019 00:22:40">
+    <Property Name="ElementName" Value="[dbo].[EventFriendCashAccount].[EventFriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventFriendCashAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d74909f6-0f9b-4ae8-b542-60447ffef82d" ChangeDateTime="07/24/2019 00:22:49">
+    <Property Name="ElementName" Value="[dbo].[EventFriendCashAccount].[EventId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventFriendCashAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="75b71621-b064-43ae-b35f-d23377a85e20" ChangeDateTime="07/24/2019 00:22:53">
+    <Property Name="ElementName" Value="[dbo].[EventFriendCashAccount].[A]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventFriendCashAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="245f6d5a-fe30-448b-b7b6-d6e9e0f15970" ChangeDateTime="07/24/2019 00:36:05">
+    <Property Name="ElementName" Value="[dbo].[EventAccount].[AccountType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="65b3e37a-0cf9-4203-ad37-c67dbf4b54c7" ChangeDateTime="07/24/2019 01:33:50">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSplit].[EventTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSplit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionId" />
+  </Operation>
 </Operations>

@@ -72,6 +72,12 @@ namespace Hisab.UI
 
             services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
 
+
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AutomaticAuthentication = false;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,7 +90,7 @@ namespace Hisab.UI
             //if (env.IsDevelopment())
             //{
             //    app.UseDeveloperExceptionPage();
-                
+
             //}
 
             app.UseDefaultFiles();
@@ -95,6 +101,7 @@ namespace Hisab.UI
             app.UseAuthentication();
 
             app.UseNToastNotify();
+
 
             app.UseMvc(options =>
                 {

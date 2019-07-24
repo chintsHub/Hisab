@@ -55,15 +55,20 @@ namespace Hisab.BL
             {
                 try
                 {
-                    var events = context.EventRepository.GetEventsForUser(newNewEvent.EventOwner.UserId.Value);
+                    var events = context.EventRepository.GetEventsForUser(newNewEvent.EventOwner.AppUserId.Value);
 
                     if (events.Count >= TotalAllowedEventsPerUser)
                         throw new HisabException("You have reached maximum number of allowed Events");
 
 
-                    newNewEvent.Id = context.EventRepository.CreateEvent(newNewEvent);
+                    //add event and add owner as event friend
+                    var retVal = context.EventRepository.CreateEvent(newNewEvent);
+                    var friendId = context.EventRepository.AddEventOwnerToEvent(retVal);
 
-
+                    //create Accounts
+                    var currentAccountId = context.EventRepository.CreateCurrentAccount(newNewEvent.Id);
+                    var expenseAccountId = context.EventRepository.CreateExpenseAccount(newNewEvent.Id);
+                    var owerAccount = context.EventRepository.CreateEventFriendAccount(newNewEvent.Id, friendId);
 
                     context.SaveChanges();
 
@@ -129,17 +134,21 @@ namespace Hisab.BL
             if (user == null)
             {
                 newEventFriend.Status = EventFriendStatus.EventFriend;
-                newEventFriend.UserId = null;
+                newEventFriend.AppUserId = null;
             }
             else
             {
                 newEventFriend.Status = user.EmailConfirmed ? EventFriendStatus.PendingAcceptance : EventFriendStatus.PendingRegistration;
-                newEventFriend.UserId = user.Id;
+                newEventFriend.AppUserId = user.Id;
             }
 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 var friend = context.EventRepository.CreateEventFriend(newEventFriend);
+
+                //create account
+                var accountId = context.EventRepository.CreateEventFriendAccount(newEventFriend.EventId, friend);
+
                 context.SaveChanges();
 
                 if (friend > 1)
@@ -225,7 +234,7 @@ namespace Hisab.BL
 
         public bool CheckEventAccess(EventBO eventBo, int userId)
         {
-            var friend = eventBo.Friends.FirstOrDefault(x => x.UserId != null && x.UserId.Value == userId);
+            var friend = eventBo.Friends.FirstOrDefault(x => x.AppUserId != null && x.AppUserId.Value == userId);
 
             return friend != null;
         }
