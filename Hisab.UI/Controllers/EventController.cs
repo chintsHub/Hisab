@@ -57,7 +57,7 @@ namespace Hisab.UI.Controllers
 
             if (await CanAccessEvent(eventBo))
             {
-                return View("Index", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName });
+                return View("Index", BuildFriendList(eventBo));
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -74,28 +74,51 @@ namespace Hisab.UI.Controllers
 
             if (await CanAccessEvent(eventBo))
             {
-                var friendList = new List<EventFriendVm>();
-                foreach (var friend in eventBo.Friends)
-                {
-                    friendList.Add(new EventFriendVm()
-                    {
-                        Name = friend.NickName,
-                        Email = friend.Email,
-                        AdultCount = friend.AdultCount,
-                        EventId = eventId,
-                        KidsCount = friend.KidsCount,
-                        Status = friend.Status,
-                        EventFriendId = friend.EventFriendId
-                    });
-                }
-
-
-                return View("Friends", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList });
+                return View("Friends", BuildFriendList(eventBo));
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
             return RedirectToAction("Index", "AppHome");
 
+        }
+
+        private EventVm BuildFriendList(EventBO eventBo)
+        {
+            var friendList = new List<EventFriendVm>();
+            var splitByFriend = new NewSplitByFriendVm();
+            splitByFriend.EventId = eventBo.EventId;
+
+            foreach (var friend in eventBo.Friends)
+            {
+                friendList.Add(new EventFriendVm()
+                {
+                    Name = friend.NickName,
+                    Email = friend.Email,
+                    AdultCount = friend.AdultCount,
+                    EventId = eventBo.EventId,
+                    KidsCount = friend.KidsCount,
+                    Status = friend.Status,
+                    EventFriendId = friend.EventFriendId
+                });
+
+                splitByFriend.FriendDetails.Add(new NewSplitByFriendDetailsVm()
+                    {
+                        EventFriendId = friend.EventFriendId,
+                        IncludeInSplit = true,
+                        Name = friend.NickName
+
+                    }
+
+
+                );
+            }
+
+            return new EventVm()
+            {
+                EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList,
+                NewSplitByFriendVm = splitByFriend
+                
+            };
         }
 
         [HttpPost]
@@ -238,6 +261,16 @@ namespace Hisab.UI.Controllers
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
             return RedirectToAction("Index", "AppHome");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm)
+        {
+
+
+            _toastNotification.AddSuccessToastMessage("Expense added");
+            return RedirectToAction("Dashboard", "Event", new { NewSplitByFriendVm.EventId});
+            
         }
 
         [HttpPost]

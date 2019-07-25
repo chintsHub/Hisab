@@ -1,28 +1,48 @@
-﻿
-<form id="addSplitPerHeadForm" asp-controller="AppHome" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+﻿@model Hisab.UI.ViewModels.NewSplitByFriendVm
 
+<form id="addSplitPerHeadForm" asp-controller="Event" asp-action="AddSplitByFriend" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <input type="hidden" asp-for="@Model.EventId" value="@Model.EventId" />
     <div class="form-group">
-        <label>Description:</label>
-        <input class="form-control" type="text" />
+        <label asp-for="@Model.Description">Description:</label>
+        <input asp-for="@Model.Description" class="form-control" type="text" />
+        <span asp-validation-for="@Model.Description"></span>
 
     </div>
     <div>
-        <table width="100%">
-            <tr>
-                <td>Who Paid?</td>
-                <td>Amount</td>
-                <td>Add/remove</td>
-            </tr>
-            <tr>
-                <td>Pool Amount</td>
-                <td><input class="form-control" type="text" /></td>
-                <td>n/a</td>
-            </tr>
-            <tr>
-                <td>Friend 1</td>
-                <td><input class="form-control" type="text" /></td>
-                <td>remove</td>
-            </tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Who Paid?</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Include?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pool Amount</td>
+                    <td><input class="form-control" type="text" /></td>
+                    <td>n/a</td>
+                </tr>
+
+                @for (var i = 0; i < Model.FriendDetails.Count; i++)
+                {
+                    <tr>
+                        <input type="hidden" asp-for="@Model.FriendDetails[i].EventFriendId" value="@Model.FriendDetails[i].EventFriendId" />
+                        <td>
+                            @Model.FriendDetails[i].Name
+
+                        </td>
+                        <td><input asp-for="@Model.FriendDetails[i].AmountPaid" class="form-control" type="text" /></td>
+                        <td>
+                            <input asp-for="@Model.FriendDetails[i].IncludeInSplit" class="Slider" type="checkbox" data-toggle="toggle" data-on="Include" data-off="Exclude">
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+
+
         </table>
     </div>
     <div class="form-group">
@@ -30,3 +50,4 @@
     </div>
 
 </form>
+
