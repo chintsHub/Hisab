@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using NToastNotify;
 
@@ -54,7 +55,7 @@ namespace Hisab.UI.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
-           
+            
 
             if (await CanAccessEvent(eventBo))
             {
@@ -87,8 +88,12 @@ namespace Hisab.UI.Controllers
 
         private EventVm BuildFriendList(EventBO eventBo)
         {
+
             var friendList = new List<EventFriendVm>();
             var splitByFriend = new NewSplitByFriendVm();
+            var eventPoolEntry = new NewEventPoolEntryVm();
+            var friendListItems = new List<SelectListItem>();
+
             splitByFriend.EventId = eventBo.EventId;
 
             foreach (var friend in eventBo.Friends)
@@ -114,7 +119,11 @@ namespace Hisab.UI.Controllers
 
 
                 );
+
+                friendListItems.Add(new SelectListItem(){Value = friend.EventFriendId.ToString(),Text = friend.NickName});
             }
+
+            eventPoolEntry.FriendList = friendListItems.AsEnumerable();
 
             var eve = new EventVm()
             {
@@ -122,9 +131,10 @@ namespace Hisab.UI.Controllers
                 EventName = eventBo.EventName,
                 Friends = friendList,
                 NewSplitByFriendVm = splitByFriend,
-                
-                
+                NewEventPoolEntry = eventPoolEntry
+
             };
+
 
             if (eventBo.DashboardStats != null)
             {
@@ -134,6 +144,9 @@ namespace Hisab.UI.Controllers
                 eve.MyNetAmount = eventBo.DashboardStats.MyNetAmount;
                 eve.MyEventExpense = eventBo.DashboardStats.MyEventExpense;
             }
+
+            
+            
 
             return eve;
         }
@@ -305,6 +318,12 @@ namespace Hisab.UI.Controllers
 
             return RedirectToAction("Dashboard", "Event", new { NewSplitByFriendVm.EventId});
             
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddContribution(NewEventPoolEntryVm NewEventPoolEntryVm)
+        {
+            return null;
         }
 
         [HttpPost]

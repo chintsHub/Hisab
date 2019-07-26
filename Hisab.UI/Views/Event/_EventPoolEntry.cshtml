@@ -1,0 +1,24 @@
+﻿@model Hisab.UI.ViewModels.NewEventPoolEntryVm
+
+
+<form id="addSplitPerHeadForm" asp-controller="Event" asp-action="AddContribution" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Contribution for:</label>
+                @Html.DropDownListFor(model => model.SelectedFriendId, Model.FriendList, "Select Friend", new {id = "eventFriend", @class = "selectpicker", data_style = "btn-inverse"})
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input asp-for="@Model.ContributionAmount" class="form-control" type="text"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+
+   
+</form>

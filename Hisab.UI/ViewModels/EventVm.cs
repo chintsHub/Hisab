@@ -24,6 +24,7 @@ namespace Hisab.UI.ViewModels
 
 
         public NewSplitByFriendVm NewSplitByFriendVm { get; set; }
+        public NewEventPoolEntryVm NewEventPoolEntry { get; set; }
 
         public decimal TotalEventExpense { get; set; }
 
@@ -83,7 +84,22 @@ namespace Hisab.UI.ViewModels
         public bool IncludeInSplit { get; set; }
     }
 
-    
 
+    public class NewEventPoolEntryVm
+    {
+      
+        public decimal ContributionAmount { get; set; }
+
+        public IEnumerable<SelectListItem> FriendList { get; set; }
+        public int SelectedFriendId { get; set; }
+
+        public NewEventPoolEntryVm()
+        {
+            FriendList = new List<SelectListItem>();
+
+            
+            
+        }
+    }
    
 }
