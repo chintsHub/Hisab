@@ -32,6 +32,8 @@ namespace Hisab.BL
         Task<bool> CanAccessEvent(int eventId, int userId);
 
         bool CheckEventAccess(EventBO eventBo, int userId);
+
+        int ProcessTransaction(TransactionBo transaction);
     }
 
     
@@ -237,6 +239,101 @@ namespace Hisab.BL
             var friend = eventBo.Friends.FirstOrDefault(x => x.AppUserId != null && x.AppUserId.Value == userId);
 
             return friend != null;
+        }
+
+        public int ProcessTransaction(TransactionBo transaction)
+        {
+            if (transaction.TransactionType == TransactionType.SplitPerFriend)
+                return ProcessSplitByFriendTransaction((SplitPerFriendTransactionBo)transaction).Result;
+
+
+
+            return 0;
+        }
+
+        private async Task<int> ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo)
+        {
+            // calculate Total Expense
+            transactionBo.TotalAmount = transactionBo.PaidByPoolAmount; //TODO: Does pool have money to pay?
+            int totalFriends = transactionBo.Friends.Count(x => x.IncludeInSplit);
+            foreach (var friend in transactionBo.Friends)
+            {
+                transactionBo.TotalAmount += friend.AmountPaid;
+            }
+
+            
+            // assign expense
+            decimal perFriendExpense = transactionBo.TotalAmount / totalFriends;
+            foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
+            {
+                friend.AmountDue = perFriendExpense;
+            }
+
+            int transactionId = 0;
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
+
+                //prepare Journals
+                var eventExpJournal = new TransactionJournalBo
+                {
+                    AccountId =
+                    accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 2).AccountId,
+                    Particulars = transactionBo.Description + " Event Expense",
+                    CreditAmount = 0,
+                    DebitAmount = transactionBo.TotalAmount
+
+                };
+                transactionBo.Journals.Add(eventExpJournal);
+
+                if (transactionBo.PaidByPoolAmount > 0)
+                {
+                    var poolJournal = new TransactionJournalBo()
+                    {
+                        AccountId =
+                            accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
+                        Particulars = "Expense paid: " + transactionBo.Description,
+                        CreditAmount = transactionBo.PaidByPoolAmount,
+                        DebitAmount = 0
+                    };
+                    transactionBo.Journals.Add(poolJournal);
+                }
+
+                foreach (var friend in transactionBo.Friends.Where(x=>x.AmountPaid>0))
+                {
+                    var friendJournal = new TransactionJournalBo()
+                    {
+                        AccountId =
+                            accounts.First(x => x.EventFriendId == friend.EventFriendId && x.AccountTypeId == 1).AccountId,
+                        Particulars = "Expense paid: " + transactionBo.Description,
+                        CreditAmount = friend.AmountPaid,
+                        DebitAmount = 0
+                    };
+                    transactionBo.Journals.Add(friendJournal);
+                }
+
+
+                //Start inserting
+                transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
+                    transactionBo.Description, (int) transactionBo.TransactionType);
+
+                foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
+                {
+                    context.EventTransactionRepository.CreateTransactionSplit(friend.AmountDue, transactionId,
+                        friend.EventFriendId);
+                }
+
+                foreach (var journal in transactionBo.Journals)
+                {
+                    context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
+                        journal.AccountId, journal.DebitAmount, journal.CreditAmount);
+                }
+
+                context.SaveChanges();
+
+            }
+
+            return transactionId;
         }
     }
 

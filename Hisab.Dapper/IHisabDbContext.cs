@@ -14,6 +14,8 @@ namespace Hisab.Dapper
 
         IEventInviteRepository EventInviteRepository { get; }
 
+        IEventTransactionRepository EventTransactionRepository { get; }
+
         void SaveChanges();
     } 
 

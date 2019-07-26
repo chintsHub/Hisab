@@ -266,9 +266,26 @@ namespace Hisab.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm)
         {
+            SplitPerFriendTransactionBo trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewTransaction(TransactionType.SplitPerFriend);
+
+            trans.EventId = NewSplitByFriendVm.EventId;
+            trans.Description = NewSplitByFriendVm.Description;
+            foreach (var friend in NewSplitByFriendVm.FriendDetails)
+            {
+                trans.Friends.Add(new SplitPerFriendBo(){ AmountPaid = friend.AmountPaid, EventFriendId = friend.EventFriendId, IncludeInSplit = friend.IncludeInSplit});
+            }
+
+            trans.PaidByPoolAmount = NewSplitByFriendVm.PaidByPoolAmount;
+            trans.TransactionType = TransactionType.SplitPerFriend;
+
+            var transId = _eventManager.ProcessTransaction(trans);
+
+            if(transId > 0)
+                _toastNotification.AddSuccessToastMessage("Expense added");
+            else
+                _toastNotification.AddErrorToastMessage("Could not process transaction");
 
 
-            _toastNotification.AddSuccessToastMessage("Expense added");
             return RedirectToAction("Dashboard", "Event", new { NewSplitByFriendVm.EventId});
             
         }
