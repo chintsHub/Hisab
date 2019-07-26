@@ -19,6 +19,14 @@ namespace Hisab.Dapper.Repository
         int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount,
             decimal creditAmount);
 
+        decimal GetEventExpense(int eventId);
+
+        decimal GetEventPoolAmount(int eventId);
+
+        decimal GetEventFriendContributionAmount(int eventId, int eventFriendId);
+
+        decimal GetEventFriendExpense(int eventId, int eventFriendId);
+
     }
 
     internal class EventTransactionRepository : RepositoryBase, IEventTransactionRepository
@@ -26,6 +34,65 @@ namespace Hisab.Dapper.Repository
         public EventTransactionRepository(IDbConnection connection, IDbTransaction transaction) : base(connection, transaction)
         {
 
+        }
+
+        public decimal GetEventExpense(int eventId)
+        {
+            var totalAmount = Connection.ExecuteScalar<decimal>($@"
+                     select sum(TotalAmount) from [dbo].[EventTransaction] a where a.EventId = @{nameof(eventId)}",
+                     new { eventId }, Transaction);
+
+            return totalAmount;
+        }
+
+        public decimal GetEventPoolAmount(int eventId)
+        {
+            var totalAmount = Connection.ExecuteScalar<decimal>($@"
+                     select
+	                    sum(j.DebitAmount)
+                    from
+	                    [dbo].[EventTranscationJournal] j 
+	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
+                    where
+                        a.EventFriendId is null
+	                    and a.EventId = @{nameof(eventId)}
+	                    and a.AccountTypeId = 1 -- current asset",
+                new { eventId }, Transaction);
+
+            return totalAmount;
+        }
+
+        public decimal GetEventFriendContributionAmount(int eventId, int eventFriendId)
+        {
+            var totalAmount = Connection.ExecuteScalar<decimal>($@"
+                     select
+	                    sum(j.CreditAmount)
+                    from
+	                    [dbo].[EventTranscationJournal] j 
+	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
+                    where
+                        a.EventFriendId = @{nameof(eventFriendId)}
+	                    and a.EventId = @{nameof(eventId)}
+	                    and a.AccountTypeId = 1 -- current asset",
+                new { eventFriendId, eventId }, Transaction);
+
+            return totalAmount;
+        }
+
+        public decimal GetEventFriendExpense(int eventId, int eventFriendId)
+        {
+            var totalAmount = Connection.ExecuteScalar<decimal>($@"
+                    SELECT 
+	                    sum(s.AmountDue)
+                     FROM 
+	                    [dbo].[EventTransaction] t
+	                    inner join [dbo].[EventTransactionSplit] s on t.Id = s.TransactionId
+                    where
+                        t.EventId = @{nameof(eventId)}
+	                    and s.EventFriendId = @{nameof(eventFriendId)}",
+                new { eventId, eventFriendId }, Transaction);
+
+            return totalAmount;
         }
 
         public List<EventAccountBo> GetAccountsForEvent(int eventId)
@@ -48,12 +115,12 @@ namespace Hisab.Dapper.Repository
             return result.ToList();
         }
 
-        public int CreateTransaction(decimal totalAmount,int eventId, string description, int transactionType)
+        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType)
         {
            
 
             string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[EventId])
-                    VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(transactionType)}, @{nameof(eventId)});
+                    VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(splitType)}, @{nameof(eventId)});
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
             int transId = Connection.QuerySingle<int>(command,
@@ -61,7 +128,7 @@ namespace Hisab.Dapper.Repository
                 {
                     totalAmount,
                     description,
-                    transactionType,
+                    splitType,
                     eventId
 
                 }, transaction: Transaction);

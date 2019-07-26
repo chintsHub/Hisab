@@ -25,6 +25,16 @@ namespace Hisab.UI.ViewModels
 
         public NewSplitByFriendVm NewSplitByFriendVm { get; set; }
 
+        public decimal TotalEventExpense { get; set; }
+
+        public decimal TotalEventPoolAmount { get; set; }
+
+        public decimal MyEventExpense { get; set; }
+
+        public decimal MyContributions { get; set; }
+
+        public decimal MyNetAmount { get; set; }
+
 
         public EventVm()
         {

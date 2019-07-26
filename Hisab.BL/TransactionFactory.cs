@@ -7,24 +7,25 @@ namespace Hisab.BL
 {
     public static class TransactionFactory
     {
-        public static TransactionBo CreateNewTransaction(TransactionType transactionType)
+        public static TransactionBo CreateNewSplitTransaction(SplitType splitType)
         {
             TransactionBo _transactionBo = null;
-            switch (transactionType)
+            switch (splitType)
             {
-                case TransactionType.SplitPerFriend:
+                case SplitType.SplitPerFriend:
                 {
                     _transactionBo = new SplitPerFriendTransactionBo();
                     break;
                 }
-                case TransactionType.EventPoolEntry:
-                {
-                    _transactionBo = new EventPoolTransactionBo();
-                    break;
-                }
+                
             }
 
             return _transactionBo;
+        }
+
+        public static TransactionBo CreatePoolEntryTransaction()
+        {
+            return new EventPoolTransactionBo();
         }
     }
 }

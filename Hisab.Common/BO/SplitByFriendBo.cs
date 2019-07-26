@@ -12,7 +12,7 @@ namespace Hisab.Common.BO
 
         public decimal TotalAmount { get; set; }
 
-        public  TransactionType TransactionType { get; set; }
+        public  SplitType SplitType { get; set; }
 
         public List<TransactionJournalBo> Journals { get; set; }
 
@@ -82,11 +82,13 @@ namespace Hisab.Common.BO
         public decimal DepositAmount { get; set; }
     }
 
-    public enum TransactionType
+    public enum SplitType
     {
         SplitPerFriend = 1,
         SplitPerHead,
-        SplitByRate,
-        EventPoolEntry
+        SplitByRate
+        
     }
+
+   
 }

@@ -34,6 +34,8 @@ namespace Hisab.BL
         bool CheckEventAccess(EventBO eventBo, int userId);
 
         int ProcessTransaction(TransactionBo transaction);
+
+        Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId);
     }
 
     
@@ -241,9 +243,31 @@ namespace Hisab.BL
             return friend != null;
         }
 
+        public async Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId)
+        {
+            var retVal = new EventDashboardStatBo();
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                retVal.TotalEventExpense = context.EventTransactionRepository.GetEventExpense(eventId);
+
+                retVal.TotalEventPoolAmount = context.EventTransactionRepository.GetEventPoolAmount(eventId);
+
+                retVal.MyContributions =
+                    context.EventTransactionRepository.GetEventFriendContributionAmount(eventId, eventFriendId);
+
+                retVal.MyEventExpense =
+                    context.EventTransactionRepository.GetEventFriendExpense(eventId, eventFriendId);
+
+                retVal.MyNetAmount = retVal.MyContributions - retVal.MyEventExpense;
+
+            }
+
+            return retVal;
+        }
+
         public int ProcessTransaction(TransactionBo transaction)
         {
-            if (transaction.TransactionType == TransactionType.SplitPerFriend)
+            if (transaction.SplitType == SplitType.SplitPerFriend)
                 return ProcessSplitByFriendTransaction((SplitPerFriendTransactionBo)transaction).Result;
 
 
@@ -315,7 +339,7 @@ namespace Hisab.BL
 
                 //Start inserting
                 transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-                    transactionBo.Description, (int) transactionBo.TransactionType);
+                    transactionBo.Description, (int) transactionBo.SplitType);
 
                 foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
                 {

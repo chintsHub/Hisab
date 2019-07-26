@@ -51,12 +51,15 @@ namespace Hisab.UI.Controllers
         [Route("/Event/Dashboard/{eventId}")]
         public async Task<IActionResult> Dashboard(int eventId)
         {
-
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
+           
 
             if (await CanAccessEvent(eventBo))
             {
+                eventBo.DashboardStats = await _eventManager.GetDashboardStats(eventId, eventBo.Friends.First(x => x.AppUserId == user.Id).EventFriendId);
+                
                 return View("Index", BuildFriendList(eventBo));
             }
 
@@ -113,12 +116,26 @@ namespace Hisab.UI.Controllers
                 );
             }
 
-            return new EventVm()
+            var eve = new EventVm()
             {
-                EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = friendList,
-                NewSplitByFriendVm = splitByFriend
+                EventId = eventBo.EventId,
+                EventName = eventBo.EventName,
+                Friends = friendList,
+                NewSplitByFriendVm = splitByFriend,
+                
                 
             };
+
+            if (eventBo.DashboardStats != null)
+            {
+                eve.MyContributions = eventBo.DashboardStats.MyContributions;
+                eve.TotalEventExpense = eventBo.DashboardStats.TotalEventExpense;
+                eve.TotalEventPoolAmount = eventBo.DashboardStats.TotalEventPoolAmount;
+                eve.MyNetAmount = eventBo.DashboardStats.MyNetAmount;
+                eve.MyEventExpense = eventBo.DashboardStats.MyEventExpense;
+            }
+
+            return eve;
         }
 
         [HttpPost]
@@ -266,7 +283,7 @@ namespace Hisab.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm)
         {
-            SplitPerFriendTransactionBo trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewTransaction(TransactionType.SplitPerFriend);
+            SplitPerFriendTransactionBo trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
 
             trans.EventId = NewSplitByFriendVm.EventId;
             trans.Description = NewSplitByFriendVm.Description;
@@ -276,7 +293,7 @@ namespace Hisab.UI.Controllers
             }
 
             trans.PaidByPoolAmount = NewSplitByFriendVm.PaidByPoolAmount;
-            trans.TransactionType = TransactionType.SplitPerFriend;
+            trans.SplitType = SplitType.SplitPerFriend;
 
             var transId = _eventManager.ProcessTransaction(trans);
 
