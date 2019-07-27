@@ -36,6 +36,8 @@ namespace Hisab.BL
         int ProcessTransaction(TransactionBo transaction);
 
         Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId);
+
+        Task<List<TransactionBo>> GetAllTransactions(int eventId);
     }
 
     
@@ -265,6 +267,18 @@ namespace Hisab.BL
             return retVal;
         }
 
+        public async Task<List<TransactionBo>> GetAllTransactions(int eventId)
+        {
+            var retValue = new List<TransactionBo>();
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                retValue = context.EventTransactionRepository.GetAllTransactions(eventId);
+            }
+
+            return retValue;
+        }
+
         public int ProcessTransaction(TransactionBo transaction)
         {
             switch (transaction.SplitType)
@@ -312,7 +326,7 @@ namespace Hisab.BL
                 transactionBo.Journals.Add(friendJournal);
 
                 transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-                    transactionBo.Description, (int)transactionBo.SplitType);
+                    transactionBo.Description, (int)transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
 
                 foreach (var journal in transactionBo.Journals)
                 {
@@ -390,7 +404,7 @@ namespace Hisab.BL
 
                 //Start inserting
                 transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-                    transactionBo.Description, (int) transactionBo.SplitType);
+                    transactionBo.Description, (int) transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
 
                 foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
                 {

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Hisab.Common.BO
 {
-    public abstract class TransactionBo
+    public class TransactionBo
     {
+        public int Id { get; set; }
         public int EventId { get; set; }
 
         public string Description { get; set; }
@@ -16,7 +17,10 @@ namespace Hisab.Common.BO
 
         public List<TransactionJournalBo> Journals { get; set; }
 
-        //public abstract int ProcessTransaction();
+        public int CreatedByUserId { get; set; }
+        public string NickName { get; set; }
+
+        public DateTime CreatedDateTime { get; set; }
 
     }
 

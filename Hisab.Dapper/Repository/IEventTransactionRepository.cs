@@ -12,7 +12,9 @@ namespace Hisab.Dapper.Repository
     {
         List<EventAccountBo> GetAccountsForEvent(int eventId);
 
-        int CreateTransaction(decimal totalAmount, int eventId, string description, int transactionType);
+        List<TransactionBo> GetAllTransactions(int eventId);
+
+        int CreateTransaction(decimal totalAmount, int eventId, string description, int transactionType, int createdByUserId, DateTime createDateTime);
 
         int CreateTransactionSplit(decimal amountDue, int transactionId, int eventFriendId);
 
@@ -36,6 +38,27 @@ namespace Hisab.Dapper.Repository
 
         }
 
+        public List<TransactionBo> GetAllTransactions(int eventId)
+        {
+           var result = Connection.Query<TransactionBo>($@"
+                    SELECT 
+	                       t.[Id]
+                          ,[TotalAmount]
+                          ,[Description]
+                          ,[SplitType]
+                          ,[EventId]
+                          ,[CreatedbyUserId]
+                          ,[CreatedDateTime]
+	                      ,u.NickName
+                      FROM 
+	                    [dbo].[EventTransaction] t
+	                    inner join ApplicationUser u on t.CreatedbyUserId = u.Id
+                        where t.EventId = @{nameof(eventId)}",
+                new { eventId }, Transaction);
+
+            return result.ToList();
+        }
+
         public decimal GetEventExpense(int eventId)
         {
             var totalAmount = Connection.ExecuteScalar<decimal>($@"
@@ -51,7 +74,7 @@ namespace Hisab.Dapper.Repository
                      select
 	                    sum(j.DebitAmount) -sum(j.CreditAmount) as balance
                     from
-	                    [dbo].[EventTranscationJournal] j 
+	                    [dbo].[EventTransactionJournal] j 
 	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
                     where
                         a.EventFriendId is null
@@ -68,7 +91,7 @@ namespace Hisab.Dapper.Repository
                      select
 	                    sum(j.CreditAmount)
                     from
-	                    [dbo].[EventTranscationJournal] j 
+	                    [dbo].[EventTransactionJournal] j 
 	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
                     where
                         a.EventFriendId = @{nameof(eventFriendId)}
@@ -115,12 +138,12 @@ namespace Hisab.Dapper.Repository
             return result.ToList();
         }
 
-        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType)
+        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType, int createdByUserId, DateTime createdDateTime)
         {
            
 
-            string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[EventId])
-                    VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(splitType)}, @{nameof(eventId)});
+            string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[EventId], [CreatedbyUserId] ,[CreatedDateTime])
+                    VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(splitType)}, @{nameof(eventId)}, @{nameof(createdByUserId)}, @{nameof(createdDateTime)});
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
             int transId = Connection.QuerySingle<int>(command,
@@ -129,7 +152,9 @@ namespace Hisab.Dapper.Repository
                     totalAmount,
                     description,
                     splitType,
-                    eventId
+                    eventId,
+                    createdByUserId,
+                    createdDateTime
 
                 }, transaction: Transaction);
 
@@ -163,7 +188,7 @@ namespace Hisab.Dapper.Repository
         {
 
 
-            string command = $@"INSERT INTO [dbo].[EventTranscationJournal] ([TransactionId] ,[Particulars] ,[AccountId] ,[DebitAmount] ,[CreditAmount])
+            string command = $@"INSERT INTO [dbo].[EventTransactionJournal] ([TransactionId] ,[Particulars] ,[AccountId] ,[DebitAmount] ,[CreditAmount])
                     VALUES (@{nameof(transactionId)}, @{nameof(particulars)},@{nameof(accountId)},@{nameof(debitAmount)},@{nameof(creditAmount)} );
             SELECT CAST(SCOPE_IDENTITY() as int)";
 

@@ -216,7 +216,23 @@ namespace Hisab.UI.Controllers
 
             if (await CanAccessEvent(eventBo))
             {
-                return View("Transactions", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName });
+
+                var results = await _eventManager.GetAllTransactions(eventId);
+                var transList = new List<TransactionVm>();
+                foreach (var transaction in results)
+                {
+                    transList.Add(new TransactionVm()
+                    {
+                        CreatedDateTime = transaction.CreatedDateTime,
+                        NickName = transaction.NickName,
+                        TotalAmount = transaction.TotalAmount,
+                        SplitType = transaction.SplitType.GetDescription(),
+                        CreatedByUserId = transaction.CreatedByUserId,
+                        Description = transaction.Description,
+                        TransactionId = transaction.Id
+                    });
+                }
+                return View("Transactions", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName,Transactions = transList});
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -298,7 +314,12 @@ namespace Hisab.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             var trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
+
+            trans.CreatedByUserId = user.Id;
+            trans.CreatedDateTime = DateTime.UtcNow;
 
             trans.EventId = NewSplitByFriendVm.EventId;
             trans.Description = NewSplitByFriendVm.Description;
@@ -325,7 +346,12 @@ namespace Hisab.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddContribution(NewEventPoolEntryVm newEventPoolEntryVm)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             var trans = TransactionFactory.CreatePoolEntryTransaction();
+
+            trans.CreatedByUserId = user.Id;
+            trans.CreatedDateTime = DateTime.UtcNow;
 
             trans.EventId = newEventPoolEntryVm.EventId;
             trans.Description = "Cash contributed by " + newEventPoolEntryVm.SelectedFriendId;

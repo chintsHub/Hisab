@@ -5,5 +5,8 @@
     [Description] VARCHAR(200) NOT NULL, 
     [SplitType] INT NOT NULL, 
     [EventId] INT NOT NULL, 
-    CONSTRAINT [FK_EventTransaction_Event] FOREIGN KEY ([EventId]) REFERENCES [Event]([Id])
+    [CreatedbyUserId] INT NOT NULL, 
+    [CreatedDateTime] DATETIME NOT NULL, 
+    CONSTRAINT [FK_EventTransaction_Event] FOREIGN KEY ([EventId]) REFERENCES [Event]([Id]), 
+    CONSTRAINT [FK_EventTransaction_ApplicationUser] FOREIGN KEY ([CreatedbyUserId]) REFERENCES [ApplicationUser]([Id])
 )

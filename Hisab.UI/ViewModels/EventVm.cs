@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Hisab.Common.BO;
@@ -36,6 +37,8 @@ namespace Hisab.UI.ViewModels
 
         public decimal MyNetAmount { get; set; }
 
+        public List<TransactionVm> Transactions { get; set; }
+
 
         public EventVm()
         {
@@ -46,7 +49,7 @@ namespace Hisab.UI.ViewModels
 
             EventStatusList = list.AsEnumerable();
 
-            
+            Transactions = new List<TransactionVm>();
         }
 
 
@@ -82,6 +85,24 @@ namespace Hisab.UI.ViewModels
         public decimal AmountPaid { get; set; }
 
         public bool IncludeInSplit { get; set; }
+    }
+
+    public class TransactionVm
+    {
+        public int TransactionId { get; set; }
+
+        
+        public string Description { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public string SplitType { get; set; }
+
+       
+        public int CreatedByUserId { get; set; }
+        public string NickName { get; set; }
+
+        public DateTime CreatedDateTime { get; set; }
     }
 
 
