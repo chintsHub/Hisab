@@ -107,7 +107,7 @@ namespace Hisab.Common.BO
         
         public decimal TotalEventExpense { get; set; }
 
-        public decimal TotalEventPoolAmount { get; set; }
+        public decimal TotalEventPoolBalance { get; set; }
 
         public decimal MyEventExpense { get; set; }
 

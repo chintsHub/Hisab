@@ -21,7 +21,7 @@ namespace Hisab.Dapper.Repository
 
         decimal GetEventExpense(int eventId);
 
-        decimal GetEventPoolAmount(int eventId);
+        decimal GetEventPoolBalance(int eventId);
 
         decimal GetEventFriendContributionAmount(int eventId, int eventFriendId);
 
@@ -45,11 +45,11 @@ namespace Hisab.Dapper.Repository
             return totalAmount;
         }
 
-        public decimal GetEventPoolAmount(int eventId)
+        public decimal GetEventPoolBalance(int eventId)
         {
             var totalAmount = Connection.ExecuteScalar<decimal>($@"
                      select
-	                    sum(j.DebitAmount)
+	                    sum(j.DebitAmount) -sum(j.CreditAmount) as balance
                     from
 	                    [dbo].[EventTranscationJournal] j 
 	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId

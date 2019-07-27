@@ -18,26 +18,30 @@
                 </tr>
             </thead>
             <tbody>
+            @if (@Model.MaxAllowedPoolAmount > 0)
+            {
                 <tr>
                     <td>Pool Amount</td>
-                    <td><input asp-for="@Model.PaidByPoolAmount" class="form-control" type="text" /></td>
+                    <td><input asp-for="@Model.PaidByPoolAmount" class="form-control" type="text"/></td>
                     <td>n/a</td>
                 </tr>
+            }
+            
 
-                @for (var i = 0; i < Model.FriendDetails.Count; i++)
-                {
-                    <tr>
-                        <input type="hidden" asp-for="@Model.FriendDetails[i].EventFriendId" value="@Model.FriendDetails[i].EventFriendId" />
-                        <td>
-                            @Model.FriendDetails[i].Name
+            @for (var i = 0; i < Model.FriendDetails.Count; i++)
+            {
+                <tr>
+                    <input type="hidden" asp-for="@Model.FriendDetails[i].EventFriendId" value="@Model.FriendDetails[i].EventFriendId"/>
+                    <td>
+                        @Model.FriendDetails[i].Name
 
-                        </td>
-                        <td><input asp-for="@Model.FriendDetails[i].AmountPaid" class="form-control" type="text" /></td>
-                        <td>
-                            <input asp-for="@Model.FriendDetails[i].IncludeInSplit" class="Slider" type="checkbox" data-toggle="toggle" data-on="Include" data-off="Exclude">
-                        </td>
-                    </tr>
-                }
+                    </td>
+                    <td><input asp-for="@Model.FriendDetails[i].AmountPaid" class="form-control" type="text"/></td>
+                    <td>
+                        <input asp-for="@Model.FriendDetails[i].IncludeInSplit" class="Slider" type="checkbox" data-toggle="toggle" data-on="Include" data-off="Exclude">
+                    </td>
+                </tr>
+            }
 
 
             </tbody>

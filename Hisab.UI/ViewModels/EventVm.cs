@@ -28,7 +28,7 @@ namespace Hisab.UI.ViewModels
 
         public decimal TotalEventExpense { get; set; }
 
-        public decimal TotalEventPoolAmount { get; set; }
+        public decimal TotalEventPoolBalance { get; set; }
 
         public decimal MyEventExpense { get; set; }
 
@@ -87,7 +87,9 @@ namespace Hisab.UI.ViewModels
 
     public class NewEventPoolEntryVm
     {
-      
+
+        public int EventId { get; set; }
+
         public decimal ContributionAmount { get; set; }
 
         public IEnumerable<SelectListItem> FriendList { get; set; }

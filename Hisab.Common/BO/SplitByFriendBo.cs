@@ -72,7 +72,12 @@ namespace Hisab.Common.BO
 
     public class EventPoolTransactionBo : TransactionBo
     {
-        public List<PoolFriendEntryBo> Friends { get; set; }
+        public int EventFriendId { get; set; }
+
+        public EventPoolTransactionBo()
+        {
+            Journals = new List<TransactionJournalBo>();
+        }
     }
 
     public class PoolFriendEntryBo
@@ -84,6 +89,7 @@ namespace Hisab.Common.BO
 
     public enum SplitType
     {
+        NotApplicable = 0,
         SplitPerFriend = 1,
         SplitPerHead,
         SplitByRate

@@ -250,7 +250,7 @@ namespace Hisab.BL
             {
                 retVal.TotalEventExpense = context.EventTransactionRepository.GetEventExpense(eventId);
 
-                retVal.TotalEventPoolAmount = context.EventTransactionRepository.GetEventPoolAmount(eventId);
+                retVal.TotalEventPoolBalance = context.EventTransactionRepository.GetEventPoolBalance(eventId);
 
                 retVal.MyContributions =
                     context.EventTransactionRepository.GetEventFriendContributionAmount(eventId, eventFriendId);
@@ -267,12 +267,63 @@ namespace Hisab.BL
 
         public int ProcessTransaction(TransactionBo transaction)
         {
-            if (transaction.SplitType == SplitType.SplitPerFriend)
-                return ProcessSplitByFriendTransaction((SplitPerFriendTransactionBo)transaction).Result;
+            switch (transaction.SplitType)
+            {
+                case SplitType.SplitPerFriend:
+                    return ProcessSplitByFriendTransaction((SplitPerFriendTransactionBo)transaction).Result;
+                    break;
+                case SplitType.NotApplicable:
+                    return ProcessContributionTransaction((EventPoolTransactionBo) transaction).Result;
+                    break;
 
+            }
 
-
+            
             return 0;
+        }
+
+        private async Task<int> ProcessContributionTransaction(EventPoolTransactionBo transactionBo)
+        {
+            int transactionId = 0;
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
+                //prepare Journals
+                var eventCashJournal = new TransactionJournalBo
+                {
+                    AccountId =
+                        accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
+                    Particulars = transactionBo.Description,
+                    CreditAmount = 0,
+                    DebitAmount = transactionBo.TotalAmount
+
+                };
+                transactionBo.Journals.Add(eventCashJournal);
+
+                var friendJournal = new TransactionJournalBo()
+                {
+                    AccountId =
+                        accounts.First(x => x.EventFriendId == transactionBo.EventFriendId && x.AccountTypeId == 1).AccountId,
+                    Particulars = "Deposit paid: " + transactionBo.Description,
+                    CreditAmount = transactionBo.TotalAmount,
+                    DebitAmount = 0
+                };
+                transactionBo.Journals.Add(friendJournal);
+
+                transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
+                    transactionBo.Description, (int)transactionBo.SplitType);
+
+                foreach (var journal in transactionBo.Journals)
+                {
+                    context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
+                        journal.AccountId, journal.DebitAmount, journal.CreditAmount);
+                }
+
+                context.SaveChanges();
+            }
+
+            return transactionId;
         }
 
         private async Task<int> ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo)

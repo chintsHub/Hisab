@@ -124,6 +124,7 @@ namespace Hisab.UI.Controllers
             }
 
             eventPoolEntry.FriendList = friendListItems.AsEnumerable();
+            eventPoolEntry.EventId = eventBo.EventId;
 
             var eve = new EventVm()
             {
@@ -140,9 +141,10 @@ namespace Hisab.UI.Controllers
             {
                 eve.MyContributions = eventBo.DashboardStats.MyContributions;
                 eve.TotalEventExpense = eventBo.DashboardStats.TotalEventExpense;
-                eve.TotalEventPoolAmount = eventBo.DashboardStats.TotalEventPoolAmount;
+                eve.TotalEventPoolBalance = eventBo.DashboardStats.TotalEventPoolBalance;
                 eve.MyNetAmount = eventBo.DashboardStats.MyNetAmount;
                 eve.MyEventExpense = eventBo.DashboardStats.MyEventExpense;
+                eve.NewSplitByFriendVm.MaxAllowedPoolAmount = eve.TotalEventPoolBalance;
             }
 
             
@@ -296,7 +298,7 @@ namespace Hisab.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm)
         {
-            SplitPerFriendTransactionBo trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
+            var trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
 
             trans.EventId = NewSplitByFriendVm.EventId;
             trans.Description = NewSplitByFriendVm.Description;
@@ -321,9 +323,25 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddContribution(NewEventPoolEntryVm NewEventPoolEntryVm)
+        public async Task<IActionResult> AddContribution(NewEventPoolEntryVm newEventPoolEntryVm)
         {
-            return null;
+            var trans = TransactionFactory.CreatePoolEntryTransaction();
+
+            trans.EventId = newEventPoolEntryVm.EventId;
+            trans.Description = "Cash contributed by " + newEventPoolEntryVm.SelectedFriendId;
+            trans.SplitType = SplitType.NotApplicable;
+            trans.TotalAmount = newEventPoolEntryVm.ContributionAmount;
+            ((EventPoolTransactionBo) trans).EventFriendId = newEventPoolEntryVm.SelectedFriendId;
+
+            var transId = _eventManager.ProcessTransaction(trans);
+
+            if (transId > 0)
+                _toastNotification.AddSuccessToastMessage("Expense added");
+            else
+                _toastNotification.AddErrorToastMessage("Could not process transaction");
+
+
+            return RedirectToAction("Dashboard", "Event", new { newEventPoolEntryVm.EventId });
         }
 
         [HttpPost]
