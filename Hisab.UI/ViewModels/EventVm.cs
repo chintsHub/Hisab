@@ -96,6 +96,7 @@ namespace Hisab.UI.ViewModels
 
         public decimal PaidByPoolAmount { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         public List<NewSplitByFriendDetailsVm> FriendDetails { get; set; }

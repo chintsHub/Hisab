@@ -16,7 +16,7 @@
     <form id="CreateEventForm" class="popupForm" asp-controller="AppHome" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
         <div class="form-group">
             <label asp-for="@Model.NewEvent.EventName">Event Name:</label>
-            <input asp-for="@Model.NewEvent.EventName" class="form-control" type="text" />
+            <input asp-for="@Model.NewEvent.EventName" class="form-control" placeholder="e.g. Trip to Thailand" type="text" />
             <span asp-validation-for="@Model.NewEvent.EventName"></span>
         </div>
         

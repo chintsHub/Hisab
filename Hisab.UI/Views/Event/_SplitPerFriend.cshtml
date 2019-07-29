@@ -4,7 +4,7 @@
     <input type="hidden" asp-for="@Model.EventId" value="@Model.EventId" />
     <div class="form-group">
         <label asp-for="@Model.Description">Description:</label>
-        <input asp-for="@Model.Description" class="form-control" type="text" />
+        <input asp-for="@Model.Description" class="form-control" placeholder="e.g. Dinner at Thai garden" type="text" />
         <span asp-validation-for="@Model.Description"></span>
 
     </div>

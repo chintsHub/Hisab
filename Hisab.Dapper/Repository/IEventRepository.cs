@@ -169,6 +169,7 @@ namespace Hisab.Dapper.Repository
 	                inner join [Event] e on ef.EventId = e.Id
 	                inner join [ApplicationUser] u on u.Id = ef.AppUserId
                 where
+                    ef.status in (1,5) and
                  ef.AppUserId = @{nameof(userId)}",
                  
                  new { userId }, Transaction);
