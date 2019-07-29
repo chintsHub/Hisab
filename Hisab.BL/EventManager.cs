@@ -38,6 +38,8 @@ namespace Hisab.BL
         Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId);
 
         Task<List<TransactionBo>> GetAllTransactions(int eventId);
+
+        Task<List<SettlementData>> GetSettlementData(int eventId);
     }
 
     
@@ -279,6 +281,18 @@ namespace Hisab.BL
             return retValue;
         }
 
+        public async Task<List<SettlementData>> GetSettlementData(int eventId)
+        {
+            var retValue = new List<SettlementData>();
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                retValue = context.EventTransactionRepository.GetSettlementData(eventId);
+            }
+
+            return retValue;
+        }
+
         public int ProcessTransaction(TransactionBo transaction)
         {
             switch (transaction.SplitType)
@@ -344,18 +358,85 @@ namespace Hisab.BL
         {
             // calculate Total Expense
             transactionBo.TotalAmount = transactionBo.PaidByPoolAmount; //TODO: Does pool have money to pay?
-            int totalFriends = transactionBo.Friends.Count(x => x.IncludeInSplit);
+            
             foreach (var friend in transactionBo.Friends)
             {
                 transactionBo.TotalAmount += friend.AmountPaid;
+
+                //If pool money is used, cannot exclude anyone
+                if (transactionBo.PaidByPoolAmount > 0)
+                    friend.IncludeInSplit = true;
             }
 
-            
             // assign expense
+            int totalFriends = transactionBo.Friends.Count(x => x.IncludeInSplit);
             decimal perFriendExpense = transactionBo.TotalAmount / totalFriends;
-            foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
+
+            decimal expenseToSettle = transactionBo.TotalAmount - transactionBo.PaidByPoolAmount;
+            decimal expenseToSettlePerFriend = 0;
+            if (expenseToSettle > 0)
+                 expenseToSettlePerFriend = expenseToSettle / totalFriends;
+
+            foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit)) 
             {
                 friend.AmountDue = perFriendExpense;
+
+                if (expenseToSettle > 0)
+                    friend.NetAmountToSettle = friend.AmountPaid - expenseToSettlePerFriend;
+
+
+            }
+
+            if (transactionBo.Friends.Count(x => x.AmountPaid > 0) > 0)
+            {
+                //Settlement needed
+                foreach (var toRecievefriend in transactionBo.Friends.Where(x => x.NetAmountToSettle > 0).OrderByDescending(x => x.NetAmountToSettle))
+                {
+                    foreach (var toPayfriend in transactionBo.Friends.Where(x => x.NetAmountToSettle < 0).OrderBy(x => x.NetAmountToSettle))
+                    {
+                        decimal howMuchToPay = Math.Abs(toPayfriend.NetAmountToSettle) - toPayfriend.AlreadySettled;
+                        decimal howMuchTorecieve = toRecievefriend.NetAmountToSettle - toRecievefriend.AlreadySettled;
+
+                        if (howMuchToPay > 0 && howMuchTorecieve > 0)
+                        {
+                            if (howMuchToPay <= howMuchTorecieve)
+                            {
+                                //settlement BO
+                                toPayfriend.AlreadySettled += howMuchToPay;
+                                toRecievefriend.AlreadySettled += howMuchToPay;
+
+                                var settlement = new SettlementBo()
+                                {
+                                    TransactionId = 0,
+                                    PayerFriendId = toPayfriend.EventFriendId,
+                                    ReceiverFriendId = toRecievefriend.EventFriendId,
+                                    Amount = howMuchToPay,
+                                    EventId = transactionBo.EventId
+                                };
+                                transactionBo.Settlements.Add(settlement);
+                            }
+                            else
+                            {
+                                //settlement BO
+                                toPayfriend.AlreadySettled += howMuchTorecieve;
+                                toRecievefriend.AlreadySettled += howMuchTorecieve;
+                                var settlement = new SettlementBo()
+                                {
+                                    TransactionId = 0,
+                                    PayerFriendId = toPayfriend.EventFriendId,
+                                    ReceiverFriendId = toRecievefriend.EventFriendId,
+                                    Amount = howMuchTorecieve,
+                                    EventId = transactionBo.EventId
+                                };
+                                transactionBo.Settlements.Add(settlement);
+                            }
+                           
+                        }
+
+                       
+                    }
+                }
+
             }
 
             int transactionId = 0;
@@ -416,6 +497,14 @@ namespace Hisab.BL
                 {
                     context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
                         journal.AccountId, journal.DebitAmount, journal.CreditAmount);
+                }
+
+                foreach (var settlement in transactionBo.Settlements)
+                {
+                    settlement.TransactionId = transactionId;
+                    context.EventTransactionRepository.CreateTransactionSettlement(settlement.EventId,
+                        settlement.TransactionId, settlement.PayerFriendId, settlement.ReceiverFriendId,
+                        settlement.Amount);
                 }
 
                 context.SaveChanges();

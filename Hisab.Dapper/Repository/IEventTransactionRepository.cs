@@ -21,6 +21,9 @@ namespace Hisab.Dapper.Repository
         int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount,
             decimal creditAmount);
 
+        int CreateTransactionSettlement(int eventId, int transactionId, int payerEventFriendId,
+            int receiverEventFriendId, decimal amount);
+
         decimal GetEventExpense(int eventId);
 
         decimal GetEventPoolBalance(int eventId);
@@ -28,6 +31,9 @@ namespace Hisab.Dapper.Repository
         decimal GetEventFriendContributionAmount(int eventId, int eventFriendId);
 
         decimal GetEventFriendExpense(int eventId, int eventFriendId);
+
+        List<SettlementData> GetSettlementData(int eventId);
+
 
     }
 
@@ -54,6 +60,29 @@ namespace Hisab.Dapper.Repository
 	                    [dbo].[EventTransaction] t
 	                    inner join ApplicationUser u on t.CreatedbyUserId = u.Id
                         where t.EventId = @{nameof(eventId)}",
+                new { eventId }, Transaction);
+
+            return result.ToList();
+        }
+
+        public List<SettlementData> GetSettlementData(int eventId)
+        {
+            var result = Connection.Query<SettlementData>($@"
+                    select 
+	                        s.EventId,
+	                        payer.NickName payerFriend,
+	                        receiver.NickName receiverFriend,
+	                        sum(Amount) Amount
+                         FROM 
+	                        [dbo].[EventTransactionSettlement] s
+	                        inner join [dbo].[EventFriend] payer on payer.EventFriendId = s.PayerEventFriendId
+	                        inner join [dbo].[EventFriend] receiver on receiver.EventFriendId = s.ReceiverEventFriendId
+                        where 
+                          s.Eventid = @{nameof(eventId)}
+                        group by
+	                        s.EventId,
+	                        payer.NickName ,
+	                        receiver.NickName ",
                 new { eventId }, Transaction);
 
             return result.ToList();
@@ -200,6 +229,30 @@ namespace Hisab.Dapper.Repository
                     accountId,
                     debitAmount,
                     creditAmount
+
+                }, transaction: Transaction);
+
+
+            return transId;
+        }
+
+
+        public int CreateTransactionSettlement(int eventId, int transactionId, int payerEventFriendId, int receiverEventFriendId, decimal amount)
+        {
+
+
+            string command = $@"INSERT INTO [dbo].[EventTransactionSettlement] ([EventId] ,[TransactionId] ,[PayerEventFriendId] ,[ReceiverEventFriendId] ,[Amount])
+                    VALUES (@{nameof(eventId)}, @{nameof(transactionId)},@{nameof(payerEventFriendId)}, @{nameof(receiverEventFriendId)}, @{nameof(amount)});
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            int transId = Connection.QuerySingle<int>(command,
+                new
+                {
+                    eventId,
+                    transactionId,
+                    payerEventFriendId,
+                    receiverEventFriendId,
+                    amount
 
                 }, transaction: Transaction);
 

@@ -39,6 +39,8 @@ namespace Hisab.UI.ViewModels
 
         public List<TransactionVm> Transactions { get; set; }
 
+        public SettlementHeaderVm SettlementHeader { get; set; }
+
 
         public EventVm()
         {
@@ -54,6 +56,39 @@ namespace Hisab.UI.ViewModels
 
 
     }
+
+    public class SettlementHeaderVm
+    {
+        public Dictionary<string,int> Payers { get; set; }
+
+        public Dictionary<string,int> Receivers { get; set; }
+
+        public List<SettlementVm> Settlements { get; set; }
+
+        public int Columns { get; set; }
+        public int Rows { get; set; }
+
+        public SettlementHeaderVm()
+        {
+            Payers = new Dictionary<string, int>();
+            Receivers = new Dictionary<string, int>();
+            Settlements = new List<SettlementVm>();
+        }
+    }
+
+    public class SettlementVm
+    {
+        public int EventId { get; set; }
+
+        public string PayerFriend { get; set; }
+        public int PayerRowId { get; set; }
+
+        public string ReceiverFriend { get; set; }
+        public int ReceiverColumnId { get; set; }
+
+        public decimal Amount { get; set; }
+    }
+
 
     public class NewSplitByFriendVm
     {
@@ -103,6 +138,11 @@ namespace Hisab.UI.ViewModels
         public string NickName { get; set; }
 
         public DateTime CreatedDateTime { get; set; }
+    }
+
+    public class DeleteTransactionRequest
+    {
+        public List<int> TransactionId { get; set; }
     }
 
 

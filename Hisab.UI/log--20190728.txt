@@ -1,0 +1,1026 @@
+2019-07-28 20:23:13.715 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 20:23:13, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 20:23:14.141 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 20:23:15.623 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 20:23:15.635 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 20:23:13, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1637, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 20:23:13")] }
+2019-07-28 20:23:17.284 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 20:23:17.292 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 20:23:17.497 +10:00 [Information] Request finished in 211.771ms 200 
+2019-07-28 20:23:18.331 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 20:23:18.530 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:18.544 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 10.4463ms.
+2019-07-28 20:23:18.609 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 20:23:18.626 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 286.3751ms
+2019-07-28 20:23:18.695 +10:00 [Information] Request finished in 1424.7815ms 302 
+2019-07-28 20:23:18.698 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 20:23:18.717 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 20:23:18.753 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:18.769 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:18.858 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 88.943ms.
+2019-07-28 20:23:18.955 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:23:19.563 +10:00 [Information] Executed ViewResult - view "Index" executed in 694.8508ms.
+2019-07-28 20:23:19.567 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 849.054ms
+2019-07-28 20:23:19.582 +10:00 [Information] Request finished in 884.1073ms 200 text/html; charset=utf-8
+2019-07-28 20:23:22.724 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/1  
+2019-07-28 20:23:22.739 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:23:22.739 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:22.785 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:22.949 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 164.2955ms.
+2019-07-28 20:23:22.961 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:23:23.105 +10:00 [Information] Executed ViewResult - view "Index" executed in 155.3074ms.
+2019-07-28 20:23:23.105 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 366.4001ms
+2019-07-28 20:23:23.105 +10:00 [Information] Request finished in 380.9031ms 200 text/html; charset=utf-8
+2019-07-28 20:23:41.774 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 20:23:41.776 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 20:23:41.776 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:41.793 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:41.841 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 47.9244ms.
+2019-07-28 20:23:41.843 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:23:41.845 +10:00 [Information] Executed ViewResult - view "Index" executed in 3.4869ms.
+2019-07-28 20:23:41.845 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 69.2132ms
+2019-07-28 20:23:41.845 +10:00 [Information] Request finished in 70.9103ms 200 text/html; charset=utf-8
+2019-07-28 20:23:48.624 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/AppHome/CreateEvent application/x-www-form-urlencoded 251
+2019-07-28 20:23:48.652 +10:00 [Information] Route matched with "{action = \"CreateEvent\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateEvent(Hisab.UI.ViewModels.AppHomeVm)" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 20:23:48.653 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:48.780 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.CreateEvent (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:48.991 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.CreateEvent (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 210.2911ms.
+2019-07-28 20:23:48.992 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Dashboard/3".
+2019-07-28 20:23:49.025 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.CreateEvent (Hisab.UI)" in 371.7623ms
+2019-07-28 20:23:49.025 +10:00 [Information] Request finished in 401.1034ms 302 
+2019-07-28 20:23:49.040 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 20:23:49.042 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:23:49.042 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:49.059 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:49.165 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 105.5749ms.
+2019-07-28 20:23:49.165 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:23:49.171 +10:00 [Information] Executed ViewResult - view "Index" executed in 6.2446ms.
+2019-07-28 20:23:49.172 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 129.5795ms
+2019-07-28 20:23:49.172 +10:00 [Information] Request finished in 131.3959ms 200 text/html; charset=utf-8
+2019-07-28 20:23:51.406 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/3  
+2019-07-28 20:23:51.410 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:23:51.410 +10:00 [Information] Authorization was successful.
+2019-07-28 20:23:51.429 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:23:51.455 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 26.0565ms.
+2019-07-28 20:23:51.459 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-07-28 20:23:51.536 +10:00 [Information] Executed ViewResult - view "Friends" executed in 80.4104ms.
+2019-07-28 20:23:51.536 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 125.5094ms
+2019-07-28 20:23:51.536 +10:00 [Information] Request finished in 130.0882ms 200 text/html; charset=utf-8
+2019-07-28 20:24:07.702 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddFriend application/x-www-form-urlencoded 373
+2019-07-28 20:24:07.711 +10:00 [Information] Route matched with "{action = \"AddFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:07.712 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:07.755 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:07.906 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 150.2297ms.
+2019-07-28 20:24:07.908 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/3".
+2019-07-28 20:24:07.909 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" in 197.0426ms
+2019-07-28 20:24:07.910 +10:00 [Information] Request finished in 207.7709ms 302 
+2019-07-28 20:24:07.916 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/3  
+2019-07-28 20:24:07.917 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:07.917 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:07.937 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:07.960 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 23.0833ms.
+2019-07-28 20:24:07.960 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-07-28 20:24:08.027 +10:00 [Information] Executed ViewResult - view "Friends" executed in 66.8592ms.
+2019-07-28 20:24:08.027 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 110.0341ms
+2019-07-28 20:24:08.027 +10:00 [Information] Request finished in 110.8127ms 200 text/html; charset=utf-8
+2019-07-28 20:24:19.562 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddFriend application/x-www-form-urlencoded 373
+2019-07-28 20:24:19.563 +10:00 [Information] Route matched with "{action = \"AddFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:19.563 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:19.584 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:19.689 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 103.9594ms.
+2019-07-28 20:24:19.689 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/3".
+2019-07-28 20:24:19.689 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" in 126.0684ms
+2019-07-28 20:24:19.689 +10:00 [Information] Request finished in 127.1325ms 302 
+2019-07-28 20:24:19.695 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/3  
+2019-07-28 20:24:19.696 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:19.696 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:19.712 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:19.732 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 20.3789ms.
+2019-07-28 20:24:19.733 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-07-28 20:24:19.749 +10:00 [Information] Executed ViewResult - view "Friends" executed in 16.2658ms.
+2019-07-28 20:24:19.749 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 53.0378ms
+2019-07-28 20:24:19.749 +10:00 [Information] Request finished in 53.8051ms 200 text/html; charset=utf-8
+2019-07-28 20:24:36.813 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddFriend application/x-www-form-urlencoded 373
+2019-07-28 20:24:36.813 +10:00 [Information] Route matched with "{action = \"AddFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(Hisab.UI.ViewModels.EventFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:36.814 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:36.835 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:36.944 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 108.7239ms.
+2019-07-28 20:24:36.944 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Friends/3".
+2019-07-28 20:24:36.944 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddFriend (Hisab.UI)" in 130.7008ms
+2019-07-28 20:24:36.944 +10:00 [Information] Request finished in 131.6504ms 302 
+2019-07-28 20:24:36.950 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Friends/3  
+2019-07-28 20:24:36.951 +10:00 [Information] Route matched with "{action = \"Friends\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Friends(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:36.951 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:36.968 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:36.990 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 22.0914ms.
+2019-07-28 20:24:36.990 +10:00 [Information] Executing ViewResult, running view "Friends".
+2019-07-28 20:24:37.008 +10:00 [Information] Executed ViewResult - view "Friends" executed in 18.2364ms.
+2019-07-28 20:24:37.009 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Friends (Hisab.UI)" in 57.575ms
+2019-07-28 20:24:37.009 +10:00 [Information] Request finished in 58.3416ms 200 text/html; charset=utf-8
+2019-07-28 20:24:40.085 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 20:24:40.085 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:24:40.085 +10:00 [Information] Authorization was successful.
+2019-07-28 20:24:40.104 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:24:40.211 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 106.4877ms.
+2019-07-28 20:24:40.211 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:24:40.221 +10:00 [Information] Executed ViewResult - view "Index" executed in 9.8968ms.
+2019-07-28 20:24:40.221 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 135.6841ms
+2019-07-28 20:24:40.221 +10:00 [Information] Request finished in 136.4765ms 200 text/html; charset=utf-8
+2019-07-28 20:25:12.592 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 866
+2019-07-28 20:25:12.600 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:25:12.601 +10:00 [Information] Authorization was successful.
+2019-07-28 20:25:12.649 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:32:49.225 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 456624.0549ms
+2019-07-28 20:32:49.227 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 467
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 467
+ClientConnectionId:7409f343-9eba-4495-8724-0f38892ae3e4
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 20:32:49.451 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 20:32:49.499 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:32:49.706 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 206.8588ms.
+2019-07-28 20:32:49.747 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 20:32:49.765 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 59.1738ms.
+2019-07-28 20:32:49.766 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 314.0307ms
+2019-07-28 20:32:49.766 +10:00 [Information] Request finished in 457173.646ms 500 text/html; charset=utf-8
+2019-07-28 20:36:57.379 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 20:36:57, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 20:36:57.774 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 20:36:58.770 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 20:36:58.782 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 20:36:57, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1134, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 20:36:57")] }
+2019-07-28 20:37:00.031 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 20:37:00.033 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 20:37:00.169 +10:00 [Information] Request finished in 136.525ms 200 
+2019-07-28 20:37:00.762 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 20:37:00.917 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:37:00.931 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 8.169ms.
+2019-07-28 20:37:00.987 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 20:37:01.002 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 232.17ms
+2019-07-28 20:37:01.018 +10:00 [Information] Request finished in 998.1434ms 302 
+2019-07-28 20:37:01.020 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 20:37:01.040 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 20:37:01.072 +10:00 [Information] Authorization was successful.
+2019-07-28 20:37:01.091 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:37:01.202 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 110.7901ms.
+2019-07-28 20:37:01.293 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:37:01.905 +10:00 [Information] Executed ViewResult - view "Index" executed in 686.4491ms.
+2019-07-28 20:37:01.907 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 866.7934ms
+2019-07-28 20:37:01.939 +10:00 [Information] Request finished in 918.9765ms 200 text/html; charset=utf-8
+2019-07-28 20:37:04.282 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 20:37:04.300 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:37:04.301 +10:00 [Information] Authorization was successful.
+2019-07-28 20:37:04.340 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:37:04.507 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 166.4726ms.
+2019-07-28 20:37:04.511 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:37:04.676 +10:00 [Information] Executed ViewResult - view "Index" executed in 168.4279ms.
+2019-07-28 20:37:04.676 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 376.065ms
+2019-07-28 20:37:04.676 +10:00 [Information] Request finished in 394.2545ms 200 text/html; charset=utf-8
+2019-07-28 20:37:34.826 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 866
+2019-07-28 20:37:34.843 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:37:34.843 +10:00 [Information] Authorization was successful.
+2019-07-28 20:37:35.002 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:40:11.481 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 156637.5576ms
+2019-07-28 20:40:11.483 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 470
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 470
+ClientConnectionId:b43da515-64ad-4069-b1cd-aaa72b5c98bd
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 20:40:11.676 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 20:40:11.736 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:40:11.949 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 212.9901ms.
+2019-07-28 20:40:11.962 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 20:40:11.981 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 31.5707ms.
+2019-07-28 20:40:11.981 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 305.2556ms
+2019-07-28 20:40:11.981 +10:00 [Information] Request finished in 157154.9373ms 500 text/html; charset=utf-8
+2019-07-28 20:42:30.391 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 20:42:30, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 20:42:30.770 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 20:42:31.751 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 20:42:31.764 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 20:42:30, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1108, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 20:42:30")] }
+2019-07-28 20:42:33.224 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 20:42:33.226 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 20:42:33.373 +10:00 [Information] Request finished in 152.9469ms 200 
+2019-07-28 20:42:33.998 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 20:42:34.153 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:42:34.163 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6.7322ms.
+2019-07-28 20:42:34.221 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 20:42:34.232 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 226.5898ms
+2019-07-28 20:42:34.253 +10:00 [Information] Request finished in 1044.2266ms 302 
+2019-07-28 20:42:34.256 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 20:42:34.273 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 20:42:34.306 +10:00 [Information] Authorization was successful.
+2019-07-28 20:42:34.326 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:42:34.451 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 124.8686ms.
+2019-07-28 20:42:34.560 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:42:35.147 +10:00 [Information] Executed ViewResult - view "Index" executed in 684.2902ms.
+2019-07-28 20:42:35.152 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 878.8163ms
+2019-07-28 20:42:35.172 +10:00 [Information] Request finished in 916.1787ms 200 text/html; charset=utf-8
+2019-07-28 20:43:58.110 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 20:43:58.156 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:43:58.157 +10:00 [Information] Authorization was successful.
+2019-07-28 20:43:58.206 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:43:58.417 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 210.8082ms.
+2019-07-28 20:43:58.443 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 20:43:58.588 +10:00 [Information] Executed ViewResult - view "Index" executed in 171.0897ms.
+2019-07-28 20:43:58.588 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 432.5829ms
+2019-07-28 20:43:58.589 +10:00 [Information] Request finished in 478.2201ms 200 text/html; charset=utf-8
+2019-07-28 20:44:29.916 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 866
+2019-07-28 20:44:29.941 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 20:44:29.941 +10:00 [Information] Authorization was successful.
+2019-07-28 20:44:30.094 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:45:36.996 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 67055.3531ms
+2019-07-28 20:45:36.999 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+ClientConnectionId:2fd992be-d65d-4844-8245-56b56f18040f
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 20:45:37.185 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 20:45:37.240 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 20:45:37.452 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 211.5161ms.
+2019-07-28 20:45:37.492 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 20:45:37.510 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 58.0444ms.
+2019-07-28 20:45:37.510 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 324.926ms
+2019-07-28 20:45:37.510 +10:00 [Information] Request finished in 67594.4804ms 500 text/html; charset=utf-8
+2019-07-28 21:10:37.641 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 21:10:37, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 21:10:37.987 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 21:10:38.994 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 21:10:39.006 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 21:10:37, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1125, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 21:10:37")] }
+2019-07-28 21:10:40.225 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 21:10:40.224 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 21:10:40.358 +10:00 [Information] Request finished in 133.7495ms 200 
+2019-07-28 21:10:41.084 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 21:10:41.237 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:10:41.247 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6.2464ms.
+2019-07-28 21:10:41.299 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 21:10:41.310 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 220.3973ms
+2019-07-28 21:10:41.372 +10:00 [Information] Request finished in 1159.9588ms 302 
+2019-07-28 21:10:41.374 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 21:10:41.395 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 21:10:41.425 +10:00 [Information] Authorization was successful.
+2019-07-28 21:10:41.446 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:10:41.537 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 91.2222ms.
+2019-07-28 21:10:41.626 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:10:42.176 +10:00 [Information] Executed ViewResult - view "Index" executed in 628.6388ms.
+2019-07-28 21:10:42.180 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 784.5618ms
+2019-07-28 21:10:42.192 +10:00 [Information] Request finished in 818.33ms 200 text/html; charset=utf-8
+2019-07-28 21:10:50.434 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:10:50.451 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:10:50.451 +10:00 [Information] Authorization was successful.
+2019-07-28 21:10:50.491 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:10:50.648 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 157.1311ms.
+2019-07-28 21:10:50.654 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:10:50.808 +10:00 [Information] Executed ViewResult - view "Index" executed in 159.321ms.
+2019-07-28 21:10:50.808 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 356.7757ms
+2019-07-28 21:10:50.808 +10:00 [Information] Request finished in 374.3788ms 200 text/html; charset=utf-8
+2019-07-28 21:11:08.819 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 866
+2019-07-28 21:11:08.835 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:11:08.835 +10:00 [Information] Authorization was successful.
+2019-07-28 21:11:08.993 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:16:59.631 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 350795.7587ms
+2019-07-28 21:16:59.635 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+ClientConnectionId:463a51fb-69d7-441f-8b25-e8d39e2cd05d
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 21:16:59.822 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 21:16:59.871 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:17:00.086 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 214.7689ms.
+2019-07-28 21:17:00.105 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 21:17:00.132 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 46.1812ms.
+2019-07-28 21:17:00.132 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 310.0551ms
+2019-07-28 21:17:00.132 +10:00 [Information] Request finished in 351313.5877ms 500 text/html; charset=utf-8
+2019-07-28 21:17:35.710 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 21:17:35, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 21:17:36.087 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 21:17:37.080 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 21:17:37.095 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 21:17:35, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1126, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 21:17:35")] }
+2019-07-28 21:17:38.524 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 21:17:38.526 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 21:17:38.666 +10:00 [Information] Request finished in 142.7747ms 200 
+2019-07-28 21:17:39.239 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 21:17:39.412 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:17:39.424 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6.7099ms.
+2019-07-28 21:17:39.485 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 21:17:39.501 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 254.7534ms
+2019-07-28 21:17:39.527 +10:00 [Information] Request finished in 1013.681ms 302 
+2019-07-28 21:17:39.529 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 21:17:39.550 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 21:17:39.582 +10:00 [Information] Authorization was successful.
+2019-07-28 21:17:39.601 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:17:39.715 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 114.07ms.
+2019-07-28 21:17:39.825 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:17:40.419 +10:00 [Information] Executed ViewResult - view "Index" executed in 688.1871ms.
+2019-07-28 21:17:40.424 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 873.7481ms
+2019-07-28 21:17:40.446 +10:00 [Information] Request finished in 917.2549ms 200 text/html; charset=utf-8
+2019-07-28 21:17:43.489 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:17:43.503 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:17:43.504 +10:00 [Information] Authorization was successful.
+2019-07-28 21:17:43.544 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:17:43.712 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 168.2306ms.
+2019-07-28 21:17:43.715 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:17:43.886 +10:00 [Information] Executed ViewResult - view "Index" executed in 173.1887ms.
+2019-07-28 21:17:43.886 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 382.387ms
+2019-07-28 21:17:43.886 +10:00 [Information] Request finished in 397.3779ms 200 text/html; charset=utf-8
+2019-07-28 21:17:51.189 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 866
+2019-07-28 21:17:51.211 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:17:51.211 +10:00 [Information] Authorization was successful.
+2019-07-28 21:17:51.385 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:22:04.272 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 253060.4352ms
+2019-07-28 21:22:04.275 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 149
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 471
+ClientConnectionId:e90369d8-a37a-4683-85cd-80cebcb22671
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 21:22:04.468 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 21:22:04.516 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:22:04.722 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 206.1696ms.
+2019-07-28 21:22:04.757 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 21:22:04.778 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 54.9716ms.
+2019-07-28 21:22:04.778 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 309.2415ms
+2019-07-28 21:22:04.778 +10:00 [Information] Request finished in 253589.3301ms 500 text/html; charset=utf-8
+2019-07-28 21:46:33.644 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 21:46:33, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 21:46:34.032 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 21:46:35.087 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 21:46:35.103 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 21:46:33, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1178, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 21:46:33")] }
+2019-07-28 21:46:36.429 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 21:46:36.427 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 21:46:36.570 +10:00 [Information] Request finished in 141.8849ms 200 
+2019-07-28 21:46:37.375 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 21:46:37.527 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:46:37.540 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 9.3516ms.
+2019-07-28 21:46:37.593 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 21:46:37.610 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 228.4955ms
+2019-07-28 21:46:37.691 +10:00 [Information] Request finished in 1275.9875ms 302 
+2019-07-28 21:46:37.693 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 21:46:37.722 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 21:46:37.764 +10:00 [Information] Authorization was successful.
+2019-07-28 21:46:37.785 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:46:37.886 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 99.9725ms.
+2019-07-28 21:46:37.982 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:46:38.607 +10:00 [Information] Executed ViewResult - view "Index" executed in 707.4771ms.
+2019-07-28 21:46:38.610 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 887.7949ms
+2019-07-28 21:46:38.623 +10:00 [Information] Request finished in 929.7266ms 200 text/html; charset=utf-8
+2019-07-28 21:46:40.577 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:46:40.590 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:46:40.592 +10:00 [Information] Authorization was successful.
+2019-07-28 21:46:40.639 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:46:40.821 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 181.3873ms.
+2019-07-28 21:46:40.825 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:46:40.982 +10:00 [Information] Executed ViewResult - view "Index" executed in 161.4889ms.
+2019-07-28 21:46:40.983 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 392.1397ms
+2019-07-28 21:46:40.983 +10:00 [Information] Request finished in 405.843ms 200 text/html; charset=utf-8
+2019-07-28 21:47:06.409 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 871
+2019-07-28 21:47:06.424 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:47:06.424 +10:00 [Information] Authorization was successful.
+2019-07-28 21:47:06.589 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:47:09.874 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 3284.7195ms.
+2019-07-28 21:47:09.875 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Dashboard/3".
+2019-07-28 21:47:09.875 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 3450.8712ms
+2019-07-28 21:47:09.875 +10:00 [Information] Request finished in 3466.6268ms 302 
+2019-07-28 21:47:09.898 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:47:09.900 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:47:09.901 +10:00 [Information] Authorization was successful.
+2019-07-28 21:47:09.916 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:47:10.023 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 106.7131ms.
+2019-07-28 21:47:10.024 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:47:10.090 +10:00 [Information] Executed ViewResult - view "Index" executed in 67.6356ms.
+2019-07-28 21:47:10.091 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 190.0522ms
+2019-07-28 21:47:10.091 +10:00 [Information] Request finished in 192.8197ms 200 text/html; charset=utf-8
+2019-07-28 21:50:39.813 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 21:50:39, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 21:50:40.184 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 21:50:41.140 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 21:50:41.154 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 21:50:40, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1083, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 21:50:40")] }
+2019-07-28 21:50:42.515 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 21:50:42.512 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 21:50:42.654 +10:00 [Information] Request finished in 140.1101ms 200 
+2019-07-28 21:50:43.242 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 21:50:43.403 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:50:43.415 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 9.1404ms.
+2019-07-28 21:50:43.469 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 21:50:43.483 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 233.0503ms
+2019-07-28 21:50:43.501 +10:00 [Information] Request finished in 999.1448ms 302 
+2019-07-28 21:50:43.503 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 21:50:43.541 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 21:50:43.572 +10:00 [Information] Authorization was successful.
+2019-07-28 21:50:43.590 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:50:43.708 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 117.9709ms.
+2019-07-28 21:50:43.812 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:50:44.426 +10:00 [Information] Executed ViewResult - view "Index" executed in 705.2742ms.
+2019-07-28 21:50:44.431 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 890.6419ms
+2019-07-28 21:50:44.455 +10:00 [Information] Request finished in 951.3327ms 200 text/html; charset=utf-8
+2019-07-28 21:50:46.370 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:50:46.385 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:50:46.386 +10:00 [Information] Authorization was successful.
+2019-07-28 21:50:46.430 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:50:46.608 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 177.7391ms.
+2019-07-28 21:50:46.613 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:50:46.788 +10:00 [Information] Executed ViewResult - view "Index" executed in 179.2207ms.
+2019-07-28 21:50:46.788 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 402.7484ms
+2019-07-28 21:50:46.788 +10:00 [Information] Request finished in 418.3775ms 200 text/html; charset=utf-8
+2019-07-28 21:51:00.691 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 871
+2019-07-28 21:51:00.716 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:51:00.717 +10:00 [Information] Authorization was successful.
+2019-07-28 21:51:00.890 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:51:01.249 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 358.4568ms.
+2019-07-28 21:51:01.249 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Dashboard/3".
+2019-07-28 21:51:01.250 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 533.0521ms
+2019-07-28 21:51:01.250 +10:00 [Information] Request finished in 559.0386ms 302 
+2019-07-28 21:51:01.256 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:51:01.258 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:51:01.258 +10:00 [Information] Authorization was successful.
+2019-07-28 21:51:01.277 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:51:01.411 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 133.5697ms.
+2019-07-28 21:51:01.414 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:51:01.475 +10:00 [Information] Executed ViewResult - view "Index" executed in 63.983ms.
+2019-07-28 21:51:01.476 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 217.2502ms
+2019-07-28 21:51:01.476 +10:00 [Information] Request finished in 219.5235ms 200 text/html; charset=utf-8
+2019-07-28 21:52:25.671 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 783
+2019-07-28 21:52:25.678 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:52:25.679 +10:00 [Information] Authorization was successful.
+2019-07-28 21:52:25.702 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:52:25.919 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 240.2423ms
+2019-07-28 21:52:25.921 +10:00 [Error] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.) ---> System.Data.SqlClient.SqlException: Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 152
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 473
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Hisab.BL.EventManager.ProcessTransaction(TransactionBo transaction) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 287
+   at Hisab.UI.Controllers.EventController.AddSplitByFriend(NewSplitByFriendVm NewSplitByFriendVm) in C:\Chintan\Code\Hisab\Hisab.UI\Controllers\EventController.cs:line 334
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at NToastNotify.NtoastNotifyAjaxToastsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.Invoke(HttpContext context)
+---> (Inner Exception #0) System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'Hisab3.dbo.EventTransaction'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1053
+   at Dapper.SqlMapper.QueryRowImpl[T](IDbConnection cnn, Row row, CommandDefinition& command, Type effectiveType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 1179
+   at Dapper.SqlMapper.QuerySingle[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType) in C:\projects\dapper\Dapper\SqlMapper.cs:line 783
+   at Hisab.Dapper.Repository.EventTransactionRepository.CreateTransaction(Decimal totalAmount, Int32 eventId, String description, Int32 splitType, Int32 createdByUserId, DateTime createdDateTime) in C:\Chintan\Code\Hisab\Hisab.Dapper\Repository\IEventTransactionRepository.cs:line 152
+   at Hisab.BL.EventManager.ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo) in C:\Chintan\Code\Hisab\Hisab.BL\EventManager.cs:line 473
+ClientConnectionId:c3856611-f8a0-4e70-9238-6205309f0d0e
+Error Number:515,State:2,Class:16<---
+
+2019-07-28 21:52:26.101 +10:00 [Information] Route matched with "{action = \"HandleError\", controller = \"Error\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult HandleError(Int32)" on controller "Hisab.UI.Controllers.ErrorController" ("Hisab.UI").
+2019-07-28 21:52:26.151 +10:00 [Information] Executing action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:52:26.353 +10:00 [Information] Executed action method "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 201.5033ms.
+2019-07-28 21:52:26.373 +10:00 [Information] Executing ViewResult, running view "HandleError".
+2019-07-28 21:52:26.394 +10:00 [Information] Executed ViewResult - view "HandleError" executed in 40.8942ms.
+2019-07-28 21:52:26.394 +10:00 [Information] Executed action "Hisab.UI.Controllers.ErrorController.HandleError (Hisab.UI)" in 292.6591ms
+2019-07-28 21:52:26.394 +10:00 [Information] Request finished in 722.7988ms 500 text/html; charset=utf-8
+2019-07-28 21:52:54.931 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:52:54.932 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:52:54.932 +10:00 [Information] Authorization was successful.
+2019-07-28 21:52:54.948 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:52:55.081 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 132.3203ms.
+2019-07-28 21:52:55.081 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:52:55.097 +10:00 [Information] Executed ViewResult - view "Index" executed in 15.7403ms.
+2019-07-28 21:52:55.097 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 165.1594ms
+2019-07-28 21:52:55.097 +10:00 [Information] Request finished in 165.9872ms 200 text/html; charset=utf-8
+2019-07-28 21:52:57.344 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:52:57.345 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:52:57.345 +10:00 [Information] Authorization was successful.
+2019-07-28 21:52:57.367 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:52:57.464 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 96.4505ms.
+2019-07-28 21:52:57.464 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:52:57.477 +10:00 [Information] Executed ViewResult - view "Index" executed in 13.212ms.
+2019-07-28 21:52:57.478 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 132.8881ms
+2019-07-28 21:52:57.478 +10:00 [Information] Request finished in 134.004ms 200 text/html; charset=utf-8
+2019-07-28 21:53:11.309 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/Event/AddSplitByFriend application/x-www-form-urlencoded 789
+2019-07-28 21:53:11.311 +10:00 [Information] Route matched with "{action = \"AddSplitByFriend\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSplitByFriend(Hisab.UI.ViewModels.NewSplitByFriendVm)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:53:11.311 +10:00 [Information] Authorization was successful.
+2019-07-28 21:53:11.335 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:53:11.503 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 167.905ms.
+2019-07-28 21:53:11.503 +10:00 [Information] Executing RedirectResult, redirecting to "/Event/Dashboard/3".
+2019-07-28 21:53:11.503 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.AddSplitByFriend (Hisab.UI)" in 192.3796ms
+2019-07-28 21:53:11.503 +10:00 [Information] Request finished in 194.1329ms 302 
+2019-07-28 21:53:11.522 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 21:53:11.523 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 21:53:11.523 +10:00 [Information] Authorization was successful.
+2019-07-28 21:53:11.542 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 21:53:11.654 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 111.7623ms.
+2019-07-28 21:53:11.654 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 21:53:11.666 +10:00 [Information] Executed ViewResult - view "Index" executed in 11.6253ms.
+2019-07-28 21:53:11.666 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 142.6792ms
+2019-07-28 21:53:11.666 +10:00 [Information] Request finished in 143.6594ms 200 text/html; charset=utf-8
+2019-07-28 22:00:14.668 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 22:00:14.683 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:00:14.683 +10:00 [Information] Authorization was successful.
+2019-07-28 22:00:14.731 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:00:14.797 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 65.0607ms.
+2019-07-28 22:00:14.816 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 22:00:14.822 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 24.6776ms.
+2019-07-28 22:00:14.823 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 139.807ms
+2019-07-28 22:00:14.846 +10:00 [Information] Request finished in 178.1377ms 200 text/html; charset=utf-8
+2019-07-28 22:06:56.428 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 22:06:56, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 22:06:56.859 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 22:06:58.109 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 22:06:58.127 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 22:06:56, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1403, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 22:06:56")] }
+2019-07-28 22:06:59.841 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 22:06:59.838 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 22:07:00.025 +10:00 [Information] Request finished in 185.3279ms 200 
+2019-07-28 22:07:00.857 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 22:07:01.070 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:07:01.085 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 8.5599ms.
+2019-07-28 22:07:01.140 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 22:07:01.159 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 293.9621ms
+2019-07-28 22:07:01.177 +10:00 [Information] Request finished in 1355.8691ms 302 
+2019-07-28 22:07:01.179 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 22:07:01.202 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 22:07:01.244 +10:00 [Information] Authorization was successful.
+2019-07-28 22:07:01.265 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:07:01.402 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 137.4957ms.
+2019-07-28 22:07:01.540 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:07:02.284 +10:00 [Information] Executed ViewResult - view "Index" executed in 869.3815ms.
+2019-07-28 22:07:02.287 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 1083.9ms
+2019-07-28 22:07:02.311 +10:00 [Information] Request finished in 1131.1701ms 200 text/html; charset=utf-8
+2019-07-28 22:07:04.506 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 22:07:04.546 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:07:04.547 +10:00 [Information] Authorization was successful.
+2019-07-28 22:07:04.621 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:07:04.917 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 295.5233ms.
+2019-07-28 22:07:04.924 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:07:05.400 +10:00 [Information] Executed ViewResult - view "Index" executed in 481.7345ms.
+2019-07-28 22:07:05.400 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 853.3421ms
+2019-07-28 22:07:05.402 +10:00 [Information] Request finished in 896.0879ms 200 text/html; charset=utf-8
+2019-07-28 22:07:07.920 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 22:07:07.942 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:07:07.942 +10:00 [Information] Authorization was successful.
+2019-07-28 22:07:08.006 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:07:45.469 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 37461.0926ms.
+2019-07-28 22:07:45.489 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 22:07:45.496 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 22.599ms.
+2019-07-28 22:07:45.496 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 37553.4803ms
+2019-07-28 22:07:45.497 +10:00 [Information] Request finished in 37577.4236ms 200 text/html; charset=utf-8
+2019-07-28 22:22:32.799 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 22:22:32, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 22:22:33.206 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 22:22:34.533 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 22:22:34.548 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 22:22:33, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1485, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 22:22:33")] }
+2019-07-28 22:22:36.435 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 22:22:36.431 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 22:22:36.597 +10:00 [Information] Request finished in 167.4987ms 200 
+2019-07-28 22:22:37.644 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 22:22:37.846 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:22:37.861 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 9.7881ms.
+2019-07-28 22:22:37.989 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 22:22:38.003 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 350.1832ms
+2019-07-28 22:22:38.071 +10:00 [Information] Request finished in 1655.1099ms 302 
+2019-07-28 22:22:38.073 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 22:22:38.113 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 22:22:38.143 +10:00 [Information] Authorization was successful.
+2019-07-28 22:22:38.164 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:22:38.364 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 198.9881ms.
+2019-07-28 22:22:38.533 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:22:39.388 +10:00 [Information] Executed ViewResult - view "Index" executed in 995.0583ms.
+2019-07-28 22:22:39.391 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 1278.5445ms
+2019-07-28 22:22:39.402 +10:00 [Information] Request finished in 1329.2605ms 200 text/html; charset=utf-8
+2019-07-28 22:22:42.200 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 22:22:42.254 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:22:42.257 +10:00 [Information] Authorization was successful.
+2019-07-28 22:22:42.394 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:22:42.690 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 295.9594ms.
+2019-07-28 22:22:42.696 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:22:42.917 +10:00 [Information] Executed ViewResult - view "Index" executed in 226.0001ms.
+2019-07-28 22:22:42.917 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 662.1977ms
+2019-07-28 22:22:42.917 +10:00 [Information] Request finished in 716.9415ms 200 text/html; charset=utf-8
+2019-07-28 22:22:44.967 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 22:22:44.980 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:22:44.980 +10:00 [Information] Authorization was successful.
+2019-07-28 22:22:45.058 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:34:56.062 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 22:34:56, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 22:34:56.513 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 22:34:58.171 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 22:34:58.213 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 22:34:56, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1865, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 22:34:56")] }
+2019-07-28 22:34:59.730 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 22:34:59.728 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 22:34:59.969 +10:00 [Information] Request finished in 240.1716ms 200 
+2019-07-28 22:35:00.764 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 22:35:00.915 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:35:00.926 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 6.0849ms.
+2019-07-28 22:35:00.982 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 22:35:00.996 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 224.0462ms
+2019-07-28 22:35:01.014 +10:00 [Information] Request finished in 1298.9599ms 302 
+2019-07-28 22:35:01.016 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 22:35:01.048 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 22:35:01.083 +10:00 [Information] Authorization was successful.
+2019-07-28 22:35:01.110 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:35:01.240 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 129.8263ms.
+2019-07-28 22:35:01.387 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:35:02.164 +10:00 [Information] Executed ViewResult - view "Index" executed in 909.4782ms.
+2019-07-28 22:35:02.168 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 1119.0266ms
+2019-07-28 22:35:02.199 +10:00 [Information] Request finished in 1183.1249ms 200 text/html; charset=utf-8
+2019-07-28 22:35:04.500 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 22:35:04.543 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:35:04.545 +10:00 [Information] Authorization was successful.
+2019-07-28 22:35:04.634 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:35:04.913 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 278.9358ms.
+2019-07-28 22:35:04.917 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:35:05.131 +10:00 [Information] Executed ViewResult - view "Index" executed in 217.6356ms.
+2019-07-28 22:35:05.131 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 587.8944ms
+2019-07-28 22:35:05.132 +10:00 [Information] Request finished in 631.8993ms 200 text/html; charset=utf-8
+2019-07-28 22:35:07.060 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 22:35:07.074 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:35:07.075 +10:00 [Information] Authorization was successful.
+2019-07-28 22:35:07.137 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:35:07.276 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 138.069ms.
+2019-07-28 22:35:07.281 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 22:35:07.292 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 16.0491ms.
+2019-07-28 22:35:07.292 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 217.7355ms
+2019-07-28 22:35:07.292 +10:00 [Information] Request finished in 231.996ms 200 text/html; charset=utf-8
+2019-07-28 22:51:08.394 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 22:51:08, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 22:51:08.781 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 22:51:09.741 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 22:51:09.753 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 22:51:08, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1102, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 22:51:08")] }
+2019-07-28 22:51:11.135 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 22:51:11.137 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 22:51:11.299 +10:00 [Information] Request finished in 158.2007ms 200 
+2019-07-28 22:51:11.874 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 22:51:12.021 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:51:12.032 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 5.9237ms.
+2019-07-28 22:51:12.088 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 22:51:12.101 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 219.6625ms
+2019-07-28 22:51:12.120 +10:00 [Information] Request finished in 995.7964ms 302 
+2019-07-28 22:51:12.122 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 22:51:12.153 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 22:51:12.182 +10:00 [Information] Authorization was successful.
+2019-07-28 22:51:12.202 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:51:12.325 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 122.9158ms.
+2019-07-28 22:51:12.447 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:51:13.023 +10:00 [Information] Executed ViewResult - view "Index" executed in 681.8429ms.
+2019-07-28 22:51:13.028 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 875.2104ms
+2019-07-28 22:51:13.055 +10:00 [Information] Request finished in 932.4496ms 200 text/html; charset=utf-8
+2019-07-28 22:51:14.773 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 22:51:14.792 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:51:14.793 +10:00 [Information] Authorization was successful.
+2019-07-28 22:51:14.834 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:51:15.001 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 166.7946ms.
+2019-07-28 22:51:15.004 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 22:51:15.187 +10:00 [Information] Executed ViewResult - view "Index" executed in 185.5263ms.
+2019-07-28 22:51:15.187 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 394.3777ms
+2019-07-28 22:51:15.187 +10:00 [Information] Request finished in 414.1812ms 200 text/html; charset=utf-8
+2019-07-28 22:51:16.766 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 22:51:16.769 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 22:51:16.769 +10:00 [Information] Authorization was successful.
+2019-07-28 22:51:16.787 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 22:51:16.849 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 62.1954ms.
+2019-07-28 22:51:16.852 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 22:51:16.857 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 7.4728ms.
+2019-07-28 22:51:16.857 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 87.6991ms
+2019-07-28 22:51:16.857 +10:00 [Information] Request finished in 91.0264ms 200 text/html; charset=utf-8
+2019-07-28 23:01:07.599 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 07/28/2019 23:01:07, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2019-07-28 23:01:07.971 +10:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-07-28 23:01:08.959 +10:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2019-07-28 23:01:08.977 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 07/28/2019 23:01:07, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1138, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "07/28/2019 23:01:07")] }
+2019-07-28 23:01:10.315 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2019-07-28 23:01:10.317 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2019-07-28 23:01:10.483 +10:00 [Information] Request finished in 154.5748ms 200 
+2019-07-28 23:01:11.248 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index(System.String)" on controller "Hisab.UI.Controllers.HomeController" ("Hisab.UI").
+2019-07-28 23:01:11.417 +10:00 [Information] Executing action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 23:01:11.426 +10:00 [Information] Executed action method "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.RedirectToActionResult" in 5.7074ms.
+2019-07-28 23:01:11.475 +10:00 [Information] Executing RedirectResult, redirecting to "/AppHome".
+2019-07-28 23:01:11.488 +10:00 [Information] Executed action "Hisab.UI.Controllers.HomeController.Index (Hisab.UI)" in 232.7002ms
+2019-07-28 23:01:11.554 +10:00 [Information] Request finished in 1250.1873ms 302 
+2019-07-28 23:01:11.556 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/AppHome  
+2019-07-28 23:01:11.575 +10:00 [Information] Route matched with "{action = \"Index\", controller = \"AppHome\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index()" on controller "Hisab.UI.Controllers.AppHomeController" ("Hisab.UI").
+2019-07-28 23:01:11.608 +10:00 [Information] Authorization was successful.
+2019-07-28 23:01:11.633 +10:00 [Information] Executing action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" - Validation state: Valid
+2019-07-28 23:01:11.737 +10:00 [Information] Executed action method "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 103.7811ms.
+2019-07-28 23:01:11.854 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 23:01:12.452 +10:00 [Information] Executed ViewResult - view "Index" executed in 700.6344ms.
+2019-07-28 23:01:12.455 +10:00 [Information] Executed action "Hisab.UI.Controllers.AppHomeController.Index (Hisab.UI)" in 879.903ms
+2019-07-28 23:01:12.467 +10:00 [Information] Request finished in 910.6809ms 200 text/html; charset=utf-8
+2019-07-28 23:01:14.512 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Dashboard/3  
+2019-07-28 23:01:14.527 +10:00 [Information] Route matched with "{action = \"Dashboard\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 23:01:14.529 +10:00 [Information] Authorization was successful.
+2019-07-28 23:01:14.568 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" - Validation state: Valid
+2019-07-28 23:01:14.743 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 174.86ms.
+2019-07-28 23:01:14.747 +10:00 [Information] Executing ViewResult, running view "Index".
+2019-07-28 23:01:14.902 +10:00 [Information] Executed ViewResult - view "Index" executed in 157.7733ms.
+2019-07-28 23:01:14.902 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Dashboard (Hisab.UI)" in 374.2522ms
+2019-07-28 23:01:14.902 +10:00 [Information] Request finished in 389.7956ms 200 text/html; charset=utf-8
+2019-07-28 23:01:17.398 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 23:01:17.402 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 23:01:17.403 +10:00 [Information] Authorization was successful.
+2019-07-28 23:01:17.421 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 23:01:17.480 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 58.0305ms.
+2019-07-28 23:01:17.483 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 23:01:17.489 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 8.7324ms.
+2019-07-28 23:01:17.489 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 86.3433ms
+2019-07-28 23:01:17.489 +10:00 [Information] Request finished in 90.5468ms 200 text/html; charset=utf-8
+2019-07-28 23:02:52.999 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/Event/Settlement/3  
+2019-07-28 23:02:53.002 +10:00 [Information] Route matched with "{action = \"Settlement\", controller = \"Event\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Settlement(Int32)" on controller "Hisab.UI.Controllers.EventController" ("Hisab.UI").
+2019-07-28 23:02:53.002 +10:00 [Information] Authorization was successful.
+2019-07-28 23:02:53.058 +10:00 [Information] Executing action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" - Validation state: Valid
+2019-07-28 23:02:53.103 +10:00 [Information] Executed action method "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 44.833ms.
+2019-07-28 23:02:57.818 +10:00 [Information] Executing ViewResult, running view "Settlement".
+2019-07-28 23:02:57.822 +10:00 [Information] Executed ViewResult - view "Settlement" executed in 4718.6405ms.
+2019-07-28 23:02:57.822 +10:00 [Information] Executed action "Hisab.UI.Controllers.EventController.Settlement (Hisab.UI)" in 4820.0396ms
+2019-07-28 23:02:57.822 +10:00 [Information] Request finished in 4823.7531ms 200 text/html; charset=utf-8

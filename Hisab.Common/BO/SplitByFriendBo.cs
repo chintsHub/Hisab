@@ -17,10 +17,43 @@ namespace Hisab.Common.BO
 
         public List<TransactionJournalBo> Journals { get; set; }
 
+        public List<SettlementBo> Settlements { get; set; }
+
         public int CreatedByUserId { get; set; }
         public string NickName { get; set; }
 
         public DateTime CreatedDateTime { get; set; }
+
+
+        public TransactionBo()
+        {
+            Settlements = new List<SettlementBo>();
+        }
+    }
+
+    public class SettlementBo
+    {
+        public int TransactionId { get; set; }
+
+        public int EventId { get; set; }
+
+        public int PayerFriendId { get; set; }
+
+        public int ReceiverFriendId { get; set; }
+
+        public decimal Amount { get; set; }
+    }
+
+    public class SettlementData
+    {
+        public int EventId { get; set; }
+
+        public string PayerFriend { get; set; }
+
+        public string ReceiverFriend { get; set; }
+
+        public decimal Amount { get; set; }
+
 
     }
 
@@ -72,6 +105,10 @@ namespace Hisab.Common.BO
         public decimal AmountPaid { get; set; }
 
         public bool IncludeInSplit { get; set; }
+
+        public decimal NetAmountToSettle { get; set; }
+
+        public decimal AlreadySettled { get; set; }
     }
 
     public class EventPoolTransactionBo : TransactionBo

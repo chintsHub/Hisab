@@ -8,57 +8,52 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th scope="col">Transaction Date</th>
-            <th scope="col">Created By</th>
-            <th scope="col">Description</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Type</th>
-            <th scope="col">Split Details</th>
-            <th scope="col">Action</th>
-        </tr>
+    <tr>
+        
+        <th scope="col">Transaction Date</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Description</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Type</th>
+        
+        <th scope="col">Action</th>
+    </tr>
     </thead>
     <tbody>
-    @for (var i = 0; i < Model.Transactions.Count; i++)
-    {
-        <tr>
-            
-            <td>
-                @Model.Transactions[i].CreatedDateTime
+    
+            @for (var i = 0; i < Model.Transactions.Count; i++)
+            {
+                <tr>
 
-            </td>
-            <td>
-                @Model.Transactions[i].NickName
+                    <td>
+                        @Model.Transactions[i].CreatedDateTime
 
-            </td>
-            <td>
-                @Model.Transactions[i].Description
+                    </td>
+                    <td>
+                        @Model.Transactions[i].NickName
 
-            </td>
-            <td>
-                @Model.Transactions[i].TotalAmount
+                    </td>
+                    <td>
+                        @Model.Transactions[i].Description
 
-            </td>
-            <td>
-                @Model.Transactions[i].SplitType
+                    </td>
+                    <td>
+                        @Model.Transactions[i].TotalAmount
 
-            </td>
-            <td>
-                <p>comming soon</p>
+                    </td>
+                    <td>
+                        @Model.Transactions[i].SplitType
 
-            </td>
-            <td>
-                
-                <form id="deleteTransForm" asp-controller="Event" asp-action="AddSplitByFriend" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-                    <input type="hidden" asp-for=" @Model.Transactions[i].TransactionId" value="@Model.Transactions[i].TransactionId"/>
-                    <div class="form-group">
-                        <button class="btn btn-danger">Delete</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-    }
-
+                    </td>
+                    
+                    <td>
+                       
+                    </td>
+            </tr>
+        }
+    
     </tbody>
 </table>
+
+
 

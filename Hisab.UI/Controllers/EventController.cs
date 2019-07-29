@@ -247,7 +247,46 @@ namespace Hisab.UI.Controllers
 
             if (await CanAccessEvent(eventBo))
             {
-                return View("Settlement", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName });
+                var results = await _eventManager.GetSettlementData(eventId);
+                var settlementHeaderVm = new SettlementHeaderVm();
+                int columnId = 1; //1st column is taken by list of payers
+                int rowId = 0;
+
+                foreach (var settlement in results)
+                {
+                    if (!settlementHeaderVm.Payers.ContainsKey(settlement.PayerFriend))
+                    {
+                        rowId++;
+                        settlementHeaderVm.Payers.Add(settlement.PayerFriend,rowId);
+                    }
+                        
+
+                    if (!settlementHeaderVm.Receivers.ContainsKey(settlement.ReceiverFriend))
+                    {
+                        columnId++;
+                        settlementHeaderVm.Receivers.Add(settlement.ReceiverFriend, columnId);
+                        
+                    }
+
+                    var s = new SettlementVm()
+                    {
+                        Amount = settlement.Amount,
+                        EventId = settlement.EventId,
+                        PayerFriend = settlement.PayerFriend,
+                        ReceiverFriend = settlement.ReceiverFriend,
+                        ReceiverColumnId = settlementHeaderVm.Receivers.GetValueOrDefault(settlement.ReceiverFriend),
+                        PayerRowId = settlementHeaderVm.Payers.GetValueOrDefault(settlement.PayerFriend)
+                    };
+                    settlementHeaderVm.Settlements.Add(s);
+
+                }
+
+               
+
+                settlementHeaderVm.Rows = rowId;
+                settlementHeaderVm.Columns = columnId;
+
+                return View("Settlement", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, SettlementHeader = settlementHeaderVm });
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -368,6 +407,12 @@ namespace Hisab.UI.Controllers
 
 
             return RedirectToAction("Dashboard", "Event", new { newEventPoolEntryVm.EventId });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteTransaction(EventVm eventv)
+        {
+            return null;
         }
 
         [HttpPost]
