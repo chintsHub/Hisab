@@ -1,29 +1,20 @@
 ﻿
 @{
     ViewData["Title"] = "HandleError";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
 
 }
 
 <h2>Error</h2>
 
+<div>
+    @ViewData["ErrorMessage"]
+</div>
 
+<div>
+    @ViewData["RouteOfException"]
+</div>
 
-@section LeftSide
-{
-    <div>
-        @ViewData["ErrorMessage"]
-    </div>
-    
-    <div>
-        @ViewData["RouteOfException"]
-    </div>
-}
-
-@section RightSide
-{
-   
-}
 
 
 

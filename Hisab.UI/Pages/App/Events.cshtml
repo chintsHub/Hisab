@@ -1,0 +1,38 @@
+﻿@page
+@model Hisab.UI.EventsModel
+@{
+    ViewData["Title"] = "Events";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+   
+    <div class="btn-toolbar justify-content-between pageToolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <form class="pageButton">
+                <button type="submit"><i class="fa fa-plus-square"></i> Add </button>
+            </form>
+        </div>
+        <div class="input-group">
+            <form class="searchbox" action="action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit"><i class="fa fa-filter"></i></button>
+            </form>
+        </div>
+    </div>
+
+
+
+<div class="container myevents">
+    <div class="card-columns">
+        
+        @foreach (var hisabEvent in Model.Events)
+        {
+            
+            <vc:event-card event-card-vm="@hisabEvent"></vc:event-card>
+
+            
+        }
+    </div>
+</div>
+

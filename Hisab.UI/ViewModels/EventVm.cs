@@ -8,6 +8,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hisab.UI.ViewModels
 {
+    
+    public class EventCardVm
+    {
+        public Guid EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public string CreatedUserNickName { get; set; }
+
+        public string EventImagePath { get; set; }
+
+        public string EventMessage { get; set; }
+
+    }
     public class EventVm 
     {
         public int EventId { get; set; }

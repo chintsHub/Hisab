@@ -1,24 +1,79 @@
-﻿
-@{
-    ViewData["Title"] = "Hisab";
-    Layout = "_Layout";
+﻿<!DOCTYPE html>
+@{ 
+    Layout = null;
 }
 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Hisab, manage your travel expense better.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Hisab</title>
 
-@section LeftSide
-{
-<partial name="_marketingView" />
-}
+    <!-- Page styles -->
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
 
-@section RightSide
-{
-    <partial name="_login" />
-}
+
+
+<body>
+
+   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Hisab</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Features</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Plans</a>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Login
+                    </button>
+
+                </nav>
+            </div>
+        </header>
+       
+        <div class="mdl-layout__content ">
+            <div class="hisab-punchline-section mdl-typography--text-center">
+                <div class="logo-font hisab-slogan">Group Event Expenses, Simplified</div>
+                <div class="logo-font hisab-sub-slogan">Welcome to Hisab... split, track & settle any group event expenses.</div>
+                <div>
+                    <img src="~/img/travel-expense-deductions.png" class="hisab-img-responsive" />
+
+                </div>
+            </div>
+                      
+        </div>
+        <a href="" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Register</a>
+    </div>
 
 
 
-@section scripts{
-    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/js/home.js"></script>
-}
+
+
+
+
+
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>

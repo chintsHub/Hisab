@@ -1,0 +1,51 @@
+﻿@page "/app/events/{id}/dashboard"
+@model Hisab.UI.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-6 col-md-3 eventDashboardTiles">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">Expenses</h5>
+                        <p class="card-text">$1,000,000.00</p>
+                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 eventDashboardTiles">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">Contributions</h5>
+                        <p class="card-text">$1234567891</p>
+                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 eventDashboardTiles">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">Net position</h5>
+                        <p class="card-text">$1234567891</p>
+                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 eventDashboardTiles">
+                <div class="card ">
+                    <div class="card-body">
+                        <h5 class="card-title">Money pool</h5>
+                        <p class="card-text">$1234567891</p>
+                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+

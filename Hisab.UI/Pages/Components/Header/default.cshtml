@@ -1,0 +1,33 @@
+﻿@model string
+
+<header class="clearfix">
+    <div class="hisabLogo">
+        <h1>Hisab</h1>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <h2>Managing Trip Expenses, Simplified</h2>
+        }
+      </div>
+    <form>
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <button type="button"  class="btn btn-lg logoutButton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hey @Model <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu userMenu">
+                <li><a href="#">User Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a asp-controller="AppHome" asp-action="Logout" class="">Log out</a></li>
+            </ul>
+
+           
+
+        }
+        else
+        {
+            <a asp-page="LoginPage" class="loginButtonLink">Log in</a>
+        }
+
+    </form>
+</header>

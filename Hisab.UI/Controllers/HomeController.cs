@@ -29,7 +29,7 @@ namespace Hisab.UI.Controllers
         private IEmailService _emailService;
         private ILogger _logger;
 
-        public HomeController(IDbConnectionProvider connectionProvider, 
+        public HomeController(IDbConnectionProvider connectionProvider,
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             ILogger<HomeController> logger,
@@ -47,7 +47,7 @@ namespace Hisab.UI.Controllers
             //setting up ReturnUrl
             ViewData["ReturnUrl"] = returnUrl;
 
-           if (!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return View();
             else
             {
@@ -64,8 +64,8 @@ namespace Hisab.UI.Controllers
 
                 if (result.Succeeded)
                 {
-                    Log.Write(LogEventLevel.Information,"{@LogDetail}", LogHelper.CreateLogDetail(LogType.Usage, "User Logged in", username: loginVm.Email));
-                    
+                    Log.Write(LogEventLevel.Information, "{@LogDetail}", LogHelper.CreateLogDetail(LogType.Usage, "User Logged in", username: loginVm.Email));
+
 
                     // Returnurl - or can be passed in as Login method parameter
                     if (Request.Query.Keys.Contains("ReturnUrl"))
@@ -76,18 +76,18 @@ namespace Hisab.UI.Controllers
                     {
                         return RedirectToAction("Index", "AppHome");
                     }
-                    
+
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View("Index", new HomePageVM(){LoginVm = loginVm});
+                    return View("Index", new HomePageVM() { LoginVm = loginVm });
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            
-            return View("Index",new HomePageVM());
+
+            return View("Index", new HomePageVM());
         }
 
         [HttpPost]
@@ -105,7 +105,7 @@ namespace Hisab.UI.Controllers
                     NickName = registerUserVm.NickName
 
                 };
-                
+
 
                 var result = await _userManager.CreateAsync(user, registerUserVm.Password);
                 if (result.Succeeded)
@@ -118,7 +118,7 @@ namespace Hisab.UI.Controllers
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     var emailResponse = await _emailService.SendRegistrationEmail(user.Email, callbackUrl);
 
-                   
+
                     if (roleResult.Succeeded && emailResponse == HttpStatusCode.OK)
                     {
                         ViewBag.RegisterSuccessMessage = "You are successfully registered." +
@@ -126,7 +126,7 @@ namespace Hisab.UI.Controllers
 
                         ModelState.Clear();
                         return View("Index", new HomePageVM());
-                        
+
                     }
                     else
                     {
@@ -138,8 +138,8 @@ namespace Hisab.UI.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View("Index", new HomePageVM(){RegisterUserVm = registerUserVm});
-           
+            return View("Index", new HomePageVM() { RegisterUserVm = registerUserVm });
+
         }
 
         public async Task<IActionResult> ConfirmEmail(int userId, string code)
@@ -160,7 +160,7 @@ namespace Hisab.UI.Controllers
                 return View("ConfirmEmail");
 
 
-            return RedirectToAction("HandleError","Error",new {StatusCode = 500});
+            return RedirectToAction("HandleError", "Error", new { StatusCode = 500 });
 
         }
 
@@ -174,9 +174,9 @@ namespace Hisab.UI.Controllers
                 if (user != null)
                 {
                     var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    
-                   
-                    var resetUrl = Url.ResetPasswordCallbackLink(user.Id, token,Request.Scheme);
+
+
+                    var resetUrl = Url.ResetPasswordCallbackLink(user.Id, token, Request.Scheme);
 
 
                     //send email
@@ -194,14 +194,14 @@ namespace Hisab.UI.Controllers
                         throw new ApplicationException("We couldn't send you forgot password link");
                     }
 
-                    
+
                 }
                 else
                 {
                     //send email - You are not registered with hisab.io
                 }
 
-                
+
             }
 
             return View("Index", new HomePageVM() { ForgotPasswordVm = forgotPasswordVm });
@@ -210,7 +210,7 @@ namespace Hisab.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> ResetPassword(string token = null)
         {
-            if(String.IsNullOrEmpty(token))
+            if (String.IsNullOrEmpty(token))
             {
                 throw new ApplicationException("You must provide a token");
             }
@@ -234,7 +234,7 @@ namespace Hisab.UI.Controllers
             if (user == null)
             {
                 throw new ApplicationException("We could not reset your password.");
-                
+
             }
             var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
             if (result.Succeeded)
@@ -251,7 +251,7 @@ namespace Hisab.UI.Controllers
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
-                
+
             }
         }
     }

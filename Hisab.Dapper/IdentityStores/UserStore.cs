@@ -63,15 +63,15 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
-            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
-            {
-                //await context.InitializeWithTransaction();
-
+            //using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
+            //{
+            //await context.InitializeWithTransaction();
+            var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider);
                 var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
 
                 return user;
 
-            }
+            //}
         }
 
         public Task<string> GetNormalizedUserNameAsync(ApplicationUser user, CancellationToken cancellationToken)

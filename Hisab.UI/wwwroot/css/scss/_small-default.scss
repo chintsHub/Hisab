@@ -1,0 +1,320 @@
+﻿/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*  apply a natural box layout model to all elements  */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* ----------------------------- Body ---------------------- */
+body {
+    font-family: $defaultFont;
+    font-weight: $normalWeight;
+    font-size: 16px; // always default size.
+    //rem css is based upon default font size. Browser zoom in out will change default size
+    
+    color:$defaultFontColor;
+}
+// end of body
+
+div#wrapper {
+    background-color: $bodyColor;
+   
+}
+
+
+/* ----------------------------- Header ---------------------- */
+header {
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    padding: 1rem $gutter;
+
+    .hisabLogo {
+        float: left;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: $normalWeight;
+            letter-spacing: 10px;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: $normalWeight;
+        }
+    }
+
+    .logoutButton {
+        background-color: #e2ed07;
+    }
+
+    .loginButtonLink {
+        background-color: #e2ed07;
+        border: none;
+        color: $defaultFontColor;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    form {
+        float: right;
+
+        input {
+            width: 6rem;
+            transition: width .5s;
+            //:focus{width:8rem;} this nesting didnt work
+        }
+    }
+
+    form input:focus {
+        width: 8rem;
+    }
+
+    .userMenu {
+        background-color: $secondaryColor;
+
+        li {
+
+            a {
+                display: block; // this will make entire nav area clickable and not just the link
+                text-align: center;
+                font-weight: $boldWeight;
+                padding: .5rem;
+                color: $primaryFontColor;
+                text-decoration: none;
+                transition: background-color 0.75s ease, color 0.75s ease;
+            }
+
+            a:hover {
+                color: #e2ed07;
+                background-color: $primaryColor;
+            }
+        }
+    }
+}
+// end of header
+
+/* ----------------------------- Navigation ---------------------- */
+.hamburgerNav {
+    background-color: $secondaryColor;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+
+    .hamburgerMenuItems {
+        display: none;
+        /*position: absolute;
+        background-color: $secondaryColor;*/
+    }
+
+    ul li a {
+        display: block; // this will make entire nav area clickable and not just the link
+        font-weight: $boldWeight;
+        padding: .5rem;
+        color: $primaryFontColor;
+        text-decoration: none;
+        transition: background-color 0.75s ease, color 0.75s ease;
+        border-bottom: solid 1px rgba(0,0,0,0.3);
+    }
+
+    ul li.active a {
+        background-color: darken($secondaryColor, 10%);
+    }
+
+    ul li a:hover {
+        color: $secondaryColor;
+        background-color: $primaryColor;
+    }
+
+    .eventTitle {
+        float: right;
+        font-weight: $boldWeight;
+        padding: .5rem;
+        color: $primaryFontColor;
+    }
+
+
+
+    button {
+        /*width: auto;*/
+        padding: 10px;
+        background: #e2ed07;
+        color: $defaultFontColor;
+        font-size: 17px;
+        border: 1px solid grey;
+        cursor: pointer;
+    }
+}
+
+.defaultNav {
+    background-color: $secondaryColor;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    //display -: block - The children take full width eg. paragraph
+    //disply -:  Inline - The html will flow on the same line eg. italics
+    //flex
+    ul {
+        display: flex;
+    }
+
+    ul li {
+        //float: left; // float will make the element collapse
+        flex-basis: 25%; //width
+        border-right: 1px solid rgba(0,0,0,0.3); //overall lay black boder with 30% opacity
+        a {
+            display: block; // this will make entire nav area clickable and not just the link
+            text-align: center;
+            font-weight: $boldWeight;
+            padding: .5rem;
+            color: $primaryFontColor;
+            text-decoration: none;
+            transition: background-color 0.75s ease, color 0.75s ease;
+        }
+    }
+    //end of ul
+    ul li.active a {
+        background-color: darken($secondaryColor, 10%);
+    }
+
+    ul li a:hover {
+        color: $secondaryColor;
+        background-color: $primaryColor;
+    }
+
+    ul li:last-child {
+        border-right: none;
+    }
+}
+// end of nav
+
+
+
+/*------- Main-----*/
+.mainContent{
+    min-height:600px;
+}
+
+p{
+    padding:10px;
+}
+
+.carouselImage {
+    width: 100%;
+}
+
+.onlyContent {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.carouselContent {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1;
+
+ }
+
+
+    .card-columns{
+        column-count:1;
+    }
+
+
+
+
+.loginForm {
+}
+
+
+.pageToolbar {
+    padding: 0 $gutter $gutter $gutter;
+   
+}
+
+.pageButton{
+    display:inline-block;
+    padding-right:$gutter;
+
+    button{
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    cursor: pointer;
+    }
+}
+.searchbox {
+    /*max-width: 50%;*/
+    /*float:right;*/
+    display: inline-block;
+}
+
+/* Style the search field */
+form.searchbox input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    background: white;
+    width:auto;
+}
+
+/* Style the submit button */
+form.searchbox button {
+    /*width: auto;*/
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+form.searchbox button:hover {
+    background: #0b7dda;
+}
+
+/* Clear floats */
+form.searchbox::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.eventDashboardTiles{
+    padding:0px;
+}
+/*------- End of Main-----*/
+/*-------------------------------Footer----------------------- */
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    text-align: center;
+    padding: 0.75rem;
+    font-size: .9rem;
+}
+/*-------------------------------Footer----------------------- */
+
+// will counter attacks element from being collapse
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

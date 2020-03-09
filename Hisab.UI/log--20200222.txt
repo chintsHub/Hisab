@@ -1,0 +1,503 @@
+2020-02-22 18:04:17.823 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:04:17, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:04:18.262 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:04:19.634 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:04:19.649 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:04:18, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1531, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:04:18")] }
+2020-02-22 18:04:21.230 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:04:21.232 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:04:21.445 +11:00 [Information] Request finished in 216.296ms 200 
+2020-02-22 18:04:22.478 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:04:22.541 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:04:22.555 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:04:23.123 +11:00 [Information] Executed page "/Index" in 636.7589ms
+2020-02-22 18:04:23.144 +11:00 [Information] Request finished in 1928.8076ms 200 text/html; charset=utf-8
+2020-02-22 18:04:23.161 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc  
+2020-02-22 18:04:23.162 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U  
+2020-02-22 18:04:23.162 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:04:23.170 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As  
+2020-02-22 18:04:23.171 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8  
+2020-02-22 18:04:23.212 +11:00 [Information] The file "/img/home_plane.png" was not modified
+2020-02-22 18:04:23.212 +11:00 [Information] The file "/img/homeE.png" was not modified
+2020-02-22 18:04:23.212 +11:00 [Information] The file "/img/home_car.png" was not modified
+2020-02-22 18:04:23.212 +11:00 [Information] The file "/img/home_restaurant.png" was not modified
+2020-02-22 18:04:23.218 +11:00 [Information] Request finished in 56.3225ms 304 image/png
+2020-02-22 18:04:23.218 +11:00 [Information] Request finished in 47.1305ms 304 image/png
+2020-02-22 18:04:23.218 +11:00 [Information] Request finished in 57.0029ms 304 image/png
+2020-02-22 18:04:23.218 +11:00 [Information] Request finished in 48.4831ms 304 image/png
+2020-02-22 18:04:23.232 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:04:23.232 +11:00 [Information] Request finished in 70.5443ms 200 text/css
+2020-02-22 18:04:25.268 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/login  
+2020-02-22 18:04:25.318 +11:00 [Information] Route matched with "{page = \"/LoginPage\", action = \"\", controller = \"\"}". Executing page "/LoginPage"
+2020-02-22 18:04:25.342 +11:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnGet" - ModelState is Valid
+2020-02-22 18:04:25.343 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:04:25.346 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:04:25.346 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:04:25.482 +11:00 [Information] Executed page "/LoginPage" in 163.7734ms
+2020-02-22 18:04:25.483 +11:00 [Information] Request finished in 215.0336ms 200 text/html; charset=utf-8
+2020-02-22 18:04:25.504 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:04:25.505 +11:00 [Information] The file "/css/styles.css" was not modified
+2020-02-22 18:04:25.505 +11:00 [Information] Request finished in 0.8427ms 304 text/css
+2020-02-22 18:04:26.726 +11:00 [Information] Request starting HTTP/1.1 POST http://localhost:44351/login application/x-www-form-urlencoded 242
+2020-02-22 18:04:26.733 +11:00 [Information] Route matched with "{page = \"/LoginPage\", action = \"\", controller = \"\"}". Executing page "/LoginPage"
+2020-02-22 18:04:26.924 +11:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnPostAsync" - ModelState is Valid
+2020-02-22 18:04:27.161 +11:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2020-02-22 18:04:27.164 +11:00 [Information] LogDetail { LogType: Usage, Timestamp: 02/22/2020 18:04:27, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:04:27.169 +11:00 [Information] Executed handler method "OnPostAsync", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:04:27.177 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:04:27.180 +11:00 [Information] Executed page "/LoginPage" in 447.4164ms
+2020-02-22 18:04:27.187 +11:00 [Information] Request finished in 461.5223ms 302 
+2020-02-22 18:04:27.220 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:04:27.269 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:04:27.269 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:04:27.270 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:04:27.270 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:04:27.270 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:04:27.326 +11:00 [Information] Executed page "/App/Dashboard" in 56.8983ms
+2020-02-22 18:04:27.326 +11:00 [Information] Request finished in 106.6191ms 200 text/html; charset=utf-8
+2020-02-22 18:05:01.752 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:05:01, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:05:02.115 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:05:03.237 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:05:03.248 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:05:01, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1248, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:05:01")] }
+2020-02-22 18:05:04.796 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:05:04.788 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:05:05.045 +11:00 [Information] Request finished in 285.6213ms 200 
+2020-02-22 18:05:06.047 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:05:06.106 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:05:06.115 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:05:06.170 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:05:06.183 +11:00 [Information] Executed page "/Index" in 130.426ms
+2020-02-22 18:05:06.206 +11:00 [Information] Request finished in 1460.6365ms 302 
+2020-02-22 18:05:06.211 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:05:06.229 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:05:06.230 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:05:06.230 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:05:06.233 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:05:06.234 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:05:06.752 +11:00 [Information] Executed page "/App/Dashboard" in 522.5122ms
+2020-02-22 18:05:06.778 +11:00 [Information] Request finished in 566.9902ms 200 text/html; charset=utf-8
+2020-02-22 18:05:06.778 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:05:06.845 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:05:06.845 +11:00 [Information] Request finished in 66.7754ms 200 text/css
+2020-02-22 18:07:34.677 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:07:34, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:07:35.140 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:07:36.308 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:07:36.321 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:07:34, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1376, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:07:34")] }
+2020-02-22 18:07:37.901 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:07:37.907 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:07:38.209 +11:00 [Information] Request finished in 329.0122ms 200 
+2020-02-22 18:07:39.182 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:07:39.242 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:07:39.254 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:07:39.306 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:07:39.320 +11:00 [Information] Executed page "/Index" in 131.9573ms
+2020-02-22 18:07:39.337 +11:00 [Information] Request finished in 1473.3698ms 302 
+2020-02-22 18:07:39.341 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:07:39.352 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:07:39.352 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:07:39.353 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:07:39.356 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:07:39.357 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:07:39.837 +11:00 [Information] Executed page "/App/Dashboard" in 484.2808ms
+2020-02-22 18:07:39.869 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:07:39.872 +11:00 [Information] Request finished in 531.4606ms 200 text/html; charset=utf-8
+2020-02-22 18:07:39.934 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:07:39.934 +11:00 [Information] Request finished in 65.8032ms 200 text/css
+2020-02-22 18:08:54.897 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:08:54, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:08:55.332 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:08:56.543 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:08:56.555 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:08:55, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1417, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:08:55")] }
+2020-02-22 18:08:58.073 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:08:58.075 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:08:58.322 +11:00 [Information] Request finished in 248.6512ms 200 
+2020-02-22 18:08:59.199 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:08:59.257 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:08:59.267 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:08:59.315 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:08:59.329 +11:00 [Information] Executed page "/Index" in 122.9331ms
+2020-02-22 18:08:59.347 +11:00 [Information] Request finished in 1287.0016ms 302 
+2020-02-22 18:08:59.350 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:08:59.363 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:08:59.364 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:08:59.364 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:08:59.367 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:08:59.368 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:08:59.840 +11:00 [Information] Executed page "/App/Dashboard" in 476.1147ms
+2020-02-22 18:08:59.863 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:08:59.872 +11:00 [Information] Request finished in 521.4675ms 200 text/html; charset=utf-8
+2020-02-22 18:08:59.931 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:08:59.931 +11:00 [Information] Request finished in 67.9416ms 200 text/css
+2020-02-22 18:10:34.067 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:10:34, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:10:34.425 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:10:35.536 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:10:35.549 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:10:34, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1228, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:10:34")] }
+2020-02-22 18:10:37.282 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:10:37.283 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:10:37.506 +11:00 [Information] Request finished in 225.434ms 200 
+2020-02-22 18:10:38.551 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:10:38.610 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:10:38.618 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:10:38.669 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:10:38.681 +11:00 [Information] Executed page "/Index" in 124.0224ms
+2020-02-22 18:10:38.699 +11:00 [Information] Request finished in 1428.9367ms 302 
+2020-02-22 18:10:38.703 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:10:38.718 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:10:38.719 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:10:38.719 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:10:38.723 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:10:38.724 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:10:39.154 +11:00 [Information] Executed page "/App/Dashboard" in 435.5606ms
+2020-02-22 18:10:39.173 +11:00 [Information] Request finished in 469.5972ms 200 text/html; charset=utf-8
+2020-02-22 18:10:39.185 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:10:39.247 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:10:39.247 +11:00 [Information] Request finished in 62.1769ms 200 text/css
+2020-02-22 18:11:24.814 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:11:24, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:11:25.238 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:11:26.664 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:11:26.707 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:11:25, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1602, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:11:25")] }
+2020-02-22 18:11:28.660 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:11:28.656 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:11:28.901 +11:00 [Information] Request finished in 249.4896ms 200 
+2020-02-22 18:11:29.873 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:11:29.930 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:11:29.938 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:11:30.009 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:11:30.025 +11:00 [Information] Executed page "/Index" in 145.5442ms
+2020-02-22 18:11:30.053 +11:00 [Information] Request finished in 1418.3608ms 302 
+2020-02-22 18:11:30.056 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Dashboard  
+2020-02-22 18:11:30.075 +11:00 [Information] Route matched with "{page = \"/App/Dashboard\", action = \"\", controller = \"\"}". Executing page "/App/Dashboard"
+2020-02-22 18:11:30.077 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:11:30.079 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:11:30.082 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:11:30.082 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:11:30.496 +11:00 [Information] Executed page "/App/Dashboard" in 420.4799ms
+2020-02-22 18:11:30.519 +11:00 [Information] Request finished in 463.6823ms 200 text/html; charset=utf-8
+2020-02-22 18:11:30.522 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:11:30.580 +11:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2020-02-22 18:11:30.580 +11:00 [Information] Request finished in 58.1823ms 200 text/css
+2020-02-22 18:13:24.158 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:13:24, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:13:24.602 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:13:25.843 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:13:25.858 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:13:24, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1433, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:13:24")] }
+2020-02-22 18:13:27.405 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:13:27.402 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:13:27.555 +11:00 [Information] Request finished in 153.249ms 200 
+2020-02-22 18:13:28.558 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.632 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.642 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.756 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.784 +11:00 [Information] Executed page "/Index" in 214.806ms
+2020-02-22 18:13:28.819 +11:00 [Information] Request finished in 1430.8366ms 302 
+2020-02-22 18:13:28.821 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.830 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.841 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.841 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.842 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.842 +11:00 [Information] Executed page "/Index" in 11.8598ms
+2020-02-22 18:13:28.842 +11:00 [Information] Request finished in 21.0062ms 302 
+2020-02-22 18:13:28.852 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.854 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.854 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.854 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.855 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.855 +11:00 [Information] Executed page "/Index" in 1.2628ms
+2020-02-22 18:13:28.855 +11:00 [Information] Request finished in 2.9476ms 302 
+2020-02-22 18:13:28.863 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.864 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.864 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.864 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.864 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.865 +11:00 [Information] Executed page "/Index" in 0.4923ms
+2020-02-22 18:13:28.865 +11:00 [Information] Request finished in 1.87ms 302 
+2020-02-22 18:13:28.875 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.876 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.876 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.877 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.877 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.877 +11:00 [Information] Executed page "/Index" in 0.4448ms
+2020-02-22 18:13:28.877 +11:00 [Information] Request finished in 1.7314ms 302 
+2020-02-22 18:13:28.886 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.887 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.887 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.887 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.887 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.888 +11:00 [Information] Executed page "/Index" in 0.3967ms
+2020-02-22 18:13:28.888 +11:00 [Information] Request finished in 1.513ms 302 
+2020-02-22 18:13:28.896 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.897 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.897 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.897 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.897 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.898 +11:00 [Information] Executed page "/Index" in 0.4649ms
+2020-02-22 18:13:28.898 +11:00 [Information] Request finished in 1.8846ms 302 
+2020-02-22 18:13:28.908 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.909 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.909 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.909 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.909 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.909 +11:00 [Information] Executed page "/Index" in 0.5207ms
+2020-02-22 18:13:28.910 +11:00 [Information] Request finished in 2.0363ms 302 
+2020-02-22 18:13:28.916 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.917 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.917 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.918 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.918 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.918 +11:00 [Information] Executed page "/Index" in 0.3803ms
+2020-02-22 18:13:28.918 +11:00 [Information] Request finished in 1.5009ms 302 
+2020-02-22 18:13:28.925 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.926 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.926 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.926 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.926 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.926 +11:00 [Information] Executed page "/Index" in 0.2942ms
+2020-02-22 18:13:28.926 +11:00 [Information] Request finished in 1.2617ms 302 
+2020-02-22 18:13:28.932 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.933 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.933 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.933 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.933 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.933 +11:00 [Information] Executed page "/Index" in 0.431ms
+2020-02-22 18:13:28.934 +11:00 [Information] Request finished in 1.502ms 302 
+2020-02-22 18:13:28.940 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.940 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.941 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.941 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.941 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.941 +11:00 [Information] Executed page "/Index" in 0.3015ms
+2020-02-22 18:13:28.941 +11:00 [Information] Request finished in 1.2486ms 302 
+2020-02-22 18:13:28.946 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.947 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.947 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.947 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.947 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.947 +11:00 [Information] Executed page "/Index" in 0.264ms
+2020-02-22 18:13:28.947 +11:00 [Information] Request finished in 0.997ms 302 
+2020-02-22 18:13:28.956 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.957 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.957 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.957 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.957 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.958 +11:00 [Information] Executed page "/Index" in 0.3431ms
+2020-02-22 18:13:28.958 +11:00 [Information] Request finished in 1.6129ms 302 
+2020-02-22 18:13:28.964 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.964 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.965 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.965 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.965 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.965 +11:00 [Information] Executed page "/Index" in 0.4427ms
+2020-02-22 18:13:28.965 +11:00 [Information] Request finished in 1.5327ms 302 
+2020-02-22 18:13:28.974 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.974 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.975 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.975 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.975 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.975 +11:00 [Information] Executed page "/Index" in 0.3697ms
+2020-02-22 18:13:28.975 +11:00 [Information] Request finished in 1.397ms 302 
+2020-02-22 18:13:28.982 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.982 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.982 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.983 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.983 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.983 +11:00 [Information] Executed page "/Index" in 0.3329ms
+2020-02-22 18:13:28.983 +11:00 [Information] Request finished in 1.3481ms 302 
+2020-02-22 18:13:28.989 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.990 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.990 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.990 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.990 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.990 +11:00 [Information] Executed page "/Index" in 0.392ms
+2020-02-22 18:13:28.990 +11:00 [Information] Request finished in 1.3328ms 302 
+2020-02-22 18:13:28.996 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:28.997 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:28.997 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:28.997 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:28.997 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:28.997 +11:00 [Information] Executed page "/Index" in 0.3183ms
+2020-02-22 18:13:28.997 +11:00 [Information] Request finished in 1.3788ms 302 
+2020-02-22 18:13:29.005 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.005 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.006 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.006 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.006 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.006 +11:00 [Information] Executed page "/Index" in 0.3617ms
+2020-02-22 18:13:29.006 +11:00 [Information] Request finished in 1.4105ms 302 
+2020-02-22 18:13:29.175 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.176 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.176 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.177 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.177 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.177 +11:00 [Information] Executed page "/Index" in 0.9193ms
+2020-02-22 18:13:29.177 +11:00 [Information] Request finished in 2.6613ms 302 
+2020-02-22 18:13:29.186 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.186 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.186 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.187 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.187 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.187 +11:00 [Information] Executed page "/Index" in 0.3723ms
+2020-02-22 18:13:29.187 +11:00 [Information] Request finished in 1.3708ms 302 
+2020-02-22 18:13:29.193 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.194 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.195 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.195 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.195 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.195 +11:00 [Information] Executed page "/Index" in 0.3584ms
+2020-02-22 18:13:29.195 +11:00 [Information] Request finished in 1.5786ms 302 
+2020-02-22 18:13:29.201 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.202 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.203 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.203 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.204 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.205 +11:00 [Information] Executed page "/Index" in 2.2412ms
+2020-02-22 18:13:29.205 +11:00 [Information] Request finished in 4.4697ms 302 
+2020-02-22 18:13:29.212 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.213 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.213 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.213 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.213 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.213 +11:00 [Information] Executed page "/Index" in 0.3785ms
+2020-02-22 18:13:29.213 +11:00 [Information] Request finished in 1.4918ms 302 
+2020-02-22 18:13:29.224 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.225 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.225 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.225 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.225 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.225 +11:00 [Information] Executed page "/Index" in 0.4521ms
+2020-02-22 18:13:29.225 +11:00 [Information] Request finished in 1.7631ms 302 
+2020-02-22 18:13:29.231 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.232 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.233 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.233 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.233 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.234 +11:00 [Information] Executed page "/Index" in 0.8562ms
+2020-02-22 18:13:29.234 +11:00 [Information] Request finished in 2.588ms 302 
+2020-02-22 18:13:29.241 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.242 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.242 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.242 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.242 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.243 +11:00 [Information] Executed page "/Index" in 0.3927ms
+2020-02-22 18:13:29.243 +11:00 [Information] Request finished in 1.7777ms 302 
+2020-02-22 18:13:29.250 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.251 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.252 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.252 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.252 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.252 +11:00 [Information] Executed page "/Index" in 0.3974ms
+2020-02-22 18:13:29.252 +11:00 [Information] Request finished in 1.7642ms 302 
+2020-02-22 18:13:29.259 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.260 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.260 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.260 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.261 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.261 +11:00 [Information] Executed page "/Index" in 0.4861ms
+2020-02-22 18:13:29.261 +11:00 [Information] Request finished in 2.2161ms 302 
+2020-02-22 18:13:29.268 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.269 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.269 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.270 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.270 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.270 +11:00 [Information] Executed page "/Index" in 0.4306ms
+2020-02-22 18:13:29.270 +11:00 [Information] Request finished in 1.5017ms 302 
+2020-02-22 18:13:29.276 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.276 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.277 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.277 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.277 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.277 +11:00 [Information] Executed page "/Index" in 0.3723ms
+2020-02-22 18:13:29.277 +11:00 [Information] Request finished in 1.3423ms 302 
+2020-02-22 18:13:29.284 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.285 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.285 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.285 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.285 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.285 +11:00 [Information] Executed page "/Index" in 0.4507ms
+2020-02-22 18:13:29.285 +11:00 [Information] Request finished in 1.754ms 302 
+2020-02-22 18:13:29.291 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.292 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.292 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.292 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.292 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.292 +11:00 [Information] Executed page "/Index" in 0.4423ms
+2020-02-22 18:13:29.292 +11:00 [Information] Request finished in 1.4342ms 302 
+2020-02-22 18:13:29.299 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.300 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.300 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.300 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.300 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.300 +11:00 [Information] Executed page "/Index" in 0.3478ms
+2020-02-22 18:13:29.301 +11:00 [Information] Request finished in 1.8186ms 302 
+2020-02-22 18:13:29.307 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.308 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.308 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.308 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.309 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.309 +11:00 [Information] Executed page "/Index" in 0.4419ms
+2020-02-22 18:13:29.309 +11:00 [Information] Request finished in 1.6687ms 302 
+2020-02-22 18:13:29.315 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.316 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.317 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.317 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.317 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.317 +11:00 [Information] Executed page "/Index" in 0.3034ms
+2020-02-22 18:13:29.317 +11:00 [Information] Request finished in 1.8386ms 302 
+2020-02-22 18:13:29.324 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.325 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.326 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.326 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.326 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.326 +11:00 [Information] Executed page "/Index" in 0.4441ms
+2020-02-22 18:13:29.326 +11:00 [Information] Request finished in 1.6928ms 302 
+2020-02-22 18:13:29.332 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.334 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.334 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.334 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.334 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.334 +11:00 [Information] Executed page "/Index" in 0.3679ms
+2020-02-22 18:13:29.334 +11:00 [Information] Request finished in 2.0851ms 302 
+2020-02-22 18:13:29.341 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FDashboard  
+2020-02-22 18:13:29.341 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:13:29.342 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:13:29.342 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:13:29.342 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Dashboard".
+2020-02-22 18:13:29.342 +11:00 [Information] Executed page "/Index" in 0.7005ms
+2020-02-22 18:13:29.342 +11:00 [Information] Request finished in 1.8828ms 302 
+2020-02-22 18:15:09.976 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 02/22/2020 18:15:09, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-02-22 18:15:10.430 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-02-22 18:15:11.562 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-02-22 18:15:11.595 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 02/22/2020 18:15:10, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1350, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "02/22/2020 18:15:10")] }
+2020-02-22 18:15:13.478 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-02-22 18:15:13.483 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-02-22 18:15:13.862 +11:00 [Information] Request finished in 394.8366ms 200 
+2020-02-22 18:15:14.815 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:15:14.878 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:15:14.890 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:15:14.944 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Events".
+2020-02-22 18:15:14.959 +11:00 [Information] Executed page "/Index" in 137.0999ms
+2020-02-22 18:15:14.976 +11:00 [Information] Request finished in 1529.5657ms 302 
+2020-02-22 18:15:14.979 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Events  
+2020-02-22 18:15:14.997 +11:00 [Information] Route matched with "{page = \"/App/Events\", action = \"\", controller = \"\"}". Executing page "/App/Events"
+2020-02-22 18:15:14.998 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:15:14.999 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:15:15.002 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:15:15.003 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:15:15.402 +11:00 [Information] Executed page "/App/Events" in 404.9391ms
+2020-02-22 18:15:15.420 +11:00 [Information] Request finished in 440.9698ms 200 text/html; charset=utf-8
+2020-02-22 18:15:15.422 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:15:15.454 +11:00 [Information] The file "/css/styles.css" was not modified
+2020-02-22 18:15:15.460 +11:00 [Information] Request finished in 38.0006ms 304 text/css
+2020-02-22 18:16:22.480 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/?page=%2FApp%2FPricing  
+2020-02-22 18:16:22.498 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-02-22 18:16:22.534 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-02-22 18:16:22.534 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2020-02-22 18:16:22.535 +11:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Events".
+2020-02-22 18:16:22.535 +11:00 [Information] Executed page "/Index" in 36.9398ms
+2020-02-22 18:16:22.535 +11:00 [Information] Request finished in 55.3356ms 302 
+2020-02-22 18:16:22.548 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/App/Events  
+2020-02-22 18:16:22.549 +11:00 [Information] Route matched with "{page = \"/App/Events\", action = \"\", controller = \"\"}". Executing page "/App/Events"
+2020-02-22 18:16:22.549 +11:00 [Information] Executing handler method "Hisab.UI.DashboardModel.OnGet" - ModelState is Valid
+2020-02-22 18:16:22.549 +11:00 [Information] Executed handler method "OnGet", returned result "".
+2020-02-22 18:16:22.549 +11:00 [Information] Executing an implicit handler method - ModelState is Valid
+2020-02-22 18:16:22.549 +11:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-02-22 18:16:22.565 +11:00 [Information] Executed page "/App/Events" in 16.536ms
+2020-02-22 18:16:22.566 +11:00 [Information] Request finished in 17.9466ms 200 text/html; charset=utf-8
+2020-02-22 18:16:22.600 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-02-22 18:16:22.601 +11:00 [Information] The file "/css/styles.css" was not modified
+2020-02-22 18:16:22.601 +11:00 [Information] Request finished in 0.6108ms 304 text/css

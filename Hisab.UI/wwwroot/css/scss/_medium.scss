@@ -1,0 +1,48 @@
+﻿/** Nav*/
+.hamburgerMenuItems {
+    display: none;
+    position: absolute;
+    background-color: $secondaryColor;
+    z-index:9999;
+}
+
+
+/* End of Nav*/
+
+
+/*------- Main-----*/
+
+.carouselImage {
+    float: left;
+    width: 50%;
+}
+
+.carouselContent {
+    float: right;
+    width: 50%;
+    padding: 2rem;
+    font-size: 2rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+
+
+.card-columns {
+    column-count: 2;
+}
+
+/*------- End of Main-----*/
+
+/*-------------------------------Footer----------------------- */
+footer {
+    width: 100%;
+    position:relative;
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    text-align: center;
+    padding: 0.75rem;
+    font-size: .9rem;
+}
+/*-------------------------------Footer----------------------- */

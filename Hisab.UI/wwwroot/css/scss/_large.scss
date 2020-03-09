@@ -1,0 +1,20 @@
+﻿/* ------------------------ Body ----------------------------- */
+div#wrapper {
+    max-width: 80rem;
+    margin: 2rem auto; // auto means centre on the page
+    box-shadow: 0 0 10px #000000;
+}
+
+.loginForm {
+    max-width: 40rem;
+    margin: 2rem auto; // auto means centre on the page
+}
+
+.onlyContent {
+    max-width: 40rem;
+    margin: 2rem auto; // auto means centre on the page
+}
+
+.card-columns {
+    column-count: 3;
+}

@@ -1,0 +1,29 @@
+2020-03-06 15:53:56.372 +11:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 03/06/2020 15:53:56, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "cshah", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2020-03-06 15:53:56.765 +11:00 [Information] User profile is available. Using '"C:\Users\cshah\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-03-06 15:53:57.812 +11:00 [Warning] User "0" validation failed: "DuplicateUserName".
+2020-03-06 15:53:57.827 +11:00 [Information] LogDetail { LogType: Performance, Timestamp: 03/06/2020 15:53:56, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1193, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "03/06/2020 15:53:56")] }
+2020-03-06 15:53:59.603 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/  
+2020-03-06 15:53:59.605 +11:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:50134/  0
+2020-03-06 15:53:59.764 +11:00 [Information] Request finished in 156.9887ms 200 
+2020-03-06 15:54:00.643 +11:00 [Information] Route matched with "{page = \"/Index\", action = \"\", controller = \"\"}". Executing page "/Index"
+2020-03-06 15:54:00.710 +11:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2020-03-06 15:54:00.724 +11:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2020-03-06 15:54:04.445 +11:00 [Information] Executed page "/Index" in 3794.3946ms
+2020-03-06 15:54:04.463 +11:00 [Information] Request finished in 4869.3828ms 200 text/html; charset=utf-8
+2020-03-06 15:54:04.479 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc  
+2020-03-06 15:54:04.481 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/css/styles.css  
+2020-03-06 15:54:04.481 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U  
+2020-03-06 15:54:04.493 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As  
+2020-03-06 15:54:04.495 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8  
+2020-03-06 15:54:04.528 +11:00 [Information] The file "/img/home_plane.png" was not modified
+2020-03-06 15:54:04.528 +11:00 [Information] The file "/css/styles.css" was not modified
+2020-03-06 15:54:04.528 +11:00 [Information] The file "/img/home_car.png" was not modified
+2020-03-06 15:54:04.528 +11:00 [Information] The file "/img/homeE.png" was not modified
+2020-03-06 15:54:04.528 +11:00 [Information] The file "/img/home_restaurant.png" was not modified
+2020-03-06 15:54:04.534 +11:00 [Information] Request finished in 52.6728ms 304 text/css
+2020-03-06 15:54:04.534 +11:00 [Information] Request finished in 54.3153ms 304 image/png
+2020-03-06 15:54:04.534 +11:00 [Information] Request finished in 38.6913ms 304 image/png
+2020-03-06 15:54:04.534 +11:00 [Information] Request finished in 52.6684ms 304 image/png
+2020-03-06 15:54:04.534 +11:00 [Information] Request finished in 40.6386ms 304 image/png
+2020-03-06 15:54:04.929 +11:00 [Information] Request starting HTTP/1.1 GET http://localhost:44351/favicon.ico  
+2020-03-06 15:54:04.953 +11:00 [Information] Request finished in 24.2951ms 404 

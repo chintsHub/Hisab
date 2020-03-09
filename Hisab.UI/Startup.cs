@@ -37,9 +37,8 @@ namespace Hisab.UI
             var connectionString = _configuration.GetConnectionString("hisabDb");
             var emailCredentials = _configuration.GetSection("EmailServiceCredentials").Get<EmailServiceCredentials>();
 
-            services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
-            services.AddTransient<IRoleStore<ApplicationRole>, RoleStore>();
-           
+            services.AddScoped<IUserStore<ApplicationUser>, UserStore>();
+            services.AddScoped<IRoleStore<ApplicationRole>, RoleStore>();
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(config =>
                 {
@@ -53,10 +52,9 @@ namespace Hisab.UI
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
 
             services.AddMvc().AddNToastNotifyToastr();
-  
-              
 
-            
+
+
             services.AddScoped<IDbConnectionProvider>(sp => new DbConnectionProvider(connectionString));
 
             services.AddScoped<IApplicationSeeding>(sp =>
@@ -83,15 +81,15 @@ namespace Hisab.UI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
-            app.UseExceptionHandler("/Error/500");
-            app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
+            //app.UseExceptionHandler("/Error/500");
+            //app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+
+            }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -103,15 +101,16 @@ namespace Hisab.UI
             app.UseNToastNotify();
 
 
-            app.UseMvc(options =>
-                {
-                    options.MapRoute("Default", "/{controller}/{action}/{id?}", 
-                        new { controller = "Home", Action = "Index" });
-                });
+            app.UseMvc
+            (options =>
+            {
+                options.MapRoute("Default", "/{controller}/{action}/{id?}",
+                    new { controller = "Home", Action = "Index" });
+            });
 
 
-                
-          
+
+
 
         }
     }
