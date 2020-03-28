@@ -52,7 +52,7 @@ namespace Hisab.UI
                     }
                     else
                     {
-                        return RedirectToPage("/App/Dashboard");
+                        return RedirectToPage("Events");
                     }
 
                 }

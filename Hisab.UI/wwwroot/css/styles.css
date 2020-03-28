@@ -214,7 +214,9 @@ header {
 
 /*------- Main-----*/
 .mainContent {
-  min-height: 600px; }
+  min-height: 500px;
+  position: relative;
+  /*margin-bottom:20px;*/ }
 
 p {
   padding: 10px; }
@@ -290,18 +292,98 @@ form.searchbox::after {
 .eventDashboardTiles {
   padding: 0px; }
 
+.friendImage {
+  max-height: 100px;
+  max-width: 100px; }
+
+.friendsContainer {
+  margin-top: 5px; }
+
+.tileFooter {
+  background-color: #003B5C;
+  padding: 5px; }
+  .tileFooter button {
+    background: #e2ed07;
+    color: #003B5C;
+    border: 1px solid grey;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px; }
+
+.transactions {
+  background-color: #F4F5F7; }
+  .transactions .transaction {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white; }
+  .transactions .transactionBody {
+    /*background-color: #0c7b93;*/
+    background-color: white;
+    color: black;
+    padding: 5px; }
+    .transactions .transactionBody .transactionShared {
+      margin-top: 10px; }
+  .transactions .transactionHeader {
+    background-color: #27496d;
+    padding: 5px;
+    text-align: center; }
+  .transactions .transactionFooter {
+    background-color: #00a8cc;
+    padding: 5px; }
+
+.transactionButtons a, .transactionButtons button {
+  background: #e2ed07;
+  color: #003B5C;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 5px;
+  float: right; }
+
+.actionPanel {
+  position: absolute;
+  bottom: 0px;
+  max-width: 500px;
+  background-color: #003B5C;
+  padding: 5px;
+  align-content: center; }
+
+.alertHeading {
+  background-color: #f8d7da;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.checkbox-xl .custom-control-label::before,
+.checkbox-xl .custom-control-label::after {
+  top: 1.2rem;
+  width: 1.85rem;
+  height: 1.85rem; }
+
+.checkbox-xl .custom-control-label {
+  padding-top: 23px;
+  padding-left: 10px; }
+
+.scroller {
+  max-height: 600px;
+  overflow-y: scroll; }
+
 /*------- End of Main-----*/
 /*-------------------------------Footer----------------------- */
 footer {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #008da8;
-  color: #ffffff;
-  text-align: center;
-  padding: 0.75rem;
-  font-size: .9rem; }
+  display: none;
+  /*width: 100%;
+    position: fixed;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    text-align: center;
+    /*padding: 0.75rem;*/
+  /*font-size: .9rem;*/
+  /*p {
+        padding: 0px;
+    }*/ }
 
 /*-------------------------------Footer----------------------- */
 .clearfix:after {
@@ -331,11 +413,30 @@ footer {
     line-height: 1.6; }
   .card-columns {
     column-count: 2; }
+  .friendImage {
+    height: 100%;
+    width: 100%; }
+  .transactionPaidby {
+    float: left; }
+  .transactionShared {
+    float: right;
+    margin-top: 0px; }
+  .actionPanel {
+    position: absolute;
+    bottom: 0px;
+    max-width: 500px;
+    background-color: #003B5C;
+    padding: 5px;
+    align-content: center; }
   /*------- End of Main-----*/
   /*-------------------------------Footer----------------------- */
   footer {
+    display: block;
     width: 100%;
     position: relative;
+    height: 50px;
+    bottom: 0;
+    left: 0;
     background-color: #008da8;
     color: #ffffff;
     text-align: center;
@@ -357,6 +458,9 @@ footer {
     max-width: 40rem;
     margin: 2rem auto; }
   .card-columns {
-    column-count: 3; } }
+    column-count: 3; }
+  .friendImage {
+    height: 100%;
+    width: 100%; } }
 
 /* end media query */

@@ -7,3 +7,37 @@
 
 <h1>Register</h1>
 
+<form id="toggleRegisterForm" class="popupForm" asp-controller="Home" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+
+
+    @if (Model != null && Model.RegisterUserVm != null)
+    {
+        @Html.ValidationSummary(true, "")
+    }
+
+
+
+
+    <div class="form-group">
+        <label asp-for="@Model.RegisterUserVm.NickName">Nickname:</label>
+        <input id="nickName" asp-for="@Model.RegisterUserVm.NickName" class="form-control" />
+        <span asp-validation-for="@Model.RegisterUserVm.NickName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.RegisterUserVm.Email">Email:</label>
+        <input asp-for="@Model.RegisterUserVm.Email" class="form-control" type="email" />
+        <span asp-validation-for="@Model.RegisterUserVm.Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.RegisterUserVm.Password">Password:</label>
+        <input asp-for="@Model.RegisterUserVm.Password" type="password" class="form-control" />
+        <span asp-validation-for="@Model.RegisterUserVm.Password"></span>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Register</button>
+    </div>
+
+
+
+
+</form>

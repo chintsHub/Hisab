@@ -197,7 +197,9 @@ header {
 
 /*------- Main-----*/
 .mainContent{
-    min-height:600px;
+    min-height:500px;
+    position:relative;
+    /*margin-bottom:20px;*/
 }
 
 p{
@@ -294,21 +296,135 @@ form.searchbox::after {
     display: table;
 }
 
-.eventDashboardTiles{
-    padding:0px;
+.eventDashboardTiles {
+    padding: 0px;
+    
+}
+
+.friendImage{
+    max-height:100px;
+    max-width:100px;
+}
+
+.friendsContainer{
+    margin-top:5px;
+}
+
+.tileFooter {
+    background-color: $defaultFontColor;
+    padding: 5px;
+    
+    button {
+        background: #e2ed07;
+        color: $defaultFontColor;
+        border: 1px solid grey;
+        cursor: pointer;
+        font-size: 17px;
+        padding:5px;
+    }
+}
+
+.transactions {
+    background-color: $bodyColor;
+
+    .transaction {
+        margin-top: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: white;
+    }
+
+    .transactionBody {
+        /*background-color: #0c7b93;*/
+        background-color: white;
+        color: black;
+        padding: 5px;
+
+        .transactionPaidby {
+        }
+
+        .transactionShared {
+            margin-top: 10px;
+        }
+    }
+
+    .transactionHeader {
+        background-color: #27496d;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .transactionFooter {
+        background-color: #00a8cc;
+        padding: 5px;
+    }
+
+    
+
+   
+   
+} //end of transactions
+
+.transactionButtons {
+
+    a, button {
+        background: #e2ed07;
+        color: $defaultFontColor;
+        border: 1px solid grey;
+        cursor: pointer;
+        font-size: 17px;
+        padding: 5px;
+        float: right;
+    }
+}
+
+.actionPanel {
+    position: absolute;
+    bottom: 0px;
+    max-width: 500px;
+    background-color: $secondaryColor;
+    padding:5px;
+    align-content:center;
+}
+
+.alertHeading {
+    background-color: #f8d7da;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.checkbox-xl .custom-control-label::before,
+.checkbox-xl .custom-control-label::after {
+    top: 1.2rem;
+    width: 1.85rem;
+    height: 1.85rem;
+}
+
+.checkbox-xl .custom-control-label {
+    padding-top: 23px;
+    padding-left: 10px;
+}
+
+.scroller {
+    max-height: 600px;
+    overflow-y: scroll;
 }
 /*------- End of Main-----*/
 /*-------------------------------Footer----------------------- */
 footer {
-    width: 100%;
+    display: none;
+    /*width: 100%;
     position: fixed;
+    height: 20px;
     bottom: 0;
     left: 0;
     background-color: $primaryColor;
     color: $primaryFontColor;
     text-align: center;
-    padding: 0.75rem;
-    font-size: .9rem;
+    /*padding: 0.75rem;*/
+    /*font-size: .9rem;*/
+    /*p {
+        padding: 0px;
+    }*/
 }
 /*-------------------------------Footer----------------------- */
 

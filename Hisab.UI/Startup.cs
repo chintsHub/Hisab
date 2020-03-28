@@ -51,7 +51,8 @@ namespace Hisab.UI
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
 
-            services.AddMvc().AddNToastNotifyToastr();
+            services.AddMvc()
+                .AddNToastNotifyToastr();
 
 
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hisab.UI
 {
-    public class TransactionDetailsModel : PageModel
+    public class ExpenseTransactionDetailsModel : PageModel
     {
         public void OnGet()
         {

@@ -7,3 +7,50 @@
 
 <h1>UserSettings</h1>
 
+<div class="card">
+    <form asp-controller="AppHome" asp-action="UpdateNickName" method="post">
+        <div class="card-header eventCardHeader">Change Nick Name</div>
+        <div class="card-body">
+            @Html.ValidationSummary(true, "")
+
+            <div class="form-group">
+                <label>Change Name:</label>
+                <input class="form-control" type="text" />
+                <span ></span>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+<div class="card">
+    <form asp-controller="AppHome" asp-action="UpdatePassword" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <div class="card-header eventCardHeader">Change Password</div>
+        <div class="card-body">
+            @Html.ValidationSummary(true, "")
+            <p>
+                You will be asked to login again after sucessfully updating your password.
+            </p>
+
+
+            <div class="form-group">
+                <label >Enter new Password:</label>
+                <input  class="form-control" type="password" />
+                <span></span>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+

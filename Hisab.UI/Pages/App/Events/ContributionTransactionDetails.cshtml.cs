@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hisab.UI
 {
-    public class FriendsModel : PageModel
+    public class ContributionTransactionDetailsModel : PageModel
     {
         public void OnGet()
         {

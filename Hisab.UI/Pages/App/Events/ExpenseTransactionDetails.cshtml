@@ -1,0 +1,201 @@
+﻿@page "/app/events/{id}/ExpenseTransactionDetails/{transid}"
+
+@model Hisab.UI.ExpenseTransactionDetailsModel
+@{
+    ViewData["Title"] = "ExpenseTransactionDetails";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div style="float:right; margin:10px">
+    <button><i class="fa fa-undo-alt"></i> Back to Transactions</button>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="clearfix">
+
+
+    <form>
+        <div class="form-group row">
+            <label for="expenseTitle" class="col-sm-2 col-form-label">Expense title:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="expenseTitle">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="expenseDate" class="col-sm-2 col-form-label">Expense Date:</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="expenseDate">
+            </div>
+        </div>
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-equalSplit-tab" data-toggle="pill" href="#pills-equalSplit" role="tab" aria-controls="pills-home" aria-selected="true">Equal Split</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-advanceSplit-tab" data-toggle="pill" href="#pills-advanceSplit" role="tab" aria-controls="pills-profile" aria-selected="false">Advance Split</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-equalSplit" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div id="equalSplitContent">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Who Paid?</th>
+                                <th scope="col">Expense Amount</th>
+                                <th scope="col">Include in Split?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@if (@Model.MaxAllowedPoolAmount > 0)
+                                {*@
+                            <tr>
+                                <td>Pool Amount</td>
+                                <td><input class="form-control" type="text" /></td>
+                                <td>n/a</td>
+                            </tr>
+                            @*}*@
+
+
+                            @*@for (var i = 0; i < Model.FriendDetails.Count; i++)
+                                {*@
+                            <tr>
+
+                                <td>
+                                    Name
+
+                                </td>
+                                <td><input class="form-control" type="text" /></td>
+                                <td>
+                                    <!-- Material unchecked -->
+                                    <!-- Default unchecked -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                        <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+                                    </div>
+                                    @*<input class="Slider" type="checkbox" data-toggle="toggle" data-on="Include" data-off="Exclude">*@
+
+
+                                </td>
+                            </tr>
+                            @*}*@
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="col">Total Bill Amount</th>
+                                <th scope="col">$$$</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="pills-advanceSplit" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                <div id="advanceSplitContent">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Who Paid?</th>
+                                <th scope="col">Expense Amount</th>
+                                <th scope="col">Percentage Split</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@if (@Model.MaxAllowedPoolAmount > 0)
+                                {*@
+                            <tr>
+                                <td>Pool Amount</td>
+                                <td><input class="form-control" type="text" /></td>
+                                <td>n/a</td>
+                            </tr>
+                            @*}*@
+
+
+                            @*@for (var i = 0; i < Model.FriendDetails.Count; i++)
+                                {*@
+                            <tr>
+                                <input type="hidden" />
+                                <td>
+                                    Name
+
+                                </td>
+                                <td><input class="form-control" type="text" /></td>
+                                <td>
+                                    <input type="number" min="1" max="100" id="myPercent" />
+
+
+                                </td>
+                            </tr>
+                            @*}*@
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="col">Total Bill Amount</th>
+                                <th scope="col">$$$</th>
+                                <th scope="col">100%</th>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="alert alert-info">The total expense of 5000 paid by abc will be equally split among def, bef, cdf.</div>
+
+        <div class="row transactionFooter">
+            <div class="col-11 col-xs-11 transactionButtons">
+
+                <button><i class="fa fa-edit"></i> Save</button>
+
+                <div class="dropdown">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-exclamation-circle"></i> Ask payer to
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Check Transaction Amount</a>
+                        <a class="dropdown-item" href="#">Check Split</a>
+                        <a class="dropdown-item" href="#">Exclude me from the split</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading alertHeading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Alerts</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <ul class="list-group">
+                    <li class="list-group-item">One</li>
+                    <li class="list-group-item">Two</li>
+                    <li class="list-group-item">Three</li>
+                </ul>
+                <div class="panel-footer">Footer</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

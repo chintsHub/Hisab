@@ -1,0 +1,48 @@
+﻿@page "/app/events/{id}/EventSettlement"
+@model Hisab.UI.EventSettlementModel
+@{
+    ViewData["Title"] = "EventSettlement";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>EventSettlement</h1>
+
+<div class="card container ">
+         
+    <div class="row ">
+
+        <div class="col-2 col-md-2">
+            <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+        </div>
+        <div class="col-6 col-md-6">
+
+            <div class="card-body">
+                <div>Nick Name</div>
+                <div>Email</div>
+            </div>
+            <div class="custom-control custom-checkbox checkbox-xl ">
+
+                <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
+                <label class="custom-control-label" for="checkbox-3">
+                    I acknowledge, payment has received.
+                </label>
+
+            </div>
+        </div>
+
+        <div class="col-4 col-md-4">
+
+            <div>To Pay / To Receive </div>
+            <div>$$$ </div>
+            
+
+        </div>
+        
+    </div>
+    
+
+
+
+
+
+</div>

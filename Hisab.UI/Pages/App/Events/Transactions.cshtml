@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/app/events/{id}/transactions"
 @model Hisab.UI.TransactionsModel
 @{
     ViewData["Title"] = "Transactions";
@@ -6,4 +6,15 @@
 }
 
 <h1>Transactions</h1>
+
+
+
+<div class="container transactions">
+
+    <vc:Transaction></vc:Transaction>
+
+    <vc:Transaction></vc:Transaction>
+</div>
+
+
 

@@ -6,23 +6,21 @@
 }
 
     <div class="container">
-
+        <p>
+            <h1>Dashboard</h1>
+        </p>
         <div class="row">
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
                         <h5 class="card-title">Expenses</h5>
                         <p class="card-text">$1,000,000.00</p>
-                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 eventDashboardTiles">
-                <div class="card ">
-                    <div class="card-body">
-                        <h5 class="card-title">Contributions</h5>
-                        <p class="card-text">$1234567891</p>
-                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                    <div class="card-footer tileFooter">
+                        <a asp-page="/app/events/ExpenseTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty" >
+                            <i class="fa fa-plus-square"></i> Add Expense
+                        </a>
                     </div>
                 </div>
             </div>
@@ -31,21 +29,153 @@
                     <div class="card-body">
                         <h5 class="card-title">Net position</h5>
                         <p class="card-text">$1234567891</p>
-                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+
+                    </div>
+                    <div class="card-footer tileFooter">
+                        <a asp-page="/app/events/EventSettlement" asp-route-id="@Guid.NewGuid()">
+                            <i class="fa fa-plus-square"></i> Settle
+                        </a>
+                        
+
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
+                        <h5 class="card-title">Contributions</h5>
+                        <p class="card-text">$1234567891</p>
+
+                    </div>
+                    <div class="card-footer tileFooter">
+                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty">
+                            <i class="fa fa-plus-square"></i> Contribution
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3 eventDashboardTiles">
+                <div class="card ">
+                    <div class="card-body">
                         <h5 class="card-title">Money pool</h5>
                         <p class="card-text">$1234567891</p>
-                        @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+
+                    </div>
+                    <div class="card-footer tileFooter">
+
+                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty">
+                            <i class="fa fa-plus-square"></i> Contribute to pool
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+        
+    
+    <div class="container friendsContainer">
+        
+        <div class="row">
+            <div class="col-6">
+                <p>
+                    Friends
+                </p>
+            </div>
+            <div class="col-6">
+                <div>
+                    <a asp-page="EventFriends" asp-route-id="@Guid.NewGuid()">
+                        <i class="fa fa-plus-square"></i> Add Friends
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+        
+
+        
+        <div class="card-columns">
+            @*for loop starts here*@
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-xs-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-xs-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-xs-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-xs-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-xs-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
 
 
