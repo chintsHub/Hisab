@@ -1,13 +1,10 @@
 ﻿CREATE TABLE [dbo].[EventFriend]
 (
-	[EventFriendId] INT NOT NULL IDENTITY, 
-	[EventId] INT NOT NULL , 
+	[EventFriendId] UNIQUEIDENTIFIER NOT NULL, 
+	[EventId] UNIQUEIDENTIFIER NOT NULL , 
     [Email] VARCHAR(200) NOT NULL, 
-    [NickName] VARCHAR(200) NOT NULL, 
     [Status] INT NOT NULL, 
-    [AppUserId] INT NULL, 
-    [AdultCount] INT NOT NULL, 
-    [KidsCount] INT NOT NULL, 
+    [AppUserId] UNIQUEIDENTIFIER NULL, 
     
     CONSTRAINT [FK_EventFriend_Event] FOREIGN KEY ([EventId]) REFERENCES [Event]([Id]), 
     CONSTRAINT [FK_EventFriend_AppUser] FOREIGN KEY ([AppUserId]) REFERENCES [ApplicationUser]([Id]), 

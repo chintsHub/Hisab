@@ -149,7 +149,7 @@ namespace Hisab.UI.ViewModels
         public string SplitType { get; set; }
 
        
-        public int CreatedByUserId { get; set; }
+        public Guid CreatedByUserId { get; set; }
         public string NickName { get; set; }
 
         public DateTime CreatedDateTime { get; set; }

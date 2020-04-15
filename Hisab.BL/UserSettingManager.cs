@@ -9,7 +9,7 @@ namespace Hisab.BL
 {
     public interface IUserSettingManager
     {
-        Task<bool> UpdateNickName(string nickName, int userId);
+        Task<bool> UpdateNickName(string nickName, Guid userId);
 
         Task<string> GetNickName(string userName);
     }
@@ -37,7 +37,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> UpdateNickName(string nickName, int userId)
+        public async Task<bool> UpdateNickName(string nickName, Guid userId)
         {
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {

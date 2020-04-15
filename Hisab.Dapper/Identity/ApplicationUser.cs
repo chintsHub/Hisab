@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Hisab.Dapper.Identity
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser<Guid>
     {
       public  string NickName { get; set; }
 

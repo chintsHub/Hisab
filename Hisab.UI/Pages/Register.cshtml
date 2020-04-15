@@ -5,39 +5,47 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Register</h1>
-
-<form id="toggleRegisterForm" class="popupForm" asp-controller="Home" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-
-
-    @if (Model != null && Model.RegisterUserVm != null)
+<div class="container loginForm">
+    @if (!String.IsNullOrEmpty(Model.SucessMessage))
     {
-        @Html.ValidationSummary(true, "")
+        <div class="alert alert-success" role="alert">
+            @Model.SucessMessage
+        </div>
     }
+    <form id="toggleRegisterForm" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
 
+        <div class="form-group">
+            <label asp-for="@Model.RegisterUserVm.Name">Name:</label>
+            <input id="nickName" asp-for="@Model.RegisterUserVm.Name" class="form-control" />
+            <span asp-validation-for="@Model.RegisterUserVm.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.RegisterUserVm.Email">Email:</label>
+            <input asp-for="@Model.RegisterUserVm.Email" class="form-control" type="email" />
+            <span asp-validation-for="@Model.RegisterUserVm.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.RegisterUserVm.Password">Password:</label>
+            <input asp-for="@Model.RegisterUserVm.Password" type="password" class="form-control" />
+            <span asp-validation-for="@Model.RegisterUserVm.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+        </div>
+
+        <div class="successMessage">
+
+        </div>
 
 
-    <div class="form-group">
-        <label asp-for="@Model.RegisterUserVm.NickName">Nickname:</label>
-        <input id="nickName" asp-for="@Model.RegisterUserVm.NickName" class="form-control" />
-        <span asp-validation-for="@Model.RegisterUserVm.NickName"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.RegisterUserVm.Email">Email:</label>
-        <input asp-for="@Model.RegisterUserVm.Email" class="form-control" type="email" />
-        <span asp-validation-for="@Model.RegisterUserVm.Email"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.RegisterUserVm.Password">Password:</label>
-        <input asp-for="@Model.RegisterUserVm.Password" type="password" class="form-control" />
-        <span asp-validation-for="@Model.RegisterUserVm.Password"></span>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary">Register</button>
-    </div>
+    </form>
+</div>
 
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
-
-
-</form>
+}

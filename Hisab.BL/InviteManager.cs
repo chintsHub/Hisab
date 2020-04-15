@@ -9,9 +9,9 @@ namespace Hisab.BL
 {
     public interface IEventInviteManager
     {
-        Task<List<EventInviteBO>> GetUserInvites(int userId);
+        Task<List<EventInviteBO>> GetUserInvites(Guid userId);
 
-        Task<int> JoinEvent(int eventFriendId, int appUserId);
+        Task<int> JoinEvent(int eventFriendId, Guid appUserId);
     }
 
     public class EventInviteManager : IEventInviteManager
@@ -23,7 +23,7 @@ namespace Hisab.BL
             _connectionProvider = connectionProvider;
         }
 
-        public async Task<List<EventInviteBO>> GetUserInvites(int userId)
+        public async Task<List<EventInviteBO>> GetUserInvites(Guid userId)
         {
 
 
@@ -36,7 +36,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<int> JoinEvent(int eventFriendId, int appUserId)
+        public async Task<int> JoinEvent(int eventFriendId, Guid appUserId)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {

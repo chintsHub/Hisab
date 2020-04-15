@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Scripts\Pages\AppHome.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
@@ -31,11 +35,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Scripts\Http\" />
+    <Folder Include="Scripts\Models\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Pages\AppHome.ts" />
   </ItemGroup>
 
 </Project>

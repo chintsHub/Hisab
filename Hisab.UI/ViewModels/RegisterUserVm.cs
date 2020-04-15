@@ -12,7 +12,7 @@ namespace Hisab.UI.ViewModels
         public string Password { get; set; }
 
         [Required]
-        public string NickName { get; set; }
+        public string Name { get; set; }
     }
 
    

@@ -56,7 +56,7 @@ namespace Hisab.Common.BO
 
         public int EventId { get; set; }
 
-        public int? AppUserId { get; set; }
+        public Guid? AppUserId { get; set; }
 
         public string Email { get; set; }
 

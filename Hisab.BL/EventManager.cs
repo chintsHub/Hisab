@@ -15,7 +15,7 @@ namespace Hisab.BL
     {
         Task<int> CreateEvent(NewEventBO newNewEvent);
 
-        Task<List<UserEventBO>> GetEvents(int userId);
+        Task<List<UserEventBO>> GetEvents(Guid userId);
 
         Task<List<UserEventBO>> GetAllEvents();
 
@@ -29,9 +29,9 @@ namespace Hisab.BL
 
         Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
 
-        Task<bool> CanAccessEvent(int eventId, int userId);
+        Task<bool> CanAccessEvent(int eventId, Guid userId);
 
-        bool CheckEventAccess(EventBO eventBo, int userId);
+        bool CheckEventAccess(EventBO eventBo, Guid userId);
 
         int ProcessTransaction(TransactionBo transaction);
 
@@ -97,7 +97,7 @@ namespace Hisab.BL
              
         }
 
-        public async Task<List<UserEventBO>> GetEvents(int userId)
+        public async Task<List<UserEventBO>> GetEvents(Guid userId)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
@@ -225,7 +225,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> CanAccessEvent(int eventId, int userId)
+        public async Task<bool> CanAccessEvent(int eventId, Guid userId)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
@@ -240,7 +240,7 @@ namespace Hisab.BL
            
         }
 
-        public bool CheckEventAccess(EventBO eventBo, int userId)
+        public bool CheckEventAccess(EventBO eventBo, Guid userId)
         {
             var friend = eventBo.Friends.FirstOrDefault(x => x.AppUserId != null && x.AppUserId.Value == userId);
 

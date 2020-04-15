@@ -25,6 +25,7 @@ namespace Hisab.Dapper.IdentityStores
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(dbConnectionProvider))
             {
                 //await context.InitializeWithTransaction();
+                user.Id = System.Guid.NewGuid();
 
                 var result =  await context.ApplicationUserRepository.CreateAsync(user, cancellationToken);
 

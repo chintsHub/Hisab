@@ -14,7 +14,7 @@ namespace Hisab.Dapper.Repository
 
         List<TransactionBo> GetAllTransactions(int eventId);
 
-        int CreateTransaction(decimal totalAmount, int eventId, string description, int transactionType, int createdByUserId, DateTime createDateTime);
+        int CreateTransaction(decimal totalAmount, int eventId, string description, int transactionType, Guid createdByUserId, DateTime createDateTime);
 
         int CreateTransactionSplit(decimal amountDue, int transactionId, int eventFriendId);
 
@@ -167,7 +167,7 @@ namespace Hisab.Dapper.Repository
             return result.ToList();
         }
 
-        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType, int createdByUserId, DateTime createdDateTime)
+        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType, Guid createdByUserId, DateTime createdDateTime)
         {
            
 

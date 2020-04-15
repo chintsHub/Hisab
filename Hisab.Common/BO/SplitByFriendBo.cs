@@ -19,7 +19,7 @@ namespace Hisab.Common.BO
 
         public List<SettlementBo> Settlements { get; set; }
 
-        public int CreatedByUserId { get; set; }
+        public Guid CreatedByUserId { get; set; }
         public string NickName { get; set; }
 
         public DateTime CreatedDateTime { get; set; }

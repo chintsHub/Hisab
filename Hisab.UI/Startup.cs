@@ -71,6 +71,8 @@ namespace Hisab.UI
 
             services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
 
+            services.AddAuthentication().AddCookie();
+
 
             services.Configure<IISServerOptions>(options =>
             {

@@ -17,7 +17,7 @@ namespace Hisab.Dapper.Repository
 
         int AddEventOwnerToEvent(NewEventBO newNewEvent);
 
-        List<UserEventBO> GetEventsForUser(int userId);
+        List<UserEventBO> GetEventsForUser(Guid userId);
 
         EventBO GetEventById(int eventId);
 
@@ -155,7 +155,7 @@ namespace Hisab.Dapper.Repository
             return friendId;
         }
 
-        public List<UserEventBO> GetEventsForUser(int userId)
+        public List<UserEventBO> GetEventsForUser(Guid userId)
         {
              var result = Connection.Query<UserEventBO>($@"
                     select 

@@ -6,10 +6,12 @@
 
 }
 
-   
 
-        <!-- Default form login -->
+
+<!-- Default form login -->
     <form asp-page="LoginPage" method="post" class="text-center border border-light p-5 loginForm">
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
         <p class="h4 mb-4">Sign in</p>
 
@@ -30,7 +32,7 @@
             </div>
             <div>
                 <!-- Forgot password -->
-                <a href="">Forgot password?</a>
+                <a asp-page="ForgotPassword">Forgot password?</a>
             </div>
         </div>
 
@@ -40,18 +42,19 @@
         <!-- Register -->
         <p>
             Not a member?
-            <a href="">Register</a>
+            <a asp-page="Register">Register</a>
         </p>
 
 
 
     </form>
-        <!-- Default form login -->
+<!-- Default form login -->
 
-  
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
-
-
+}
 
 
 

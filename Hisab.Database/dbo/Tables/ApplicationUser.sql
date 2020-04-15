@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[ApplicationUser] (
-    [Id]                   INT NOT NULL IDENTITY,
+    [Id]                   UNIQUEIDENTIFIER NOT NULL,
     [UserName]             NVARCHAR (256)   NOT NULL,
-    [NormalizedUserName]   NVARCHAR (256)   NOT NULL,
+    [NormalizedUserName]   NVARCHAR(256)   NOT NULL,
     [Email]                NVARCHAR (256)   NULL,
     [NormalizedEmail]      NVARCHAR (256)   NULL,
     [EmailConfirmed]       BIT              NOT NULL,

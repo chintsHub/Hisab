@@ -10,9 +10,9 @@ namespace Hisab.Dapper.Repository
 {
     public interface IEventInviteRepository
     {
-        List<EventInviteBO> GetUserInvites(int userId);
+        List<EventInviteBO> GetUserInvites(Guid userId);
 
-        int JoinEvent(int eventFriendId, int appUserId);
+        int JoinEvent(int eventFriendId, Guid appUserId);
     }
 
     internal class EventInviteRepository : RepositoryBase, IEventInviteRepository
@@ -22,7 +22,7 @@ namespace Hisab.Dapper.Repository
         {
 
         }
-        public List<EventInviteBO> GetUserInvites(int userId)
+        public List<EventInviteBO> GetUserInvites(Guid userId)
         {
             var result = Connection.Query<EventInviteBO>($@"
                        select 
@@ -51,7 +51,7 @@ namespace Hisab.Dapper.Repository
             return result.ToList();
         }
 
-        public int JoinEvent(int eventFriendId, int appUserId)
+        public int JoinEvent(int eventFriendId, Guid appUserId)
         {
             var rows = Connection.Execute($@"UPDATE [EventFriend]
                     SET

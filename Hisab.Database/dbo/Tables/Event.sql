@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Event] (
-    [Id]     INT NOT NULL IDENTITY,
-    [UserId] INT NOT NULL,
+    [Id]     UNIQUEIDENTIFIER NOT NULL,
+    [UserId] UNIQUEIDENTIFIER NOT NULL,
     [Name]   VARCHAR (50)     NOT NULL,
     [CreateDate] DATETIME NULL, 
     [LastModifiedDate] DATETIME NULL, 
