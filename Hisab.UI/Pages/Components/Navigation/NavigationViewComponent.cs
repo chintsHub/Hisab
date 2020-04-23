@@ -75,7 +75,7 @@ namespace Hisab.UI.Pages.Components.Navigation
 
             nav.Items.Add(new NavigationItemVM() { Page = "Index", Label="Features", IsCurrentPage=path.Contains("Features")?true:false});
             nav.Items.Add(new NavigationItemVM() { Page = "Pricing", Label = "Pricing", IsCurrentPage = path.Contains("Pricing") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "Contact", Label = "Contact", IsCurrentPage = path.Contains("Contact") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "CustomerStories", Label = "User Stories", IsCurrentPage = path.Contains("Stories") ? true : false });
             nav.Items.Add(new NavigationItemVM() { Page = "Register", Label="Register", IsCurrentPage = path.Contains("Register") ? true : false });
 
             return nav;

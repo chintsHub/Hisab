@@ -19,11 +19,11 @@ namespace Hisab.Common.BO
 
         public EventStatus Status { get; }
 
-        
+
 
         public NewEventBO()
         {
-            
+
             CreateDateTime = DateTime.Now;
             LastModifiedDateTime = DateTime.Now;
             Status = EventStatus.Active;
@@ -47,6 +47,46 @@ namespace Hisab.Common.BO
 
         [Description("Inactive")]
         Inactive
+    }
+
+    public enum FeedbackType
+    {
+        [Description("Suggestion")]
+        Suggestion = 1,
+
+        [Description("Issue")]
+        Issue = 2,
+
+        [Description("Testimony")]
+        Testimony = 3
+    }
+
+    public class NewFeedbackBO
+    {
+        public Guid Id { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public string Message { get; set; }
+
+        public FeedbackType FeedbackType { get; set; }
+
+        public DateTime FeedbackDate { get; set; }
+
+        public bool? ShowAsTestimony { get; set; }
+    }
+
+    public class FeedBackBO
+    {
+        public Guid Id { get; set; }
+
+        public string NickName { get; set; }
+
+        public string Message { get; set; }
+
+        public FeedbackType FeedbackType { get; set; }
+
+        public DateTime FeedbackDate { get; set; }
     }
 
     public class EventFriendBO

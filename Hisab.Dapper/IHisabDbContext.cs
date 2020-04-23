@@ -16,6 +16,8 @@ namespace Hisab.Dapper
 
         IEventTransactionRepository EventTransactionRepository { get; }
 
+        IFeedbackRepository FeedbackRepository { get;  }
+
         void SaveChanges();
     } 
 

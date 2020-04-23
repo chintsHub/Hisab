@@ -1,0 +1,20 @@
+﻿@page
+@model Hisab.UI.CustomerStoriesModel
+@{
+    ViewData["Title"] = "CustomerStories";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+
+    <div class="container transactions">
+
+        @foreach (var m in Model.Feeds)
+        {
+            <vc:Feedback feed-back-vm="m"></vc:Feedback>
+        }
+
+
+
+    </div>
+

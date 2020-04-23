@@ -6,6 +6,7 @@ using Hisab.Common.BO;
 using Hisab.UI.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+
 namespace Hisab.UI.ViewModels
 {
     
@@ -179,5 +180,18 @@ namespace Hisab.UI.ViewModels
             
         }
     }
-   
+
+    public class FeedBackItemVm
+    {
+        public Guid Id { get; set; }
+
+        public string NickName { get; set; }
+
+        public string Message { get; set; }
+
+        public FeedbackType FeedbackType { get; set; }
+
+        public DateTime FeedbackDate { get; set; }
+    }
+
 }

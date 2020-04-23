@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
 using Hisab.Dapper.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace Hisab.Dapper
 {
@@ -8,7 +9,7 @@ namespace Hisab.Dapper
     {
         private IDbConnection _connection;
         private IDbTransaction _transaction;
-       
+        
 
 
         private IAccountTypeRepository _accountTypeRepository;
@@ -17,6 +18,7 @@ namespace Hisab.Dapper
         private IEventRepository _eventRepository;
         private IEventInviteRepository _eventInviteRepository;
         private IEventTransactionRepository _eventTransactionRepository;
+        private IFeedbackRepository _feedbackRepository;
         private bool _disposed;
         
 
@@ -25,7 +27,7 @@ namespace Hisab.Dapper
             _connection = connection;
             _transaction = transaction;
             //@"Integrated Security=SSPI;Pooling=false;Data Source=BullsEye\Chints;Initial Catalog=Hisab2");
-
+            
 
         }
 
@@ -114,6 +116,21 @@ namespace Hisab.Dapper
                 }
 
                 return _eventTransactionRepository;
+            }
+
+
+        }
+
+        public IFeedbackRepository FeedbackRepository
+        {
+            get
+            {
+                if (_feedbackRepository == null)
+                {
+                    _feedbackRepository = new FeedbackRepository(_connection, _transaction);
+                }
+
+                return _feedbackRepository;
             }
 
 
