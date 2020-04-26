@@ -19,6 +19,10 @@
 
                 <li><a asp-controller="AppHome" asp-action="Logout" class="">Log out</a></li>
                 <li><a asp-page="Contact">Feedback</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><a asp-page="/App/Admin/AllUsers">Admin</a></li>
+                }
             </ul>
 
            
@@ -30,4 +34,6 @@
         }
 
     </form>
+
+   
 </header>

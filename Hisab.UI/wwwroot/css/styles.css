@@ -122,7 +122,8 @@ header {
       font-size: 1rem;
       font-weight: 300; }
   header .logoutButton {
-    background-color: #e2ed07; }
+    background-color: #e2ed07;
+    color: #003B5C; }
   header .loginButtonLink {
     background-color: #e2ed07;
     border: none;
@@ -247,47 +248,13 @@ p {
   padding: 0 2% 2% 2%; }
 
 .pageButton {
-  display: inline-block;
-  padding-right: 2%; }
-  .pageButton button {
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    cursor: pointer; }
-
-.searchbox {
-  /*max-width: 50%;*/
-  /*float:right;*/
-  display: inline-block; }
-
-/* Style the search field */
-form.searchbox input[type=text] {
   padding: 10px;
+  background: #e2ed07;
+  color: #003B5C;
   font-size: 17px;
   border: 1px solid grey;
-  background: white;
-  width: auto; }
-
-/* Style the submit button */
-form.searchbox button {
-  /*width: auto;*/
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  cursor: pointer; }
-
-form.searchbox button:hover {
-  background: #0b7dda; }
-
-/* Clear floats */
-form.searchbox::after {
-  content: "";
-  clear: both;
-  display: table; }
+  cursor: pointer;
+  margin: 2px 4px; }
 
 .eventDashboardTiles {
   padding: 0px; }
@@ -366,6 +333,29 @@ form.searchbox::after {
 .scroller {
   max-height: 600px;
   overflow-y: scroll; }
+
+.customCombobox {
+  width: 120px;
+  height: 22px;
+  border: 1px solid black;
+  /*background-image: url('../Images/down.png');*/
+  background-repeat: no-repeat;
+  background-position: right;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  align-content: center; }
+
+.ulcustomCombobox {
+  display: none;
+  /*hide dropdown by default*/
+  width: 120px;
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+  margin: 0;
+  padding: 0;
+  position: absolute; }
 
 /*------- End of Main-----*/
 /*-------------------------------Footer----------------------- */

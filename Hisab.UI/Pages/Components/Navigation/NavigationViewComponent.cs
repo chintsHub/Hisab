@@ -28,11 +28,17 @@ namespace Hisab.UI.Pages.Components.Navigation
 
             if (User.Identity.IsAuthenticated)
             {
+                if(path.Contains("Admin"))
+                {
+                    return View(AdminMenu(path));
+                }
+                
                 if(pages.Count() > 3)
                 {
                     return View(EventMenu(path));
                 }
-                    return View(AppMenu(path));
+                
+                return View(AppMenu(path));
             }
 
             return View(CreateDefaultNavigation(path));
@@ -46,6 +52,18 @@ namespace Hisab.UI.Pages.Components.Navigation
             nav.Items.Add(new NavigationItemVM() { Page = "Invites", Label = "Invites", IsCurrentPage = path.Contains("Invites") ? true : false });
             nav.Items.Add(new NavigationItemVM() { Page = "Alerts", Label = "Alerts", IsCurrentPage = path.Contains("Alerts") ? true : false });
             nav.Items.Add(new NavigationItemVM() { Page = "UserSettings", Label = "Settings", IsCurrentPage = path.Contains("Settings") ? true : false });
+
+            return nav;
+        }
+
+        private NavigationVM AdminMenu(string path)
+        {
+            var nav = new NavigationVM();
+
+            nav.Items.Add(new NavigationItemVM() { Page = "AllUsers", Label = "All Users", IsCurrentPage = path.Contains("AllUsers") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "AllEvents", Label = "All Events", IsCurrentPage = path.Contains("AllEvents") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "AllFeedbacks", Label = "All Feedbacks", IsCurrentPage = path.Contains("AllFeedbacks") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "SystemSettings", Label = "System", IsCurrentPage = path.Contains("System") ? true : false });
 
             return nav;
         }

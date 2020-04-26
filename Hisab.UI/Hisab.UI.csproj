@@ -35,10 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\App\Admin\" />
     <Folder Include="Scripts\Http\" />
     <Folder Include="Scripts\Models\" />
-    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

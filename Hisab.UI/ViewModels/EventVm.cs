@@ -194,4 +194,10 @@ namespace Hisab.UI.ViewModels
         public DateTime FeedbackDate { get; set; }
     }
 
+    public class NewEventVm
+    {
+        
+        public string EventName { get; set; }
+    }
+
 }

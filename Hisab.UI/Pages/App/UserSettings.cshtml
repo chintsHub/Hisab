@@ -5,7 +5,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>UserSettings</h1>
+
 
 <div class="card">
     <form asp-controller="AppHome" asp-action="UpdateNickName" method="post">
@@ -17,6 +17,28 @@
                 <label>Change Name:</label>
                 <input class="form-control" type="text" />
                 <span ></span>
+            </div>
+
+            <div class="form-group">
+                <div class="customCombobox" id="customCombobox1">
+                    <ul class="ulcustomCombobox" id="ulcustomCombobox1">
+                        <li id="1">
+                            <a>
+                                <img src="~/img/iconMale.png" class="imgDisplay" />
+                                <p class="imageText">Male</p>
+                            </a>
+                        </li>
+                        <li id="2">
+                            <a>
+                                <img src="~/img/iconFemale.png" class="imgDisplay" />
+                                <p class="imageText">Female</p>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                
             </div>
 
         </div>
