@@ -168,4 +168,30 @@ namespace Hisab.Common.BO
 
         public int EventFriendId { get; set; }
     }
+
+    public enum AvatarEnum
+    {
+        [Description("Default Avatar")]
+        Default = 1,
+
+        [Description("Boy casual")]
+        Boy1 = 2,
+
+        [Description("Girl casual")]
+        Girl1 = 3,
+
+        [Description("BatGirl")]
+        GirlSuperhero1 = 4,
+
+        [Description("Batman")]
+        BoySuperhero1 = 5,
+
+    }
+
+    public class UserSettingsBO
+    {
+        public string NickName { get; set; }
+
+        public AvatarEnum Avatar { get; set; }
+    }
 }

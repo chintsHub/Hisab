@@ -1,0 +1,46 @@
+﻿.customCombobox {
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    background-image: url('../../img/down.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    align-content: center;
+
+    
+}
+
+.ulcustomCombobox {
+    display: none; /*hide dropdown by default*/
+    width: 200px;
+    overflow-x:scroll;
+    z-index:1000;
+    margin: 0px;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+    padding: 0;
+    position: absolute;
+}
+
+.ulcustomCombobox li {
+    border-top: 1px solid gray;
+    height: 40px;
+    list-style-type: none;
+}
+
+.imgDisplay {
+    display: inline;
+    vertical-align: middle;
+    max-height: 40px;
+    max-width: 40px
+}
+
+.imageText {
+    display: inline;
+    vertical-align: middle;
+    padding-left: 5px;
+}

@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Identity;
+using Hisab.Common.BO;
 
 namespace Hisab.Dapper.Repository
 {
@@ -23,7 +24,7 @@ namespace Hisab.Dapper.Repository
         Task<bool> IsUserInRole(Guid userId, int roleId);
         Task<IList<string>> GetRolesAsync(Guid userId);
 
-        int UpdateNickName(string nickName, Guid userId);
+        int UpdateUserSettings(string nickName, Guid userId, int avatarId);
     }
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
@@ -39,10 +40,10 @@ namespace Hisab.Dapper.Repository
         {
             string command = $@"
 
-            INSERT INTO [ApplicationUser] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [NickName])
+            INSERT INTO [ApplicationUser] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [NickName], [AvatarId])
                     VALUES (@{nameof(ApplicationUser.Id)},@{nameof(ApplicationUser.UserName)}, @{nameof(ApplicationUser.NormalizedUserName)}, @{nameof(ApplicationUser.Email)},
                     @{nameof(ApplicationUser.NormalizedEmail)}, @{nameof(ApplicationUser.EmailConfirmed)}, @{nameof(ApplicationUser.PasswordHash)},
-                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)}, @{nameof(ApplicationUser.NickName)});  ";
+                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)}, @{nameof(ApplicationUser.NickName)}, @{nameof(ApplicationUser.AvatarId)});  ";
 
             await Connection.ExecuteAsync(command, user, transaction: Transaction);
 
@@ -159,14 +160,14 @@ namespace Hisab.Dapper.Repository
             return queryResults.ToList();
         }
 
-        public int UpdateNickName(string nickName, Guid userId)
+        public int UpdateUserSettings(string nickName, Guid userId, int avatarId)
         {
             var rows = Connection.Execute($@"UPDATE [ApplicationUser]
                     SET
-                    [NickName] = @{nameof(nickName)}
+                    [NickName] = @{nameof(nickName)},
+                    [AvatarId] = @{nameof(avatarId)}
                     
-                    
-                    WHERE [Id] = @{nameof(userId)}", new { nickName, userId }, transaction: Transaction);
+                    WHERE [Id] = @{nameof(userId)}", new { nickName, userId, avatarId }, transaction: Transaction);
 
 
             return rows;

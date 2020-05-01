@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Hisab.Common.BO;
 using Hisab.Dapper;
 using Hisab.Dapper.Repository;
 
@@ -9,9 +10,9 @@ namespace Hisab.BL
 {
     public interface IUserSettingManager
     {
-        Task<bool> UpdateNickName(string nickName, Guid userId);
+        Task<bool> UpdateUserSettings(string nickName, Guid userId, AvatarEnum avatar);
 
-        Task<string> GetNickName(string userName);
+        Task<UserSettingsBO> GetUserSettings(string userName);
     }
 
     public class UserSettingManager : IUserSettingManager
@@ -25,23 +26,23 @@ namespace Hisab.BL
             _connectionProvider = connectionProvider;
         }
 
-        public async Task<string> GetNickName(string userName)
+        public async Task<UserSettingsBO> GetUserSettings(string userName)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var user = await context.ApplicationUserRepository.FindByNameAsync(userName);
 
-                return user.NickName;
+                return new UserSettingsBO { NickName = user.NickName, Avatar = (AvatarEnum) user.AvatarId };
                 
 
             }
         }
 
-        public async Task<bool> UpdateNickName(string nickName, Guid userId)
+        public async Task<bool> UpdateUserSettings(string nickName, Guid userId, AvatarEnum avatar)
         {
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
-                var rows = context.ApplicationUserRepository.UpdateNickName(nickName, userId);
+                var rows = context.ApplicationUserRepository.UpdateUserSettings(nickName, userId,(int)avatar);
                 context.SaveChanges();
 
                 if (rows == 1)

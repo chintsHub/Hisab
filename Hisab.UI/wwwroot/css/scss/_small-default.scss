@@ -371,28 +371,12 @@ p{
     overflow-y: scroll;
 }
 
-.customCombobox {
-    width: 120px;
-    height: 22px;
-    border: 1px solid black;
-    /*background-image: url('../../Images/down.png');*/
-    background-repeat: no-repeat;
-    background-position: right;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    align-content: center;
+.footerButtons{
+    float:right;
 }
 
-.ulcustomCombobox {
-    display: none; /*hide dropdown by default*/
-    width: 120px;
-    background-color: white;
-    border: 1px solid black;
-    border-top: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
+.settingsCard {
+    margin: 5px;
 }
 /*------- End of Main-----*/
 /*-------------------------------Footer----------------------- */

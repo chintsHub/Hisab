@@ -27,6 +27,9 @@ namespace Hisab.Dapper.IdentityStores
                 //await context.InitializeWithTransaction();
                 user.Id = System.Guid.NewGuid();
 
+                if (user.AvatarId == 0)
+                    user.AvatarId = 1;
+
                 var result =  await context.ApplicationUserRepository.CreateAsync(user, cancellationToken);
 
                 if (result.Succeeded)

@@ -1,4 +1,5 @@
 ﻿using Hisab.BL;
+using Hisab.Common.BO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,13 +19,14 @@ namespace Hisab.UI.Pages.Components.Header
         
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            string nickName = "";
+            UserSettingsBO user = null;
             if(User.Identity.IsAuthenticated)
             {
-                nickName = await _userSettingManager.GetNickName(User.Identity.Name);
+                user = await _userSettingManager.GetUserSettings(User.Identity.Name);
+                return View("default", user.NickName);
             }
             
-            return View("default",nickName);
+            return View("default","");
         }
     }
 }

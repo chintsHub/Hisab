@@ -103,9 +103,9 @@ namespace Hisab.UI.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            return View("UserSettings", new UserSettingsVm()
+            return View("UserSettings", new OldUserSettingsVm()
             {
-                UpdateNickNameVm = new UpdateNickNameVm() { NickName = user.NickName}
+                UpdateNickNameVm = new UpdateUserSettingsVm() { NickName = user.NickName}
             });
         }
 
@@ -157,10 +157,10 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateNickName(UserSettingsVm userSettings)
+        public async Task<IActionResult> UpdateNickName(OldUserSettingsVm userSettings)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var result = await _userSettingManager.UpdateNickName(userSettings.UpdateNickNameVm.NickName, user.Id);
+            var result = await _userSettingManager.UpdateUserSettings(userSettings.UpdateNickNameVm.NickName, user.Id,0);
 
             if(result)
                 _toastNotification.AddSuccessToastMessage("Nick name updated");
@@ -174,7 +174,7 @@ namespace Hisab.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdatePassword(UserSettingsVm userSettings)
+        public async Task<IActionResult> UpdatePassword(OldUserSettingsVm userSettings)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);

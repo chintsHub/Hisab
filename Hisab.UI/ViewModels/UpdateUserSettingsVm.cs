@@ -1,9 +1,11 @@
 ﻿namespace Hisab.UI.ViewModels
 {
-    public class UpdateNickNameVm
+    public class UpdateUserSettingsVm
     {
         public string NickName { get; set; }
+
+
     }
 
-   
+    
 }

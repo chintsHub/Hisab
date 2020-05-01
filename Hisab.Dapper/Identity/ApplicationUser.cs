@@ -10,6 +10,6 @@ namespace Hisab.Dapper.Identity
     {
       public  string NickName { get; set; }
 
-       
+      public int AvatarId { get; set; } 
     }
 }
