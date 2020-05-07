@@ -18,6 +18,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Sieve.Models;
+using Sieve.Services;
 
 namespace Hisab.UI
 {
@@ -44,7 +46,8 @@ namespace Hisab.UI
                 {
                     config.SignIn.RequireConfirmedEmail = true; //default value is false
                 })
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddSignInManager<HisabSignInManager<ApplicationUser>>();
 
             services.Configure<DataProtectionTokenProviderOptions>(options =>
                 options.TokenLifespan = TimeSpan.FromHours(24));
@@ -74,6 +77,10 @@ namespace Hisab.UI
             services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
 
             services.AddAuthentication().AddCookie();
+
+            services.AddScoped<SieveProcessor>();
+            services.AddScoped<IFilterProcessor, FilterProcessor>();
+            services.Configure<SieveOptions>(_configuration.GetSection("Sieve"));
 
 
             services.Configure<IISServerOptions>(options =>

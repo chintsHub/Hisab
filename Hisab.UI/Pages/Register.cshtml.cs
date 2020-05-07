@@ -41,7 +41,8 @@ namespace Hisab.UI
                     Email = registerUserVm.Email,
                     EmailConfirmed = false,
                     UserName = registerUserVm.Email,
-                    NickName = registerUserVm.Name
+                    NickName = registerUserVm.Name,
+                    IsUserActive = true
 
                 };
 

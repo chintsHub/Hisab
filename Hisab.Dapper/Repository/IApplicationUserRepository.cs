@@ -25,6 +25,9 @@ namespace Hisab.Dapper.Repository
         Task<IList<string>> GetRolesAsync(Guid userId);
 
         int UpdateUserSettings(string nickName, Guid userId, int avatarId);
+        int UpdateUserSettings(string nickName, Guid userId, bool isUserActive, bool emailCofirmed);
+
+        List<ApplicationUser> GetAllUsers();
     }
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
@@ -40,10 +43,11 @@ namespace Hisab.Dapper.Repository
         {
             string command = $@"
 
-            INSERT INTO [ApplicationUser] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [NickName], [AvatarId])
+            INSERT INTO [ApplicationUser] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [NickName], [AvatarId], [IsUserActive])
                     VALUES (@{nameof(ApplicationUser.Id)},@{nameof(ApplicationUser.UserName)}, @{nameof(ApplicationUser.NormalizedUserName)}, @{nameof(ApplicationUser.Email)},
                     @{nameof(ApplicationUser.NormalizedEmail)}, @{nameof(ApplicationUser.EmailConfirmed)}, @{nameof(ApplicationUser.PasswordHash)},
-                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)}, @{nameof(ApplicationUser.NickName)}, @{nameof(ApplicationUser.AvatarId)});  ";
+                    @{nameof(ApplicationUser.PhoneNumber)}, @{nameof(ApplicationUser.PhoneNumberConfirmed)}, @{nameof(ApplicationUser.TwoFactorEnabled)}, 
+                    @{nameof(ApplicationUser.NickName)}, @{nameof(ApplicationUser.AvatarId)}, @{nameof(ApplicationUser.IsUserActive)});  ";
 
             await Connection.ExecuteAsync(command, user, transaction: Transaction);
 
@@ -171,6 +175,27 @@ namespace Hisab.Dapper.Repository
 
 
             return rows;
+        }
+
+        public int UpdateUserSettings(string nickName, Guid userId, bool isUserActive, bool emailCofirmed)
+        {
+            var rows = Connection.Execute($@"UPDATE [ApplicationUser]
+                    SET
+                    [NickName] = @{nameof(nickName)},
+                    [IsUserActive] = @{nameof(isUserActive)},
+                    [EmailConfirmed] = @{nameof(emailCofirmed)}
+
+                    WHERE [Id] = @{nameof(userId)}", new { nickName, userId, isUserActive, emailCofirmed }, transaction: Transaction);
+
+
+            return rows;
+        }
+
+        public List<ApplicationUser> GetAllUsers()
+        {
+            var queryResults =  Connection.Query<ApplicationUser>("SELECT [Id] ,[UserName] ,[EmailConfirmed] ,[NickName] ,[AvatarId] ,[IsUserActive] FROM [ApplicationUser] " , Transaction);
+
+            return queryResults.ToList();
         }
     }
 }

@@ -11,6 +11,7 @@
     [TwoFactorEnabled]     BIT              NOT NULL,
     [NickName] NCHAR(256) NOT NULL DEFAULT user, 
     [AvatarId] INT NOT NULL, 
+    [IsUserActive] BIT NOT NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

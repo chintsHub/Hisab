@@ -193,5 +193,9 @@ namespace Hisab.Common.BO
         public string NickName { get; set; }
 
         public AvatarEnum Avatar { get; set; }
+
+        public bool IsUserActive { get; set; }
+
+        public bool EmailConfirmed { get; set; }
     }
 }

@@ -33,7 +33,8 @@ namespace Hisab.UI.Services
                 Email = "admin@hisab.io",
                 EmailConfirmed = true,
                 UserName = "admin@hisab.io",
-                NickName = "admin"
+                NickName = "admin",
+                IsUserActive = true
 
             };
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,10 +9,22 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Hisab.Dapper.IdentityStores
 {
-    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>, IUserRoleStore<ApplicationUser>, IUserEmailStore<ApplicationUser>
+    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>, IUserRoleStore<ApplicationUser>, IUserEmailStore<ApplicationUser>, IQueryableUserStore<ApplicationUser>
     {
         
         private IDbConnectionProvider dbConnectionProvider;
+
+        public IQueryable<ApplicationUser> Users
+        {
+            get
+            {
+                using (var context = HisabContextFactory.InitializeAsync(dbConnectionProvider).Result)
+                {
+                    var userList = context.ApplicationUserRepository.GetAllUsers();
+                    return userList.AsQueryable();
+                }
+            }
+        }
 
         public UserStore(IDbConnectionProvider dbConnectionProvider)
         {

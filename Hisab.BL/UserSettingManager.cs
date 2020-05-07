@@ -12,6 +12,8 @@ namespace Hisab.BL
     {
         Task<bool> UpdateUserSettings(string nickName, Guid userId, AvatarEnum avatar);
 
+        Task<bool> UpdateUserSettings(string nickName, Guid userId, bool isUserActive, bool emailCofirmed);
+
         Task<UserSettingsBO> GetUserSettings(string userName);
     }
 
@@ -32,7 +34,13 @@ namespace Hisab.BL
             {
                 var user = await context.ApplicationUserRepository.FindByNameAsync(userName);
 
-                return new UserSettingsBO { NickName = user.NickName, Avatar = (AvatarEnum) user.AvatarId };
+                return new UserSettingsBO 
+                { 
+                    NickName = user.NickName, 
+                    Avatar = (AvatarEnum) user.AvatarId ,
+                    IsUserActive = user.IsUserActive,
+                    EmailConfirmed = user.EmailConfirmed
+                };
                 
 
             }
@@ -43,6 +51,21 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 var rows = context.ApplicationUserRepository.UpdateUserSettings(nickName, userId,(int)avatar);
+                context.SaveChanges();
+
+                if (rows == 1)
+                    return true;
+
+                return false;
+
+            }
+        }
+
+        public async Task<bool> UpdateUserSettings(string nickName, Guid userId, bool isUserActive, bool emailCofirmed)
+        {
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var rows = context.ApplicationUserRepository.UpdateUserSettings(nickName, userId, isUserActive, emailCofirmed);
                 context.SaveChanges();
 
                 if (rows == 1)
