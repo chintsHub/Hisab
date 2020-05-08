@@ -2,12 +2,18 @@
 
 <header class="clearfix">
     <div class="hisabLogo">
-        <h1>Hisab</h1>
-        @if (!User.Identity.IsAuthenticated)
+
+        @if (User.Identity.IsAuthenticated)
         {
+            <h1><a href="@Url.Page("/App/Events")">Hisab</a></h1>
+
+        }
+        else
+        {
+            <h1><a href="@Url.Page("Index")">Hisab</a></h1>
             <h2>Managing Trip Expenses, Simplified</h2>
         }
-      </div>
+    </div>
     <form>
         @if (User.Identity.IsAuthenticated)
         {

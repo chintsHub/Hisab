@@ -39,10 +39,16 @@ header {
         float: left;
 
         h1 {
-            font-size: 2rem;
-            font-weight: $normalWeight;
-            letter-spacing: 10px;
+            a {
+                font-size: 2rem;
+                font-weight: $normalWeight;
+                letter-spacing: 10px;
+                text-decoration: inherit;
+                color: inherit;
+                cursor:pointer;
+            }
         }
+
 
         h2 {
             font-size: 1rem;

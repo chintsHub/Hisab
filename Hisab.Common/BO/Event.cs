@@ -117,7 +117,7 @@ namespace Hisab.Common.BO
 
     public class UserEventBO
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
         public string EventName { get; set; }
 

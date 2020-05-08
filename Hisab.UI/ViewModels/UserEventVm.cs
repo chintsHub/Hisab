@@ -5,10 +5,12 @@ namespace Hisab.UI.ViewModels
 {
     public class UserEventVm 
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
+        [Sieve(CanFilter = true, CanSort = true)]
         public string EventName { get; set; }
 
+        [Sieve(CanFilter = true, CanSort = true)]
         public string CreatedUserNickName { get; set; }
 
 

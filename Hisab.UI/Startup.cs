@@ -39,6 +39,8 @@ namespace Hisab.UI
             var connectionString = _configuration.GetConnectionString("hisabDb");
             var emailCredentials = _configuration.GetSection("EmailServiceCredentials").Get<EmailServiceCredentials>();
 
+                          
+
             services.AddScoped<IUserStore<ApplicationUser>, UserStore>();
             services.AddScoped<IRoleStore<ApplicationRole>, RoleStore>();
 
@@ -55,7 +57,14 @@ namespace Hisab.UI
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
 
             services.AddMvc()
-                .AddNToastNotifyToastr();
+                 .AddRazorPagesOptions(options =>
+                 {
+
+                     options.Conventions.AuthorizeFolder("/App");
+
+
+                 })
+                 .AddNToastNotifyToastr();
 
 
 

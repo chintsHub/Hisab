@@ -5,5 +5,72 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>AllEvents</h1>
+@Html.HiddenFor(Model => Model.ApplicationBasePath)
+
+<div class="table-responsive">
+
+
+
+    <table class="bg-white"
+           data-toggle="table"
+           data-unique-id="eventId"
+           data-url="@Url.Page("/App/Admin/AllEvents", "LoadData")"
+           id="table"
+           data-toolbar="#toolbar"
+           data-filter-control="true"
+           @*data-search="true"*@
+           data-show-refresh="true"
+           data-show-toggle="true"
+           @*data-show-fullscreen="true"*@
+           data-show-columns="true"
+           data-show-columns-toggle-all="true"
+           @*data-detail-view="true"*@
+           @*data-show-export="true"*@
+           data-click-to-select="true"
+           @*data-detail-formatter="detailFormatter"*@
+           data-minimum-count-columns="2"
+           data-show-pagination-switch="true"
+           data-pagination="true"
+           data-show-extended-pagination="true"
+           data-total-not-filtered-field="totalNotFiltered"
+           data-id-field="eventId"
+           data-page-list="[10, 25, 50, 100, all]"
+           data-show-footer="true"
+           data-side-pagination="server">
+        <thead>
+            <tr>
+                <th data-formatter="operateFormatter">Actions</th> @*data-events="operateEvents"*@
+                @*<th data-field="id">ID</th>*@
+                <th data-field="eventName" data-filter-control="input" data-sortable="true">Event Name</th>
+                <th data-field="createdUserNickName" data-filter-control="input" data-sortable="true">Created by</th>
+
+            </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+    <script>
+        var UrlConfig = {
+            eventPath: "@Url.Page("/App/Events/Dashboard", new { id = "eventId" })"
+        };
+
+        function operateFormatter(value, row, index) {
+            
+            return [
+                '<a class="like" href="' + UrlConfig.eventPath.replace("eventId", row.eventId) + '" title="Goto">',
+                '<i class="fas fa-directions"></i> Let\'s go',
+                '</a>  '
+               
+            ].join('')
+        }
+    </script>
+}
 
