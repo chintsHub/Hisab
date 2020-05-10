@@ -87,9 +87,12 @@ namespace Hisab.UI
 
             services.AddAuthentication().AddCookie();
 
+            services.AddScoped<ISieveCustomFilterMethods, HisabCustomFilter>();
             services.AddScoped<SieveProcessor>();
             services.AddScoped<IFilterProcessor, FilterProcessor>();
+            
             services.Configure<SieveOptions>(_configuration.GetSection("Sieve"));
+
 
 
             services.Configure<IISServerOptions>(options =>

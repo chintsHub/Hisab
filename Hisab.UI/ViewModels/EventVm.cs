@@ -5,7 +5,7 @@ using System.Linq;
 using Hisab.Common.BO;
 using Hisab.UI.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Sieve.Attributes;
 
 namespace Hisab.UI.ViewModels
 {
@@ -185,13 +185,29 @@ namespace Hisab.UI.ViewModels
     {
         public Guid Id { get; set; }
 
+        [Sieve(CanFilter = true, CanSort = true)]
         public string NickName { get; set; }
 
+        [Sieve(CanFilter = true, CanSort = true)]
+        public string UserName { get; set; }
+
+        [Sieve(CanFilter = true, CanSort = true)]
         public string Message { get; set; }
 
-        public FeedbackType FeedbackType { get; set; }
+        [Sieve(CanFilter = true, CanSort = true)]
+        public string FeedbackTypeName { get; set; }
 
+        [Sieve(CanFilter = true, CanSort = true)]
         public DateTime FeedbackDate { get; set; }
+
+        public bool ShowAsTestimony { get; set; }
+    }
+
+    public class UpdateTestimonyVm
+    {
+        public Guid Id { get; set; }
+
+        public bool ShowAsTestimony { get; set; }
     }
 
     public class NewEventVm

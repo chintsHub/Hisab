@@ -16,6 +16,10 @@ namespace Hisab.Dapper.Repository
         Task<bool> CreateNewFeedback(NewFeedbackBO newFeedbackBO);
 
         List<FeedBackBO> GetTestimonyFeedBack();
+
+        List<FeedBackBO> GetAllFeedBacks();
+
+        int UpdateTestimony(Guid id, bool showAsTestimony);
     }
 
     internal class FeedbackRepository : RepositoryBase, IFeedbackRepository
@@ -53,11 +57,13 @@ namespace Hisab.Dapper.Repository
         {
             var result = Connection.Query<FeedBackBO>($@"
                    select 
-	                f.FeedbackId,
+	                f.FeedbackId as Id,
 	                f.Message,
 	                f.FeedbackDate,
 	                f.FeedbackType,
-	                u.NickName
+                    f.ShowAsTestimony,
+	                u.NickName,
+                    u.UserName
                 from
 	                [dbo].[UserFeedback] f
 	                inner join [dbo].[ApplicationUser] u on f.UserId = u.Id
@@ -67,6 +73,39 @@ namespace Hisab.Dapper.Repository
                , transaction: Transaction);
 
             return result.ToList();
+        }
+
+        public List<FeedBackBO> GetAllFeedBacks()
+        {
+            var result = Connection.Query<FeedBackBO>($@"
+                   select 
+	                f.FeedbackId as Id,
+	                f.Message,
+	                f.FeedbackDate,
+	                f.FeedbackType,
+                    f.ShowAsTestimony,
+	                u.NickName,
+                    u.UserName
+                from
+	                [dbo].[UserFeedback] f
+	                inner join [dbo].[ApplicationUser] u on f.UserId = u.Id
+                "
+
+               , transaction: Transaction);
+
+            return result.ToList();
+        }
+
+        public int UpdateTestimony(Guid id, bool showAsTestimony)
+        {
+            var rows = Connection.Execute($@"UPDATE [UserFeedback]
+                    SET
+                    [ShowAsTestimony] = @{nameof(showAsTestimony)}
+                    
+                    WHERE [FeedbackId] = @{nameof(id)}", new { id, showAsTestimony }, transaction: Transaction);
+
+
+            return rows;
         }
     }
 }

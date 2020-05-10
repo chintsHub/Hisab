@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
-
+using Hisab.UI.Extensions;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -30,7 +30,7 @@ namespace Hisab.UI
                 {
                     FeedbackDate = f.FeedbackDate,
                     Id = f.Id,
-                    FeedbackType = f.FeedbackType,
+                    FeedbackTypeName = f.FeedbackType.GetDescription(),
                     NickName = f.NickName,
                     Message = f.Message
                 });

@@ -87,6 +87,10 @@ namespace Hisab.Common.BO
         public FeedbackType FeedbackType { get; set; }
 
         public DateTime FeedbackDate { get; set; }
+
+        public string UserName { get; set; }
+
+        public bool ShowAsTestimony { get; set; }
     }
 
     public class EventFriendBO

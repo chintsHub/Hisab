@@ -14,6 +14,10 @@ namespace Hisab.BL
 
         Task<List<FeedBackBO>> GetTestimonyFeedBack();
 
+        Task<List<FeedBackBO>> GetAllFeedbacks();
+
+        Task<bool> UpdateTestimony(Guid id, bool showAsTestimony);
+
     }
 
     public class FeedbackManager : IFeedbackManager
@@ -48,6 +52,32 @@ namespace Hisab.BL
 
                 return testimony;
             }
+        }
+
+        public async Task<List<FeedBackBO>> GetAllFeedbacks()
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var feedbacks = context.FeedbackRepository.GetAllFeedBacks();
+
+                return feedbacks;
+            }
+        }
+
+        public async Task<bool> UpdateTestimony(Guid id, bool showAsTestimony)
+        {
+            bool result = false;
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var rec = context.FeedbackRepository.UpdateTestimony(id, showAsTestimony);
+
+                context.SaveChanges();
+
+                result = true;
+            }
+
+            return result;
         }
     }
 }

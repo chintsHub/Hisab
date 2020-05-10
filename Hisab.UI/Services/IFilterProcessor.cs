@@ -41,6 +41,7 @@ namespace Hisab.UI.Services
                 sieveModel.Sorts = "-" + sieveModel.Sorts;
 
             var filteredResult = _sieveProcessor.Apply(sieveModel, records);
+            
 
             // apply Paging
             sieveModel.PageSize = filterOptions.Limit;
