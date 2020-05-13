@@ -138,18 +138,18 @@ namespace Hisab.UI.Controllers
                 var eventBo = new NewEventBO()
                 {
                     EventName = eventvm.NewEvent.EventName,
-                    EventOwner = new EventFriendBO()
-                    {
-                        Email = user.Email,
-                        NickName = user.NickName,
-                        AppUserId = user.Id,
-                        Status = EventFriendStatus.EventOwner
+                    //EventOwner = new NewEventFriendBO()
+                    //{
+                    //    Email = user.Email,
+                    //    NickName = user.NickName,
+                    //    AppUserId = user.Id,
+                    //    Status = EventFriendStatus.Owner
 
-                    },
+                    //},
                     
                 };
 
-                newEventId = await _eventManager.CreateEvent(eventBo);
+                var sucess = await _eventManager.CreateEvent(eventBo);
                
             }
             _toastNotification.AddSuccessToastMessage("Congratulations, you have created new Event");

@@ -140,4 +140,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="FeedbackId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="1be324d8-46cd-432f-8ed5-f2f8c8519343" ChangeDateTime="05/12/2020 11:07:12">
+    <Property Name="ElementName" Value="[dbo].[EventFriend].[EventFriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventFriend]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
 </Operations>

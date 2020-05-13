@@ -62,7 +62,7 @@ namespace Hisab.UI.ViewModels
             var list = new List<SelectListItem>();
 
             list.Add(new SelectListItem(){Value = EventStatus.Active.ToString(),Text = EventStatus.Active.GetDescription()});
-            list.Add(new SelectListItem(){Value = EventStatus.Inactive.ToString(), Text = EventStatus.Inactive.GetDescription() });
+            list.Add(new SelectListItem(){Value = EventStatus.Archived.ToString(), Text = EventStatus.Archived.GetDescription() });
 
             EventStatusList = list.AsEnumerable();
 
@@ -213,7 +213,10 @@ namespace Hisab.UI.ViewModels
     public class NewEventVm
     {
         
+        [Required]
         public string EventName { get; set; }
+
+        public string Url { get; set; }
     }
 
 }

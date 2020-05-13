@@ -13,9 +13,9 @@ namespace Hisab.Dapper.Repository
 {
     public interface IEventRepository
     {
-        NewEventBO CreateEvent(NewEventBO newNewEvent);
+        bool CreateEvent(NewEventBO newNewEvent);
 
-        int AddEventOwnerToEvent(NewEventBO newNewEvent);
+        bool AddEventOwnerToEvent(NewEventFriendBO newNewEvent);
 
         List<UserEventBO> GetEventsForUser(Guid userId);
 
@@ -46,25 +46,37 @@ namespace Hisab.Dapper.Repository
         {
 
         }
-        public NewEventBO CreateEvent(NewEventBO newNewEvent)
+        public bool CreateEvent(NewEventBO newNewEvent)
         {
-            string command = $@"INSERT INTO [dbo].[Event] ([UserId] ,[Name] ,[CreateDate],[LastModifiedDate],[Status])  
-                    VALUES (@{nameof(newNewEvent.EventOwner.AppUserId)}, @{nameof(newNewEvent.EventName)},@{nameof(newNewEvent.CreateDateTime)}, @{nameof(newNewEvent.LastModifiedDateTime)},  @{nameof(newNewEvent.Status)} );
-            SELECT CAST(SCOPE_IDENTITY() as int)";
+            var eventPic = newNewEvent.EventPic.Id;
 
-            newNewEvent.Id = Connection.QuerySingle<int>(command,
+            string command = $@"INSERT INTO [dbo].[Event] ([Id], [UserId] ,[Name] ,[CreateDate],[Status],[EventPic])  
+                    VALUES (
+                        @{nameof(newNewEvent.Id)},
+                        @{nameof(newNewEvent.EventOwner.UserId)}, 
+                        @{nameof(newNewEvent.EventName)},
+                        @{nameof(newNewEvent.CreateDateTime)}, 
+                        @{nameof(newNewEvent.Status)},
+                        @{nameof(eventPic)});
+            ";
+
+            var result = Connection.Execute(command,
                 new
                 {
-                    newNewEvent.EventOwner.AppUserId,
+                    newNewEvent.Id,
+                    newNewEvent.EventOwner.UserId,
                     newNewEvent.EventName,
                     newNewEvent.CreateDateTime,
-                    newNewEvent.LastModifiedDateTime,
-                    newNewEvent.Status
+                    newNewEvent.Status,
+                    eventPic
+
                 }, transaction: Transaction);
 
 
+            if (result == 1)
+                return true;
 
-            return newNewEvent;
+            return false;
         }
 
         public int CreateCurrentAccount(int eventId)
@@ -132,27 +144,28 @@ namespace Hisab.Dapper.Repository
             return accountId;
         }
 
-        public int AddEventOwnerToEvent(NewEventBO newNewEvent)
+        public bool AddEventOwnerToEvent(NewEventFriendBO newFriend)
         {
             string eventUserCommand = $@" INSERT INTO [dbo].[EventFriend] 
-                                    ([EventId] ,[Email] , [NickName] ,[Status] ,[AppUserId] ,[AdultCount] ,[KidsCount])
-                    VALUES (@{nameof(newNewEvent.Id)}, @{nameof(newNewEvent.EventOwner.Email)}, @{nameof(newNewEvent.EventOwner.NickName)}, 
-                                    @{nameof(newNewEvent.EventOwner.Status)}, @{nameof(newNewEvent.EventOwner.AppUserId)}, @{nameof(newNewEvent.EventOwner.AdultCount)},@{nameof(newNewEvent.EventOwner.KidsCount)}); 
-                                    SELECT CAST(SCOPE_IDENTITY() as int)";
+                                    ([UserId],[EventId] ,[Status])
+                    VALUES (@{nameof(newFriend.UserId)},
+                            @{nameof(newFriend.EventId)}, 
+                            @{nameof(newFriend.Status)});";
 
-            int friendId = Connection.QuerySingle<int>(eventUserCommand,
+            int result = Connection.Execute(eventUserCommand,
                 new
                 {
-                    newNewEvent.Id,
-                    newNewEvent.EventOwner.Email,
-                    newNewEvent.EventOwner.NickName,
-                    newNewEvent.EventOwner.Status,
-                    newNewEvent.EventOwner.AppUserId,
-                    newNewEvent.EventOwner.AdultCount,
-                    newNewEvent.EventOwner.KidsCount
+                    newFriend.UserId,
+                    newFriend.EventId,
+                    newFriend.Status
+                    
+                    
                 }, transaction: Transaction);
 
-            return friendId;
+            if (result == 1)
+                return true;
+
+            return false;
         }
 
         public List<UserEventBO> GetEventsForUser(Guid userId)
@@ -167,10 +180,10 @@ namespace Hisab.Dapper.Repository
                 from 
 	                [dbo].[EventFriend] ef
 	                inner join [Event] e on ef.EventId = e.Id
-	                inner join [ApplicationUser] u on u.Id = ef.AppUserId
+	                inner join [ApplicationUser] u on u.Id = ef.UserId
                 where
                     ef.status in (1,5) and
-                 ef.AppUserId = @{nameof(userId)}",
+                 ef.UserId = @{nameof(userId)}",
                  
                  new { userId }, Transaction);
 

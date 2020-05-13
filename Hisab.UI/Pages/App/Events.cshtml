@@ -36,4 +36,15 @@
 
     <script src="~/js/AppHome.js" asp-append-version="true"></script>
 
+    <script>
+        $(document).ready(function () {
+            var getModal = "@Url.Page("/App/Events",pageHandler: "EventModalLoad")";
+            var postUrl =  "@Url.Page("/App/Events",pageHandler: "CreateEvent")";
+            var page = new HomePage(getModal, postUrl);
+            page.Init();
+
+
+        });
+    </script>
+
 }

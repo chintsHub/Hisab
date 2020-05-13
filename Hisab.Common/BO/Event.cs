@@ -7,7 +7,7 @@ namespace Hisab.Common.BO
 {
     public class NewEventBO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string EventName { get; set; }
 
@@ -15,29 +15,32 @@ namespace Hisab.Common.BO
 
         public DateTime LastModifiedDateTime { get; set; }
 
-        public EventFriendBO EventOwner { get; set; }
+        public NewEventFriendBO EventOwner { get; set; }
 
-        public EventStatus Status { get; }
+        public EventStatus Status { get; set; }
 
+        public HisabImage EventPic { get; set; }
 
+        
+        
+    }
 
-        public NewEventBO()
-        {
+    public class NewEventFriendBO
+    {
+        public Guid EventId { get; set; }
 
-            CreateDateTime = DateTime.Now;
-            LastModifiedDateTime = DateTime.Now;
-            Status = EventStatus.Active;
-        }
+        public Guid UserId { get; set; }
+
+        public EventFriendStatus Status { get; set; }
     }
 
     public enum EventFriendStatus
     {
-        EventOwner = 1,
-        PendingRegistration,
-        PendingAcceptance,
-        EventFriend, //user is not registered with Hisab, its place holder friend
-        EventJoined,
-        Inactive
+        Owner = 1,
+        RequestToJoin = 2, 
+        RequestAccepted = 3,
+        Inactive = 4,
+        RequestDeclined = 5
     }
 
     public enum EventStatus
@@ -45,8 +48,8 @@ namespace Hisab.Common.BO
         [Description("Active")]
         Active = 1,
 
-        [Description("Inactive")]
-        Inactive
+        [Description("Archived")]
+        Archived
     }
 
     public enum FeedbackType
@@ -190,6 +193,15 @@ namespace Hisab.Common.BO
         [Description("Batman")]
         BoySuperhero1 = 5,
 
+    }
+
+    public class HisabImage
+    {
+        public int Id { get; set; }
+
+        public string ImageName { get; set; }
+
+        public string ImagePath { get; set; }
     }
 
     public class UserSettingsBO

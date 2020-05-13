@@ -13,7 +13,7 @@ namespace Hisab.BL
 {
     public interface IEventManager
     {
-        Task<int> CreateEvent(NewEventBO newNewEvent);
+        Task<Guid> CreateEvent(NewEventBO newNewEvent);
 
         Task<List<UserEventBO>> GetEvents(Guid userId);
 
@@ -56,27 +56,37 @@ namespace Hisab.BL
             _connectionProvider = connectionProvider;
             _userManager = userManager;
         }
-        public async Task<int> CreateEvent(NewEventBO newNewEvent)
+        public async Task<Guid> CreateEvent(NewEventBO newNewEvent)
         {
             //Check total allowed 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 try
                 {
-                    var events = context.EventRepository.GetEventsForUser(newNewEvent.EventOwner.AppUserId.Value);
+                    var events = context.EventRepository.GetEventsForUser(newNewEvent.EventOwner.UserId);
 
-                    if (events.Count >= TotalAllowedEventsPerUser)
-                        throw new HisabException("You have reached maximum number of allowed Events");
+                    //if (events.Count >= TotalAllowedEventsPerUser)
+                    //    throw new HisabException("You have reached maximum number of allowed Events");
 
 
-                    //add event and add owner as event friend
-                    var retVal = context.EventRepository.CreateEvent(newNewEvent);
-                    var friendId = context.EventRepository.AddEventOwnerToEvent(retVal);
+                    
+                    newNewEvent.Id = Guid.NewGuid();
+                    newNewEvent.EventOwner.EventId = newNewEvent.Id;
+                    newNewEvent.CreateDateTime = DateTime.UtcNow;
+                    newNewEvent.Status = EventStatus.Active;
+
+                    if(context.EventRepository.CreateEvent(newNewEvent))
+                    {
+                        //add event and add owner as event friend
+                        var friendResult = context.EventRepository.AddEventOwnerToEvent(newNewEvent.EventOwner);
+                    }
+                                    
+                    
 
                     //create Accounts
-                    var currentAccountId = context.EventRepository.CreateCurrentAccount(newNewEvent.Id);
-                    var expenseAccountId = context.EventRepository.CreateExpenseAccount(newNewEvent.Id);
-                    var owerAccount = context.EventRepository.CreateEventFriendAccount(newNewEvent.Id, friendId);
+                    //var currentAccountId = context.EventRepository.CreateCurrentAccount(newNewEvent.Id);
+                    //var expenseAccountId = context.EventRepository.CreateExpenseAccount(newNewEvent.Id);
+                    //var owerAccount = context.EventRepository.CreateEventFriendAccount(newNewEvent.Id, friendId);
 
                     context.SaveChanges();
 
@@ -139,16 +149,16 @@ namespace Hisab.BL
             //find user
             var user = await _userManager.FindByEmailAsync(newEventFriend.Email);
 
-            if (user == null)
-            {
-                newEventFriend.Status = EventFriendStatus.EventFriend;
-                newEventFriend.AppUserId = null;
-            }
-            else
-            {
-                newEventFriend.Status = user.EmailConfirmed ? EventFriendStatus.PendingAcceptance : EventFriendStatus.PendingRegistration;
-                newEventFriend.AppUserId = user.Id;
-            }
+            //if (user == null)
+            //{
+            //    newEventFriend.Status = EventFriendStatus.EventFriend;
+            //    newEventFriend.AppUserId = null;
+            //}
+            //else
+            //{
+            //    newEventFriend.Status = user.EmailConfirmed ? EventFriendStatus.PendingAcceptance : EventFriendStatus.PendingRegistration;
+            //    newEventFriend.AppUserId = user.Id;
+            //}
 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
@@ -202,19 +212,19 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
                 int rows =0;
-                if (eventFriendBo.Status == EventFriendStatus.EventOwner || eventFriendBo.Status == EventFriendStatus.EventJoined
-                                                                         || eventFriendBo.Status == EventFriendStatus.PendingAcceptance
-                                                                         || eventFriendBo.Status == EventFriendStatus.PendingRegistration)
-                {
-                    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.EventFriendId);
-                    context.SaveChanges();
-                }
+                //if (eventFriendBo.Status == EventFriendStatus.EventOwner || eventFriendBo.Status == EventFriendStatus.EventJoined
+                //                                                         || eventFriendBo.Status == EventFriendStatus.PendingAcceptance
+                //                                                         || eventFriendBo.Status == EventFriendStatus.PendingRegistration)
+                //{
+                //    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.EventFriendId);
+                //    context.SaveChanges();
+                //}
 
-                if (eventFriendBo.Status == EventFriendStatus.EventFriend)
-                {
-                    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.Email, eventFriendBo.EventFriendId);
-                    context.SaveChanges();
-                }
+                //if (eventFriendBo.Status == EventFriendStatus.EventFriend)
+                //{
+                //    rows = context.EventRepository.UpdateFriend(eventFriendBo.KidsCount, eventFriendBo.AdultCount, eventFriendBo.Email, eventFriendBo.EventFriendId);
+                //    context.SaveChanges();
+                //}
 
                 if (rows == 1)
                     return true;
