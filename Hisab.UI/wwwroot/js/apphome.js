@@ -6,42 +6,46 @@ var HomePage = /** @class */ (function () {
         this.postCreateEvent = tpostCreateEvent;
     }
     HomePage.prototype.Init = function () {
-        //var eventModalButton = document.getElementById("eventModalButton");
-        //eventModalButton.addEventListener("click", this.handleClick);
         var _this = this;
-        var placeholder = document.getElementById("eventModalPlaceHolder");
-        if (placeholder.innerHTML.length === 0) {
+        var saveButton = document.getElementById("eventSaveButton");
+        saveButton.addEventListener("click", function (evt) {
+            event.preventDefault();
+            var frmData = new FormData(document.forms.namedItem("newEventForm"));
+            var url = _this.postCreateEvent;
+            //var url = "/Hisab/App/Events";
             var xhr = new XMLHttpRequest();
-            //xhr.open("Get", "/Hisab/App/Events?handler=EventModalLoad");
-            xhr.open("Get", this.getModalUrl);
-            xhr.onload = function (evt) {
-                if (xhr.status === 200) {
-                    placeholder.innerHTML = xhr.response;
-                    var saveButton = document.getElementById("eventSaveButton");
-                    saveButton.addEventListener("click", function (evt) {
-                        event.preventDefault();
-                        var frmData = new FormData(document.forms.namedItem("newEventForm"));
-                        var url = _this.postCreateEvent;
-                        //var url = "/Hisab/App/Events";
-                        var xhr = new XMLHttpRequest();
-                        xhr.onreadystatechange = function () {
-                            if (this.readyState === 4 && this.status === 200) {
-                                window.location.href = this.responseURL;
-                            }
-                            if (this.status === 500) {
-                                document.getElementById("eventModalPlaceHolder").innerHTML = this.response;
-                            }
-                        };
-                        xhr.open('POST', url, true);
-                        xhr.send(frmData);
-                    });
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var isjson = false;
+                    try {
+                        var res = JSON.parse(this.response);
+                        isjson = true;
+                        var errorDiv = document.getElementById("ErrorMessage");
+                        errorDiv.innerHTML = res.errorMessage;
+                        errorDiv.classList.add("alert-danger");
+                    }
+                    catch (e) {
+                    }
+                    if (!isjson) {
+                        window.location.href = this.responseURL;
+                    }
                 }
-                else {
-                    alert("failure");
+                if (this.status === 500) {
+                    document.getElementById("eventModalPlaceHolder").innerHTML = this.response;
                 }
             };
-            xhr.send();
+            xhr.open('POST', url, true);
+            xhr.send(frmData);
+        });
+    };
+    HomePage.prototype.isJson = function (str) {
+        try {
+            JSON.parse(str);
         }
+        catch (e) {
+            return false;
+        }
+        return true;
     };
     return HomePage;
 }());

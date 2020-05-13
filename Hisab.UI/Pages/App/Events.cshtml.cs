@@ -52,16 +52,16 @@ namespace Hisab.UI
             return Page();
         }
 
-        public PartialViewResult OnGetEventModalLoad()
-        {
-            NewEvent = new NewEventVm();
+        //public PartialViewResult OnGetEventModalLoad()
+        //{
+        //    NewEvent = new NewEventVm();
 
-            return new PartialViewResult
-            {
-                ViewName = "_EventModal",
-                ViewData = new ViewDataDictionary<NewEventVm>(ViewData, NewEvent)
-            };
-        }
+        //    return new PartialViewResult
+        //    {
+        //        ViewName = "_EventModal",
+        //        ViewData = new ViewDataDictionary<NewEventVm>(ViewData, NewEvent)
+        //    };
+        //}
 
         public async Task<IActionResult> OnPostCreateEvent()
         {
@@ -91,14 +91,10 @@ namespace Hisab.UI
                 }
             }
 
+            var jsonObject = new { errorMessage = "Invalid data. Please provide Event Name." };
 
-
-            return new PartialViewResult
-            {
-                ViewName = "_EventModal",
-                ViewData = new ViewDataDictionary<NewEventVm>(ViewData, NewEvent),
-                StatusCode = 500
-            };
+            return new JsonResult(jsonObject);
+            
         }
     }
 }
