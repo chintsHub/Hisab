@@ -48,7 +48,7 @@ namespace Hisab.UI.Controllers
                 {
                     EventId = eventBo.Id,
                     EventName = eventBo.EventName,
-                    CreatedUserNickName = eventBo.NickName
+                    CreatedUserNickName = eventBo.OwnerName
                 });
             }
 
@@ -119,7 +119,7 @@ namespace Hisab.UI.Controllers
             {
                 retVal.Events.Add(new UserEventVm()
                 {
-                    CreatedUserNickName = e.NickName,
+                    CreatedUserNickName = e.OwnerName,
                     EventId = e.Id,
                     EventName = e.EventName
                 });

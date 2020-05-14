@@ -174,18 +174,21 @@ namespace Hisab.Dapper.Repository
         {
              var result = Connection.Query<UserEventBO>($@"
                     select 
-	                e.Id as Id,
-	                e.Name as EventName,
-	                u.NickName as NickName,
-                    e.Status
-	               
-                from 
-	                [dbo].[EventFriend] ef
-	                inner join [Event] e on ef.Id = e.Id
-	                inner join [ApplicationUser] u on u.Id = ef.UserId
-                where
-                    ef.status in (1,5) and
-                 ef.UserId = @{nameof(userId)}",
+	                    e.Id,
+	                    e.Name as EventName,
+	                    e.CreateDate,
+	                    e.Status as EventStatus,
+	                    e.EventPic,
+	                    e.UserId as OwnerUserId,
+	                    u.NickName as OwnerName,
+
+	                    ef.Status as EventFriendStatus
+                    from 
+	                    [dbo].[EventFriend] ef
+	                    inner join Event e  on e.Id = ef.EventId
+	                    inner join ApplicationUser u on u.Id = e.UserId
+                    where
+	                    ef.UserId = @{nameof(userId)}",
                  
                  new { userId }, Transaction);
 

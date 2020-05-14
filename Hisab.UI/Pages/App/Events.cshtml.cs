@@ -33,19 +33,39 @@ namespace Hisab.UI
         }
         
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            Events = new List<EventCardVm>()
+
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var events = await _eventManager.GetEvents(user.Id);
+
+            Events = new List<EventCardVm>();
+
+            foreach (var eventBo in events)
             {
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-                    EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-                    EventImagePath="~/img/eventCardImage2.jpg" , EventMessage="This event is created by"},
-                 new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-                    EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"}
+                Events.Add(new EventCardVm()
+                {
+                    EventId = eventBo.Id,
+                    EventName = eventBo.EventName,
+                    CreatedUserNickName = eventBo.OwnerName,
+                    EventMessage = "Event Created by: " + eventBo.OwnerName,
+                    EventImagePath = HisabImageManager.GetEventImages()
+                                    .Where<HisabImage>(x => x.Id == eventBo.EventPic).FirstOrDefault().ImagePath
+                });
+            }
+
+
+            //Events = new List<EventCardVm>()
+            //{
+            //    new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
+            //        EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"},
+            //    new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
+            //        EventImagePath="~/img/eventCardImage2.jpg" , EventMessage="This event is created by"},
+            //     new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
+            //        EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"}
    
 
-            };
+            //};
 
 
 

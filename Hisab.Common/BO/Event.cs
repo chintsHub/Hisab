@@ -123,9 +123,16 @@ namespace Hisab.Common.BO
 
         public string EventName { get; set; }
 
-        public string NickName { get; set; }
+        public DateTime CreateDate { get; set; }
 
-        public EventStatus Status { get; set; }
+        public EventStatus EventStatus { get; set; }
+
+        public int EventPic { get; set; }
+
+        public string OwnerName { get; set; }
+        public Guid OwnerUserId { get; set; }
+
+        public EventFriendStatus EventFriendStatus { get; set; }
 
     }
 
