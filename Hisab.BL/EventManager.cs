@@ -19,17 +19,19 @@ namespace Hisab.BL
 
         Task<List<UserEventBO>> GetAllEvents();
 
-        Task<EventBO> GetEventById(int eventId);
+        Task<EventBO> GetEventById(Guid eventId);
 
         Task<bool> CreateEventFriend(EventFriendBO newEventFriend);
 
-        Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus);
+        Task<bool> UpdateEvent(string newName, Guid eventId, int eventPic);
+
+        Task<bool> ArchieveEvent(Guid eventId);
 
         Task<bool> DisableFriend(int eventFriendId);
 
         Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
 
-        Task<bool> CanAccessEvent(int eventId, Guid userId);
+        Task<bool> CanAccessEvent(Guid eventId, Guid userId);
 
         bool CheckEventAccess(EventBO eventBo, Guid userId);
 
@@ -131,7 +133,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<EventBO> GetEventById(int eventId)
+        public async Task<EventBO> GetEventById(Guid eventId)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
@@ -177,11 +179,11 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> UpdateEvent(string newName, int eventId, EventStatus newStatus)
+        public async Task<bool> UpdateEvent(string newName, Guid eventId, int eventPic)
         {
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
-                var rows = context.EventRepository.UpdateEvent(newName,eventId, newStatus);
+                var rows = context.EventRepository.UpdateEvent(newName,eventId, eventPic);
                 context.SaveChanges();
 
                 if (rows == 1)
@@ -235,7 +237,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> CanAccessEvent(int eventId, Guid userId)
+        public async Task<bool> CanAccessEvent(Guid eventId, Guid userId)
         {
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
@@ -252,7 +254,7 @@ namespace Hisab.BL
 
         public bool CheckEventAccess(EventBO eventBo, Guid userId)
         {
-            var friend = eventBo.Friends.FirstOrDefault(x => x.AppUserId != null && x.AppUserId.Value == userId);
+            var friend = eventBo.Friends.FirstOrDefault(x => x.UserId != null && x.UserId == userId);
 
             return friend != null;
         }
@@ -522,6 +524,21 @@ namespace Hisab.BL
             }
 
             return transactionId;
+        }
+
+        public async Task<bool> ArchieveEvent(Guid eventId)
+        {
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var rows = context.EventRepository.ArchieveEvent(eventId);
+                context.SaveChanges();
+
+                if (rows == 1)
+                    return true;
+
+                return false;
+
+            }
         }
     }
 

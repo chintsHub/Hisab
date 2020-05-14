@@ -41,7 +41,7 @@ namespace Hisab.UI.Pages.App.Admin
                 eventsVM.Add(new UserEventVm()
                 {
                     CreatedUserNickName = e.NickName,
-                    EventId = e.EventId,
+                    EventId = e.Id,
                     EventName = e.EventName
                 });
             }

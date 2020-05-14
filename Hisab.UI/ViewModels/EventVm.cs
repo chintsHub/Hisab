@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Hisab.Common.BO;
 using Hisab.UI.Extensions;
+using Hisab.UI.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Sieve.Attributes;
 
@@ -25,7 +26,7 @@ namespace Hisab.UI.ViewModels
     }
     public class EventVm 
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
         [Required]
         public string EventName { get; set; }
@@ -70,6 +71,26 @@ namespace Hisab.UI.ViewModels
         }
 
 
+    }
+
+    public class EventSettingsVM
+    {
+        [Required]
+        public string EventName { get; set; }
+
+        [Required]
+        public Guid EventId { get; set; }
+
+        public List<HisabImage> EventImages { get; set; }
+
+        public int SelectedEventImage { get; set; }
+
+        public EventSettingsVM()
+        {
+            EventImages = new List<HisabImage>();
+
+            EventImages = HisabImageManager.GetEventImages();
+        }
     }
 
     public class SettlementHeaderVm

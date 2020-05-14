@@ -99,32 +99,27 @@ namespace Hisab.Common.BO
     public class EventFriendBO
     {
 
-        public int EventFriendId { get; set; }
+        public Guid EventId { get; set; }
 
-        public int EventId { get; set; }
-
-        public Guid? AppUserId { get; set; }
+        public Guid UserId { get; set; }
 
         public string Email { get; set; }
 
         public string NickName { get; set; }
 
-        public int AdultCount { get; set; }
+        
 
-        public int KidsCount { get; set; }
-
-        public EventFriendStatus Status { get; set; }
+        public EventFriendStatus EventFriendStatus { get; set; }
 
         public EventFriendBO()
         {
-            AdultCount = 1;
-            KidsCount = 0;
+           
         }
     }
 
     public class UserEventBO
     {
-        public Guid EventId { get; set; }
+        public Guid Id { get; set; }
 
         public string EventName { get; set; }
 
@@ -136,15 +131,19 @@ namespace Hisab.Common.BO
 
     public class EventBO
     {
-        public int EventId { get; set; }
+        public Guid Id { get; set; }
 
         public string EventName { get; set; }
 
-        public EventStatus Status { get; set; }
+        public int EventPicId { get; set; }
+
+        public EventStatus EventStatus { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         public List<EventFriendBO> Friends { get; set; }
 
-        public EventDashboardStatBo DashboardStats { get; set; }
+        //public EventDashboardStatBo DashboardStats { get; set; }
 
         //http://taylorhutchison.com/2016/03/23/dapper-orm-complex-queries.html
     }

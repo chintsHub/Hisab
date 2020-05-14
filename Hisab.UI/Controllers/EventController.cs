@@ -54,12 +54,12 @@ namespace Hisab.UI.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             //Load event
-            var eventBo = await _eventManager.GetEventById(eventId);
+            var eventBo = new EventBO();//await _eventManager.GetEventById(eventId);
             
 
             if (await CanAccessEvent(eventBo))
             {
-                eventBo.DashboardStats = await _eventManager.GetDashboardStats(eventId, eventBo.Friends.First(x => x.AppUserId == user.Id).EventFriendId);
+                //eventBo.DashboardStats = await _eventManager.GetDashboardStats(eventId, eventBo.Friends.First(x => x.AppUserId == user.Id).EventFriendId);
                 
                 return View("Index", BuildFriendList(eventBo));
             }
@@ -74,7 +74,7 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> Friends(int eventId)
         {
             //Load event
-            var eventBo = await _eventManager.GetEventById(eventId);
+            var eventBo = new EventBO();//await _eventManager.GetEventById(eventId);
 
             if (await CanAccessEvent(eventBo))
             {
@@ -94,41 +94,41 @@ namespace Hisab.UI.Controllers
             var eventPoolEntry = new NewEventPoolEntryVm();
             var friendListItems = new List<SelectListItem>();
 
-            splitByFriend.EventId = eventBo.EventId;
+            //splitByFriend.Id = eventBo.Id;
 
-            foreach (var friend in eventBo.Friends)
-            {
-                friendList.Add(new EventFriendVm()
-                {
-                    Name = friend.NickName,
-                    Email = friend.Email,
-                    AdultCount = friend.AdultCount,
-                    EventId = eventBo.EventId,
-                    KidsCount = friend.KidsCount,
-                    Status = friend.Status,
-                    EventFriendId = friend.EventFriendId
-                });
+            //foreach (var friend in eventBo.Friends)
+            //{
+            //    friendList.Add(new EventFriendVm()
+            //    {
+            //        Name = friend.NickName,
+            //        Email = friend.Email,
+            //        AdultCount = friend.AdultCount,
+            //        Id = eventBo.Id,
+            //        KidsCount = friend.KidsCount,
+            //        Status = friend.Status,
+            //        EventFriendId = friend.EventFriendId
+            //    });
 
-                splitByFriend.FriendDetails.Add(new NewSplitByFriendDetailsVm()
-                    {
-                        EventFriendId = friend.EventFriendId,
-                        IncludeInSplit = true,
-                        Name = friend.NickName
+            //    splitByFriend.FriendDetails.Add(new NewSplitByFriendDetailsVm()
+            //        {
+            //            EventFriendId = friend.EventFriendId,
+            //            IncludeInSplit = true,
+            //            Name = friend.NickName
 
-                    }
+            //        }
 
 
-                );
+            //    );
 
-                friendListItems.Add(new SelectListItem(){Value = friend.EventFriendId.ToString(),Text = friend.NickName});
-            }
+            //    friendListItems.Add(new SelectListItem(){Value = friend.EventFriendId.ToString(),Text = friend.NickName});
+            //}
 
             eventPoolEntry.FriendList = friendListItems.AsEnumerable();
-            eventPoolEntry.EventId = eventBo.EventId;
+            //eventPoolEntry.Id = eventBo.Id;
 
             var eve = new EventVm()
             {
-                EventId = eventBo.EventId,
+                //Id = eventBo.Id,
                 EventName = eventBo.EventName,
                 Friends = friendList,
                 NewSplitByFriendVm = splitByFriend,
@@ -137,15 +137,15 @@ namespace Hisab.UI.Controllers
             };
 
 
-            if (eventBo.DashboardStats != null)
-            {
-                eve.MyContributions = eventBo.DashboardStats.MyContributions;
-                eve.TotalEventExpense = eventBo.DashboardStats.TotalEventExpense;
-                eve.TotalEventPoolBalance = eventBo.DashboardStats.TotalEventPoolBalance;
-                eve.MyNetAmount = eventBo.DashboardStats.MyNetAmount;
-                eve.MyEventExpense = eventBo.DashboardStats.MyEventExpense;
-                eve.NewSplitByFriendVm.MaxAllowedPoolAmount = eve.TotalEventPoolBalance;
-            }
+            //if (eventBo.DashboardStats != null)
+            //{
+            //    eve.MyContributions = eventBo.DashboardStats.MyContributions;
+            //    eve.TotalEventExpense = eventBo.DashboardStats.TotalEventExpense;
+            //    eve.TotalEventPoolBalance = eventBo.DashboardStats.TotalEventPoolBalance;
+            //    eve.MyNetAmount = eventBo.DashboardStats.MyNetAmount;
+            //    eve.MyEventExpense = eventBo.DashboardStats.MyEventExpense;
+            //    eve.NewSplitByFriendVm.MaxAllowedPoolAmount = eve.TotalEventPoolBalance;
+            //}
 
             
             
@@ -157,17 +157,17 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> DisableFriend(EventFriendVm eventFriendVm)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var canAccess = await _eventManager.CanAccessEvent(eventFriendVm.EventId, user.Id);
+            //var canAccess = await _eventManager.CanAccessEvent(eventFriendVm.Id, user.Id);
 
-            if (canAccess)
-            {
-                var result = await _eventManager.DisableFriend(eventFriendVm.EventFriendId);
+            //if (canAccess)
+            //{
+            //    var result = await _eventManager.DisableFriend(eventFriendVm.EventFriendId);
 
-                if (result)
-                    _toastNotification.AddSuccessToastMessage("Friend made InActive");
+            //    if (result)
+            //        _toastNotification.AddSuccessToastMessage("Friend made InActive");
 
-                return RedirectToAction("Friends", new { eventFriendVm.EventId });
-            }
+            //    return RedirectToAction("Friends", new { eventFriendVm.Id });
+            //}
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
             return RedirectToAction("Index", "AppHome");
@@ -177,31 +177,31 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> UpdateFriend(EventFriendVm eventFriendVm)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var canAccess = await _eventManager.CanAccessEvent(eventFriendVm.EventId, user.Id);
+            //var canAccess = await _eventManager.CanAccessEvent(eventFriendVm.Id, user.Id);
 
-            if (canAccess)
-            {
-                if (ModelState.IsValid)
-                {
-                    var eventFriendBo = new EventFriendBO()
-                    {
-                        EventId = eventFriendVm.EventId,
-                        EventFriendId = eventFriendVm.EventFriendId,
-                        AdultCount = eventFriendVm.AdultCount,
-                        Email = eventFriendVm.Email,
-                        KidsCount = eventFriendVm.KidsCount,
-                        Status = eventFriendVm.Status,
-                        NickName = eventFriendVm.Name
-                    };
+            //if (canAccess)
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        var eventFriendBo = new EventFriendBO()
+            //        {
+            //            Id = eventFriendVm.Id,
+            //            EventFriendId = eventFriendVm.EventFriendId,
+            //            AdultCount = eventFriendVm.AdultCount,
+            //            Email = eventFriendVm.Email,
+            //            KidsCount = eventFriendVm.KidsCount,
+            //            Status = eventFriendVm.Status,
+            //            NickName = eventFriendVm.Name
+            //        };
 
-                    var result = await _eventManager.UpdateFriend(eventFriendBo);
+            //        var result = await _eventManager.UpdateFriend(eventFriendBo);
 
-                    if (result)
-                        _toastNotification.AddSuccessToastMessage("Friend updated sucessfully");
-                }
+            //        if (result)
+            //            _toastNotification.AddSuccessToastMessage("Friend updated sucessfully");
+            //    }
 
-                return RedirectToAction("Friends", new { eventFriendVm.EventId });
-            }
+            //    return RedirectToAction("Friends", new { eventFriendVm.Id });
+            //}
 
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -212,7 +212,7 @@ namespace Hisab.UI.Controllers
         [Route("Event/Transactions/{eventId}")]
         public async Task<IActionResult> Transactions(int eventId)
         {
-            var eventBo = await _eventManager.GetEventById(eventId);
+            var eventBo = new EventBO(); // await _eventManager.GetEventById(eventId);
 
             if (await CanAccessEvent(eventBo))
             {
@@ -232,7 +232,7 @@ namespace Hisab.UI.Controllers
                         TransactionId = transaction.Id
                     });
                 }
-                return View("Transactions", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName,Transactions = transList});
+                return View("Transactions", new EventVm() { EventId = eventBo.Id, EventName = eventBo.EventName,Transactions = transList});
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -243,7 +243,7 @@ namespace Hisab.UI.Controllers
         [Route("Event/Settlement/{eventId}")]
         public async Task<IActionResult> Settlement(int eventId)
         {
-            var eventBo = await _eventManager.GetEventById(eventId);
+            var eventBo = new EventBO();//await _eventManager.GetEventById(eventId);
 
             if (await CanAccessEvent(eventBo))
             {
@@ -286,7 +286,7 @@ namespace Hisab.UI.Controllers
                 settlementHeaderVm.Rows = rowId;
                 settlementHeaderVm.Columns = columnId;
 
-                return View("Settlement", new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, SettlementHeader = settlementHeaderVm });
+                return View("Settlement", new EventVm() { EventId = eventBo.Id, EventName = eventBo.EventName, SettlementHeader = settlementHeaderVm });
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -295,17 +295,17 @@ namespace Hisab.UI.Controllers
 
         [HttpGet]
         [Route("Event/Settings/{eventId}")]
-        public async Task<IActionResult> Settings(int eventId)
+        public async Task<IActionResult> Settings(Guid eventId)
         {
             //Load event
             var eventBo = await _eventManager.GetEventById(eventId);
 
             if (await CanAccessEvent(eventBo))
             {
-                var eventVm = new EventVm() { EventId = eventBo.EventId, EventName = eventBo.EventName, Friends = null };
-                eventVm.EventStatusList.FirstOrDefault(x => x.Text == eventBo.Status.GetDescription()).Selected = true;
+                //var eventVm = new EventVm() { Id = eventBo.Id, EventName = eventBo.EventName, Friends = null };
+                //eventVm.EventStatusList.FirstOrDefault(x => x.Text == eventBo.Status.GetDescription()).Selected = true;
 
-                return View("Settings", eventVm);
+                //return View("Settings", eventVm);
             }
 
             _toastNotification.AddErrorToastMessage("You dont have permission to access the event");
@@ -323,17 +323,17 @@ namespace Hisab.UI.Controllers
                 {
                     EventStatus status;
                     Enum.TryParse(eventVm.SelectedEventStatus, out status);
-                    var result = await _eventManager.UpdateEvent(eventVm.EventName, eventVm.EventId, status);
+                    //var result = await _eventManager.UpdateEvent(eventVm.EventName, eventVm.Id, status);
 
-                    if (result)
-                    {
-                        _toastNotification.AddSuccessToastMessage("Event name updated sucessfully.");
-                    }
-                    else
-                    {
-                        _toastNotification.AddErrorToastMessage("Couldn't update event name");
-                        return View("Settings", eventVm);
-                    }
+                    //if (result)
+                    //{
+                    //    _toastNotification.AddSuccessToastMessage("Event name updated sucessfully.");
+                    //}
+                    //else
+                    //{
+                    //    _toastNotification.AddErrorToastMessage("Couldn't update event name");
+                    //    return View("Settings", eventVm);
+                    //}
 
 
                 }
@@ -419,7 +419,7 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> AddFriend(EventFriendVm newEventFriend)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var canAccess = await _eventManager.CanAccessEvent(newEventFriend.EventId, user.Id);
+            var canAccess = true; // await _eventManager.CanAccessEvent(newEventFriend.Id, user.Id);
 
             if (canAccess)
             {
@@ -431,9 +431,9 @@ namespace Hisab.UI.Controllers
                         var newFriend = await _eventManager.CreateEventFriend(new EventFriendBO()
                         {
                             Email = newEventFriend.Email,
-                            AdultCount = newEventFriend.AdultCount,
-                            EventId = newEventFriend.EventId,
-                            KidsCount = newEventFriend.KidsCount,
+                            
+                            //Id = newEventFriend.Id,
+                            
                             NickName = newEventFriend.Name
 
                         });

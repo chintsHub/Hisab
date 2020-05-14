@@ -26,7 +26,7 @@ namespace Hisab.Dapper.Repository
         {
             var result = Connection.Query<EventInviteBO>($@"
                        select 
-	                        inviteCore.Id as EventId,
+	                        inviteCore.Id as Id,
                             inviteCore.Name as EventName,
 	                        u.NickName as EventOwner,
                             inviteCore.EventFriendId
@@ -39,7 +39,7 @@ namespace Hisab.Dapper.Repository
                         from
                             ApplicationUser u
                             inner join [dbo].[EventFriend] ef on u.Email = ef.Email
-                            inner join[dbo].[Event] e on ef.EventId = e.Id
+                            inner join[dbo].[Event] e on ef.Id = e.Id
 
                         where
                             u.Id  =  @{nameof(userId)}

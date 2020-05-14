@@ -52,14 +52,14 @@ namespace Hisab.Dapper.Repository
                           ,[TotalAmount]
                           ,[Description]
                           ,[SplitType]
-                          ,[EventId]
+                          ,[Id]
                           ,[CreatedbyUserId]
                           ,[CreatedDateTime]
 	                      ,u.NickName
                       FROM 
 	                    [dbo].[EventTransaction] t
 	                    inner join ApplicationUser u on t.CreatedbyUserId = u.Id
-                        where t.EventId = @{nameof(eventId)}",
+                        where t.Id = @{nameof(eventId)}",
                 new { eventId }, Transaction);
 
             return result.ToList();
@@ -69,7 +69,7 @@ namespace Hisab.Dapper.Repository
         {
             var result = Connection.Query<SettlementData>($@"
                     select 
-	                        s.EventId,
+	                        s.Id,
 	                        payer.NickName payerFriend,
 	                        receiver.NickName receiverFriend,
 	                        sum(Amount) Amount
@@ -80,7 +80,7 @@ namespace Hisab.Dapper.Repository
                         where 
                           s.Eventid = @{nameof(eventId)}
                         group by
-	                        s.EventId,
+	                        s.Id,
 	                        payer.NickName ,
 	                        receiver.NickName ",
                 new { eventId }, Transaction);
@@ -91,7 +91,7 @@ namespace Hisab.Dapper.Repository
         public decimal GetEventExpense(int eventId)
         {
             var totalAmount = Connection.ExecuteScalar<decimal>($@"
-                     select sum(TotalAmount) from [dbo].[EventTransaction] a where a.EventId = @{nameof(eventId)}",
+                     select sum(TotalAmount) from [dbo].[EventTransaction] a where a.Id = @{nameof(eventId)}",
                      new { eventId }, Transaction);
 
             return totalAmount;
@@ -107,7 +107,7 @@ namespace Hisab.Dapper.Repository
 	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
                     where
                         a.EventFriendId is null
-	                    and a.EventId = @{nameof(eventId)}
+	                    and a.Id = @{nameof(eventId)}
 	                    and a.AccountTypeId = 1 -- current asset",
                 new { eventId }, Transaction);
 
@@ -124,7 +124,7 @@ namespace Hisab.Dapper.Repository
 	                    inner join [dbo].[EventAccount] a on j.AccountId = a.AccountId
                     where
                         a.EventFriendId = @{nameof(eventFriendId)}
-	                    and a.EventId = @{nameof(eventId)}
+	                    and a.Id = @{nameof(eventId)}
 	                    and a.AccountTypeId = 1 -- current asset",
                 new { eventFriendId, eventId }, Transaction);
 
@@ -140,7 +140,7 @@ namespace Hisab.Dapper.Repository
 	                    [dbo].[EventTransaction] t
 	                    inner join [dbo].[EventTransactionSplit] s on t.Id = s.TransactionId
                     where
-                        t.EventId = @{nameof(eventId)}
+                        t.Id = @{nameof(eventId)}
 	                    and s.EventFriendId = @{nameof(eventFriendId)}",
                 new { eventId, eventFriendId }, Transaction);
 
@@ -152,7 +152,7 @@ namespace Hisab.Dapper.Repository
             var result = Connection.Query<EventAccountBo>($@"
                     select 
 	                    AccountId,
-	                    EventId,
+	                    Id,
 	                    EventFriendId,
                         AccountTypeId
 	               
@@ -160,7 +160,7 @@ namespace Hisab.Dapper.Repository
 	                [dbo].[EventAccount] a
 	               
                 where
-                 a.EventId = @{nameof(eventId)}",
+                 a.Id = @{nameof(eventId)}",
 
                 new { eventId }, Transaction);
 
@@ -171,7 +171,7 @@ namespace Hisab.Dapper.Repository
         {
            
 
-            string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[EventId], [CreatedbyUserId] ,[CreatedDateTime])
+            string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[Id], [CreatedbyUserId] ,[CreatedDateTime])
                     VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(splitType)}, @{nameof(eventId)}, @{nameof(createdByUserId)}, @{nameof(createdDateTime)});
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
@@ -241,7 +241,7 @@ namespace Hisab.Dapper.Repository
         {
 
 
-            string command = $@"INSERT INTO [dbo].[EventTransactionSettlement] ([EventId] ,[TransactionId] ,[PayerEventFriendId] ,[ReceiverEventFriendId] ,[Amount])
+            string command = $@"INSERT INTO [dbo].[EventTransactionSettlement] ([Id] ,[TransactionId] ,[PayerEventFriendId] ,[ReceiverEventFriendId] ,[Amount])
                     VALUES (@{nameof(eventId)}, @{nameof(transactionId)},@{nameof(payerEventFriendId)}, @{nameof(receiverEventFriendId)}, @{nameof(amount)});
             SELECT CAST(SCOPE_IDENTITY() as int)";
 
