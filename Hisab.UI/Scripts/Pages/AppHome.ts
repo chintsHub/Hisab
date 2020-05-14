@@ -12,11 +12,11 @@
         
                    
             var saveButton = document.getElementById("eventSaveButton");
-
-
-
             saveButton.addEventListener("click", (evt) => {
                 event.preventDefault();
+                var sbutton = evt.target as HTMLElement;
+                sbutton.setAttribute("disabled", "true");
+                sbutton.innerHTML = "<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>Creating...";
 
                 var frmData = new FormData(document.forms.namedItem("newEventForm"));
 
@@ -33,7 +33,8 @@
                             var errorDiv = document.getElementById("ErrorMessage") as HTMLElement;
                             errorDiv.innerHTML = res.errorMessage;
                             errorDiv.classList.add("alert-danger");
-
+                            sbutton.removeAttribute("disabled");
+                            sbutton.innerHTML = "Save";
                         } catch (e) {
 
                         }
@@ -47,9 +48,7 @@
 
 
                     }
-                    if (this.status === 500) {
-                        document.getElementById("eventModalPlaceHolder").innerHTML = this.response;
-                    }
+                    
                 };
                 xhr.open('POST', url, true);
                 xhr.send(frmData);

@@ -10,6 +10,9 @@ var HomePage = /** @class */ (function () {
         var saveButton = document.getElementById("eventSaveButton");
         saveButton.addEventListener("click", function (evt) {
             event.preventDefault();
+            var sbutton = evt.target;
+            sbutton.setAttribute("disabled", "true");
+            sbutton.innerHTML = "<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span>Creating...";
             var frmData = new FormData(document.forms.namedItem("newEventForm"));
             var url = _this.postCreateEvent;
             //var url = "/Hisab/App/Events";
@@ -23,15 +26,14 @@ var HomePage = /** @class */ (function () {
                         var errorDiv = document.getElementById("ErrorMessage");
                         errorDiv.innerHTML = res.errorMessage;
                         errorDiv.classList.add("alert-danger");
+                        sbutton.removeAttribute("disabled");
+                        sbutton.innerHTML = "Save";
                     }
                     catch (e) {
                     }
                     if (!isjson) {
                         window.location.href = this.responseURL;
                     }
-                }
-                if (this.status === 500) {
-                    document.getElementById("eventModalPlaceHolder").innerHTML = this.response;
                 }
             };
             xhr.open('POST', url, true);
