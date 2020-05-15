@@ -188,7 +188,8 @@ namespace Hisab.Dapper.Repository
 	                    inner join Event e  on e.Id = ef.EventId
 	                    inner join ApplicationUser u on u.Id = e.UserId
                     where
-	                    ef.UserId = @{nameof(userId)}",
+	                    ef.UserId = @{nameof(userId)}
+                    order by e.CreateDate desc",
                  
                  new { userId }, Transaction);
 
