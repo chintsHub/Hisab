@@ -23,16 +23,36 @@
 
 
 <div class="container">
-    <div class="card-columns">
+    
 
-        @foreach (var hisabEvent in Model.Events)
+        @if (Model.Events.Count > 0)
         {
+            <div class="card-columns">
+                @foreach (var hisabEvent in Model.Events)
+                {
 
-            <vc:event-card event-card-vm="@hisabEvent"></vc:event-card>
+                    <vc:event-card event-card-vm="@hisabEvent"></vc:event-card>
 
 
+                }
+            </div>
         }
-    </div>
+        else
+        {
+            <div class="stitched">
+                            	
+                <p>Welcome to Hisab !! Let's get you started &#128522</p>
+
+                <p>Create your first event &#9971 by clicking "Create New Event" button at the top &#11014 </p>
+
+                <p>Or Check your invites &#128140 to join any events created by your friends. </p>
+
+            </div>
+        }
+
+
+
+   
 </div>
 
 @section scripts{
