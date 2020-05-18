@@ -79,7 +79,8 @@ namespace Hisab.UI
             services.AddScoped<IEventManager>(sp => new EventManager(sp.GetService<IDbConnectionProvider>(), 
                 sp.GetService<UserManager<ApplicationUser>>()));
 
-            services.AddScoped<IEventInviteManager>(sp => new EventInviteManager(sp.GetService<IDbConnectionProvider>()));
+            services.AddScoped<IEventInviteManager>(sp => new EventInviteManager(sp.GetService<IDbConnectionProvider>(),
+                sp.GetService<UserManager<ApplicationUser>>(), sp.GetService<IEventManager>()));
 
             services.AddScoped<IFeedbackManager>(sp => new FeedbackManager(sp.GetService<IDbConnectionProvider>()));
 

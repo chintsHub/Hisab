@@ -323,7 +323,7 @@ namespace Hisab.UI.Controllers
                 {
                     EventStatus status;
                     Enum.TryParse(eventVm.SelectedEventStatus, out status);
-                    //var result = await _eventManager.UpdateEvent(eventVm.EventName, eventVm.Id, status);
+                    //var result = await _eventManager.UpdateEvenSettings(eventVm.EventName, eventVm.Id, status);
 
                     //if (result)
                     //{
@@ -428,18 +428,18 @@ namespace Hisab.UI.Controllers
                     try
                     {
 
-                        var newFriend = await _eventManager.CreateEventFriend(new EventFriendBO()
-                        {
-                            Email = newEventFriend.Email,
+                        //var newFriend = await _eventManager.CreateEventFriend(new EventFriendBO()
+                        //{
+                        //    Email = newEventFriend.Email,
                             
-                            //Id = newEventFriend.Id,
+                        //    //Id = newEventFriend.Id,
                             
-                            NickName = newEventFriend.Name
+                        //    NickName = newEventFriend.Name
 
-                        });
+                        //});
 
-                        if (newFriend)
-                            _toastNotification.AddSuccessToastMessage($"Sucessfully added Friend {newEventFriend.Name} to this event.");
+                        //if (newFriend)
+                        //    _toastNotification.AddSuccessToastMessage($"Sucessfully added Friend {newEventFriend.Name} to this event.");
 
 
                     }

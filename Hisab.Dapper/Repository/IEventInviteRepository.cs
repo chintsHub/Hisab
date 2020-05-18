@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Dapper;
 using Hisab.Common.BO;
+using Hisab.Dapper.Identity;
 
 namespace Hisab.Dapper.Repository
 {
@@ -13,6 +14,14 @@ namespace Hisab.Dapper.Repository
         List<EventInviteBO> GetUserInvites(Guid userId);
 
         int JoinEvent(int eventFriendId, Guid appUserId);
+
+        UserEventInviteBO GetInvite(Guid eventId, Guid userId);
+
+        int InviteFriend(Guid eventId, Guid userId, InviteStatus status);
+
+        List<UserEventInviteBO> GetPendingInvites(Guid eventId);
+
+        List<ApplicationUser> GetRecommendedFriends(Guid userId, Guid currentEventId);
     }
 
     internal class EventInviteRepository : RepositoryBase, IEventInviteRepository
@@ -62,6 +71,87 @@ namespace Hisab.Dapper.Repository
 
 
             return rows;
+        }
+
+        public int InviteFriend(Guid eventId, Guid userId, InviteStatus status)
+        {
+
+
+            string command = $@"INSERT INTO [dbo].[EventInvites] ([UserId] , [EventId] , [InviteStatus] )
+                    VALUES (@{nameof(userId)}, @{nameof(eventId)},@{nameof(status)})";
+
+            var result = Connection.Execute(command,
+                new
+                {
+                    eventId,
+                    userId,
+                    status
+
+                }, transaction: Transaction);
+
+
+
+            return result;
+
+        }
+
+        public UserEventInviteBO GetInvite(Guid eventId, Guid userId)
+        {
+            var result = Connection.Query<UserEventInviteBO>($@"
+                    select 
+	                    i.EventId,
+                        i.UserId,
+                        i.InviteStatus
+                    from 
+	                [EventInvites] i
+
+                    where
+                        i.EventId = @{nameof(eventId)} and i.UserId = @{nameof(userId)} "
+
+                , new { eventId, userId }, transaction: Transaction);
+
+            return result.FirstOrDefault();
+        }
+
+        public List<UserEventInviteBO> GetPendingInvites(Guid eventId)
+        {
+            var result = Connection.Query<UserEventInviteBO>($@"
+                       select 
+	                        u.NickName,
+                            u.AvatarId,
+                            u.Email,
+                            ei.UserId,
+                            ei.EventId
+                      from [EventInvites] ei
+                          inner join ApplicationUser u on u.Id = ei.UserId
+
+                      where ei.EventId = @{nameof(eventId)}",
+
+               new { eventId }, Transaction);
+
+            return result.ToList();
+        }
+
+        public List<ApplicationUser> GetRecommendedFriends(Guid userId, Guid currentEventId)
+        {
+            var result = Connection.Query<ApplicationUser>($@"
+                    select
+	                    distinct
+	                    u.Id,
+	                    u.NickName,
+	                    u.Email,
+	                    u.AvatarId
+                    from
+	                    [dbo].[EventFriend] ef
+	                    inner join ApplicationUser u on u.Id = ef.UserId
+                    where
+	                    ef.EventId <> @{nameof(currentEventId)} 
+                        and ef.UserId = @{nameof(userId)}
+                    ",
+
+                new { currentEventId, userId }, Transaction);
+
+            return result.ToList();
         }
     }
 }

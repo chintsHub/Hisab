@@ -68,6 +68,7 @@ namespace Hisab.UI.ViewModels
             EventStatusList = list.AsEnumerable();
 
             Transactions = new List<TransactionVm>();
+            Friends = new List<EventFriendVm>();
         }
 
 
@@ -83,13 +84,18 @@ namespace Hisab.UI.ViewModels
 
         public List<HisabImage> EventImages { get; set; }
 
+       
         public int SelectedEventImage { get; set; }
+
+        public List<EventFriendVm> Friends { get; set; }
 
         public EventSettingsVM()
         {
             EventImages = new List<HisabImage>();
 
             EventImages = HisabImageManager.GetEventImages();
+
+            Friends = new List<EventFriendVm>();
         }
     }
 

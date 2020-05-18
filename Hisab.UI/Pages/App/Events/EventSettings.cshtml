@@ -8,11 +8,16 @@
 
 
 <div class="container">
-    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+    
     <div class="row">
         <div class="col-md-6 col-12 col-xs-12 ">
             <div class="card settingsCard">
                 <form asp-page-handler="EventSettings" method="post">
+                    @if (!ModelState.IsValid)
+                    {
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                    }
+
                     @Html.HiddenFor(Model => Model.SettingsVM.EventId)
                     <div class="card-header bg-warning">Event Settings</div>
                     <div class="card-body">
@@ -27,13 +32,13 @@
                         <div class="form-group">
                             <label>Event Name:</label>
                             <input asp-for="@Model.SettingsVM.EventName" class="form-control" type="text" />
-                            <span asp-validation-for="@Model.SettingsVM.EventName" class="text-danger"></span>
+
                         </div>
 
                         <div class="form-group">
                             <label>Choose Event Image:</label>
                             @Html.HiddenFor(Model => Model.SettingsVM.SelectedEventImage)
-                            <span asp-validation-for="@Model.SettingsVM.SelectedEventImage" class="text-danger"></span>
+
                             <div class="customCombobox" id="customCombobox1">
                                 <div id="comboSelection"></div>
                             </div>
@@ -53,10 +58,67 @@
 
                         </div>
 
+                        @if (Model.SettingsVM.Friends.Count > 1)
+                        {
+                            <p>Active / Inactive Friends</p>
+                        }
+
+
+                        @for (var i = 0; i < Model.SettingsVM.Friends.Count(); i++)
+                        {
+
+
+                            <div class="row" style="margin:2px;">
+
+                                <div class="col-md-8 col-8">
+                                    <label>
+                                        @Model.SettingsVM.Friends[i].Name
+                                        (@Model.SettingsVM.Friends[i].Status)
+                                    </label>
+
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].Name)
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].UserId)
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].EventId)
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].Email)
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].EventFriendStatus)
+                                    @Html.HiddenFor(x => x.SettingsVM.Friends[i].Status)
+                                </div>
+
+                                <div class="col-md-4 col-4">
+                                    @*<label class="switch">
+                                        @if (Model.SettingsVM.Friends[i].EventFriendStatus == Hisab.Common.BO.EventFriendStatus.EventAdmin)
+                                        {
+                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsActive" disabled >
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsActive">
+                                        }
+
+                                        <span class="slider round"></span>
+                                    </label>*@
+
+                                </div>
+                            </div>
+
+
+
+
+                        }
+
+
+
+
+
                     </div>
 
                     <div class="card-footer bg-warning">
-                        <button class="btn btn-primary footerButtons">Save</button>
+                        @if (User.Identity.Name.ToLower()
+                         == Model.SettingsVM.Friends.Where(x => x.EventFriendStatus == Hisab.Common.BO.EventFriendStatus.EventAdmin).First().Email.ToLower())
+                        {
+                            <button class="btn btn-primary footerButtons">Save</button>
+                        }
+
                         <div class="clearfix"></div>
                     </div>
                 </form>

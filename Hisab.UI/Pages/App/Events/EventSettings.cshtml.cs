@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
+using Hisab.Common.BO;
+using Hisab.UI.Extensions;
+using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using SQLitePCL;
 
 namespace Hisab.UI
@@ -26,24 +30,60 @@ namespace Hisab.UI
 
         public async Task<IActionResult> OnGet(Guid Id)
         {
+            
+            
             SettingsVM = new EventSettingsVM();
 
             var eve = await _eventManager.GetEventById(Id);
             SettingsVM.EventName = eve.EventName;
             SettingsVM.SelectedEventImage = eve.EventPicId;
             SettingsVM.EventId = eve.Id;
+
+            foreach (var f in eve.Friends)
+            {
+                SettingsVM.Friends.Add(new EventFriendVm()
+                {
+                    EventId = f.EventId,
+                    UserId = f.UserId,
+                    Email = f.Email,
+                    Name = f.NickName,
+                    Status = f.EventFriendStatus.GetDescription(),
+                    EventFriendStatus = f.EventFriendStatus,
+                    
+                    Avatar = HisabImageManager.GetAvatar(f.Avatar)
+                });
+            }
+
             return Page();
         }
 
+        
+
         public async Task<IActionResult> OnPostEventSettings()
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var result = await _eventManager.UpdateEvent(SettingsVM.EventName, SettingsVM.EventId, SettingsVM.SelectedEventImage);
+                var settingsBo = new EventSettingsBO()
+                {
+                    EventId = SettingsVM.EventId,
+                    EventName = SettingsVM.EventName,
+                    SelectedEventImage = SettingsVM.SelectedEventImage
 
-                if(result)
+                };
+                foreach(var f in SettingsVM.Friends)
+                {
+                    settingsBo.Friends.Add(new EventFriendBO() 
+                    { UserId = f.UserId, EventId = SettingsVM.EventId, EventFriendStatus = f.EventFriendStatus });
+                }
+
+
+
+                var result = await _eventManager.UpdateEvenSettings(settingsBo);
+
+                if (result)
                 {
                     EventSettingMessage = "Event settings updated sucessfully.";
+                    //LoadEventSettings(SettingsVM.EventId);
                 }
                 else
                 {

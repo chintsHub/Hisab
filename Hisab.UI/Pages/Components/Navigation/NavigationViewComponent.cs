@@ -73,16 +73,16 @@ namespace Hisab.UI.Pages.Components.Navigation
             var nav = new NavigationVM();
 
             
-            nav.Items.Add(new NavigationItemVM() { Page = "Dashboard", Label = "Event Dashboard", IsCurrentPage = path.Contains("dashboard") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "Dashboard", Label = "Dashboard", IsCurrentPage = path.Contains("dashboard") ? true : false, IsEventMenu=true });
             //nav.Items.Add(new NavigationItemVM() { Page = "EventFriends", Label = "Friends", IsCurrentPage = path.Contains("Friends") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "Transactions", Label = "Event Transactions", IsCurrentPage = path.Contains("transactions") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "EventSettings", Label = "Event Settings", IsCurrentPage = path.Contains("settings") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "EventSettlement", Label = "Event Settlement", IsCurrentPage = path.Contains("EventSettlement") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "Transactions", Label = "Transactions", IsCurrentPage = path.Contains("transactions") ? true : false, IsEventMenu = true });
+            nav.Items.Add(new NavigationItemVM() { Page = "EventSettings", Label = "Settings", IsCurrentPage = path.Contains("settings") ? true : false, IsEventMenu = true });
+            nav.Items.Add(new NavigationItemVM() { Page = "EventSettlement", Label = "Settlement", IsCurrentPage = path.Contains("EventSettlement") ? true : false, IsEventMenu = true });
 
-            nav.Items.Add(new NavigationItemVM() { Page = "/app/events", Label = "All Events", IsCurrentPage = path.Contains("Events") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "/app/events", Label = "My Events", IsCurrentPage = path.Contains("Events") ? true : false });
             //nav.Items.Add(new NavigationItemVM() { Page = "/app/Friends", Label = "All Friends", IsCurrentPage = path.Contains("Friends") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "/app/Invites", Label = "All Invites", IsCurrentPage = path.Contains("Invites") ? true : false });
-            nav.Items.Add(new NavigationItemVM() { Page = "/app/Alerts", Label = "All Alerts", IsCurrentPage = path.Contains("Alerts") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "/app/Invites", Label = "My Invites", IsCurrentPage = path.Contains("Invites") ? true : false });
+            nav.Items.Add(new NavigationItemVM() { Page = "/app/Alerts", Label = "My Alerts", IsCurrentPage = path.Contains("Alerts") ? true : false });
 
             return nav;
         }

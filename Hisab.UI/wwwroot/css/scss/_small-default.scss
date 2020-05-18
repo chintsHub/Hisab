@@ -114,7 +114,7 @@ header {
 .hamburgerNav {
     background-color: $secondaryColor;
     border-bottom: 1px solid rgba(0,0,0,0.3);
-
+    
     .hamburgerMenuItems {
         display: none;
         /*position: absolute;
@@ -145,6 +145,7 @@ header {
         font-weight: $boldWeight;
         padding: .5rem;
         color: $primaryFontColor;
+        
     }
 
 

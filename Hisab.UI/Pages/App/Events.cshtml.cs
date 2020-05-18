@@ -53,21 +53,7 @@ namespace Hisab.UI
                                     .Where<HisabImage>(x => x.Id == eventBo.EventPic).FirstOrDefault().ImagePath
                 });
             }
-
-
-            //Events = new List<EventCardVm>()
-            //{
-            //    new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-            //        EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"},
-            //    new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-            //        EventImagePath="~/img/eventCardImage2.jpg" , EventMessage="This event is created by"},
-            //     new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand",
-            //        EventImagePath="~/img/eventCardImage1.jpg" , EventMessage="This event is created by"}
-   
-
-            //};
-
-
+            
 
             return Page();
         }
@@ -98,7 +84,7 @@ namespace Hisab.UI
                         EventOwner = new NewEventFriendBO()
                         {
                             UserId = user.Id,
-                            Status = EventFriendStatus.Owner
+                            Status = EventFriendStatus.EventAdmin
 
                         },
                         EventPic = HisabImageManager.GetRandomEventImage()

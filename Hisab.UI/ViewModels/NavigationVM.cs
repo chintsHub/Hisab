@@ -24,5 +24,7 @@ namespace Hisab.UI.ViewModels
         public bool IsCurrentPage { get; set; }
 
         public int BadgeCount { get; set; }
+
+        public bool IsEventMenu { get; set; }
     }
 }

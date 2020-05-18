@@ -6,9 +6,7 @@
 }
 
     <div class="container">
-        <p>
-            <h1>Dashboard</h1>
-        </p>
+        
         <div class="row">
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
@@ -80,16 +78,15 @@
     <div class="container friendsContainer">
         
         <div class="row">
-            <div class="col-6">
-                <p>
-                    Friends
-                </p>
-            </div>
-            <div class="col-6">
-                <div>
-                    <a asp-page="EventFriends" asp-route-id="@Guid.NewGuid()">
-                        <i class="fa fa-plus-square"></i> Add Friends
-                    </a>
+           
+            <div class="col-12 text-right">
+                <div style="margin:5px">
+                    <p>
+                        <a class="pageButton" asp-page="EventFriends" asp-route-id="@Model.Event.EventId">
+                            <i class="fa fa-plus-square"></i> Invite Friends
+                        </a>
+                    </p>
+                   
                 </div>
             </div>
         </div>
@@ -100,82 +97,36 @@
         
         <div class="card-columns">
             @*for loop starts here*@
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xs-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
+            @foreach (var friend in Model.Event.Friends)
+            {
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-2">
+                            <div>
+                                <img class="friendImage" src="@friend.Avatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
+                            </div>
+                            
+                        </div>
+                        <div class="col-10">
+                            <div class="card-body">
+                                <div><p>@friend.Name</p></div>
+                                <div><p>@friend.Email</p></div>
+                                <div><p>@friend.Status</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xs-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xs-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xs-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xs-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
 
         </div>
+
+
     </div>
 
     
+@section Scripts{ 
 
+
+
+}
 

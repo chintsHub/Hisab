@@ -1,5 +1,6 @@
 ﻿using Hisab.Common.BO;
 using Hisab.UI.Extensions;
+using Hisab.UI.Services;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,12 +36,8 @@ namespace Hisab.UI.ViewModels
 
         public UserSettingsVm()
         {
-            Avatars = new List<AvatarVm>();
-            Avatars.Add(new AvatarVm() { Avatar = AvatarEnum.Default, AvatarImagePath = "~/img/img_avatar.png" });
-            Avatars.Add(new AvatarVm() { Avatar = AvatarEnum.Boy1, AvatarImagePath = "~/img/iconMale.png" });
-            Avatars.Add(new AvatarVm() { Avatar = AvatarEnum.Girl1, AvatarImagePath = "~/img/iconFemale.png" });
-            Avatars.Add(new AvatarVm() { Avatar = AvatarEnum.BoySuperhero1, AvatarImagePath = "~/img/iconMaleSuperhero.png" });
-            Avatars.Add(new AvatarVm() { Avatar = AvatarEnum.GirlSuperhero1, AvatarImagePath = "~/img/iconFemalSuperhero.png" });
+            Avatars = HisabImageManager.GetAvatars();
+           
         }
     }
 }

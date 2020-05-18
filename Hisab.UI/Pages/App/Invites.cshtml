@@ -5,22 +5,63 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Invites</h1>
 
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-5">
-            <img style="width:100%; height:100%" src="" alt="Card image cap" asp-append-version="true">
-        </div>
-        <div class="col-md-7">
-            <div class="card-body">
-                <h5 class="card-title">Event Name</h5>
-                <p class="card-text">
-                   Message
-                </p>
-                <button>Join</button>
+    <div class="container">
+
+
+        @if (Model.Events.Count > 0)
+        {
+            <div class="card-columns">
+                @foreach (var hisabEvent in Model.Events)
+                {
+
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-5">
+                                <img style="width:100%; height:100%" src="@hisabEvent.EventImagePath" alt="Card image cap" asp-append-version="true">
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @hisabEvent.EventName</h5>
+                                    <p class="card-text">
+                                        @hisabEvent.EventMessage
+                                    </p>
+
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-5">
+                                <form>
+                                    <button class="btn btn-outline-danger">Delete</button>
+
+                                </form>
+                            </div>
+                            <div class="col-7" style="text-align:right">
+                                <form>
+                                    <button class="btn btn-outline-primary">Join</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
             </div>
-        </div>
-    </div>
-</div>
+        }
+        else
+        {
+            <div class="stitched">
 
+                <p>Hey !! you don have any invites &#128140 </p>
+
+            </div>
+        }
+
+
+
+
+    </div>

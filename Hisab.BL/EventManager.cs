@@ -21,9 +21,13 @@ namespace Hisab.BL
 
         Task<EventBO> GetEventById(Guid eventId);
 
-        Task<bool> CreateEventFriend(EventFriendBO newEventFriend);
+        Task<ManagerResponse> CreateEventFriend(Guid eventId, string userEmail);
 
-        Task<bool> UpdateEvent(string newName, Guid eventId, int eventPic);
+        
+
+        Task<List<UserEventBO>> GetUserInvites(Guid userId);
+
+        Task<bool> UpdateEvenSettings(EventSettingsBO eventSettingsBO);
 
         Task<bool> ArchieveEvent(Guid eventId);
 
@@ -32,6 +36,8 @@ namespace Hisab.BL
         Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
 
         Task<bool> CanAccessEvent(Guid eventId, Guid userId);
+
+        
 
         bool CheckEventAccess(EventBO eventBo, Guid userId);
 
@@ -145,45 +151,24 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> CreateEventFriend(EventFriendBO newEventFriend)
+       
+
+        public async Task<ManagerResponse> CreateEventFriend(Guid eventId, string userEmail)
         {
+
+            return new ManagerResponse();
             
-            //find user
-            var user = await _userManager.FindByEmailAsync(newEventFriend.Email);
 
-            //if (user == null)
-            //{
-            //    newEventFriend.Status = EventFriendStatus.EventFriend;
-            //    newEventFriend.AppUserId = null;
-            //}
-            //else
-            //{
-            //    newEventFriend.Status = user.EmailConfirmed ? EventFriendStatus.PendingAcceptance : EventFriendStatus.PendingRegistration;
-            //    newEventFriend.AppUserId = user.Id;
-            //}
-
-            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
-            {
-                var friend = context.EventRepository.CreateEventFriend(newEventFriend);
-
-                //create account
-                var accountId = context.EventRepository.CreateEventFriendAccount(newEventFriend.EventId, friend);
-
-                context.SaveChanges();
-
-                if (friend > 1)
-                    return true;
-
-                return false;
-
-            }
+            
         }
 
-        public async Task<bool> UpdateEvent(string newName, Guid eventId, int eventPic)
+        public async Task<bool> UpdateEvenSettings(EventSettingsBO eventSettingsBO)
         {
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
-                var rows = context.EventRepository.UpdateEvent(newName,eventId, eventPic);
+                
+                
+                var rows = context.EventRepository.UpdateEvent(eventSettingsBO);
                 context.SaveChanges();
 
                 if (rows == 1)
@@ -540,6 +525,20 @@ namespace Hisab.BL
 
             }
         }
+
+        public async Task<List<UserEventBO>> GetUserInvites(Guid userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var events = context.EventRepository.GetUserInvites(userId);
+
+
+                return events;
+
+            }
+        }
+
+        
     }
 
   

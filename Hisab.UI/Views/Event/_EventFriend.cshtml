@@ -8,7 +8,7 @@
         <form asp-controller="Event" asp-action="UpdateFriend" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-group">
                 <label>Status:@Model.Status</label>
-                <input type="hidden" asp-for="@Model.EventFriendId" value="@Model.EventFriendId" />
+                
                 <input type="hidden" asp-for="@Model.EventId" value="@Model.EventId" />
                 <input type="hidden" asp-for="@Model.Status" value="@Model.Status" />
                 <input type="hidden" asp-for="@Model.Name" value="@Model.Name" />
@@ -28,16 +28,8 @@
 
                 <span></span>
             </div>
-            <div class="form-group">
-                <label>Adult Count:</label>
-                <input type="number" value="@Model.AdultCount" asp-for="@Model.AdultCount" min="1" max="5" step="1" />
-                <span></span>
-            </div>
-            <div class="form-group">
-                <label>Kids Count:</label>
-                <input type="number" value="@Model.KidsCount" asp-for="@Model.KidsCount" min="0" max="5" step="1" />
-                <span></span>
-            </div>
+           
+            
             <div class="form-group">
                 <button class="btn btn-primary">Save</button>
             </div>

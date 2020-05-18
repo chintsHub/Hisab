@@ -1,4 +1,5 @@
 ﻿using Hisab.Common.BO;
+using Hisab.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,25 @@ namespace Hisab.UI.Services
             var randImage = rnd.Next(1, 6);
 
             return GetEventImages().Where(x => x.Id == randImage).FirstOrDefault();
+        }
+
+        public static List<AvatarVm> GetAvatars()
+        {
+            var retVal = new List<AvatarVm>();
+
+            retVal.Add(new AvatarVm() { Avatar = AvatarEnum.Default, AvatarImagePath = "~/img/img_avatar.png" });
+            retVal.Add(new AvatarVm() { Avatar = AvatarEnum.Boy1, AvatarImagePath = "~/img/iconMale.png" });
+            retVal.Add(new AvatarVm() { Avatar = AvatarEnum.Girl1, AvatarImagePath = "~/img/iconFemale.png" });
+            retVal.Add(new AvatarVm() { Avatar = AvatarEnum.BoySuperhero1, AvatarImagePath = "~/img/iconMaleSuperhero.png" });
+            retVal.Add(new AvatarVm() { Avatar = AvatarEnum.GirlSuperhero1, AvatarImagePath = "~/img/iconFemalSuperhero.png" });
+
+            return retVal;
+        }
+
+        public static AvatarVm GetAvatar(AvatarEnum avatarEnum)
+        {
+            var avatars = GetAvatars();
+            return avatars.Where(x => x.Avatar == avatarEnum).First();
         }
     }
 

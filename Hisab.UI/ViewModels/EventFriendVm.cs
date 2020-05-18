@@ -1,25 +1,38 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Amazon.SimpleEmail.Model.Internal.MarshallTransformations;
 using Hisab.Common.BO;
 
 namespace Hisab.UI.ViewModels
 {
     public class EventFriendVm
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
-        public int EventFriendId { get; set; }
+        public Guid UserId {get; set;}
 
-        [Required]
+        [Required(ErrorMessage = "Friend Email is required")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Friend Name is required")]
         public string Name { get; set; }
 
-        public int KidsCount { get; set; }
+       
+        public string Status { get; set; }
 
-        public int AdultCount { get; set; }
+        public EventFriendStatus EventFriendStatus { get; set; }
 
-        public EventFriendStatus Status { get; set; }
+        
+        public AvatarVm Avatar { get; set; }
+    }
+
+    public class InviteFriendVm
+    {
+        [Required]
+        public Guid EventId { get; set;  }
+        
+        [Required]
+        public string FriendEmail { get; set; }
     }
 
    

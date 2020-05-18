@@ -5,371 +5,84 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
     
-    <div style="float:left; margin:10px">
+    @*<div style="float:left; margin:10px">
         <button><i class="fa fa-undo-alt"></i> Back</button>
     </div>
 
     <div style="float:right; margin:10px">
         <button><i class="fa fa-undo-alt"></i> Add Friends to Event</button>
-    </div>
+    </div>*@
 
-    <div class="card container scroller">
+    <div class="container">
+        <div class="card settingsCard">
+            <form  method="post">
 
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
+                <div class="card-header " style="background-color:#79cbef">Add Friend</div>
                 <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                    @if (!String.IsNullOrEmpty(Model.InviteFriendMessage))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @Model.InviteFriendMessage
+                        </div>
+                    }
+
+                    @Html.HiddenFor(x => x.NewFriend.EventId)
+                    <div>
+                        <label>Enter Friend's Email:</label>
+                        <input asp-for="@Model.NewFriend.FriendEmail" class="form-control" type="text" />
+                        <span asp-validation-for="@Model.NewFriend.FriendEmail" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary footerButtons">Save</button>
+                    </div>
+
                 </div>
-            </div>
 
 
+            </form>
         </div>
 
 
-        <div class="row ">
-            <div class="col-2 col-md-2">
+        <div class="card">
+            <div class="card-header" style="background-color:#79cbef">Pending Request to join</div>
+            
+            <div class="card-body">
 
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
+                <div class="row ">
+                    <div class="col-2 col-md-2">
 
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox checkbox-xl ">
 
-                    </label>
+                            <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
+                            <label class="custom-control-label" for="checkbox-3">
+
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="col-2 col-md-2">
+                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
+                    </div>
+                    <div class="col-8 col-md-8">
+
+                        <div class="card-body">
+                            <div>Nick Name</div>
+                            <div>Email</div>
+                        </div>
+                    </div>
+
 
                 </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
 
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
             </div>
+               
 
-
+            
         </div>
 
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row ">
-            <div class="col-2 col-md-2">
-
-                <!-- Default checked -->
-                <div class="custom-control custom-checkbox checkbox-xl ">
-
-                    <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                    <label class="custom-control-label" for="checkbox-3">
-
-                    </label>
-
-                </div>
-            </div>
-            <div class="col-2 col-md-2">
-                <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-            </div>
-            <div class="col-8 col-md-8">
-
-                <div class="card-body">
-                    <div>Nick Name</div>
-                    <div>Email</div>
-                </div>
-            </div>
-
-
-        </div>
-
-    </div>
-
+   
+</div>
 

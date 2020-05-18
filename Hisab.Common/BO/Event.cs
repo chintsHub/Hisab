@@ -21,8 +21,8 @@ namespace Hisab.Common.BO
 
         public HisabImage EventPic { get; set; }
 
-        
-        
+
+
     }
 
     public class NewEventFriendBO
@@ -36,11 +36,24 @@ namespace Hisab.Common.BO
 
     public enum EventFriendStatus
     {
-        Owner = 1,
-        RequestToJoin = 2, 
-        RequestAccepted = 3,
-        Inactive = 4,
-        RequestDeclined = 5
+        [Description("Admin")]
+        EventAdmin = 1,
+
+        [Description("Requested to join")]
+        RequestToJoin = 2,
+
+        [Description("Friend")]
+        EventFriend = 3,
+
+        [Description("Request declined")]
+        RequestDeclined = 4
+    }
+
+    public enum InviteStatus
+    {
+        RequestPending = 1,
+        RequestAccepted = 2,
+        RequestRejected = 3
     }
 
     public enum EventStatus
@@ -107,13 +120,15 @@ namespace Hisab.Common.BO
 
         public string NickName { get; set; }
 
+        public EventFriendStatus EventFriendStatus { get; set; }
+
         
 
-        public EventFriendStatus EventFriendStatus { get; set; }
+        public AvatarEnum Avatar { get; set; }
 
         public EventFriendBO()
         {
-           
+
         }
     }
 
@@ -132,8 +147,19 @@ namespace Hisab.Common.BO
         public string OwnerName { get; set; }
         public Guid OwnerUserId { get; set; }
 
-        public EventFriendStatus EventFriendStatus { get; set; }
+        
 
+    }
+
+    public class UserEventInviteBO
+    {
+        public Guid UserId { get; set; }
+
+        public string NickName { get; set; }
+
+        public Guid EventId { get; set; }
+
+        public InviteStatus InviteStatus { get; set; }
     }
 
     public class EventBO
@@ -157,7 +183,7 @@ namespace Hisab.Common.BO
 
     public class EventDashboardStatBo
     {
-        
+
         public decimal TotalEventExpense { get; set; }
 
         public decimal TotalEventPoolBalance { get; set; }
@@ -168,12 +194,30 @@ namespace Hisab.Common.BO
 
         public decimal MyNetAmount { get; set; }
 
-        
+
+    }
+
+    public class EventSettingsBO
+    {
+        public Guid EventId { get; set; }
+
+        public string EventName { get; set; }
+
+        public int SelectedEventImage { get; set; }
+
+        public List<EventFriendBO> Friends { get; set; }
+
+        public EventSettingsBO()
+        {
+            Friends = new List<EventFriendBO>();
+        }
     }
 
     public class EventInviteBO
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; } 
 
         public string EventName { get; set; }
 
@@ -220,4 +264,14 @@ namespace Hisab.Common.BO
 
         public bool EmailConfirmed { get; set; }
     }
+
+    public class ManagerResponse
+    {
+        public string Messge { get; set; }
+
+        public bool Success { get; set; }
+
+        public Exception Exception { get; set; }
+    }
+
 }
