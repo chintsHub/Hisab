@@ -25,7 +25,7 @@ namespace Hisab.BL
 
         
 
-        Task<List<UserEventBO>> GetUserInvites(Guid userId);
+        
 
         Task<bool> UpdateEvenSettings(EventSettingsBO eventSettingsBO);
 
@@ -526,17 +526,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<List<UserEventBO>> GetUserInvites(Guid userId)
-        {
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
-                var events = context.EventRepository.GetUserInvites(userId);
-
-
-                return events;
-
-            }
-        }
+       
 
         
     }

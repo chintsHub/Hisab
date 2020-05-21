@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="card settingsCard">
-            <form  method="post">
+            <form method="post">
 
                 <div class="card-header " style="background-color:#79cbef">Add Friend</div>
                 <div class="card-body">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary footerButtons">Save</button>
+                        <button class="btn btn-primary footerButtons">Send Invite</button>
                     </div>
 
                 </div>
@@ -44,45 +44,142 @@
             </form>
         </div>
 
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-recommendedFriends-tab" data-toggle="pill" href="#pills-recommendedFriends" role="tab" aria-controls="pills-home" aria-selected="true">Recommendation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-pendingFriends-tab" data-toggle="pill" href="#pills-pendingFriends" role="tab" aria-controls="pills-profile" aria-selected="false">Pending Requests</a>
+            </li>
 
-        <div class="card">
-            <div class="card-header" style="background-color:#79cbef">Pending Request to join</div>
-            
-            <div class="card-body">
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-recommendedFriends" role="tabpanel" aria-labelledby="pills-home-tab">
 
-                <div class="row ">
-                    <div class="col-2 col-md-2">
+                @if (Model.InviteFriendMessages.Count > 0)
+                {
+                    <div class="alert alert-warning" role="alert">
+                        <ul>
+                            @foreach(var r in Model.InviteFriendMessages)
+                            {
+                                <li>@r</li>
+                            }
+                        </ul>
+                    </div>
+                }
 
-                        <!-- Default checked -->
-                        <div class="custom-control custom-checkbox checkbox-xl ">
 
-                            <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                            <label class="custom-control-label" for="checkbox-3">
+                @if (Model.RecommendedFriends.Count() > 0)
+                {
+                    <form asp-page-handler="SendInvites" method="post">
+                        @for (int i = 0; i < Model.RecommendedFriends.Count(); i++)
+                        {
+                            <div class="card" style="height:60px;">
+                                <div class="row ">
 
-                            </label>
+                                    <div class="col-4 col-md-4">
 
+                                        <!-- Default checked -->
+                                        <div class="custom-control custom-checkbox checkbox-xl " style="margin:5px">
+                                            @Html.HiddenFor(x => x.RecommendedFriends[i].Id)
+                                            @Html.HiddenFor(x => x.RecommendedFriends[i].UserName)
+                                            @Html.HiddenFor(x => x.RecommendedFriends[i].EventId)
+                                            <input type="checkbox" class="custom-control-input" asp-for="@Model.RecommendedFriends[i].Checked">
+                                            <label class="custom-control-label" asp-for="@Model.RecommendedFriends[i].Checked">
+                                                @Model.RecommendedFriends[i].NickName
+                                            </label>
+
+                                        </div>
+                                        @*<label class="switch">
+                                   <input type="checkbox" asp-for="@Model.RecommendedFriends[i].Checked">
+                                   <span class="slider round"></span>
+                                </label>*@
+                                    </div>
+
+                                    <div class="col-8 col-md-8">
+                                        <div class="form-group" style="padding:5px">
+                                            <div>Email:</div>
+                                            <div>@Model.RecommendedFriends[i].UserName</div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        }
+
+                        <div class="form-group">
+                            <button id="sendButtons" class="btn btn-primary footerButtons">Send Invites</button>
                         </div>
-                    </div>
-                    <div class="col-2 col-md-2">
-                        <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-                    </div>
-                    <div class="col-8 col-md-8">
-
-                        <div class="card-body">
-                            <div>Nick Name</div>
-                            <div>Email</div>
-                        </div>
-                    </div>
+                    </form>
 
 
-                </div>
+
+                }
+                else
+                {
+                    <div class="stitched">
+
+                        <p>There are no friends to recommend !! </p>
+                        <p>If you are part of other Events, we will be able to list your friends here.</p>
+
+                    </div>
+
+                }
+
 
             </div>
-               
 
-            
+            <div class="tab-pane fade" id="pills-pendingFriends" role="tabpanel" aria-labelledby="pills-profile-tab">
+                @if (Model.PendingRequests.Count > 0)
+                    {
+                    <div class="card-columns">
+                        @*for loop starts here*@
+                        @foreach (var friend in Model.PendingRequests)
+                        {
+                            <div class="card">
+                                <div class="row no-gutters">
+                                    <div class="col-2">
+                                        <div>
+                                            <img class="friendImage" src="@friend.Avatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="card-body">
+                                            <div><p>@friend.NickName hasn't joined this event yet.</p></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                }
+                else
+                {
+                        <div class="stitched">
+
+                            <p>There are no pending invites !! </p>
+                           
+
+                        </div>
+                }
+
+
+            </div>
+
         </div>
 
-   
-</div>
+
+       
+
+
+    </div>
 

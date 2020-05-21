@@ -76,25 +76,25 @@
         
     
     <div class="container friendsContainer">
-        
-        <div class="row">
-           
-            <div class="col-12 text-right">
-                <div style="margin:5px">
-                    <p>
-                        <a class="pageButton" asp-page="EventFriends" asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-plus-square"></i> Invite Friends
-                        </a>
-                    </p>
-                   
+
+        @if (Model.IsLoggedInUserTheEventAdmin)
+        {
+            <div class="row">
+
+                <div class="col-12 text-right">
+                    <div style="margin:5px">
+                        <p>
+                            <a class="pageButton" asp-page="EventFriends" asp-route-id="@Model.Event.EventId">
+                                <i class="fa fa-plus-square"></i> Invite Friends
+                            </a>
+                        </p>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        }
 
-        
 
-        
         <div class="card-columns">
             @*for loop starts here*@
             @foreach (var friend in Model.Event.Friends)
@@ -105,7 +105,7 @@
                             <div>
                                 <img class="friendImage" src="@friend.Avatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
                             </div>
-                            
+
                         </div>
                         <div class="col-10">
                             <div class="card-body">

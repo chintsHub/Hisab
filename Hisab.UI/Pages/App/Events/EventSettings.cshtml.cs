@@ -41,17 +41,23 @@ namespace Hisab.UI
 
             foreach (var f in eve.Friends)
             {
-                SettingsVM.Friends.Add(new EventFriendVm()
+                //only load event friends
+                if (f.EventFriendStatus == EventFriendStatus.EventFriend)
                 {
-                    EventId = f.EventId,
-                    UserId = f.UserId,
-                    Email = f.Email,
-                    Name = f.NickName,
-                    Status = f.EventFriendStatus.GetDescription(),
-                    EventFriendStatus = f.EventFriendStatus,
-                    
-                    Avatar = HisabImageManager.GetAvatar(f.Avatar)
-                });
+                    SettingsVM.Friends.Add(new EventFriendVm()
+                    {
+                        EventId = f.EventId,
+                        UserId = f.UserId,
+                        Email = f.Email,
+                        Name = f.NickName,
+                        Status = f.EventFriendStatus.GetDescription(),
+                        EventFriendStatus = f.EventFriendStatus,
+                        IsFriendActive = f.IsFriendActive,
+                        Avatar = HisabImageManager.GetAvatar(f.Avatar)
+                    });
+
+                }
+                
             }
 
             return Page();
@@ -72,8 +78,12 @@ namespace Hisab.UI
                 };
                 foreach(var f in SettingsVM.Friends)
                 {
-                    settingsBo.Friends.Add(new EventFriendBO() 
-                    { UserId = f.UserId, EventId = SettingsVM.EventId, EventFriendStatus = f.EventFriendStatus });
+                   
+                        settingsBo.Friends.Add(new EventFriendBO()
+                        { UserId = f.UserId, EventId = SettingsVM.EventId, EventFriendStatus = f.EventFriendStatus, IsFriendActive = f.IsFriendActive });
+                    
+                        
+                                      
                 }
 
 

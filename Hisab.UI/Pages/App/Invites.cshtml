@@ -8,43 +8,61 @@
 
     <div class="container">
 
+        @if (!String.IsNullOrEmpty(Model.InviteSuccessMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @Model.InviteSuccessMessage
+            </div>
+        }
+        @if (!String.IsNullOrEmpty(Model.InviteErrorMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @Model.InviteErrorMessage
+            </div>
+        }
 
         @if (Model.Events.Count > 0)
         {
             <div class="card-columns">
-                @foreach (var hisabEvent in Model.Events)
+                @for (var i = 0; i < Model.Events.Count; i++)
                 {
 
                     <div class="card">
                         <div class="row no-gutters">
                             <div class="col-5">
-                                <img style="width:100%; height:100%" src="@hisabEvent.EventImagePath" alt="Card image cap" asp-append-version="true">
+                                <img style="width:100%; height:100%" src="@Model.Events[i].EventImagePath" alt="Card image cap" asp-append-version="true">
                             </div>
                             <div class="col-7">
                                 <div class="card-body">
-                                    <h5 class="card-title"> @hisabEvent.EventName</h5>
+                                    <h5 class="card-title"> @Model.Events[i].EventName</h5>
                                     <p class="card-text">
-                                        @hisabEvent.EventMessage
+                                        @Model.Events[i].EventMessage
                                     </p>
 
                                 </div>
-                                
+
                             </div>
-                           
+
                         </div>
                         <div class="row no-gutters">
-                            <div class="col-5">
-                                <form>
-                                    <button class="btn btn-outline-danger">Delete</button>
 
+                            <div class="col-5">
+                                <form id="@Model.Events[i].EventId" asp-page-handler="InviteDelete" asp-route-EventId="@Model.Events[i].EventId">
+                                    <button class="btn btn-outline-danger">Delete</button>
                                 </form>
+
+
+
                             </div>
                             <div class="col-7" style="text-align:right">
-                                <form>
+                                <form id="@Model.Events[i].EventId" asp-page-handler="InviteJoin" asp-route-EventId="@Model.Events[i].EventId">
                                     <button class="btn btn-outline-primary">Join</button>
-
                                 </form>
+
+
+
                             </div>
+
                         </div>
                     </div>
 
@@ -56,7 +74,7 @@
         {
             <div class="stitched">
 
-                <p>Hey !! you don have any invites &#128140 </p>
+                <p>Hey !! you don't have any invites &#128140 </p>
 
             </div>
         }

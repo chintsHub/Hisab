@@ -75,10 +75,10 @@ namespace Hisab.UI.Controllers
             {
                 inviteVm.Add(new EventInviteVm()
                 {
-                    EventId = eventvm.EventId,
+                    //EventId = eventvm.EventId,
                     EventName = eventvm.EventName,
-                    EventOwner = eventvm.EventOwner,
-                    EventFriendId = eventvm.EventFriendId
+                    //EventOwner = eventvm.EventOwner,
+                    //EventFriendId = eventvm.EventFriendId
                 });
             }
 
@@ -91,7 +91,7 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> JoinEvent(EventInviteVm inviteVm)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var rows = await _eventInviteManager.JoinEvent(inviteVm.EventFriendId, user.Id);
+            //var rows = await _eventInviteManager.JoinEvent(inviteVm.EventFriendId, user.Id);
             _toastNotification.AddSuccessToastMessage("You have joined new Event. Congratulations!!");
 
             return RedirectToAction("Dashboard", "Event", new {eventId = inviteVm.EventId});

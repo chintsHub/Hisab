@@ -26,15 +26,20 @@ namespace Hisab.BL
         {
             var user = await _userManager.FindByEmailAsync(userName);
 
-            var appUser = user as ApplicationUser;
-
-            if (!appUser.IsUserActive)
+            if(user != null)
             {
-                return await Task.FromResult<SignInResult>(SignInResult.LockedOut);
+                var appUser = user as ApplicationUser;
+
+                if (!appUser.IsUserActive)
+                {
+                    return await Task.FromResult<SignInResult>(SignInResult.LockedOut);
+                }
+
+                var result = await base.PasswordSignInAsync(userName, password, isPersistent, lockoutOnFailure);
+                return result;
             }
 
-            var result = await base.PasswordSignInAsync(userName, password, isPersistent, lockoutOnFailure);
-            return result;
+            return new SignInResult();
         }
 
         

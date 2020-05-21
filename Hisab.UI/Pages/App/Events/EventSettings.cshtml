@@ -58,9 +58,12 @@
 
                         </div>
 
-                        @if (Model.SettingsVM.Friends.Count > 1)
+                        @if (Model.SettingsVM.Friends.Count > 0)
                         {
-                            <p>Active / Inactive Friends</p>
+                            <div class="alert alert-warning" role="alert">
+                                You can make a friend inative for this event. Please note, an inactive friend will still be able to
+                                acess the event. However, in future transaction split an inactive friend will not be available.
+                            </div>
                         }
 
 
@@ -85,18 +88,18 @@
                                 </div>
 
                                 <div class="col-md-4 col-4">
-                                    @*<label class="switch">
+                                    <label class="switch">
                                         @if (Model.SettingsVM.Friends[i].EventFriendStatus == Hisab.Common.BO.EventFriendStatus.EventAdmin)
                                         {
-                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsActive" disabled >
+                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsFriendActive" disabled >
                                         }
                                         else
                                         {
-                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsActive">
+                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsFriendActive">
                                         }
 
                                         <span class="slider round"></span>
-                                    </label>*@
+                                    </label>
 
                                 </div>
                             </div>
@@ -113,11 +116,7 @@
                     </div>
 
                     <div class="card-footer bg-warning">
-                        @if (User.Identity.Name.ToLower()
-                         == Model.SettingsVM.Friends.Where(x => x.EventFriendStatus == Hisab.Common.BO.EventFriendStatus.EventAdmin).First().Email.ToLower())
-                        {
-                            <button class="btn btn-primary footerButtons">Save</button>
-                        }
+                        <button class="btn btn-primary footerButtons">Save</button>
 
                         <div class="clearfix"></div>
                     </div>

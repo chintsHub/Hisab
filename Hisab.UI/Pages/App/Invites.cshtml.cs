@@ -15,14 +15,19 @@ namespace Hisab.UI
 {
     public class InvitesModel : PageModel
     {
+        [BindProperty]
         public List<EventCardVm> Events { get; set; }
 
-        private IEventManager _eventManager;
+        private IEventInviteManager _eventInviteManager;
         private UserManager<ApplicationUser> _userManager;
 
-        public InvitesModel(IEventManager eventManager, UserManager<ApplicationUser> userManager)
+        public string InviteSuccessMessage { get; set; }
+
+        public string InviteErrorMessage { get; set; }
+
+        public InvitesModel(IEventInviteManager eventInviteManager, UserManager<ApplicationUser> userManager)
         {
-            _eventManager = eventManager;
+            _eventInviteManager = eventInviteManager;
             _userManager = userManager;
 
             Events = new List<EventCardVm>();
@@ -30,23 +35,62 @@ namespace Hisab.UI
         
         public async Task<IActionResult> OnGet()
         {
+            await LoadInvites();
+
+            return Page();
+        }
+
+        private async Task LoadInvites()
+        {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var invites = await _eventManager.GetUserInvites(user.Id);
+            var invites = await _eventInviteManager.GetUserInvites(user.Id);
 
-            foreach (var eventBo in invites)
+            foreach (var inviteBo in invites)
             {
                 Events.Add(new EventCardVm()
                 {
-                    EventId = eventBo.Id,
-                    EventName = eventBo.EventName,
-                    CreatedUserNickName = eventBo.OwnerName,
-                    EventMessage = "Event Created by: " + eventBo.OwnerName,
+                    EventId = inviteBo.EventId,
+                    EventName = inviteBo.EventName,
+                    CreatedUserNickName = inviteBo.EventOwnerName,
+                    EventMessage = "Event Created by: " + inviteBo.EventOwnerName,
                     EventImagePath = HisabImageManager.GetEventImages()
-                                    .Where<HisabImage>(x => x.Id == eventBo.EventPic).FirstOrDefault().ImagePath
+                                    .Where<HisabImage>(x => x.Id == inviteBo.EventPic).FirstOrDefault().ImagePath
                 });
             }
+        }
 
+        public async Task<IActionResult> OnPostInviteDelete(Guid EventId)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var result = await _eventInviteManager.DeleteInvite(EventId, user.Id);
+
+            if(result)
+            {
+                InviteSuccessMessage = "Sucessfully deleted the invite.";
+                await LoadInvites();
+            }
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostInviteJoin(Guid EventId)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var result = await _eventInviteManager.JoinInvite(EventId, user.Id);
+
+            if(result.Success)
+            {
+                InviteSuccessMessage = result.Messge;
+            }
+            else
+            {
+                InviteErrorMessage =  result.Messge;
+            }
+
+            await LoadInvites();
             return Page();
         }
     }

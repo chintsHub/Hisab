@@ -12,13 +12,22 @@ namespace Hisab.BL
 {
     public interface IEventInviteManager
     {
-        Task<List<EventInviteBO>> GetUserInvites(Guid userId);
+        Task<List<UserEventInviteBO>> GetUserInvites(Guid userId);
 
-        Task<int> JoinEvent(int eventFriendId, Guid appUserId);
+        Task<ManagerResponse> JoinInvite(Guid eventId, Guid userId);
+
 
         Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail);
 
-        Task<List<EventInviteBO>> GetPendingInvites(Guid eventId);
+        Task<List<ManagerResponse>> InviteFriends(List<NewInviteBO> invites);
+
+        Task<List<UserEventInviteBO>> GetPendingInvites(Guid eventId);
+
+        Task<List<ApplicationUser>> GetRecommendedFriends(Guid userId, Guid currentEventId);
+
+        Task<bool> DeleteInvite(Guid eventId, Guid userId);
+
+        
     }
 
     public class EventInviteManager : IEventInviteManager
@@ -34,7 +43,7 @@ namespace Hisab.BL
             _eventManager = eventManager;
         }
 
-        public async Task<List<EventInviteBO>> GetUserInvites(Guid userId)
+        public async Task<List<UserEventInviteBO>> GetUserInvites(Guid userId)
         {
 
 
@@ -47,16 +56,7 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<int> JoinEvent(int eventFriendId, Guid appUserId)
-        {
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
-                var events = context.EventInviteRepository.JoinEvent(eventFriendId, appUserId);
-
-                return events;
-
-            }
-        }
+       
 
         public async Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail)
         {
@@ -67,7 +67,7 @@ namespace Hisab.BL
 
             if (user == null)
             {
-                response.Messge = "User with this email address does not exist.";
+                response.Messge = $"User with the email address {userEmail} does not exist.";
                 response.Success = false;
                 return response;
             }
@@ -79,7 +79,7 @@ namespace Hisab.BL
 
                 if (friend != null)
                 {
-                    response.Messge = "User with this email already exist in this event.";
+                    response.Messge = $"User with the email address {userEmail} already exist in this event.";
                     response.Success = false;
                     return response;
                 }
@@ -102,19 +102,19 @@ namespace Hisab.BL
 
                         if (newInvite > 0)
                         {
-                            response.Messge = "Invite send to join this event.";
+                            response.Messge = $"Invite send to the user with email address {userEmail} join this event.";
                             response.Success = true;
                             return response;
                         }
 
 
-                        response.Messge = "Failed to add friend.";
+                        response.Messge = $"Failed to add friend.Email: {userEmail}";
                         response.Success = false;
                         return response;
                     }
                     else
                     {
-                        response.Messge = "Invite has been send already. Awaiting friend to accept.";
+                        response.Messge = $"Invite has been send already to the friend {userEmail}. Awaiting friend to accept.";
                         response.Success = false;
                         return response;
                     }
@@ -124,9 +124,77 @@ namespace Hisab.BL
             }
         }
 
-        public Task<List<EventInviteBO>> GetPendingInvites(Guid eventId)
+        public async Task<List<UserEventInviteBO>> GetPendingInvites(Guid eventId)
         {
-            throw new NotImplementedException();
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var events = context.EventInviteRepository.GetPendingInvites(eventId);
+
+                return events;
+
+            }
+        }
+
+        public async Task<List<ApplicationUser>> GetRecommendedFriends(Guid userId, Guid currentEventId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var events = context.EventInviteRepository.GetRecommendedFriends(userId, currentEventId);
+
+                
+                return events;
+
+            }
+        }
+
+        public async Task<bool> DeleteInvite(Guid eventId, Guid userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var result = context.EventInviteRepository.DeleteInvite(eventId, userId);
+
+                return result;
+
+            }
+        }
+
+        public async Task<ManagerResponse> JoinInvite(Guid eventId, Guid userId)
+        {
+            var retVal = new ManagerResponse();
+            retVal.Success = false;
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+                var result = context.EventInviteRepository.DeleteInvite(eventId, userId);
+
+                if(!result)
+                {
+                    retVal.Messge = "Incorrect invite.";
+                }
+
+                context.EventInviteRepository.JoinEvent(eventId, userId, EventFriendStatus.EventFriend);
+
+                context.SaveChanges();
+
+                retVal.Messge = "You have successfully joined the event. The event will now appear on your Events page.";
+                retVal.Success = true;
+
+            }
+
+            return retVal;
+        }
+
+        public async Task<List<ManagerResponse>> InviteFriends(List<NewInviteBO> invites)
+        {
+            var retVal = new List<ManagerResponse>();
+
+            foreach(var invite in invites)
+            {
+                var inviteResult = await InviteFriend(invite.EventId, invite.UserEmail);
+                retVal.Add(inviteResult);
+            }
+
+            return retVal;
         }
     }
 }

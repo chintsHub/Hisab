@@ -17,7 +17,8 @@ namespace Hisab.UI.ViewModels
         [Required(ErrorMessage = "Friend Name is required")]
         public string Name { get; set; }
 
-       
+        public bool IsFriendActive { get; set; }
+
         public string Status { get; set; }
 
         public EventFriendStatus EventFriendStatus { get; set; }

@@ -39,14 +39,11 @@ namespace Hisab.Common.BO
         [Description("Admin")]
         EventAdmin = 1,
 
-        [Description("Requested to join")]
-        RequestToJoin = 2,
+
 
         [Description("Friend")]
-        EventFriend = 3,
+        EventFriend = 2,
 
-        [Description("Request declined")]
-        RequestDeclined = 4
     }
 
     public enum InviteStatus
@@ -122,7 +119,9 @@ namespace Hisab.Common.BO
 
         public EventFriendStatus EventFriendStatus { get; set; }
 
-        
+        public bool IsFriendActive { get; set; }
+
+
 
         public AvatarEnum Avatar { get; set; }
 
@@ -147,8 +146,17 @@ namespace Hisab.Common.BO
         public string OwnerName { get; set; }
         public Guid OwnerUserId { get; set; }
 
-        
 
+
+    }
+
+    public class NewInviteBO
+    {
+        public string UserEmail { get; set; }
+
+        public Guid EventId { get; set; }
+
+        EventFriendStatus Status { get; set; }
     }
 
     public class UserEventInviteBO
@@ -157,7 +165,15 @@ namespace Hisab.Common.BO
 
         public string NickName { get; set; }
 
+        public string EventName { get; set; }
+
+        public string EventOwnerName { get; set; }
+
         public Guid EventId { get; set; }
+
+        public int EventPic { get; set; }
+
+        public AvatarEnum AvatarId { get; set; }
 
         public InviteStatus InviteStatus { get; set; }
     }
