@@ -40,6 +40,8 @@ namespace Hisab.UI
             {
                 var result = await _signInManager.PasswordSignInAsync(loginVm.Email, loginVm.Password, loginVm.RememberMe, false);
 
+               
+
                 if (result.Succeeded)
                 {
                     Log.Write(LogEventLevel.Information, "{@LogDetail}", LogHelper.CreateLogDetail(LogType.Usage, "User Logged in", username: loginVm.Email));

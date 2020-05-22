@@ -107,14 +107,20 @@ namespace Hisab.UI
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            //app.UseExceptionHandler("/Error/500");
-            //app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Error");
+            //    app.UseHsts();
+            //}
 
-            }
+            app.UseExceptionHandler("/error");
+            //app.UseHsts();
+            //app.UseStatusCodePagesWithReExecute("/StatusCode", "?code={0}");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

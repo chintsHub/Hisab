@@ -30,8 +30,7 @@ namespace Hisab.UI
 
         public async Task<IActionResult> OnGet(Guid Id)
         {
-            
-            
+
             SettingsVM = new EventSettingsVM();
 
             var eve = await _eventManager.GetEventById(Id);

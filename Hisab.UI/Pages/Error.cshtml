@@ -1,0 +1,43 @@
+﻿@page
+@model Hisab.UI.Pages.ErrorModel
+@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Error</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<p>
+    <strong>Environment Name:</strong>@Model.EnvironmentName
+    <strong>Request ID:</strong> <code>@Model.RequestId</code>
+</p>
+
+<h3>Referrer</h3>
+<p>
+    <a href="@Model.Referrer">@Model.Referrer</a>
+</p>
+
+@if (@Model.ShowExceptionMessage)
+{
+    <h3>Exception Message</h3>
+    <p>
+        @Model.ExceptionMessage
+    </p>
+}
+
+@if (@Model.ShowInnerExceptionMessage)
+{
+    <h3>Inner Exception Message</h3>
+    <p>
+        <code>@Model.InnerExceptionMessage</code>
+    </p>
+}
+
+@if (@Model.ShowStackTrace)
+{
+    <h3>Stacktrace Message</h3>
+    <p>
+        <code>@Model.StackTrace</code>
+    </p>
+}
