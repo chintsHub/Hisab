@@ -36,5 +36,19 @@ namespace Hisab.UI.ViewModels
         public string FriendEmail { get; set; }
     }
 
-   
+    public class EventFriendExpensePaidVM : EventFriendVm
+    {
+        public decimal ExpensePaid { get; set; }
+
+        public bool IsCurrentUser { get; set; }
+        
+    }
+
+    public class EventFriendSharedVM : EventFriendVm
+    {
+        public bool IsShared { get; set; }
+
+        public decimal SharePercent { get; set; }
+
+    }
 }

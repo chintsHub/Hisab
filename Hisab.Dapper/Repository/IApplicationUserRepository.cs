@@ -28,6 +28,8 @@ namespace Hisab.Dapper.Repository
         int UpdateUserSettings(string nickName, Guid userId, bool isUserActive, bool emailCofirmed);
 
         List<ApplicationUser> GetAllUsers();
+
+        bool CreateUserAccounts(List<UserAccountBO> accounts);
     }
 
     internal class ApplicationUserRepository : RepositoryBase, IApplicationUserRepository
@@ -196,6 +198,24 @@ namespace Hisab.Dapper.Repository
             var queryResults =  Connection.Query<ApplicationUser>("SELECT [Id] ,[UserName] ,[EmailConfirmed] ,[NickName] ,[AvatarId] ,[IsUserActive] FROM [ApplicationUser] " , Transaction);
 
             return queryResults.ToList();
+        }
+
+        public bool CreateUserAccounts(List<UserAccountBO> accounts)
+        {
+            int rows = 0;
+            
+            foreach(var account in accounts)
+            {
+                string command = $@"INSERT INTO [dbo].[UserAccount] ([AccountId] ,[UserId] ,[AccountTypeId])
+                    VALUES (@{nameof(account.AccountId)}, @{nameof(account.UserId)}, @{nameof(account.AccountType)}); ";
+
+                rows += Connection.Execute(command, new { account.AccountId, account.UserId, account.AccountType }, transaction: Transaction);
+            }
+
+            if (rows == 4)
+                return true;
+
+            return false;
         }
     }
 }

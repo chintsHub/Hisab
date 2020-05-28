@@ -70,8 +70,10 @@ namespace Hisab.UI
 
             services.AddScoped<IDbConnectionProvider>(sp => new DbConnectionProvider(connectionString));
 
+            services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
+
             services.AddScoped<IApplicationSeeding>(sp =>
-                new ApplicationSeeding(sp.GetService<UserManager<ApplicationUser>>()));
+                new ApplicationSeeding(sp.GetService<UserManager<ApplicationUser>>(), sp.GetService<IUserSettingManager>()));
 
             services.AddScoped<IEmailService>(sp => new EmailService(emailCredentials.AccessKey, emailCredentials.SecretKey));
 
@@ -84,7 +86,7 @@ namespace Hisab.UI
 
             services.AddScoped<IFeedbackManager>(sp => new FeedbackManager(sp.GetService<IDbConnectionProvider>()));
 
-            services.AddScoped<IUserSettingManager>(sp => new UserSettingManager(sp.GetService<IDbConnectionProvider>()));
+           
 
             services.AddAuthentication().AddCookie();
 

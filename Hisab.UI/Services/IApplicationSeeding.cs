@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hisab.BL;
 using Hisab.Common;
 using Hisab.Common.Log;
 using Hisab.Dapper;
@@ -20,11 +21,12 @@ namespace Hisab.UI.Services
     public class ApplicationSeeding : IApplicationSeeding
     {
         private UserManager<ApplicationUser> _userManager;
-       
+        private IUserSettingManager _userSettingManager;
 
-        public ApplicationSeeding(UserManager<ApplicationUser> userManager)
+        public ApplicationSeeding(UserManager<ApplicationUser> userManager, IUserSettingManager userSettingManager)
         {
             _userManager = userManager;
+            _userSettingManager = userSettingManager;
         }
         public async Task CreateAdminUser()
         {
@@ -50,7 +52,12 @@ namespace Hisab.UI.Services
                 var r = await _userManager.AddToRoleAsync(user, "Admin");
                 if (r.Succeeded)
                 {
-                    Log.Write(LogEventLevel.Information, "{@LogDetail2}", LogHelper.CreateLogDetail(LogType.Diagnostic, "Sucessfully added user to Admin role", LogLayer.Server));
+                    
+
+                    var adminUser = await _userManager.FindByNameAsync("admin@hisab.io");
+                    var accountResult = await _userSettingManager.CreateUserAccounts(adminUser.Id);
+
+                    Log.Write(LogEventLevel.Information, "{@LogDetail2}", LogHelper.CreateLogDetail(LogType.Diagnostic, "Sucessfully added user to Admin role and created accounts", LogLayer.Server));
                 }
             }
            

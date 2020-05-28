@@ -1,11 +1,15 @@
 ﻿CREATE TABLE [dbo].[EventTransactionJournal]
 (
-	[JournalId] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[EventId] UNIQUEIDENTIFIER NOT NULL, 
+    [UserId] UNIQUEIDENTIFIER NOT NULL, 
     [TransactionId] UNIQUEIDENTIFIER NOT NULL, 
-    [Particulars] VARCHAR(100) NOT NULL, 
-    [AccountId] UNIQUEIDENTIFIER NOT NULL, 
-    [DebitAmount] DECIMAL(18, 4) NOT NULL, 
-    [CreditAmount] DECIMAL(18, 4) NOT NULL, 
+    [EventAccountId] UNIQUEIDENTIFIER NOT NULL, 
+    [Action] INT NOT NULL, 
+    [UserAccountId] UNIQUEIDENTIFIER NOT NULL, 
+    [Amount] DECIMAL(18, 2) NOT NULL, 
+    PRIMARY KEY ([EventId], [UserId], [TransactionId]), 
+    CONSTRAINT [FK_EventTransactionJournal_EventFriend] FOREIGN KEY ([UserId],[EventId]) REFERENCES [EventFriend]([UserId],[EventId]), 
     CONSTRAINT [FK_EventTransactionJournal_EventTransaction] FOREIGN KEY ([TransactionId]) REFERENCES [EventTransaction]([Id]), 
-    CONSTRAINT [FK_EventTransactionJournal_EventAccount] FOREIGN KEY ([AccountId]) REFERENCES [EventAccount]([AccountId])
+    CONSTRAINT [FK_EventTransactionJournal_EventAccount] FOREIGN KEY ([EventAccountId]) REFERENCES [EventAccount](AccountId), 
+    CONSTRAINT [FK_EventTransactionJournal_EventFriendAccount] FOREIGN KEY ([UserAccountId]) REFERENCES [UserAccount]([AccountId]) 
 )

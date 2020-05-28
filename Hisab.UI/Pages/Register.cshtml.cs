@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Hisab.AWS;
+using Hisab.BL;
 using Hisab.Dapper.Identity;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -16,14 +17,16 @@ namespace Hisab.UI
     {
         private UserManager<ApplicationUser> _userManager;
         private IEmailService _emailService;
+        private IUserSettingManager _userSettingManager;
 
         public RegisterUserVm RegisterUserVm { get; set; }
         public string SucessMessage { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, IEmailService emailService)
+        public RegisterModel(UserManager<ApplicationUser> userManager, IEmailService emailService, IUserSettingManager userSettingManager)
         {
             _userManager = userManager;
             _emailService = emailService;
+            _userSettingManager = userSettingManager;
         }
 
         public void OnGet()
@@ -58,8 +61,11 @@ namespace Hisab.UI
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     var emailResponse = await _emailService.SendRegistrationEmail(user.Email, user.NickName, callbackUrl);
 
+                    // create accounts
+                    var newUser = await _userManager.FindByNameAsync(registerUserVm.Email);
+                    var accountResult = await _userSettingManager.CreateUserAccounts(newUser.Id);
 
-                    if (roleResult.Succeeded && emailResponse == HttpStatusCode.OK)
+                    if (roleResult.Succeeded && emailResponse == HttpStatusCode.OK && accountResult)
                     {
                         SucessMessage = "You are successfully registered. " +
                                                          "We have sent a verification email.";

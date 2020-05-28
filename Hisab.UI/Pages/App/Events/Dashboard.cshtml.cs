@@ -21,6 +21,7 @@ namespace Hisab.UI
         [BindProperty(SupportsGet =true)]
         public EventVm Event { get; set; }
 
+        
         public bool IsLoggedInUserTheEventAdmin { get; set; }
 
         public DashboardModel(IEventManager eventManager, UserManager<ApplicationUser> userManager)

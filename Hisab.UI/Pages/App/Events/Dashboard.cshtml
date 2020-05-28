@@ -11,12 +11,12 @@
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-title">Expenses</h5>
+                        <h5 class="card-title">My Expenses</h5>
                         <p class="card-text">$1,000,000.00</p>
 
                     </div>
                     <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/ExpenseTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty" >
+                        <a asp-page="/app/events/ExpenseTransactionDetails" asp-route-id="@Model.Event.EventId" asp-route-transid="@Guid.Empty" >
                             <i class="fa fa-plus-square"></i> Add Expense
                         </a>
                     </div>
@@ -41,7 +41,7 @@
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-title">Contributions</h5>
+                        <h5 class="card-title">My Contributions</h5>
                         <p class="card-text">$1234567891</p>
 
                     </div>
@@ -57,7 +57,7 @@
             <div class="col-6 col-md-3 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-title">Money pool</h5>
+                        <h5 class="card-title">Money Pool</h5>
                         <p class="card-text">$1234567891</p>
 
                     </div>

@@ -154,4 +154,144 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="688104fd-d986-4e4d-8109-559e90b959d2" ChangeDateTime="05/27/2020 23:27:50">
+    <Property Name="ElementName" Value="[dbo].[UserAccount].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f325d478-158a-4a59-9bca-955aa683c973" ChangeDateTime="05/27/2020 23:55:27">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSplit].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSplit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b570459c-1032-46af-b193-7821e10f65a1" ChangeDateTime="05/27/2020 23:55:42">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSplit].[EventFriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSplit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="90503618-9a9d-443b-98bd-6681f5bd4bdf" ChangeDateTime="05/27/2020 23:55:55">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSplit].[AmountDue]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSplit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SplitPercentage" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="38963984-ce29-4b1a-9085-3c86d02f7427" ChangeDateTime="05/27/2020 23:59:09">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[JournalId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3864c499-60c6-4b3f-b73a-998a3db8b89f" ChangeDateTime="05/27/2020 23:59:38">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[Particulars]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3b828fdc-a7c6-4bce-9e9f-7c744df09819" ChangeDateTime="05/27/2020 23:59:42">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[TransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7cf473fe-2a09-437a-99a3-4eced41e225b" ChangeDateTime="05/27/2020 23:59:46">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="35b07b87-ddb5-4e80-b207-bd6947daebfc" ChangeDateTime="05/28/2020 00:00:11">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[AccountId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventAccountId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b9a35fc2-d87c-490c-9368-41ea3dff0d09" ChangeDateTime="05/28/2020 00:00:46">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[DebitAmount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Action" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="decc40c6-8711-493c-9474-1a25bcd75aac" ChangeDateTime="05/28/2020 00:02:18">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[CreditAmount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserAccount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e9670ca9-97fe-4675-825f-e35067fa9926" ChangeDateTime="05/28/2020 00:07:56">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSettlement].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a6d173e2-6905-4a68-9716-2ca41e77b35f" ChangeDateTime="05/28/2020 00:08:19">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSettlement].[EventId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3f55301b-83ee-4118-8c95-f87bd7b18747" ChangeDateTime="05/28/2020 00:10:32">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSettlement].[PayerEventFriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DebitAccount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5d8ac843-755e-4271-8024-b36b67f59ba9" ChangeDateTime="05/28/2020 00:10:40">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSettlement].[ReceiverEventFriendId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreditAccount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="74dbdff2-c9a0-43b4-96bb-e2128b1f685e" ChangeDateTime="05/28/2020 00:11:17">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionSettlement].[Amount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PayReceiveFriend" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a041cc29-b16e-4289-b34a-ec2fe4d3f328" ChangeDateTime="05/28/2020 01:57:14">
+    <Property Name="ElementName" Value="[dbo].[UserAccount].[AccountType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserAccount]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="21a427d2-2d2d-452e-9e20-aed75034efc7" ChangeDateTime="05/28/2020 02:00:22">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[PaidBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PaidByUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3b026314-1e76-4548-aeaa-a18906b70f9a" ChangeDateTime="05/28/2020 02:25:32">
+    <Property Name="ElementName" Value="[dbo].[FK_EventTransactionSettlement_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionSettlement]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_EventTransactionSettlement_EventFriend]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d5907310-9f10-434e-927b-cd89d650a451" ChangeDateTime="05/28/2020 02:54:23">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[UserAccount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserAccountId" />
+  </Operation>
 </Operations>

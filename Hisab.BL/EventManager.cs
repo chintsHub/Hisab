@@ -92,7 +92,7 @@ namespace Hisab.BL
                     
 
                     //create Accounts
-                    //var currentAccountId = context.EventRepository.CreateCurrentAccount(newNewEvent.Id);
+                    var currentAccountId = context.EventRepository.CreateEventAccount(newNewEvent.Id,ApplicationAccountType.Cash);
                     //var expenseAccountId = context.EventRepository.CreateExpenseAccount(newNewEvent.Id);
                     //var owerAccount = context.EventRepository.CreateEventFriendAccount(newNewEvent.Id, friendId);
 

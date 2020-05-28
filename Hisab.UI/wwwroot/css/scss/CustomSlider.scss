@@ -1,0 +1,32 @@
+﻿.slick-prev {
+    left: 7px;
+    
+}
+
+.slick-next {
+    right: -7px;
+    
+}
+
+.sliderContent {
+    
+    padding-left:35px;
+    padding-right:35px;
+    background-color: white;
+}
+
+.slick-prev, .slick-next {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 30px;
+    line-height: 1;
+    opacity: .75;
+    color: $secondaryColor;
+    -webkit-font-smoothing: antialiased;
+}

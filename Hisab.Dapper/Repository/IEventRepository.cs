@@ -39,7 +39,7 @@ namespace Hisab.Dapper.Repository
         int UpdateFriend(int kidsCount, int adultCount, int eventFriendId);
         int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId);
 
-        int CreateCurrentAccount(int eventId);
+        int CreateEventAccount(Guid eventId, ApplicationAccountType applicationAccountType);
 
         int CreateExpenseAccount(int eventId);
 
@@ -86,26 +86,24 @@ namespace Hisab.Dapper.Repository
             return false;
         }
 
-        public int CreateCurrentAccount(int eventId)
+        public int CreateEventAccount(Guid eventId, ApplicationAccountType applicationAccountType)
         {
-            int? eventFriendId = null;
-            int accountTypeId = 1;
+            Guid accountId = Guid.NewGuid();
 
-            string command = $@"INSERT INTO [dbo].[EventAccount] ([Id] ,[EventFriendId] ,[AccountTypeId])
-                    VALUES (@{nameof(eventId)}, @{nameof(eventFriendId)},@{nameof(accountTypeId)});
-            SELECT CAST(SCOPE_IDENTITY() as int)";
+            string command = $@"INSERT INTO [dbo].[EventAccount] ([AccountId] ,[EventId] ,[AccountTypeId])
+                    VALUES (@{nameof(accountId)}, @{nameof(eventId)},@{nameof(applicationAccountType)});";
 
-            int accountId = Connection.QuerySingle<int>(command,
+            var result = Connection.Execute(command,
                 new
                 {
+                    accountId,
                     eventId,
-                    eventFriendId,
-                    accountTypeId
-                 
+                    applicationAccountType
+
                 }, transaction: Transaction);
 
            
-            return accountId;
+            return result;
         }
 
         public int CreateExpenseAccount(int eventId)
