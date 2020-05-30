@@ -33,7 +33,7 @@ namespace Hisab.Dapper.Repository
         {
             List<AccountType> retVal = new List<AccountType>();
 
-            retVal =  Connection.Query<AccountType>("select * from AccountType",transaction:Transaction).ToList();
+            retVal =  Connection.Query<AccountType>("select * from AccountTypeId",transaction:Transaction).ToList();
 
            
             

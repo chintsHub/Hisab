@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
 using Hisab.Common.BO;
+using Hisab.Dapper.Identity;
 using Hisab.UI.Extensions;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -16,13 +18,17 @@ namespace Hisab.UI
     {
 
         private IEventManager _eventManager;
+        private UserManager<ApplicationUser> _userManager;
+        private IEventTransactionManager _transactionManager;
 
         [BindProperty]
         public ExpenseTransactionVM ExpenseVM { get; set; }
 
-        public ExpenseTransactionDetailsModel(IEventManager eventManager)
+        public ExpenseTransactionDetailsModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager)
         {
             _eventManager = eventManager;
+            _userManager = userManager;
+            _transactionManager = transactionManager;
 
             ExpenseVM = new ExpenseTransactionVM();
         }
@@ -32,6 +38,8 @@ namespace Hisab.UI
             if(transId == Guid.Empty)
             {
                 var eve = await _eventManager.GetEventById(Id);
+
+                
 
                 ExpenseVM.EventId = Id;
                 
@@ -74,7 +82,30 @@ namespace Hisab.UI
 
         public async Task<IActionResult> OnPost()
         {
+            var newTrans = new NewTransactionBO();
 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            newTrans.CreatedByUserId = user.Id;
+            newTrans.Description = ExpenseVM.ExpenseDescription;
+            newTrans.EventId = ExpenseVM.EventId;
+            newTrans.TransactionDate = ExpenseVM.ExpenseDate.Date;
+            newTrans.TotalAmount = ExpenseVM.ExpensePaid;
+            newTrans.PaidByUserId = ExpenseVM.ExpensePaidById;
+            
+
+            foreach(var split in ExpenseVM.ExpenseSharedWith)
+            {
+                if(split.IsShared)
+                {
+                    var splitBO = new TransactionSplitBO();
+                    splitBO.EventId = ExpenseVM.EventId;
+                    splitBO.UserId = split.UserId;
+                    newTrans.TransactionSplits.Add(splitBO);
+                }
+                
+            }
+            var result = await _transactionManager.CreateExpenseTransaction(newTrans);
 
             return Page();
         }

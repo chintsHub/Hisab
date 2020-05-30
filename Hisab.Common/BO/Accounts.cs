@@ -22,4 +22,25 @@ namespace Hisab.Common.BO
         AccountRecievable = 3,
         AccountPayable = 4
     }
+
+    public class EventUserAccountBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid AccountId { get; set; }
+
+        public ApplicationAccountType AccountTypeId { get; set; }
+    }
+
+    public class EventAccountBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid AccountId { get; set; }
+
+        public ApplicationAccountType AccountTypeId { get; set; }
+
+    }
 }

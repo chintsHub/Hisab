@@ -14,23 +14,23 @@
 <div class="clearfix">
 
 
-    <form>
+    <form method="post">
         <div class="form-group row">
             <label for="contributionTitle" class="col-sm-2 col-form-label">Title:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="contributionTitle">
+                <input type="text" class="form-control" asp-for="@Model.ContributeVM.Description" placeholder="Deposite">
             </div>
         </div>
         <div class="form-group row">
             <label for="contributionDate" class="col-sm-2 col-form-label">Date:</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="contributionDate">
+                <input  class="form-control" asp-for="@Model.ContributeVM.TransactionDate">
             </div>
         </div>
         <div class="form-group row">
             <label for="contributionAmount" class="col-sm-2 col-form-label">Amount:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="contributionAmount">
+                <input class="form-control" asp-for="@Model.ContributeVM.Amount">
             </div>
         </div>
 
@@ -48,23 +48,27 @@
 
                     <tr>
                         <td>
-                            <select class="browser-default custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            @Model.ContributeVM.NickName
+                            @Html.HiddenFor(x => x.ContributeVM.UserId)
                         </td>
                         <td>
                             =>
                         </td>
                         <td>
-                            <select class="browser-default custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            @if (Model.ContributeVM.EventPoolId != null)
+                            {
+                                <h1>Money Pool</h1>
+                                <p>The amount in the Money Pool can be used to pay the event expenses.</p>
+                                @Html.HiddenFor(x => x.ContributeVM.EventPoolId)
+                            }
+                            else
+                            {
+                                <select asp-for="@Model.ContributeVM.LendToFriendUserId" asp-items="@(new SelectList(Model.ContributeVM.Friends,"UserId","Name"))">
+                                </select>
+                            }
+
+
+
                         </td>
                     </tr>
 
@@ -79,19 +83,14 @@
             </table>
         </div>
 
-
-
-
-
-
-        <div class="alert alert-info">The total expense of 5000 paid by abc will be equally split among def, bef, cdf.</div>
+                
 
         <div class="row transactionFooter">
             <div class="col-11 col-xs-11 transactionButtons">
 
                 <button><i class="fa fa-edit"></i> Save</button>
 
-                <div class="dropdown">
+                @*<div class="dropdown">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-exclamation-circle"></i> Ask payer to
                     </button>
@@ -100,7 +99,7 @@
                         <a class="dropdown-item" href="#">Check Split</a>
                         <a class="dropdown-item" href="#">Exclude me from the split</a>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
 

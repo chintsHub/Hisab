@@ -70,16 +70,7 @@ namespace Hisab.Common.BO
         public decimal CreditAmount { get; set; }
     }
 
-    public class EventAccountBo
-    {
-        public int AccountId { get; set; }
-
-        public int EventId { get; set; }
-
-        public int EventFriendId { get; set; }
-
-        public int AccountTypeId { get; set; }
-    }
+    
 
     public class SplitPerFriendTransactionBo : TransactionBo
     {
@@ -137,5 +128,74 @@ namespace Hisab.Common.BO
         
     }
 
+    public class NewTransactionBO
+    {
+        public Guid TransactionId { get; set; }
+
+        public Guid EventId { get; set; }
+
+        public Guid CreatedByUserId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public string Description { get; set; }
+
+        public Guid PaidByUserId { get; set; }
+
+        public DateTime LastModifiedDate { get; set; }
+
+        public List<TransactionSplitBO> TransactionSplits { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public Guid? LendToFriendUserId { get; set; }
+
+        public NewTransactionBO()
+        {
+            TransactionSplits = new List<TransactionSplitBO>();
+        }
+    }
+
+    public class TransactionSplitBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public decimal SplitPercentage { get; set; }
+
+        public decimal SplitAmount { get; set; }
+    }
+
+    public class EventFriendJournalBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public Guid UserDebitAccountId { get; set; }
+
+        public Guid UserCreditAccountId { get; set; }
+
+        public Guid? PayRecieveFriendId { get; set; }
+
+        public Decimal Amount { get; set; }
+
+    }
+
+    
+    public enum TransactionType
+    {
+        Expense = 1,
+        ContributionToPool = 2,
+        LendToFriend = 3,
+        Settlement
+    }
    
 }

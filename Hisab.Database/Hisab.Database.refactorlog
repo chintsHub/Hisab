@@ -294,4 +294,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserAccountId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="25c611fa-7388-401d-8d05-78eb93c4271a" ChangeDateTime="05/30/2020 05:55:08">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[CreatedDateTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="71d274a3-578c-4aaf-b770-8175b2a8c6ca" ChangeDateTime="05/30/2020 10:22:07">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[LendT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LendToFriendUserId" />
+  </Operation>
 </Operations>

@@ -311,42 +311,42 @@ namespace Hisab.BL
         {
             int transactionId = 0;
 
-            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
-            {
-                var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
-                //prepare Journals
-                var eventCashJournal = new TransactionJournalBo
-                {
-                    AccountId =
-                        accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
-                    Particulars = transactionBo.Description,
-                    CreditAmount = 0,
-                    DebitAmount = transactionBo.TotalAmount
+            //using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            //{
+            //    var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
+            //    //prepare Journals
+            //    var eventCashJournal = new TransactionJournalBo
+            //    {
+            //        AccountId =
+            //            accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
+            //        Particulars = transactionBo.Description,
+            //        CreditAmount = 0,
+            //        DebitAmount = transactionBo.TotalAmount
 
-                };
-                transactionBo.Journals.Add(eventCashJournal);
+            //    };
+            //    transactionBo.Journals.Add(eventCashJournal);
 
-                var friendJournal = new TransactionJournalBo()
-                {
-                    AccountId =
-                        accounts.First(x => x.EventFriendId == transactionBo.EventFriendId && x.AccountTypeId == 1).AccountId,
-                    Particulars = "Deposit paid: " + transactionBo.Description,
-                    CreditAmount = transactionBo.TotalAmount,
-                    DebitAmount = 0
-                };
-                transactionBo.Journals.Add(friendJournal);
+            //    var friendJournal = new TransactionJournalBo()
+            //    {
+            //        AccountId =
+            //            accounts.First(x => x.EventFriendId == transactionBo.EventFriendId && x.AccountTypeId == 1).AccountId,
+            //        Particulars = "Deposit paid: " + transactionBo.Description,
+            //        CreditAmount = transactionBo.TotalAmount,
+            //        DebitAmount = 0
+            //    };
+            //    transactionBo.Journals.Add(friendJournal);
 
-                transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-                    transactionBo.Description, (int)transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
+            //    //transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
+            //    //    transactionBo.Description, (int)transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
 
-                foreach (var journal in transactionBo.Journals)
-                {
-                    context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
-                        journal.AccountId, journal.DebitAmount, journal.CreditAmount);
-                }
+            //    foreach (var journal in transactionBo.Journals)
+            //    {
+            //        context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
+            //            journal.AccountId, journal.DebitAmount, journal.CreditAmount);
+            //    }
 
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
 
             return transactionId;
         }
@@ -437,76 +437,76 @@ namespace Hisab.BL
             }
 
             int transactionId = 0;
-            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
-            {
-                var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
+            //using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            //{
+            //    var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
 
-                //prepare Journals
-                var eventExpJournal = new TransactionJournalBo
-                {
-                    AccountId =
-                    accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 2).AccountId,
-                    Particulars = transactionBo.Description + " Event Expense",
-                    CreditAmount = 0,
-                    DebitAmount = transactionBo.TotalAmount
+            //    //prepare Journals
+            //    var eventExpJournal = new TransactionJournalBo
+            //    {
+            //        AccountId =
+            //        accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 2).AccountId,
+            //        Particulars = transactionBo.Description + " Event Expense",
+            //        CreditAmount = 0,
+            //        DebitAmount = transactionBo.TotalAmount
 
-                };
-                transactionBo.Journals.Add(eventExpJournal);
+            //    };
+            //    transactionBo.Journals.Add(eventExpJournal);
 
-                if (transactionBo.PaidByPoolAmount > 0)
-                {
-                    var poolJournal = new TransactionJournalBo()
-                    {
-                        AccountId =
-                            accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
-                        Particulars = "Expense paid: " + transactionBo.Description,
-                        CreditAmount = transactionBo.PaidByPoolAmount,
-                        DebitAmount = 0
-                    };
-                    transactionBo.Journals.Add(poolJournal);
-                }
+            //    if (transactionBo.PaidByPoolAmount > 0)
+            //    {
+            //        var poolJournal = new TransactionJournalBo()
+            //        {
+            //            AccountId =
+            //                accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
+            //            Particulars = "Expense paid: " + transactionBo.Description,
+            //            CreditAmount = transactionBo.PaidByPoolAmount,
+            //            DebitAmount = 0
+            //        };
+            //        transactionBo.Journals.Add(poolJournal);
+            //    }
 
-                foreach (var friend in transactionBo.Friends.Where(x=>x.AmountPaid>0))
-                {
-                    var friendJournal = new TransactionJournalBo()
-                    {
-                        AccountId =
-                            accounts.First(x => x.EventFriendId == friend.EventFriendId && x.AccountTypeId == 1).AccountId,
-                        Particulars = "Expense paid: " + transactionBo.Description,
-                        CreditAmount = friend.AmountPaid,
-                        DebitAmount = 0
-                    };
-                    transactionBo.Journals.Add(friendJournal);
-                }
+            //    foreach (var friend in transactionBo.Friends.Where(x=>x.AmountPaid>0))
+            //    {
+            //        var friendJournal = new TransactionJournalBo()
+            //        {
+            //            AccountId =
+            //                accounts.First(x => x.EventFriendId == friend.EventFriendId && x.AccountTypeId == 1).AccountId,
+            //            Particulars = "Expense paid: " + transactionBo.Description,
+            //            CreditAmount = friend.AmountPaid,
+            //            DebitAmount = 0
+            //        };
+            //        transactionBo.Journals.Add(friendJournal);
+            //    }
 
 
-                //Start inserting
-                transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-                    transactionBo.Description, (int) transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
+            //    //Start inserting
+            //    //transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
+            //    //    transactionBo.Description, (int) transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
 
-                foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
-                {
-                    context.EventTransactionRepository.CreateTransactionSplit(friend.AmountDue, transactionId,
-                        friend.EventFriendId);
-                }
+            //    foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
+            //    {
+            //        //context.EventTransactionRepository.CreateTransactionSplit(friend.AmountDue, transactionId,
+            //        //    friend.EventFriendId);
+            //    }
 
-                foreach (var journal in transactionBo.Journals)
-                {
-                    context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
-                        journal.AccountId, journal.DebitAmount, journal.CreditAmount);
-                }
+            //    foreach (var journal in transactionBo.Journals)
+            //    {
+            //        context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
+            //            journal.AccountId, journal.DebitAmount, journal.CreditAmount);
+            //    }
 
-                foreach (var settlement in transactionBo.Settlements)
-                {
-                    settlement.TransactionId = transactionId;
-                    context.EventTransactionRepository.CreateTransactionSettlement(settlement.EventId,
-                        settlement.TransactionId, settlement.PayerFriendId, settlement.ReceiverFriendId,
-                        settlement.Amount);
-                }
+            //    foreach (var settlement in transactionBo.Settlements)
+            //    {
+            //        settlement.TransactionId = transactionId;
+            //        context.EventTransactionRepository.CreateTransactionSettlement(settlement.EventId,
+            //            settlement.TransactionId, settlement.PayerFriendId, settlement.ReceiverFriendId,
+            //            settlement.Amount);
+            //    }
 
-                context.SaveChanges();
+            //    context.SaveChanges();
 
-            }
+            //}
 
             return transactionId;
         }

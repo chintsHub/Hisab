@@ -18,7 +18,7 @@
 
     
     <form method="post">
-
+        @Html.HiddenFor(x => x.ExpenseVM.EventId)
         <div class="slider sliderContent">
             <div>
                 <h1><strong>Step 1 - Expense Details</strong></h1>
@@ -38,15 +38,14 @@
                 <div class="form-group row">
                     <label for="expenseDate" class="col-sm-2 col-form-label">Expense Amount:</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="number" asp-for="@Model.ExpenseVM.ExpensePaid" />
+                        <input class="form-control"  asp-for="@Model.ExpenseVM.ExpensePaid"   />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="expenseDate" class="col-sm-2 col-form-label">Paid by:</label>
                     <div class="col-sm-10">
-                       <select asp-for="@Model.ExpenseVM.ExpensePaidById" asp-items="@(new SelectList(Model.ExpenseVM.PaidByList,"Id","Name"))">
-
-                       </select>
+                        <select asp-for="@Model.ExpenseVM.ExpensePaidById" asp-items="@(new SelectList(Model.ExpenseVM.PaidByList,"Id","Name"))">
+                        </select>
                     </div>
                 </div>
 
@@ -70,7 +69,7 @@
 
                             <td>
                                 <div class="custom-control custom-checkbox checkbox-xl " style="margin:5px">
-
+                                    @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].UserId)
                                     <input type="checkbox" class="custom-control-input" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
                                     <label class="custom-control-label" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
                                         @Model.ExpenseVM.ExpenseSharedWith[i].Name

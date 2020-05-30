@@ -46,7 +46,7 @@
 
                     </div>
                     <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty">
+                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Model.Event.EventId" asp-route-transid="@Guid.Empty" asp-page-handler="ToFriend">
                             <i class="fa fa-plus-square"></i> Contribution
                         </a>
                         
@@ -63,7 +63,7 @@
                     </div>
                     <div class="card-footer tileFooter">
 
-                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transid="@Guid.Empty">
+                        <a asp-page="/app/events/ContributionTransactionDetails" asp-route-id="@Model.Event.EventId" asp-route-transid="@Guid.Empty">
                             <i class="fa fa-plus-square"></i> Contribute to pool
                         </a>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Hisab.Common.BO;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Hisab.UI.ViewModels
         public decimal ExpensePaid { get; set; }
         public List<PaidByVM> PaidByList { get; set; }
 
+        public TransactionType TransactionType { get; set; }
 
         public decimal ExpensePaidFromPool { get; set; }
 
@@ -43,4 +45,35 @@ namespace Hisab.UI.ViewModels
 
         public String Name { get; set; }
     }
+
+    public class ContributeVM
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+        public string NickName { get; set; }
+
+        public Decimal Amount { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime LastModifiedDate { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public Guid? LendToFriendUserId { get; set; }
+
+        public Guid? EventPoolId { get; set; }
+
+        public List<EventFriendVm> Friends { get; set; }
+
+        public ContributeVM()
+        {
+            Friends = new List<EventFriendVm>();
+        }
+    }
+
+    
 }

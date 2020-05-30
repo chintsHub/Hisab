@@ -10,13 +10,15 @@ namespace Hisab.Dapper.Repository
 {
     public interface IEventTransactionRepository
     {
-        List<EventAccountBo> GetAccountsForEvent(int eventId);
+        
 
         List<TransactionBo> GetAllTransactions(int eventId);
 
-        int CreateTransaction(decimal totalAmount, int eventId, string description, int transactionType, Guid createdByUserId, DateTime createDateTime);
+        int CreateTransaction(NewTransactionBO newTransactionBO);
 
-        int CreateTransactionSplit(decimal amountDue, int transactionId, int eventFriendId);
+        int CreateTransactionSplit(List<TransactionSplitBO> splits);
+
+        int CreateEventFriendJournals(List<EventFriendJournalBO> journals);
 
         int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount,
             decimal creditAmount);
@@ -34,7 +36,9 @@ namespace Hisab.Dapper.Repository
 
         List<SettlementData> GetSettlementData(int eventId);
 
+        List<EventUserAccountBO> GetEventUserAccounts(Guid eventId);
 
+        EventAccountBO GetEventAccount(Guid eventId);
     }
 
     internal class EventTransactionRepository : RepositoryBase, IEventTransactionRepository
@@ -147,43 +151,48 @@ namespace Hisab.Dapper.Repository
             return totalAmount;
         }
 
-        public List<EventAccountBo> GetAccountsForEvent(int eventId)
-        {
-            var result = Connection.Query<EventAccountBo>($@"
-                    select 
-	                    AccountId,
-	                    Id,
-	                    EventFriendId,
-                        AccountTypeId
-	               
-                from 
-	                [dbo].[EventAccount] a
-	               
-                where
-                 a.Id = @{nameof(eventId)}",
+        
 
-                new { eventId }, Transaction);
-
-            return result.ToList();
-        }
-
-        public int CreateTransaction(decimal totalAmount,int eventId, string description, int splitType, Guid createdByUserId, DateTime createdDateTime)
+        public int CreateTransaction(NewTransactionBO newTransactionBO)
         {
            
 
-            string command = $@"INSERT INTO [dbo].[EventTransaction] ([TotalAmount] ,[Description] ,[SplitType] ,[Id], [CreatedbyUserId] ,[CreatedDateTime])
-                    VALUES (@{nameof(totalAmount)}, @{nameof(description)},@{nameof(splitType)}, @{nameof(eventId)}, @{nameof(createdByUserId)}, @{nameof(createdDateTime)});
-            SELECT CAST(SCOPE_IDENTITY() as int)";
+            string command = $@"
 
-            int transId = Connection.QuerySingle<int>(command,
+                    INSERT INTO [dbo].[EventTransaction]
+                       ([Id]
+                       ,[EventId]
+                       ,[CreatedbyUserId]
+                       ,[TransactionDate]
+                       ,[TotalAmount]
+                       ,[Description]
+                       ,[PaidByUserId]
+                       ,[LastModifiedDate]
+                       ,[TransactionType]
+                       ,[LendToFriendUserId])
+                     VALUES
+                           (@{nameof(newTransactionBO.TransactionId)}
+                           ,@{nameof(newTransactionBO.EventId)}
+                           ,@{nameof(newTransactionBO.CreatedByUserId)}
+                           ,@{nameof(newTransactionBO.TransactionDate)}
+                           ,@{nameof(newTransactionBO.TotalAmount)}
+                           ,@{nameof(newTransactionBO.Description)}
+                           ,@{nameof(newTransactionBO.PaidByUserId)},@{nameof(newTransactionBO.LastModifiedDate)}
+                           ,@{nameof(newTransactionBO.TransactionType)},@{nameof(newTransactionBO.LendToFriendUserId)})   ";
+
+            int transId = Connection.Execute(command,
                 new
                 {
-                    totalAmount,
-                    description,
-                    splitType,
-                    eventId,
-                    createdByUserId,
-                    createdDateTime
+                    newTransactionBO.TransactionId,
+                    newTransactionBO.EventId,
+                    newTransactionBO.CreatedByUserId,
+                    newTransactionBO.TransactionDate,
+                    newTransactionBO.TotalAmount,
+                    newTransactionBO.Description,
+                    newTransactionBO.PaidByUserId,
+                    newTransactionBO.LastModifiedDate,
+                    newTransactionBO.TransactionType,
+                    newTransactionBO.LendToFriendUserId
 
                 }, transaction: Transaction);
 
@@ -191,26 +200,39 @@ namespace Hisab.Dapper.Repository
             return transId;
         }
 
-        public int CreateTransactionSplit(decimal amountDue, int transactionId, int eventFriendId)
+        public int CreateTransactionSplit(List<TransactionSplitBO> splits)
         {
+            int transIds = 0;
+
+            foreach (var split in splits)
+            {
+                string command = $@"
+                               INSERT INTO [dbo].[EventTransactionSplit]
+                               ([EventId]
+                               ,[UserId]
+                               ,[TransactionId]
+                               ,[SplitPercentage])
+                             VALUES
+                                   (@{nameof(split.EventId)}
+                                   ,@{nameof(split.UserId)}
+                                   ,@{nameof(split.TransactionId)}
+                                   ,@{nameof(split.SplitPercentage)})      ";
+
+                transIds += Connection.Execute(command,
+                    new
+                    {
+                        split.EventId,
+                        split.UserId,
+                        split.TransactionId,
+                        split.SplitPercentage
+
+                    }, transaction: Transaction);
+            }
+
+           
 
 
-            string command = $@"INSERT INTO [dbo].[EventTransactionSplit] ([EventFriendId] ,[TransactionId] ,[AmountDue])
-                    VALUES (@{nameof(eventFriendId)}, @{nameof(transactionId)},@{nameof(amountDue)});
-            SELECT CAST(SCOPE_IDENTITY() as int)";
-
-            int transId = Connection.QuerySingle<int>(command,
-                new
-                {
-                    eventFriendId,
-                    transactionId,
-                    amountDue
-                 
-
-                }, transaction: Transaction);
-
-
-            return transId;
+            return transIds;
         }
 
         public int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount, decimal creditAmount)
@@ -258,6 +280,89 @@ namespace Hisab.Dapper.Repository
 
 
             return transId;
+        }
+
+        public List<EventUserAccountBO> GetEventUserAccounts(Guid eventId)
+        {
+            var result = Connection.Query<EventUserAccountBO>($@"
+                   select
+	                    f.EventId,
+	                    f.UserId,
+	                    ua.AccountId,
+	                    ua.AccountTypeId
+                    from
+	                    [dbo].[ApplicationUser] u
+	                    inner join [dbo].[EventFriend] f on u.Id = f.UserId
+	                    inner join [dbo].[UserAccount] ua on ua.UserId = u.Id
+                        
+                    where f.EventId = @{nameof(eventId)}",
+               new { eventId }, Transaction);
+
+            return result.ToList();
+        }
+
+        public int CreateEventFriendJournals(List<EventFriendJournalBO> journals)
+        {
+            int transIds = 0;
+
+            foreach (var journal in journals)
+            {
+                if(journal.PayRecieveFriendId == Guid.Empty)
+                {
+                    journal.PayRecieveFriendId = null;
+                }
+                
+                string command = $@"
+                             INSERT INTO [dbo].[EventFriendJournal]
+                               ([EventId]
+                               ,[UserId]
+                               ,[TransactionId]
+                               ,[DebitAccount]
+                               ,[CreditAccount]
+                               ,[PayReceiveFriend]
+                               ,[Amount])
+                             VALUES
+                                   (@{nameof(journal.EventId)}
+                                   ,@{nameof(journal.UserId)}
+                                   ,@{nameof(journal.TransactionId)}
+                                   ,@{nameof(journal.UserDebitAccountId)}
+                                   ,@{nameof(journal.UserCreditAccountId)}
+                                   ,@{nameof(journal.PayRecieveFriendId)}
+                                   ,@{nameof(journal.Amount)})      ";
+
+                transIds += Connection.Execute(command,
+                    new
+                    {
+                        journal.EventId,
+                        journal.UserId,
+                        journal.TransactionId,
+                        journal.UserDebitAccountId,
+                        journal.UserCreditAccountId,
+                        journal.PayRecieveFriendId,
+                        journal.Amount
+
+                    }, transaction: Transaction);
+            }
+
+
+
+
+            return transIds;
+        }
+
+        public EventAccountBO GetEventAccount(Guid eventId)
+        {
+            var result = Connection.Query<EventAccountBO>($@"
+                             SELECT 
+	                              [AccountId]
+                                  ,[EventId]
+                                  ,[AccountTypeId]
+                            FROM [dbo].[EventAccount] e
+                        
+                            where e.EventId = @{nameof(eventId)}",
+              new { eventId }, Transaction);
+
+            return result.FirstOrDefault();
         }
     }
 }
