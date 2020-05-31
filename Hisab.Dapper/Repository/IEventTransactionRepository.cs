@@ -20,6 +20,10 @@ namespace Hisab.Dapper.Repository
 
         int CreateEventFriendJournals(List<EventFriendJournalBO> journals);
 
+        int CreateEventTransactionJournal(EventTransactionJournalBO journal);
+
+        int CreateEventTransactionJournals(List<EventTransactionJournalBO> journals);
+
         int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount,
             decimal creditAmount);
 
@@ -353,16 +357,88 @@ namespace Hisab.Dapper.Repository
         public EventAccountBO GetEventAccount(Guid eventId)
         {
             var result = Connection.Query<EventAccountBO>($@"
-                             SELECT 
-	                              [AccountId]
-                                  ,[EventId]
-                                  ,[AccountTypeId]
+                              SELECT 
+	                             [AccountId]
+                                 ,[EventId]
+                                 ,[AccountTypeId]
+	                             ,COALESCE(DebitBalance.DebitTotal,0) DebitTotal
+	                             ,COALESCE(CreditBalance.CreditTotal,0) CreditTotal
                             FROM [dbo].[EventAccount] e
+                            left outer join
+                            (select 
+	                            EventAccountId,
+	                            sum(Amount) DebitTotal
+                             from [dbo].[EventTransactionJournal] e
+                            where 
+	                            e.EventId = @{nameof(eventId)} and e.EventAccountAction = 1 -- Debit balance
+                            group by 
+	                            EventAccountId) DebitBalance on e.AccountId = DebitBalance.EventAccountId
+                            left outer join
+
+                            (select 
+	                            EventAccountId,
+	                            sum(Amount) CreditTotal
+                             from [dbo].[EventTransactionJournal] e
+                            where 
+	                            e.EventId = @{nameof(eventId)} and e.EventAccountAction = 2 -- Credit balance
+                            group by 
+	                            EventAccountId) CreditBalance on e.AccountId = CreditBalance.EventAccountId
                         
                             where e.EventId = @{nameof(eventId)}",
               new { eventId }, Transaction);
 
             return result.FirstOrDefault();
+        }
+
+        public int CreateEventTransactionJournal(EventTransactionJournalBO journal)
+        {
+            int transIds = 0;
+            string command = $@"
+                             INSERT INTO [dbo].[EventTransactionJournal]
+                              ([EventId]
+                               ,[UserId]
+                               ,[TransactionId]
+                               ,[EventAccountId]
+                               ,[EventAccountAction]
+                               ,[UserAccountId]
+                               ,[EventFriendAccountAction]
+                               ,[Amount])
+                             VALUES
+                                   (@{nameof(journal.EventId)}
+                                   ,@{nameof(journal.UserId)}
+                                   ,@{nameof(journal.TransactionId)}
+                                   ,@{nameof(journal.EventAccountId)}
+                                   ,@{nameof(journal.EventAccountAction)}
+                                   ,@{nameof(journal.EventFriendAccountId)}
+                                   ,@{nameof(journal.EventFriendAccountAction)}
+                                   ,@{nameof(journal.Amount)})      ";
+
+            transIds = Connection.Execute(command,
+                new
+                {
+                    journal.EventId,
+                    journal.UserId,
+                    journal.TransactionId,
+                    journal.EventAccountId,
+                    journal.EventAccountAction,
+                    journal.EventFriendAccountId,
+                    journal.EventFriendAccountAction,
+                    journal.Amount
+
+                }, transaction: Transaction);
+
+            return transIds;
+        }
+
+        public int CreateEventTransactionJournals(List<EventTransactionJournalBO> journals)
+        {
+            int retVal = 0;
+            foreach(var journal in journals)
+            {
+                retVal += CreateEventTransactionJournal(journal);
+            }
+
+            return retVal;
         }
     }
 }

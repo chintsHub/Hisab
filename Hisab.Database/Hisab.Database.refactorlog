@@ -308,4 +308,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="LendToFriendUserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0e438520-65f8-4c1a-8fe1-905f1c925a41" ChangeDateTime="05/31/2020 05:40:00">
+    <Property Name="ElementName" Value="[dbo].[EventTransactionJournal].[Action]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransactionJournal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventAccountAction" />
+  </Operation>
 </Operations>

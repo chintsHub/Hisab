@@ -12,7 +12,11 @@ namespace Hisab.BL
     
     public interface IEventTransactionManager
     {
-        Task<bool> CreateExpenseTransaction(NewTransactionBO newTransactionBO);
+        Task<ManagerResponse> CreateExpenseTransaction(NewTransactionBO newTransactionBO);
+
+        Task<bool> CreateContributeToPoolTransaction(NewTransactionBO newTransactionBO);
+
+        Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO);
 
         Task<EventAccountBO> GetEventAccount(Guid eventId);
     }
@@ -20,27 +24,58 @@ namespace Hisab.BL
     public class EventTransactionManager : IEventTransactionManager
     {
         private IDbConnectionProvider _connectionProvider;
+        private IEventJournalHelper _eventJournalHelper;
 
-        public EventTransactionManager(IDbConnectionProvider connectionProvider)
+        public EventTransactionManager(IDbConnectionProvider connectionProvider, IEventJournalHelper eventJournalHelper)
         {
             _connectionProvider = connectionProvider;
+            _eventJournalHelper = eventJournalHelper;
 
         }
-        public async Task<bool> CreateExpenseTransaction(NewTransactionBO newTransactionBO)
+        public async Task<ManagerResponse> CreateExpenseTransaction(NewTransactionBO newTransactionBO)
         {
-            var retVal = false;
+            var retVal = new ManagerResponse();
 
             // setup
             newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
             newTransactionBO.LastModifiedDate = DateTime.UtcNow;
-            newTransactionBO.TransactionType = TransactionType.Expense;
+            
             SetTransactionId(newTransactionBO);
 
             // calculate split amount
             CalculateEqualSplitAndAmount(newTransactionBO.TransactionSplits, newTransactionBO.TotalAmount);
 
-            //Event Friend Journals
-            var eventFriendJournals = await CreateEventFriendJournals(newTransactionBO);
+            //Journals
+            List<EventFriendJournalBO> eventFriendJournals = null;
+            List<EventTransactionJournalBO> transactionJournals = null;
+            var eventAccount = await GetEventAccount(newTransactionBO.EventId);
+            if (newTransactionBO.PaidByUserId == eventAccount.AccountId)
+            {
+                // Bill is paid from the pool amount
+                if(eventAccount.CalculateBalance() >= newTransactionBO.TotalAmount)
+                {
+                    newTransactionBO.EventPoolAccountId = eventAccount.AccountId;
+                    //overwriting as the exp is paid from pool. So setting paidByUserId is irrelevant
+                    newTransactionBO.PaidByUserId = newTransactionBO.CreatedByUserId;
+                    newTransactionBO.TransactionType = TransactionType.ExpenseFromPool;
+
+                    transactionJournals = await _eventJournalHelper.CreateExpenseJournalPaidFromPool(newTransactionBO);
+                 
+                }
+                else
+                {
+                    retVal.Messge = "Not enough balance in the Account to pay this bill";
+                    retVal.Success = false;
+                    return retVal;
+                }
+            }
+            else
+            {
+                // Bill is paid by a friend
+                newTransactionBO.TransactionType = TransactionType.Expense;
+                eventFriendJournals = await _eventJournalHelper.CreateExpenseJournalPaidByFriend(newTransactionBO);
+            }
+            
 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
             {
@@ -48,8 +83,17 @@ namespace Hisab.BL
 
                 var transRow = context.EventTransactionRepository.CreateTransaction(newTransactionBO);
                 var splits = context.EventTransactionRepository.CreateTransactionSplit(newTransactionBO.TransactionSplits);
+                               
 
-                var journals = context.EventTransactionRepository.CreateEventFriendJournals(eventFriendJournals);
+                if(transactionJournals != null)
+                {
+                    context.EventTransactionRepository.CreateEventTransactionJournals(transactionJournals);
+                }
+                else
+                {
+                    var journals = context.EventTransactionRepository.CreateEventFriendJournals(eventFriendJournals);
+                }
+                
 
                 context.SaveChanges();
             }
@@ -58,66 +102,7 @@ namespace Hisab.BL
         }
 
         
-        private async Task<List<EventFriendJournalBO>> CreateEventFriendJournals(NewTransactionBO newTransactionBO)
-        {
-            var journals = new List<EventFriendJournalBO>();
-
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
-                var accounts = context.EventTransactionRepository.GetEventUserAccounts(newTransactionBO.EventId);
-
-                foreach (var split in newTransactionBO.TransactionSplits)
-                {
-                    if (split.UserId == newTransactionBO.PaidByUserId)
-                    {
-                        //This user has paid the bill
-                        journals.Add(new EventFriendJournalBO() 
-                        { 
-                            EventId = newTransactionBO.EventId,
-                            // Debit the expense and credit the cash
-                            UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.Expense).AccountId,
-                            UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
-                            Amount = split.SplitAmount,
-                            TransactionId = split.TransactionId,
-                            UserId = split.UserId
-                        });
-                    }
-                    else
-                    {
-                        // This user has paid for a friend
-
-                        // In the books of the payer
-                        journals.Add(new EventFriendJournalBO()
-                        {
-                            EventId = newTransactionBO.EventId,
-                            // Debit Accounts receivable and Credit cash
-                            UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.AccountRecievable).AccountId,
-                            UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
-                            Amount = split.SplitAmount,
-                            TransactionId = split.TransactionId,
-                            UserId = newTransactionBO.PaidByUserId,
-                            PayRecieveFriendId = split.UserId
-                        });
-
-                        // In the books of the friend
-                        journals.Add(new EventFriendJournalBO()
-                        {
-                            EventId = newTransactionBO.EventId,
-                            // Debit expense and credit Accounts payable
-                            UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.Expense).AccountId,
-                            UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.AccountPayable).AccountId,
-                            Amount = split.SplitAmount,
-                            TransactionId = split.TransactionId,
-                            UserId = split.UserId,
-                            PayRecieveFriendId = newTransactionBO.PaidByUserId
-                        });
-                    }
-                }
-            }
-
-            return journals;
-
-        }
+        
 
         private void SetTransactionId(NewTransactionBO newTransactionBO)
         {
@@ -161,6 +146,63 @@ namespace Hisab.BL
                 return account;
 
             }
+        }
+
+        public async Task<bool> CreateContributeToPoolTransaction(NewTransactionBO newTransactionBO)
+        {
+
+            var retVal = false;
+
+            // setup
+            newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
+            newTransactionBO.LastModifiedDate = DateTime.UtcNow;
+            newTransactionBO.TransactionType = TransactionType.ContributionToPool;
+            newTransactionBO.TransactionId = Guid.NewGuid();
+
+            //Event Journal
+            var eventTransJournal = await _eventJournalHelper.CreateContributeToPoolJournals(newTransactionBO);
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+
+
+                var transRow = context.EventTransactionRepository.CreateTransaction(newTransactionBO);
+                
+
+                var journals = context.EventTransactionRepository.CreateEventTransactionJournal(eventTransJournal);
+
+                context.SaveChanges();
+            }
+
+            return retVal;
+        }
+
+        public async Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO)
+        {
+            var retVal = false;
+
+            // setup
+            newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
+            newTransactionBO.LastModifiedDate = DateTime.UtcNow;
+            newTransactionBO.TransactionType = TransactionType.LendToFriend;
+            newTransactionBO.TransactionId = Guid.NewGuid();
+
+            //Event Journal
+            var eventFriendJournals = await _eventJournalHelper.CreateLendToFriendJournals(newTransactionBO);
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+
+
+                var transRow = context.EventTransactionRepository.CreateTransaction(newTransactionBO);
+
+
+                var journals = context.EventTransactionRepository.CreateEventFriendJournals(eventFriendJournals);
+
+                context.SaveChanges();
+            }
+
+            return retVal;
         }
     }
 }

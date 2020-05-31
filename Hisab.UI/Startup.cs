@@ -86,7 +86,9 @@ namespace Hisab.UI
 
             services.AddScoped<IFeedbackManager>(sp => new FeedbackManager(sp.GetService<IDbConnectionProvider>()));
 
-            services.AddScoped<IEventTransactionManager>(sp => new EventTransactionManager(sp.GetService<IDbConnectionProvider>()));
+            services.AddScoped<IEventJournalHelper>(sp => new EventJournalHelper(sp.GetService<IDbConnectionProvider>()));
+
+            services.AddScoped<IEventTransactionManager>(sp => new EventTransactionManager(sp.GetService<IDbConnectionProvider>(), sp.GetService<IEventJournalHelper>()));
 
             services.AddAuthentication().AddCookie();
 

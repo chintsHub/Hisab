@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
+using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ namespace Hisab.UI
         private UserManager<ApplicationUser> _userManager;
         private IEventTransactionManager _transactionManager;
 
+        [BindProperty]
         public ContributeVM ContributeVM { get; set; }
 
         public ContributionTransactionDetailsModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager)
@@ -76,6 +78,41 @@ namespace Hisab.UI
                     }
                 }
 
+            }
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            var newTrans = new NewTransactionBO();
+
+            if (ContributeVM.EventPoolId != null)
+            {
+                // Contribute to Pool
+                newTrans.EventId = ContributeVM.EventId;
+                newTrans.CreatedByUserId = ContributeVM.UserId;
+                newTrans.PaidByUserId = ContributeVM.UserId;
+                newTrans.TotalAmount = ContributeVM.Amount;
+                newTrans.TransactionDate = ContributeVM.TransactionDate;
+                newTrans.Description = ContributeVM.Description;
+                newTrans.EventPoolAccountId = ContributeVM.EventPoolId.Value;
+
+                var result = await _transactionManager.CreateContributeToPoolTransaction(newTrans);
+            }
+
+            if(ContributeVM.LendToFriendUserId != null)
+            {
+                // Contribute to Friend
+                newTrans.EventId = ContributeVM.EventId;
+                newTrans.CreatedByUserId = ContributeVM.UserId;
+                newTrans.PaidByUserId = ContributeVM.UserId;
+                newTrans.TotalAmount = ContributeVM.Amount;
+                newTrans.TransactionDate = ContributeVM.TransactionDate;
+                newTrans.Description = ContributeVM.Description;
+                newTrans.LendToFriendUserId = ContributeVM.LendToFriendUserId.Value;
+
+                var result = await _transactionManager.CreateContributeToFriend(newTrans);
             }
 
             return Page();

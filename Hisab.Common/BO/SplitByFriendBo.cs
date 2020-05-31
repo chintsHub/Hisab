@@ -134,6 +134,8 @@ namespace Hisab.Common.BO
 
         public Guid EventId { get; set; }
 
+        public Guid EventPoolAccountId { get; set; }
+
         public Guid CreatedByUserId { get; set; }
 
         public DateTime TransactionDate { get; set; }
@@ -189,13 +191,39 @@ namespace Hisab.Common.BO
 
     }
 
+    public class EventTransactionJournalBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public Guid EventAccountId { get; set; }
+
+        public JournalAction EventAccountAction { get; set; }
+
+        public Guid EventFriendAccountId { get; set; }
+        public JournalAction EventFriendAccountAction { get; set; }
+
+        public decimal Amount { get; set; }
+
+    }
+
     
     public enum TransactionType
     {
         Expense = 1,
         ContributionToPool = 2,
         LendToFriend = 3,
-        Settlement
+        ExpenseFromPool = 4,
+        Settlement = 5
+    }
+
+    public enum JournalAction
+    {
+        Debit = 1,
+        Credit = 2
     }
    
 }

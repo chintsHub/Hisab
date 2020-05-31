@@ -38,8 +38,8 @@ namespace Hisab.UI
             if(transId == Guid.Empty)
             {
                 var eve = await _eventManager.GetEventById(Id);
+                var eventAccount = await _transactionManager.GetEventAccount(Id);
 
-                
 
                 ExpenseVM.EventId = Id;
                 
@@ -51,7 +51,12 @@ namespace Hisab.UI
                         ExpenseVM.ExpensePaidById = f.UserId;
 
                         ExpenseVM.PaidByList.Add(new PaidByVM() { Id = f.UserId, Name = f.NickName });
-                        ExpenseVM.PaidByList.Add(new PaidByVM() { Id = System.Guid.NewGuid(), Name = "Event Account" });
+                        var eventBalance = eventAccount.CalculateBalance();
+                        if (eventBalance > 0)
+                        {
+                            ExpenseVM.PaidByList.Add(new PaidByVM() { Id = eventAccount.AccountId, Name = $"Event Account ({eventBalance})" });
+                        }
+                        
                     }
                     ExpenseVM.ExpenseSharedWith.Add(new EventFriendSharedVM()
                     {
