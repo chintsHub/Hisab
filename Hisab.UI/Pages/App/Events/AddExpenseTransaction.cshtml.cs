@@ -11,32 +11,37 @@ using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NToastNotify;
 
 namespace Hisab.UI
 {
-    public class ExpenseTransactionDetailsModel : PageModel
+    public class AddExpenseTransactionModel : PageModel
     {
 
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
         private IEventTransactionManager _transactionManager;
+        private IToastNotification _toastNotification;
 
         [BindProperty]
         public ExpenseTransactionVM ExpenseVM { get; set; }
 
-        public ExpenseTransactionDetailsModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager)
+        public string SuccessMessage { get; set; }
+        public string ErrorMessage { get; set; }
+
+        public AddExpenseTransactionModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager, IToastNotification toastNotification)
         {
             _eventManager = eventManager;
             _userManager = userManager;
             _transactionManager = transactionManager;
+            _toastNotification = toastNotification;
 
-            ExpenseVM = new ExpenseTransactionVM();
+
         }
 
-        public async Task<IActionResult> OnGet(Guid Id, Guid transId)
+        public async Task<IActionResult> OnGet(Guid Id)
         {
-            if(transId == Guid.Empty)
-            {
+                ExpenseVM = new ExpenseTransactionVM();
                 var eve = await _eventManager.GetEventById(Id);
                 var eventAccount = await _transactionManager.GetEventAccount(Id);
 
@@ -75,12 +80,7 @@ namespace Hisab.UI
                    
 
                 }
-            }
-            else
-            {
-                // transaction under edit mode
-            }
-
+            
 
             return Page();
         }
@@ -112,7 +112,19 @@ namespace Hisab.UI
             }
             var result = await _transactionManager.CreateExpenseTransaction(newTrans);
 
-            return Page();
+            if(result.Success)
+            {
+                SuccessMessage = result.Messge;
+                _toastNotification.AddSuccessToastMessage(result.Messge);
+
+                return RedirectToPage("Dashboard", new { id = ExpenseVM.EventId });
+            }
+            else
+            {
+                ErrorMessage = result.Messge;
+            }
+
+            return await OnGet(ExpenseVM.EventId);
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿@page "/app/events/{id}/ContributionTransactionDetails/{transid}"
-@model Hisab.UI.ContributionTransactionDetailsModel
+﻿@page "/app/events/{id}/AddContributionTransaction"
+@model Hisab.UI.AddContributionTransactionModel
 @{
     ViewData["Title"] = "ContributionTransactionDetails";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div style="float:right; margin:10px">
-    <button><i class="fa fa-undo-alt"></i> Back to Transactions</button>
-</div>
+    <div style="float:right; margin:10px" class="pageButton">
+        <a asp-page="/app/events/dashboard" asp-route-id="@Model.ContributeVM.EventId"><i class="fa fa-undo-alt"></i> Back </a>
+    </div>
 
 <div class="clearfix"></div>
 

@@ -107,6 +107,9 @@ body {
 div#wrapper {
   background-color: #F4F5F7; }
 
+b, strong {
+  font-weight: bolder; }
+
 /* ----------------------------- Header ---------------------- */
 header {
   background-color: #008da8;

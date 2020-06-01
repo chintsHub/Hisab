@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Hisab.BL
 {
     
@@ -25,6 +26,7 @@ namespace Hisab.BL
     {
         private IDbConnectionProvider _connectionProvider;
         private IEventJournalHelper _eventJournalHelper;
+       
 
         public EventTransactionManager(IDbConnectionProvider connectionProvider, IEventJournalHelper eventJournalHelper)
         {
@@ -96,6 +98,9 @@ namespace Hisab.BL
                 
 
                 context.SaveChanges();
+
+                retVal.Messge = $"{newTransactionBO.Description} Expense of Amount {newTransactionBO.TotalAmount} is sucessfully added.";
+                retVal.Success = true;
             }
 
             return retVal;
@@ -172,6 +177,8 @@ namespace Hisab.BL
                 var journals = context.EventTransactionRepository.CreateEventTransactionJournal(eventTransJournal);
 
                 context.SaveChanges();
+
+                retVal = true;
             }
 
             return retVal;
@@ -200,6 +207,8 @@ namespace Hisab.BL
                 var journals = context.EventTransactionRepository.CreateEventFriendJournals(eventFriendJournals);
 
                 context.SaveChanges();
+
+                retVal = true;
             }
 
             return retVal;
