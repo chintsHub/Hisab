@@ -1,39 +1,87 @@
-﻿<div class="transaction">
-    <div class="row transactionHeader">
-        <div class="col-3 col-xs-3">01/01/2020</div>
-        <div class="col-6 col-xs-6">Theater on day 5 in ahmedabad</div>
-        <div class="col-3 col-xs-3">
-            5,600 <i class="fa fa-receipt" style="float:right"></i>
+﻿@model TransactionVM 
+<div class="transaction" id="@Model.TransactionId" data-isMyTransaction="@((User.Identity.Name == Model.PaidByEmail)?true:false)" >
+    <div class="row ">
+        <div class="col-12 col-xs-12 transactionHeader" style="text-align:left">
+            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
+            {
+                <i class="fa fa-receipt"></i>
+            }
+            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.ContributionToPool)
+            {
+                <i class="fa fa-piggy-bank"></i>
+            }
+            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.LendToFriend)
+            {
+                <i class="fa fa-wallet"></i>
+            }
 
         </div>
+
+    </div>
+
+    <div class="row transactionBody">
+
+        <div class="col-3 transactionColumnContent">@Model.TransactionDate.ToShortDateString()</div>
+        <div class="col-6 transactionColumnContent">@Model.TransactionDescription</div>
+        <div class="col-3 transactionColumnContent">@Model.Amount </div>
     </div>
     <div class="row transactionBody">
-        <div class="col-12 col-xs-12">
-            <div class="transactionPaidby">Paid by: Chints  </div>
-            <div class="transactionShared">Shared with: Chints</div>
+        <div class="col-4  transactionColumn">
+            <div class="row transactionPaidby ">
+                Paid by:
+            </div>
+            <div class="row transactionColumnContent">
+                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
+                {
+                    <span>Shared With:</span>
+                }
+                else
+                {
+                    <span>Paid To:</span>
+                }
+
+            </div>
+        </div>
+        <div class="col-8 ">
+            <div class="row transactionShared">
+                @Model.PaidByName
+            </div>
+            <div class="row transactionColumnContent">
+                @Model.SharedWith
+            </div>
         </div>
 
     </div>
 
-    <div class="row transactionFooter">
-        <div class="col-1 col-xs-1"><i class="fa fa-check-circle"></i></div>
+
+    <div class="row transactionFooter ">
+        
         <div class="col-11 col-xs-11 transactionButtons">
-            <button><i class="fa fa-trash"></i> Delete</button>
+
+            @if (User.Identity.Name == Model.PaidByEmail)
+            {
+                <button><i class="fa fa-trash"></i> Delete</button>
+            }
+            else
+            {
+               
+                <button><i class="fa fa-exclamation-triangle"></i> Alert payer</button>
+                @*<div class="dropdown">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-exclamation-circle"></i> Ask payer to
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Check Transaction Amount</a>
+                        <a class="dropdown-item" href="#">Check Split</a>
+                        <a class="dropdown-item" href="#">Exclude me from the split</a>
+                    </div>
+                </div>*@
+            }
+
             @*<button><i class="fa fa-edit"></i> Edit</button>*@
 
-            <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-exclamation-circle"></i> Ask payer to
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Check Transaction Amount</a>
-                    <a class="dropdown-item" href="#">Check Split</a>
-                    <a class="dropdown-item" href="#">Exclude me from the split</a>
-                </div>
-            </div>
-            <a asp-page="ExpenseTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transId="@Guid.NewGuid()">
-                <i class="fa fa-edit"></i>Edit
-            </a>
+
+
         </div>
     </div>
 

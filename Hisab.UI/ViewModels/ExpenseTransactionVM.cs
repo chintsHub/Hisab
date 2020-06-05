@@ -7,6 +7,33 @@ using System.Threading.Tasks;
 
 namespace Hisab.UI.ViewModels
 {
+    public class TransactionVM
+    {
+        public Guid EventId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public string TransactionDescription { get; set; }
+
+        public string PaidByName { get; set; }
+        public Guid PaidById { get; set; }
+        public string PaidByEmail { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public string SharedWith { get; set; }
+
+        public Decimal Amount { get; set; }
+
+        public TransactionVM()
+        {
+            
+        }
+
+    }
+
     public class ExpenseTransactionVM
     {
         public Guid TransactionId { get; set; }

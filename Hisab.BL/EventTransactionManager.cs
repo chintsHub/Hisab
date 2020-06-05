@@ -20,6 +20,8 @@ namespace Hisab.BL
         Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO);
 
         Task<EventAccountBO> GetEventAccount(Guid eventId);
+
+        Task<List<TransactionBO>> GetTransactions(Guid eventId);
     }
 
     public class EventTransactionManager : IEventTransactionManager
@@ -212,6 +214,23 @@ namespace Hisab.BL
             }
 
             return retVal;
+        }
+
+        public async Task<List<TransactionBO>> GetTransactions(Guid eventId)
+        {
+            
+            
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+
+                var transRow = context.EventTransactionRepository.GetAllTransactions(eventId);
+
+
+
+
+                return transRow;
+            }
         }
     }
 }

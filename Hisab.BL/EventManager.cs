@@ -41,11 +41,11 @@ namespace Hisab.BL
 
         bool CheckEventAccess(EventBO eventBo, Guid userId);
 
-        int ProcessTransaction(TransactionBo transaction);
+       
 
         Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId);
 
-        Task<List<TransactionBo>> GetAllTransactions(int eventId);
+        
 
         Task<List<SettlementData>> GetSettlementData(int eventId);
     }
@@ -266,17 +266,17 @@ namespace Hisab.BL
             return retVal;
         }
 
-        public async Task<List<TransactionBo>> GetAllTransactions(int eventId)
-        {
-            var retValue = new List<TransactionBo>();
+        //public async Task<List<TransactionBo>> GetAllTransactions(int eventId)
+        //{
+        //    var retValue = new List<TransactionBo>();
 
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
-                retValue = context.EventTransactionRepository.GetAllTransactions(eventId);
-            }
+        //    using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+        //    {
+        //        retValue = context.EventTransactionRepository.GetAllTransactions(eventId);
+        //    }
 
-            return retValue;
-        }
+        //    return retValue;
+        //}
 
         public async Task<List<SettlementData>> GetSettlementData(int eventId)
         {
@@ -290,22 +290,7 @@ namespace Hisab.BL
             return retValue;
         }
 
-        public int ProcessTransaction(TransactionBo transaction)
-        {
-            switch (transaction.SplitType)
-            {
-                case SplitType.SplitPerFriend:
-                    return ProcessSplitByFriendTransaction((SplitPerFriendTransactionBo)transaction).Result;
-                    break;
-                case SplitType.NotApplicable:
-                    return ProcessContributionTransaction((EventPoolTransactionBo) transaction).Result;
-                    break;
-
-            }
-
-            
-            return 0;
-        }
+       
 
         private async Task<int> ProcessContributionTransaction(EventPoolTransactionBo transactionBo)
         {
@@ -351,165 +336,7 @@ namespace Hisab.BL
             return transactionId;
         }
 
-        private async Task<int> ProcessSplitByFriendTransaction(SplitPerFriendTransactionBo transactionBo)
-        {
-            // calculate Total Expense
-            transactionBo.TotalAmount = transactionBo.PaidByPoolAmount; //TODO: Does pool have money to pay?
-            
-            foreach (var friend in transactionBo.Friends)
-            {
-                transactionBo.TotalAmount += friend.AmountPaid;
-
-                //If pool money is used, cannot exclude anyone
-                if (transactionBo.PaidByPoolAmount > 0)
-                    friend.IncludeInSplit = true;
-            }
-
-            // assign expense
-            int totalFriends = transactionBo.Friends.Count(x => x.IncludeInSplit);
-            decimal perFriendExpense = transactionBo.TotalAmount / totalFriends;
-
-            decimal expenseToSettle = transactionBo.TotalAmount - transactionBo.PaidByPoolAmount;
-            decimal expenseToSettlePerFriend = 0;
-            if (expenseToSettle > 0)
-                 expenseToSettlePerFriend = expenseToSettle / totalFriends;
-
-            foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit)) 
-            {
-                friend.AmountDue = perFriendExpense;
-
-                if (expenseToSettle > 0)
-                    friend.NetAmountToSettle = friend.AmountPaid - expenseToSettlePerFriend;
-
-
-            }
-
-            if (transactionBo.Friends.Count(x => x.AmountPaid > 0) > 0)
-            {
-                //Settlement needed
-                foreach (var toRecievefriend in transactionBo.Friends.Where(x => x.NetAmountToSettle > 0).OrderByDescending(x => x.NetAmountToSettle))
-                {
-                    foreach (var toPayfriend in transactionBo.Friends.Where(x => x.NetAmountToSettle < 0).OrderBy(x => x.NetAmountToSettle))
-                    {
-                        decimal howMuchToPay = Math.Abs(toPayfriend.NetAmountToSettle) - toPayfriend.AlreadySettled;
-                        decimal howMuchTorecieve = toRecievefriend.NetAmountToSettle - toRecievefriend.AlreadySettled;
-
-                        if (howMuchToPay > 0 && howMuchTorecieve > 0)
-                        {
-                            if (howMuchToPay <= howMuchTorecieve)
-                            {
-                                //settlement BO
-                                toPayfriend.AlreadySettled += howMuchToPay;
-                                toRecievefriend.AlreadySettled += howMuchToPay;
-
-                                var settlement = new SettlementBo()
-                                {
-                                    TransactionId = 0,
-                                    PayerFriendId = toPayfriend.EventFriendId,
-                                    ReceiverFriendId = toRecievefriend.EventFriendId,
-                                    Amount = howMuchToPay,
-                                    EventId = transactionBo.EventId
-                                };
-                                transactionBo.Settlements.Add(settlement);
-                            }
-                            else
-                            {
-                                //settlement BO
-                                toPayfriend.AlreadySettled += howMuchTorecieve;
-                                toRecievefriend.AlreadySettled += howMuchTorecieve;
-                                var settlement = new SettlementBo()
-                                {
-                                    TransactionId = 0,
-                                    PayerFriendId = toPayfriend.EventFriendId,
-                                    ReceiverFriendId = toRecievefriend.EventFriendId,
-                                    Amount = howMuchTorecieve,
-                                    EventId = transactionBo.EventId
-                                };
-                                transactionBo.Settlements.Add(settlement);
-                            }
-                           
-                        }
-
-                       
-                    }
-                }
-
-            }
-
-            int transactionId = 0;
-            //using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
-            //{
-            //    var accounts = context.EventTransactionRepository.GetAccountsForEvent(transactionBo.EventId);
-
-            //    //prepare Journals
-            //    var eventExpJournal = new TransactionJournalBo
-            //    {
-            //        AccountId =
-            //        accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 2).AccountId,
-            //        Particulars = transactionBo.Description + " Event Expense",
-            //        CreditAmount = 0,
-            //        DebitAmount = transactionBo.TotalAmount
-
-            //    };
-            //    transactionBo.Journals.Add(eventExpJournal);
-
-            //    if (transactionBo.PaidByPoolAmount > 0)
-            //    {
-            //        var poolJournal = new TransactionJournalBo()
-            //        {
-            //            AccountId =
-            //                accounts.First(x => x.EventFriendId == 0 && x.AccountTypeId == 1).AccountId,
-            //            Particulars = "Expense paid: " + transactionBo.Description,
-            //            CreditAmount = transactionBo.PaidByPoolAmount,
-            //            DebitAmount = 0
-            //        };
-            //        transactionBo.Journals.Add(poolJournal);
-            //    }
-
-            //    foreach (var friend in transactionBo.Friends.Where(x=>x.AmountPaid>0))
-            //    {
-            //        var friendJournal = new TransactionJournalBo()
-            //        {
-            //            AccountId =
-            //                accounts.First(x => x.EventFriendId == friend.EventFriendId && x.AccountTypeId == 1).AccountId,
-            //            Particulars = "Expense paid: " + transactionBo.Description,
-            //            CreditAmount = friend.AmountPaid,
-            //            DebitAmount = 0
-            //        };
-            //        transactionBo.Journals.Add(friendJournal);
-            //    }
-
-
-            //    //Start inserting
-            //    //transactionId = context.EventTransactionRepository.CreateTransaction(transactionBo.TotalAmount, transactionBo.EventId,
-            //    //    transactionBo.Description, (int) transactionBo.SplitType, transactionBo.CreatedByUserId, transactionBo.CreatedDateTime);
-
-            //    foreach (var friend in transactionBo.Friends.Where(x => x.IncludeInSplit))
-            //    {
-            //        //context.EventTransactionRepository.CreateTransactionSplit(friend.AmountDue, transactionId,
-            //        //    friend.EventFriendId);
-            //    }
-
-            //    foreach (var journal in transactionBo.Journals)
-            //    {
-            //        context.EventTransactionRepository.CreateTransactionJournal(transactionId, journal.Particulars,
-            //            journal.AccountId, journal.DebitAmount, journal.CreditAmount);
-            //    }
-
-            //    foreach (var settlement in transactionBo.Settlements)
-            //    {
-            //        settlement.TransactionId = transactionId;
-            //        context.EventTransactionRepository.CreateTransactionSettlement(settlement.EventId,
-            //            settlement.TransactionId, settlement.PayerFriendId, settlement.ReceiverFriendId,
-            //            settlement.Amount);
-            //    }
-
-            //    context.SaveChanges();
-
-            //}
-
-            return transactionId;
-        }
+        
 
         public async Task<bool> ArchieveEvent(Guid eventId)
         {

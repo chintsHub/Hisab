@@ -4,32 +4,32 @@ using System.Text;
 
 namespace Hisab.Common.BO
 {
-    public class TransactionBo
+    
+    public class TransactionBO
     {
-        public int Id { get; set; }
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
-        public string Description { get; set; }
+        public Guid TransactionId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public string TransactionDescription { get; set; }
+
+        public string PaidByName { get; set; }
+        public Guid PaidById { get; set; }
+        public string PaidByEmail { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public List<EventFriendBO> SharedWith { get; set; }
 
         public decimal TotalAmount { get; set; }
 
-        public  SplitType SplitType { get; set; }
-
-        public List<TransactionJournalBo> Journals { get; set; }
-
-        public List<SettlementBo> Settlements { get; set; }
-
-        public Guid CreatedByUserId { get; set; }
-        public string NickName { get; set; }
-
-        public DateTime CreatedDateTime { get; set; }
-
-
-        public TransactionBo()
-        {
-            Settlements = new List<SettlementBo>();
-        }
+        public Guid LendToFriendUserId { get; set; }
+        public string LendToFriendName { get; set; }
     }
+   
+
 
     public class SettlementBo
     {
@@ -72,7 +72,7 @@ namespace Hisab.Common.BO
 
     
 
-    public class SplitPerFriendTransactionBo : TransactionBo
+    public class SplitPerFriendTransactionBo 
     {
         public List<SplitPerFriendBo> Friends { get; set; }
 
@@ -83,7 +83,7 @@ namespace Hisab.Common.BO
         {
             Friends = new List<SplitPerFriendBo>();
 
-            Journals = new List<TransactionJournalBo>();
+            
         }
     }
 
@@ -102,13 +102,13 @@ namespace Hisab.Common.BO
         public decimal AlreadySettled { get; set; }
     }
 
-    public class EventPoolTransactionBo : TransactionBo
+    public class EventPoolTransactionBo 
     {
         public int EventFriendId { get; set; }
 
         public EventPoolTransactionBo()
         {
-            Journals = new List<TransactionJournalBo>();
+            
         }
     }
 

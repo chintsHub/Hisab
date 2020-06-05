@@ -217,21 +217,21 @@ namespace Hisab.UI.Controllers
             if (await CanAccessEvent(eventBo))
             {
 
-                var results = await _eventManager.GetAllTransactions(eventId);
+                //var results = await _eventManager.GetAllTransactions(eventId);
                 var transList = new List<TransactionVm>();
-                foreach (var transaction in results)
-                {
-                    transList.Add(new TransactionVm()
-                    {
-                        CreatedDateTime = transaction.CreatedDateTime,
-                        NickName = transaction.NickName,
-                        TotalAmount = transaction.TotalAmount,
-                        SplitType = transaction.SplitType.GetDescription(),
-                        CreatedByUserId = transaction.CreatedByUserId,
-                        Description = transaction.Description,
-                        TransactionId = transaction.Id
-                    });
-                }
+                //foreach (var transaction in results)
+                //{
+                //    transList.Add(new TransactionVm()
+                //    {
+                //        CreatedDateTime = transaction.CreatedDateTime,
+                //        NickName = transaction.NickName,
+                //        TotalAmount = transaction.TotalAmount,
+                //        SplitType = transaction.SplitType.GetDescription(),
+                //        CreatedByUserId = transaction.CreatedByUserId,
+                //        Description = transaction.Description,
+                //        TransactionId = transaction.Id
+                //    });
+                //}
                 return View("Transactions", new EventVm() { EventId = eventBo.Id, EventName = eventBo.EventName,Transactions = transList});
             }
 
@@ -355,27 +355,27 @@ namespace Hisab.UI.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
+            //var trans = (SplitPerFriendTransactionBo)TransactionFactory.CreateNewSplitTransaction(SplitType.SplitPerFriend);
 
-            trans.CreatedByUserId = user.Id;
-            trans.CreatedDateTime = DateTime.UtcNow;
+            //trans.CreatedByUserId = user.Id;
+            //trans.CreatedDateTime = DateTime.UtcNow;
 
-            trans.EventId = NewSplitByFriendVm.EventId;
-            trans.Description = NewSplitByFriendVm.Description;
-            foreach (var friend in NewSplitByFriendVm.FriendDetails)
-            {
-                trans.Friends.Add(new SplitPerFriendBo(){ AmountPaid = friend.AmountPaid, EventFriendId = friend.EventFriendId, IncludeInSplit = friend.IncludeInSplit});
-            }
+            //trans.EventId = NewSplitByFriendVm.EventId;
+            //trans.Description = NewSplitByFriendVm.Description;
+            //foreach (var friend in NewSplitByFriendVm.FriendDetails)
+            //{
+            //    trans.Friends.Add(new SplitPerFriendBo(){ AmountPaid = friend.AmountPaid, EventFriendId = friend.EventFriendId, IncludeInSplit = friend.IncludeInSplit});
+            //}
 
-            trans.PaidByPoolAmount = NewSplitByFriendVm.PaidByPoolAmount;
-            trans.SplitType = SplitType.SplitPerFriend;
+            //trans.PaidByPoolAmount = NewSplitByFriendVm.PaidByPoolAmount;
+            //trans.SplitType = SplitType.SplitPerFriend;
 
-            var transId = _eventManager.ProcessTransaction(trans);
+            //var transId = _eventManager.ProcessTransaction(trans);
 
-            if(transId > 0)
-                _toastNotification.AddSuccessToastMessage("Expense added");
-            else
-                _toastNotification.AddErrorToastMessage("Could not process transaction");
+            //if(transId > 0)
+            //    _toastNotification.AddSuccessToastMessage("Expense added");
+            //else
+            //    _toastNotification.AddErrorToastMessage("Could not process transaction");
 
 
             return RedirectToAction("Dashboard", "Event", new { NewSplitByFriendVm.EventId});
@@ -387,23 +387,23 @@ namespace Hisab.UI.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var trans = TransactionFactory.CreatePoolEntryTransaction();
+            //var trans = TransactionFactory.CreatePoolEntryTransaction();
 
-            trans.CreatedByUserId = user.Id;
-            trans.CreatedDateTime = DateTime.UtcNow;
+            //trans.CreatedByUserId = user.Id;
+            //trans.CreatedDateTime = DateTime.UtcNow;
 
-            trans.EventId = newEventPoolEntryVm.EventId;
-            trans.Description = "Cash contributed by " + newEventPoolEntryVm.SelectedFriendId;
-            trans.SplitType = SplitType.NotApplicable;
-            trans.TotalAmount = newEventPoolEntryVm.ContributionAmount;
-            ((EventPoolTransactionBo) trans).EventFriendId = newEventPoolEntryVm.SelectedFriendId;
+            //trans.EventId = newEventPoolEntryVm.EventId;
+            //trans.Description = "Cash contributed by " + newEventPoolEntryVm.SelectedFriendId;
+            //trans.SplitType = SplitType.NotApplicable;
+            //trans.TotalAmount = newEventPoolEntryVm.ContributionAmount;
+            //((EventPoolTransactionBo) trans).EventFriendId = newEventPoolEntryVm.SelectedFriendId;
 
-            var transId = _eventManager.ProcessTransaction(trans);
+            //var transId = _eventManager.ProcessTransaction(trans);
 
-            if (transId > 0)
-                _toastNotification.AddSuccessToastMessage("Expense added");
-            else
-                _toastNotification.AddErrorToastMessage("Could not process transaction");
+            //if (transId > 0)
+            //    _toastNotification.AddSuccessToastMessage("Expense added");
+            //else
+            //    _toastNotification.AddErrorToastMessage("Could not process transaction");
 
 
             return RedirectToAction("Dashboard", "Event", new { newEventPoolEntryVm.EventId });

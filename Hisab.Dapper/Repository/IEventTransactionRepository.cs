@@ -12,7 +12,7 @@ namespace Hisab.Dapper.Repository
     {
         
 
-        List<TransactionBo> GetAllTransactions(int eventId);
+        List<TransactionBO> GetAllTransactions(Guid eventId);
 
         int CreateTransaction(NewTransactionBO newTransactionBO);
 
@@ -52,23 +52,57 @@ namespace Hisab.Dapper.Repository
 
         }
 
-        public List<TransactionBo> GetAllTransactions(int eventId)
+        public List<TransactionBO> GetAllTransactions(Guid eventId)
         {
-           var result = Connection.Query<TransactionBo>($@"
-                    SELECT 
-	                       t.[Id]
-                          ,[TotalAmount]
-                          ,[Description]
-                          ,[SplitType]
-                          ,[Id]
-                          ,[CreatedbyUserId]
-                          ,[CreatedDateTime]
-	                      ,u.NickName
-                      FROM 
-	                    [dbo].[EventTransaction] t
-	                    inner join ApplicationUser u on t.CreatedbyUserId = u.Id
-                        where t.Id = @{nameof(eventId)}",
-                new { eventId }, Transaction);
+            var sql = $@"
+                   SELECT 
+	                    e.[Id] as TransactionId
+                        ,e.[EventId]
+	                    ,[TransactionDate]
+	                    ,[Description] as TransactionDescription
+	                    ,[TransactionType]
+                        ,[TotalAmount]
+
+	                    ,[PaidByUserId] as PaidById
+	                    ,u.NickName as PaidByName
+                        ,u.Email as PaidByEmail
+	     
+                        ,[LendToFriendUserId]
+	                    ,u1.NickName LendToFriendName
+
+	                    ,s.UserId 
+	                    ,u3.NickName 
+                    FROM 
+	                    EventTransaction e 
+	                    left outer join ApplicationUser u on u.Id = e.PaidByUserId
+	                    left outer join ApplicationUser u1 on u1.Id = e.LendToFriendUserId
+	                    left outer join [EventTransactionSplit] s on s.TransactionId = e.Id
+	                    left outer join ApplicationUser u3 on u3.Id = s.UserId
+	                where
+                        e.EventId = @{nameof(eventId)}";
+
+            var eventDict = new Dictionary<Guid, TransactionBO>();
+
+            var result = Connection.Query<TransactionBO, EventFriendBO, TransactionBO>(sql,
+                (eventTransactionBO, eventFriend) =>
+                {
+                    TransactionBO transBo;
+
+                    if (!eventDict.TryGetValue(eventTransactionBO.TransactionId, out transBo))
+                    {
+                        transBo = eventTransactionBO;
+                        transBo.SharedWith = new List<EventFriendBO>();
+                        //transBo.TransactionId = eventTransactionBO.TransactionId;
+                        
+                        eventDict.Add(transBo.TransactionId, transBo);
+                    }
+                    transBo.SharedWith.Add(eventFriend);
+
+                    return transBo;
+                },
+                new { eventId }, Transaction, splitOn: "UserId").ToList();
+
+
 
             return result.ToList();
         }

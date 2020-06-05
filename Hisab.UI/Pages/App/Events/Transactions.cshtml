@@ -5,16 +5,39 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Transactions</h1>
+<div style="float:left">
+    <h1>Transactions</h1>
+</div>
 
+<div style="float:right">
+    <span>Paid by me</span>
+    <label class="switch">
 
+        <input id="paidByMeCheckbox" type="checkbox">
+        <span class="slider round"></span>
 
-<div class="container transactions">
-
-    <vc:Transaction></vc:Transaction>
-
-    <vc:Transaction></vc:Transaction>
+    </label>
 </div>
 
 
+<div class="clearfix"></div>
+
+<div class="container transactions">
+
+    @foreach (var transactionVm in Model.Transactions.OrderByDescending(x => x.TransactionDate))
+    {
+        <vc:Transaction transaction-vm="@transactionVm"></vc:Transaction>
+    }
+
+
+
+
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/Transactions.js" asp-append-version="true"></script>
+
+}
 

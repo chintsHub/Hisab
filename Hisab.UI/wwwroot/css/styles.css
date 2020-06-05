@@ -288,22 +288,34 @@ p {
   background-color: #F4F5F7; }
   .transactions .transaction {
     margin-top: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
     color: white; }
   .transactions .transactionBody {
     /*background-color: #0c7b93;*/
     background-color: white;
     color: black;
-    padding: 5px; }
+    border: solid; }
+    .transactions .transactionBody .transactionPaidby {
+      border-bottom: solid;
+      padding: 5px;
+      background-color: #F4F5F7; }
+    .transactions .transactionBody .transactionColumn {
+      border-right: solid; }
     .transactions .transactionBody .transactionShared {
-      margin-top: 10px; }
+      border-bottom: solid;
+      padding: 5px;
+      background-color: #F4F5F7; }
+    .transactions .transactionBody .transactionColumnContent {
+      padding: 5px; }
   .transactions .transactionHeader {
     background-color: #27496d;
     padding: 5px;
     text-align: center; }
   .transactions .transactionFooter {
     background-color: #00a8cc;
-    padding: 5px; }
+    padding: 5px;
+    border: solid;
+    border-color: #27496d; }
 
 .transactionButtons a, .transactionButtons button {
   background: #e2ed07;
@@ -522,11 +534,6 @@ footer {
   .friendImage {
     height: 100%;
     width: 100%; }
-  .transactionPaidby {
-    float: left; }
-  .transactionShared {
-    float: right;
-    margin-top: 0px; }
   .actionPanel {
     position: absolute;
     bottom: 0px;

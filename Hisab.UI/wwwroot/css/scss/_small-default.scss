@@ -303,7 +303,7 @@ p{
 
     .transaction {
         margin-top: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
         color: white;
     }
 
@@ -311,13 +311,26 @@ p{
         /*background-color: #0c7b93;*/
         background-color: white;
         color: black;
-        padding: 5px;
+        border: solid;
 
         .transactionPaidby {
+            border-bottom: solid;
+            padding: 5px;
+            background-color: #F4F5F7;
+        }
+
+        .transactionColumn {
+            border-right: solid;
         }
 
         .transactionShared {
-            margin-top: 10px;
+            border-bottom: solid;
+            padding: 5px;
+            background-color: #F4F5F7;
+        }
+
+        .transactionColumnContent {
+            padding: 5px;
         }
     }
 
@@ -330,12 +343,9 @@ p{
     .transactionFooter {
         background-color: #00a8cc;
         padding: 5px;
+        border: solid;
+        border-color: #27496d
     }
-
-    
-
-   
-   
 } //end of transactions
 
 .transactionButtons {
