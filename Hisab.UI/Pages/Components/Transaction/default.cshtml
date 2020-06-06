@@ -60,12 +60,20 @@
 
             @if (User.Identity.Name == Model.PaidByEmail)
             {
-                <button><i class="fa fa-trash"></i> Delete</button>
+                <button id="delete_@Model.TransactionId" 
+                            data-id="@Model.TransactionId"
+                            data-eventid="@Model.EventId"
+                            data-tranDescription="@Model.TransactionDescription" 
+                            data-tranAmount="@Model.Amount" data-toggle="modal" 
+                            data-target="#tranDeleteModal">
+                <i class="fa fa-trash"></i> Delete</button>
             }
             else
             {
                
-                <button><i class="fa fa-exclamation-triangle"></i> Alert payer</button>
+                <button  >
+                            <i class="fa fa-exclamation-triangle"></i> Alert payer
+                </button>
                 @*<div class="dropdown">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-exclamation-circle"></i> Ask payer to

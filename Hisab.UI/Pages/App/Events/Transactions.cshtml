@@ -22,6 +22,44 @@
 
 <div class="clearfix"></div>
 
+<!-- Modal -->
+<div class="modal fade" id="tranDeleteModal" tabindex="-1" role="dialog" aria-labelledby="tranDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Delete Transaction</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="deleteTransactionForm" method="post">
+                @Html.HiddenFor(Model => Model.DeleteTransactionVm.TransactionId)
+                @Html.HiddenFor(Model => Model.DeleteTransactionVm.EventId)
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete the transaction:
+                    </p>
+                    <div class="form-group">
+
+                        <div id="transDesc"></div>
+
+                    </div>
+                    <div class="form-group">
+
+                        <div id="transAmount"></div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button id="deleteTransButton" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
 <div class="container transactions">
 
     @foreach (var transactionVm in Model.Transactions.OrderByDescending(x => x.TransactionDate))

@@ -22,6 +22,8 @@ namespace Hisab.BL
         Task<EventAccountBO> GetEventAccount(Guid eventId);
 
         Task<List<TransactionBO>> GetTransactions(Guid eventId);
+
+        Task<bool> DeleteTransaction(Guid transactionId);
     }
 
     public class EventTransactionManager : IEventTransactionManager
@@ -230,6 +232,23 @@ namespace Hisab.BL
 
 
                 return transRow;
+            }
+        }
+
+        public async Task<bool> DeleteTransaction(Guid transactionId)
+        {
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+
+
+                context.EventTransactionRepository.DeleteTransaction(transactionId);
+
+                context.SaveChanges();
+
+                return true;
+
+
+                
             }
         }
     }

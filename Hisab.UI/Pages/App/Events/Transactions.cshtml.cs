@@ -6,18 +6,24 @@ using Hisab.BL;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NToastNotify;
 
 namespace Hisab.UI
 {
     public class TransactionsModel : PageModel
     {
         IEventTransactionManager _transactionManager;
+        IToastNotification _toastNotification;
 
         public List<TransactionVM> Transactions { get; set; }
 
-        public TransactionsModel(IEventTransactionManager transactionManager)
+        [BindProperty]
+        public DeleteTransactionVM DeleteTransactionVm { get; set; }
+
+        public TransactionsModel(IEventTransactionManager transactionManager, IToastNotification toastNotification)
         {
             _transactionManager = transactionManager;
+            _toastNotification = toastNotification;
 
             Transactions = new List<TransactionVM>();
         }
@@ -71,5 +77,22 @@ namespace Hisab.UI
 
             return Page();
         }
+
+        public async Task<IActionResult> OnPostDeletTransaction()
+        {
+
+            var retVal = await _transactionManager.DeleteTransaction(DeleteTransactionVm.TransactionId);
+
+            if(retVal)
+            {
+                _toastNotification.AddSuccessToastMessage("Transaction deleted successfully");
+                return new JsonResult(new { success = true, responseText = "Transaction Deleted" });
+            }
+
+            return new JsonResult(new { success = false, responseText = "Transaction not Deleted" });
+        }
+
+            
+        
     }
 }

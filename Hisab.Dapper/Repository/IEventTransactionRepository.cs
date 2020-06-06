@@ -43,6 +43,8 @@ namespace Hisab.Dapper.Repository
         List<EventUserAccountBO> GetEventUserAccounts(Guid eventId);
 
         EventAccountBO GetEventAccount(Guid eventId);
+
+        void DeleteTransaction(Guid transactionId);
     }
 
     internal class EventTransactionRepository : RepositoryBase, IEventTransactionRepository
@@ -473,6 +475,24 @@ namespace Hisab.Dapper.Repository
             }
 
             return retVal;
+        }
+
+        public void DeleteTransaction(Guid transactionId)
+        {
+
+            var transactionJournalResult = Connection.Execute($@" delete  FROM [dbo].[EventTransactionJournal] where [TransactionId] = @{nameof(transactionId)}",
+              new { transactionId }, Transaction);
+
+            var eventFriendJournalResult = Connection.Execute($@" delete  FROM [dbo].[EventFriendJournal] where [TransactionId] = @{nameof(transactionId)}",
+              new { transactionId }, Transaction);
+
+            var eventsplitResult = Connection.Execute($@" delete  FROM [dbo].[EventTransactionSplit] where [TransactionId] = @{nameof(transactionId)}",
+             new { transactionId }, Transaction);
+
+            var transactionResult = Connection.Execute($@" delete  FROM [dbo].[EventTransaction] where [Id] = @{nameof(transactionId)}",
+              new { transactionId }, Transaction);
+
+            
         }
     }
 }

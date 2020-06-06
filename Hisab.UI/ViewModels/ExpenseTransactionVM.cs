@@ -34,6 +34,13 @@ namespace Hisab.UI.ViewModels
 
     }
 
+    public class DeleteTransactionVM
+    {
+        public Guid TransactionId { get; set; }
+
+        public Guid EventId { get; set; }
+    }
+
     public class ExpenseTransactionVM
     {
         public Guid TransactionId { get; set; }
