@@ -48,8 +48,8 @@ namespace Hisab.UI
                 ContributeVM.EventId = Id;
                 ContributeVM.EventPoolId = eventAccount.AccountId;
 
-            
-                
+            this.ViewData.Add("EventTitle", eventAccount.EventName);
+
             return Page();
         }
 
@@ -79,7 +79,7 @@ namespace Hisab.UI
                     }
                 }
 
-            
+            this.ViewData.Add("EventTitle", eve.EventName);
 
             return Page();
         }

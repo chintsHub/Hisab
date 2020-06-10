@@ -52,8 +52,9 @@ namespace Hisab.Common.BO
 
         public Guid AccountId { get; set; }
 
-             
-        
+        public string EventName { get; set; }
+
+
 
     }
 

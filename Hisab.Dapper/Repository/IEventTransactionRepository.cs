@@ -66,6 +66,7 @@ namespace Hisab.Dapper.Repository
                    SELECT 
 	                    e.[Id] as TransactionId
                         ,e.[EventId]
+                        
 	                    ,[TransactionDate]
 	                    ,[Description] as TransactionDescription
 	                    ,[TransactionType]
@@ -82,7 +83,7 @@ namespace Hisab.Dapper.Repository
 	                    ,u3.NickName 
                     FROM 
 	                    EventTransaction e 
-	                    left outer join ApplicationUser u on u.Id = e.PaidByUserId
+                        left outer join ApplicationUser u on u.Id = e.PaidByUserId
 	                    left outer join ApplicationUser u1 on u1.Id = e.LendToFriendUserId
 	                    left outer join [EventTransactionSplit] s on s.TransactionId = e.Id
 	                    left outer join ApplicationUser u3 on u3.Id = s.UserId
@@ -405,10 +406,12 @@ namespace Hisab.Dapper.Repository
                               SELECT 
 	                             [AccountId]
                                  ,[EventId]
+                                 ,[Event].[Name] as EventName
                                  ,[AccountTypeId]
 	                             ,COALESCE(DebitBalance.DebitTotal,0) DebitTotal
 	                             ,COALESCE(CreditBalance.CreditTotal,0) CreditTotal
                             FROM [dbo].[EventAccount] e
+                                inner join [Event] on [Event].Id = e.EventId
                             left outer join
                             (select 
 	                            EventAccountId,

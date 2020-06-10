@@ -46,6 +46,8 @@ namespace Hisab.UI
 
             };
 
+            this.ViewData.Add("EventTitle", Event.EventName);
+
             foreach (var f in eve.Friends)
             {
                 Event.Friends.Add(new EventFriendVm()

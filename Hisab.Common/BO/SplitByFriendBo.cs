@@ -9,6 +9,7 @@ namespace Hisab.Common.BO
     {
         public Guid EventId { get; set; }
 
+        
         public Guid TransactionId { get; set; }
 
         public DateTime TransactionDate { get; set; }

@@ -28,16 +28,19 @@ namespace Hisab.UI
         private IEventInviteManager _eventInviteManager { get; set; }
         private UserManager<ApplicationUser> _userManager { get; set; }
 
+        private IEventManager _eventManager;
+
         public List<UserEventInviteVM> PendingRequests { get; set; }
         
         [BindProperty]
         public List<InviteApplicationUserVM> RecommendedFriends { get; set; }
 
 
-        public EventFriendsModel(IEventInviteManager eventInviteManager, UserManager<ApplicationUser> userManager)
+        public EventFriendsModel(IEventInviteManager eventInviteManager, UserManager<ApplicationUser> userManager, IEventManager eventManager)
         {
             _eventInviteManager = eventInviteManager;
             _userManager = userManager;
+            _eventManager = eventManager;
 
             PendingRequests = new List<UserEventInviteVM>();
             RecommendedFriends = new List<InviteApplicationUserVM>();
@@ -47,6 +50,9 @@ namespace Hisab.UI
         {
             NewFriend = new InviteFriendVm();
             NewFriend.EventId = Id;
+
+            var eve = await _eventManager.GetEventById(Id);
+            this.ViewData.Add("EventTitle", eve.EventName);
 
             //Get loggedin user
             var user = await _userManager.FindByNameAsync(User.Identity.Name);

@@ -13,6 +13,7 @@ namespace Hisab.UI
     public class TransactionsModel : PageModel
     {
         IEventTransactionManager _transactionManager;
+        IEventManager _eventManager;
         IToastNotification _toastNotification;
 
         public List<TransactionVM> Transactions { get; set; }
@@ -20,15 +21,20 @@ namespace Hisab.UI
         [BindProperty]
         public DeleteTransactionVM DeleteTransactionVm { get; set; }
 
-        public TransactionsModel(IEventTransactionManager transactionManager, IToastNotification toastNotification)
+        public TransactionsModel(IEventTransactionManager transactionManager, IToastNotification toastNotification, IEventManager eventManager)
         {
             _transactionManager = transactionManager;
             _toastNotification = toastNotification;
+            _eventManager = eventManager;
 
             Transactions = new List<TransactionVM>();
         }
         public async Task<IActionResult> OnGet(Guid Id)
         {
+            var eve = await _eventManager.GetEventById(Id);
+            this.ViewData.Add("EventTitle", eve.EventName);
+
+
             var trans = await _transactionManager.GetTransactions(Id);
 
             foreach(var tran in trans)
@@ -44,6 +50,7 @@ namespace Hisab.UI
                     PaidByName = tran.PaidByName,
                     TransactionType = tran.TransactionType,
                     PaidByEmail = tran.PaidByEmail
+                    
                 };
 
 

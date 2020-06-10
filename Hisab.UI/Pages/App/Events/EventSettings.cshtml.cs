@@ -58,7 +58,7 @@ namespace Hisab.UI
                 }
                 
             }
-
+            this.ViewData.Add("EventTitle", eve.EventName);
             return Page();
         }
 

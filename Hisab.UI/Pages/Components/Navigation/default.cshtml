@@ -5,7 +5,9 @@
     
     <nav class="clearfix hamburgerNav">
         <button id="hamburgerBtn"><i class="fa fa-bars"></i></button>
-        <div class="eventTitle">Event Title</div>
+        <div id="eventTitle" class="eventTitle">
+            @ViewBag.EventTitle
+        </div>
         <ul id="hamburgerMenu" class="hamburgerMenuItems">
             @foreach (var item in Model.Items)
             {
