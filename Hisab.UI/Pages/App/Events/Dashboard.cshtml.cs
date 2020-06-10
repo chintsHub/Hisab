@@ -17,6 +17,7 @@ namespace Hisab.UI
     {
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
+        private IEventTransactionManager _eventTransactionManager;
 
         [BindProperty(SupportsGet =true)]
         public EventVm Event { get; set; }
@@ -24,11 +25,11 @@ namespace Hisab.UI
         
         public bool IsLoggedInUserTheEventAdmin { get; set; }
 
-        public DashboardModel(IEventManager eventManager, UserManager<ApplicationUser> userManager)
+        public DashboardModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager eventTransactionManager)
         {
             _eventManager = eventManager;
             _userManager = userManager;
-
+            _eventTransactionManager = eventTransactionManager;
 
         }
 
@@ -64,6 +65,54 @@ namespace Hisab.UI
                 IsLoggedInUserTheEventAdmin = true;
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnGetMyExpense(Guid Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var expBalance = await _eventTransactionManager.GetExpenseAccountBalance(Id, user.Id);
+
+            return new JsonResult(new { balance = expBalance});
+        }
+
+        public async Task<IActionResult> OnGetAllExpense(Guid Id)
+        {
+            
+            var totalExpense = await _eventTransactionManager.GetTotalExpense(Id);
+
+            return new JsonResult(new { totalExpense = totalExpense });
+        }
+
+        public async Task<IActionResult> OnGetAmountIOweToFriends(Guid Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var amountIOwe = await _eventTransactionManager.GetAmountIOweToFriends(Id,user.Id);
+
+            return new JsonResult(new { amountIOwe = amountIOwe });
+        }
+
+        public async Task<IActionResult> OnGetAmountFriendsOweToMe(Guid Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var amountFriendsOwe = await _eventTransactionManager.GetAmountFriendsOweToMe(Id, user.Id);
+
+            return new JsonResult(new { amountFriendsOwe = amountFriendsOwe });
+        }
+
+        public async Task<IActionResult> OnGetMyContributions(Guid Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var myContributions = await _eventTransactionManager.GetMyContributions(Id, user.Id);
+
+            return new JsonResult(new { myContributions = myContributions });
+        }
+
+        public async Task<IActionResult> OnGetEventAccountBalance(Guid Id)
+        {
+            var eventBalance = await _eventTransactionManager.GetEventAccount(Id);
+
+            return new JsonResult(new { eventBalance = eventBalance.CalculateBalance() });
         }
     }
 }

@@ -17,6 +17,14 @@ namespace Hisab.BL
         Task<List<EventFriendJournalBO>> CreateLendToFriendJournals(NewTransactionBO newTransactionBO);
 
         Task<List<EventTransactionJournalBO>> CreateExpenseJournalPaidFromPool(NewTransactionBO newTransactionBO);
+
+        Task<EventUserAccountBO> GetExpenseAccount(Guid userId, Guid eventId);
+
+        Task<EventUserAccountBO> GetCashAccount(Guid userId, Guid eventId);
+
+        EventUserAccountBO GetAccountReceivable(Guid userId, Guid eventId);
+
+
     }
     
     public class EventJournalHelper : IEventJournalHelper
@@ -73,7 +81,7 @@ namespace Hisab.BL
                             EventId = newTransactionBO.EventId,
                             UserId = split.UserId,
                             TransactionId = split.TransactionId,
-                            // Event Friend Account Debit and Event Cash Account Credit
+                            // Event Friend Expense Account Debit and Event Cash Account Credit
                             EventAccountId = newTransactionBO.EventPoolAccountId,
                             EventAccountAction = JournalAction.Credit,
                             EventFriendAccountId = accounts.FirstOrDefault(x => x.UserId == split.UserId && x.AccountTypeId == ApplicationAccountType.Expense).AccountId,
@@ -191,6 +199,90 @@ namespace Hisab.BL
 
                 return journals;
             }
+        }
+
+        public async Task<EventUserAccountBO> GetExpenseAccount(Guid userId, Guid eventId)
+        {
+            var retVal = new EventUserAccountBO();
+            retVal.AccountTypeId = ApplicationAccountType.Expense;
+            retVal.UserId = userId;
+            retVal.EventId = eventId;
+            retVal.CreditTotal = 0; // we never credit expense account in this app
+            
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                retVal.DebitTotal = 0;
+               //expense paid from money pool
+               var balanceFromEvents = context.EventTransactionRepository.GetUserAccountBalancesFromEventTransactions(eventId, userId, ApplicationAccountType.Expense);
+
+                retVal.AccountTypeId = ApplicationAccountType.Expense;
+                var DebitEntry = balanceFromEvents.Where(x => x.EventFriendAccountAction == JournalAction.Debit).FirstOrDefault();
+                if(DebitEntry != null)
+                {
+                    retVal.DebitTotal += DebitEntry.TotalAmount;
+                }
+                
+
+                //expense paid by friend
+                var balanceFromEventFriend = context.EventTransactionRepository.GetDebitUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.Expense);
+                if (balanceFromEventFriend != null)
+                    retVal.DebitTotal += balanceFromEventFriend.TotalAmount;
+            }
+
+            return retVal;
+        }
+
+        public async Task<EventUserAccountBO> GetCashAccount(Guid userId, Guid eventId)
+        {
+            var retVal = new EventUserAccountBO();
+            retVal.AccountTypeId = ApplicationAccountType.Cash;
+            retVal.UserId = userId;
+            retVal.EventId = eventId;
+            
+
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                retVal.CreditTotal = 0;
+                retVal.DebitTotal = 0;
+
+                //from Event books 
+                var balanceFromEvents = context.EventTransactionRepository.GetUserAccountBalancesFromEventTransactions(eventId, userId, ApplicationAccountType.Cash);
+
+                retVal.AccountTypeId = ApplicationAccountType.Cash;
+                var DebitEntry = balanceFromEvents.Where(x => x.EventFriendAccountAction == JournalAction.Debit).FirstOrDefault();
+                if (DebitEntry != null)
+                {
+                    retVal.DebitTotal += DebitEntry.TotalAmount;
+                }
+
+                var CreditEntry = balanceFromEvents.Where(x => x.EventFriendAccountAction == JournalAction.Credit).FirstOrDefault();
+                if (CreditEntry != null)
+                {
+                    retVal.CreditTotal += CreditEntry.TotalAmount;
+                }
+
+
+                // from user books
+                var creditbalanceFromUserBook = context.EventTransactionRepository.GetCreditUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.Cash);
+                if (creditbalanceFromUserBook != null)
+                {
+                    retVal.CreditTotal += creditbalanceFromUserBook.TotalAmount;
+                }
+                var debitbalanceFromUserBook = context.EventTransactionRepository.GetDebitUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.Cash);
+                if (debitbalanceFromUserBook != null)
+                {
+                    retVal.DebitTotal += debitbalanceFromUserBook.TotalAmount;
+                }
+            }
+
+            return retVal;
+        }
+
+        public EventUserAccountBO GetAccountReceivable(Guid userId, Guid eventId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

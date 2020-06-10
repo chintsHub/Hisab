@@ -249,7 +249,7 @@ namespace Hisab.BL
             var retVal = new EventDashboardStatBo();
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
-                retVal.TotalEventExpense = context.EventTransactionRepository.GetEventExpense(eventId);
+                //retVal.TotalEventExpense = context.EventTransactionRepository.GetEventExpense(eventId);
 
                 retVal.TotalEventPoolBalance = context.EventTransactionRepository.GetEventPoolBalance(eventId);
 

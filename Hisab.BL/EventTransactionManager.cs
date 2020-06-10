@@ -24,6 +24,16 @@ namespace Hisab.BL
         Task<List<TransactionBO>> GetTransactions(Guid eventId);
 
         Task<bool> DeleteTransaction(Guid transactionId);
+
+        Task<decimal> GetExpenseAccountBalance(Guid eventId, Guid userId);
+
+        Task<decimal> GetTotalExpense(Guid eventId);
+
+        Task<decimal> GetAmountIOweToFriends(Guid eventId, Guid userId);
+
+        Task<decimal> GetAmountFriendsOweToMe(Guid eventId, Guid userId);
+
+        Task<decimal> GetMyContributions(Guid eventId, Guid userId);
     }
 
     public class EventTransactionManager : IEventTransactionManager
@@ -249,6 +259,119 @@ namespace Hisab.BL
 
 
                 
+            }
+        }
+
+        public async Task<decimal> GetExpenseAccountBalance(Guid eventId, Guid userId)
+        {
+            var expAccount = await _eventJournalHelper.GetExpenseAccount(userId, eventId);
+
+            return expAccount.CalculateBalance();
+        }
+
+        public async Task<decimal> GetTotalExpense(Guid eventId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+
+                var result = context.EventTransactionRepository.GetEventExpense(eventId);
+
+                
+                return result;
+
+
+
+            }
+        }
+
+        public async Task<decimal> GetAmountIOweToFriends(Guid eventId, Guid userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+                decimal debitAmount = 0;
+                decimal creditAmount = 0;
+
+                var debitresult = context.EventTransactionRepository.GetDebitUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.AccountPayable);
+
+                var creditresult = context.EventTransactionRepository.GetCreditUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.AccountPayable);
+
+                if(debitresult != null)
+                {
+                    debitAmount = debitresult.TotalAmount;
+                }
+
+                if(creditresult != null)
+                {
+                    creditAmount = creditresult.TotalAmount;
+                }
+
+                var account = new EventUserAccountBO()
+                {
+                    AccountTypeId = ApplicationAccountType.AccountPayable,
+                    DebitTotal = debitAmount,
+                    CreditTotal = creditAmount,
+                    EventId = eventId,
+                    UserId = userId
+                };
+
+                return account.CalculateBalance();
+
+
+
+            }
+        }
+
+        public async Task<decimal> GetAmountFriendsOweToMe(Guid eventId, Guid userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+                decimal debitAmount = 0;
+                decimal creditAmount = 0;
+
+                var debitresult = context.EventTransactionRepository.GetDebitUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.AccountRecievable);
+
+                var creditresult = context.EventTransactionRepository.GetCreditUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.AccountRecievable);
+
+                if (debitresult != null)
+                {
+                    debitAmount = debitresult.TotalAmount;
+                }
+
+                if (creditresult != null)
+                {
+                    creditAmount = creditresult.TotalAmount;
+                }
+
+                var account = new EventUserAccountBO()
+                {
+                    AccountTypeId = ApplicationAccountType.AccountRecievable,
+                    DebitTotal = debitAmount,
+                    CreditTotal = creditAmount,
+                    EventId = eventId,
+                    UserId = userId
+                };
+
+                return account.CalculateBalance();
+
+
+
+            }
+        }
+
+        public async Task<decimal> GetMyContributions(Guid eventId, Guid userId)
+        {
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+                var result = await _eventJournalHelper.GetCashAccount(userId, eventId);
+
+                return System.Math.Abs(result.CalculateBalance()); // Cash given will be in negative (credit) balance.
+
+
+
             }
         }
     }

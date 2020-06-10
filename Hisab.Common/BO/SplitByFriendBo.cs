@@ -211,6 +211,8 @@ namespace Hisab.Common.BO
     }
 
     
+
+    
     public enum TransactionType
     {
         Expense = 1,

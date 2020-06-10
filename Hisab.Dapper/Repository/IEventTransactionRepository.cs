@@ -30,7 +30,7 @@ namespace Hisab.Dapper.Repository
         int CreateTransactionSettlement(int eventId, int transactionId, int payerEventFriendId,
             int receiverEventFriendId, decimal amount);
 
-        decimal GetEventExpense(int eventId);
+        decimal GetEventExpense(Guid eventId);
 
         decimal GetEventPoolBalance(int eventId);
 
@@ -45,6 +45,12 @@ namespace Hisab.Dapper.Repository
         EventAccountBO GetEventAccount(Guid eventId);
 
         void DeleteTransaction(Guid transactionId);
+
+        List<EventUserAccountRawBO> GetUserAccountBalancesFromEventTransactions(Guid eventId, Guid userId, ApplicationAccountType AccountType);
+
+        EventUserAccountRawBO GetDebitUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType);
+
+        EventUserAccountRawBO GetCreditUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType);
     }
 
     internal class EventTransactionRepository : RepositoryBase, IEventTransactionRepository
@@ -94,7 +100,7 @@ namespace Hisab.Dapper.Repository
                     {
                         transBo = eventTransactionBO;
                         transBo.SharedWith = new List<EventFriendBO>();
-                        //transBo.TransactionId = eventTransactionBO.TransactionId;
+                        transBo.TransactionId = eventTransactionBO.TransactionId;
                         
                         eventDict.Add(transBo.TransactionId, transBo);
                     }
@@ -106,7 +112,7 @@ namespace Hisab.Dapper.Repository
 
 
 
-            return result.ToList();
+            return eventDict.Values.ToList();
         }
 
         public List<SettlementData> GetSettlementData(int eventId)
@@ -132,10 +138,13 @@ namespace Hisab.Dapper.Repository
             return result.ToList();
         }
 
-        public decimal GetEventExpense(int eventId)
+        public decimal GetEventExpense(Guid eventId)
         {
             var totalAmount = Connection.ExecuteScalar<decimal>($@"
-                     select sum(TotalAmount) from [dbo].[EventTransaction] a where a.Id = @{nameof(eventId)}",
+                     select sum(TotalAmount) from [dbo].[EventTransaction] a 
+                        where 
+                            a.TransactionType in (1,4) and
+                            a.EventId = @{nameof(eventId)}",
                      new { eventId }, Transaction);
 
             return totalAmount;
@@ -493,6 +502,80 @@ namespace Hisab.Dapper.Repository
               new { transactionId }, Transaction);
 
             
+        }
+
+        public List<EventUserAccountRawBO> GetUserAccountBalancesFromEventTransactions(Guid eventId, Guid userId, ApplicationAccountType AccountType)
+        {
+            
+
+            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
+                    SELECT
+	                    j.EventId,
+	                    j.UserAccountId as AccountId,
+	                    [EventFriendAccountAction],
+	                    sum(j.Amount) TotalAmount
+                      FROM [EventTransactionJournal] j
+					  inner join [dbo].[UserAccount] ua on ua.AccountId = j.UserAccountId
+					  inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
+                    where 
+	                    j.EventId = @{nameof(eventId)}
+	                    and j.UserId = @{nameof(userId)}
+						and a.Id = @{nameof(AccountType)}
+                    group by
+	                    j.EventId,
+	                    j.UserAccountId,
+	                    [EventFriendAccountAction] ",
+                new { eventId, userId, AccountType }, Transaction);
+
+            
+
+            return EventTransactionJournalResult.ToList();
+        }
+
+        public EventUserAccountRawBO GetDebitUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType)
+        {
+            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
+                    SELECT
+	                   j.EventId,
+	                   j.[DebitAccount] as AccountId,
+	                   1 as EventFriendAccountAction,
+	                   sum(j.Amount) TotalAmount -- Debit balance
+                      FROM [EventFriendJournal] j
+                        inner join [dbo].[UserAccount] ua on ua.AccountId = j.[DebitAccount]
+	                    inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
+                    where 
+	                    j.EventId = @{nameof(eventId)}
+	                    and j.UserId = @{nameof(userId)}
+						and a.Id = @{nameof(AccountType)}
+                    group by
+	                    j.EventId,
+	                    j.DebitAccount ",
+               new { eventId, userId, AccountType }, Transaction);
+
+            return EventTransactionJournalResult.FirstOrDefault();
+        }
+
+        public EventUserAccountRawBO GetCreditUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType)
+        {
+            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
+                    SELECT
+	                   j.EventId,
+	                   j.[CreditAccount] as AccountId,
+	                   2 as EventFriendAccountAction, --Credit
+	                   sum(j.Amount) TotalAmount -- Credit balance
+                      FROM [EventFriendJournal] j
+                         inner join [dbo].[UserAccount] ua on ua.AccountId = j.[CreditAccount]
+	                    inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
+                    where 
+	                    j.EventId = @{nameof(eventId)}
+	                    and j.UserId = @{nameof(userId)}
+						and a.Id = @{nameof(AccountType)}
+                    group by
+	                    j.EventId,
+	                    j.CreditAccount",
+              new { eventId, userId, AccountType }, Transaction);
+
+            return EventTransactionJournalResult.FirstOrDefault();
         }
     }
 }

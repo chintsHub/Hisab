@@ -34,6 +34,18 @@ namespace Hisab.Common.BO
         
     }
 
+    public class EventUserAccountRawBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserAccountId { get; set; }
+
+        public JournalAction EventFriendAccountAction { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+    }
+
     public class EventAccountBO : AccountBO
     {
         public Guid EventId { get; set; }
