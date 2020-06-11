@@ -43,7 +43,7 @@ namespace Hisab.UI.Controllers
                 return true;
 
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var result = _eventManager.CheckEventAccess(eventbo, user.Id);
+            var result = await _eventManager.CheckEventAccess(eventbo, "");
 
             return result;
         }
@@ -315,7 +315,7 @@ namespace Hisab.UI.Controllers
         public async Task<IActionResult> UpdateEvent(EventVm eventVm)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var canAccess = await _eventManager.CanAccessEvent(eventVm.EventId, user.Id);
+            var canAccess = false;
 
             if (canAccess)
             {

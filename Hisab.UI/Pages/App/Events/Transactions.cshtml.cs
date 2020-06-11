@@ -34,55 +34,59 @@ namespace Hisab.UI
             var eve = await _eventManager.GetEventById(Id);
             this.ViewData.Add("EventTitle", eve.EventName);
 
-
-            var trans = await _transactionManager.GetTransactions(Id);
-
-            foreach(var tran in trans)
+            if (await _eventManager.CheckEventAccess(eve, User.Identity.Name))
             {
-                var tranVM = new TransactionVM()
-                {
-                    EventId = tran.EventId,
-                    TransactionId = tran.TransactionId,
-                    TransactionDate = tran.TransactionDate,
-                    TransactionDescription = tran.TransactionDescription,
-                    Amount = tran.TotalAmount,
-                    PaidById = tran.PaidById,
-                    PaidByName = tran.PaidByName,
-                    TransactionType = tran.TransactionType,
-                    PaidByEmail = tran.PaidByEmail
-                    
-                };
+                var trans = await _transactionManager.GetTransactions(Id);
 
-
-                if(tran.TransactionType == Common.BO.TransactionType.Expense || tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
+                foreach (var tran in trans)
                 {
-                    foreach (var friend in tran.SharedWith)
+                    var tranVM = new TransactionVM()
                     {
-                        tranVM.SharedWith += friend.NickName + ",";
+                        EventId = tran.EventId,
+                        TransactionId = tran.TransactionId,
+                        TransactionDate = tran.TransactionDate,
+                        TransactionDescription = tran.TransactionDescription,
+                        Amount = tran.TotalAmount,
+                        PaidById = tran.PaidById,
+                        PaidByName = tran.PaidByName,
+                        TransactionType = tran.TransactionType,
+                        PaidByEmail = tran.PaidByEmail
+
+                    };
+
+
+                    if (tran.TransactionType == Common.BO.TransactionType.Expense || tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
+                    {
+                        foreach (var friend in tran.SharedWith)
+                        {
+                            tranVM.SharedWith += friend.NickName + ",";
+                        }
+
                     }
-                    
+
+                    if (tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
+                    {
+                        tran.PaidByName += "Using Money Pool";
+                    }
+
+                    if (tran.TransactionType == Common.BO.TransactionType.ContributionToPool)
+                    {
+                        tranVM.SharedWith = "Money Pool";
+                    }
+
+                    if (tran.TransactionType == Common.BO.TransactionType.LendToFriend)
+                    {
+                        tranVM.SharedWith = tran.LendToFriendName;
+                    }
+
+                    Transactions.Add(tranVM);
+
                 }
 
-                if(tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
-                {
-                    tran.PaidByName += "Using Money Pool";
-                }
-               
-                if(tran.TransactionType == Common.BO.TransactionType.ContributionToPool)
-                {
-                    tranVM.SharedWith = "Money Pool";
-                }
-
-                if (tran.TransactionType == Common.BO.TransactionType.LendToFriend)
-                {
-                    tranVM.SharedWith = tran.LendToFriendName;
-                }
-
-                Transactions.Add(tranVM);
-
+                return Page();
             }
 
-            return Page();
+            throw new UnauthorizedAccessException();
         }
 
         public async Task<IActionResult> OnPostDeletTransaction()

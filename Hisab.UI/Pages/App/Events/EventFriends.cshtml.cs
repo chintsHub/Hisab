@@ -51,17 +51,23 @@ namespace Hisab.UI
             NewFriend = new InviteFriendVm();
             NewFriend.EventId = Id;
 
+            
             var eve = await _eventManager.GetEventById(Id);
             this.ViewData.Add("EventTitle", eve.EventName);
 
-            //Get loggedin user
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (await _eventManager.CheckEventAccess(eve, User.Identity.Name))
+            {
+                //Get loggedin user
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            await LoadPendingRequest(NewFriend.EventId);
+                await LoadPendingRequest(NewFriend.EventId);
 
-            await LoadRecommendedFriends(user.Id, NewFriend.EventId);
+                await LoadRecommendedFriends(user.Id, NewFriend.EventId);
 
-            return Page();
+                return Page();
+            }
+
+            throw new UnauthorizedAccessException();
 
         }
 

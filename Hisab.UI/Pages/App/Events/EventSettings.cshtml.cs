@@ -34,32 +34,38 @@ namespace Hisab.UI
             SettingsVM = new EventSettingsVM();
 
             var eve = await _eventManager.GetEventById(Id);
-            SettingsVM.EventName = eve.EventName;
-            SettingsVM.SelectedEventImage = eve.EventPicId;
-            SettingsVM.EventId = eve.Id;
-
-            foreach (var f in eve.Friends)
+            
+            if(await _eventManager.CheckEventAccess(eve,User.Identity.Name))
             {
-                //only load event friends
-                if (f.EventFriendStatus == EventFriendStatus.EventFriend)
+                SettingsVM.EventName = eve.EventName;
+                SettingsVM.SelectedEventImage = eve.EventPicId;
+                SettingsVM.EventId = eve.Id;
+
+                foreach (var f in eve.Friends)
                 {
-                    SettingsVM.Friends.Add(new EventFriendVm()
+                    //only load event friends
+                    if (f.EventFriendStatus == EventFriendStatus.EventFriend)
                     {
-                        EventId = f.EventId,
-                        UserId = f.UserId,
-                        Email = f.Email,
-                        Name = f.NickName,
-                        Status = f.EventFriendStatus.GetDescription(),
-                        EventFriendStatus = f.EventFriendStatus,
-                        IsFriendActive = f.IsFriendActive,
-                        Avatar = HisabImageManager.GetAvatar(f.Avatar)
-                    });
+                        SettingsVM.Friends.Add(new EventFriendVm()
+                        {
+                            EventId = f.EventId,
+                            UserId = f.UserId,
+                            Email = f.Email,
+                            Name = f.NickName,
+                            Status = f.EventFriendStatus.GetDescription(),
+                            EventFriendStatus = f.EventFriendStatus,
+                            IsFriendActive = f.IsFriendActive,
+                            Avatar = HisabImageManager.GetAvatar(f.Avatar)
+                        });
+
+                    }
 
                 }
-                
+                this.ViewData.Add("EventTitle", eve.EventName);
+                return Page();
             }
-            this.ViewData.Add("EventTitle", eve.EventName);
-            return Page();
+
+            throw new UnauthorizedAccessException();
         }
 
         

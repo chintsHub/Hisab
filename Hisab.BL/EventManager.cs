@@ -35,13 +35,14 @@ namespace Hisab.BL
 
         Task<bool> UpdateFriend(EventFriendBO eventFriendBo);
 
-        Task<bool> CanAccessEvent(Guid eventId, Guid userId);
 
-        
 
-        bool CheckEventAccess(EventBO eventBo, Guid userId);
 
-       
+
+        Task<bool> CheckEventAccess(EventBO eventBo, string userName);
+
+
+
 
         Task<EventDashboardStatBo> GetDashboardStats(int eventId, int eventFriendId);
 
@@ -222,24 +223,30 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<bool> CanAccessEvent(Guid eventId, Guid userId)
-        {
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
-                var eventBo = context.EventRepository.GetEventById(eventId);
+        //public async Task<bool> CanAccessEvent(Guid eventId, Guid userId)
+        //{
+        //    using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+        //    {
+        //        var eventBo = context.EventRepository.GetEventById(eventId);
 
-                return CheckEventAccess(eventBo, userId);
+        //        return CheckEventAccess(eventBo, userId);
 
 
 
-            }
+        //    }
 
            
-        }
+        //}
 
-        public bool CheckEventAccess(EventBO eventBo, Guid userId)
+        public async Task<bool> CheckEventAccess(EventBO eventBo, string userName)
         {
-            var friend = eventBo.Friends.FirstOrDefault(x => x.UserId != null && x.UserId == userId);
+            var user = await _userManager.FindByNameAsync(userName);
+            if(await _userManager.IsInRoleAsync(user,"admin"))
+            {
+                return true;
+            }
+
+            var friend = eventBo.Friends.FirstOrDefault(x => x.Email.ToLower() == userName.ToLower());
 
             return friend != null;
         }
