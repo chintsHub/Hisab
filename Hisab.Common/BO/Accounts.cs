@@ -31,7 +31,7 @@ namespace Hisab.Common.BO
 
         public Guid AccountId { get; set; }
 
-        
+
     }
 
     public class EventUserAccountRawBO
@@ -43,6 +43,10 @@ namespace Hisab.Common.BO
         public JournalAction EventFriendAccountAction { get; set; }
 
         public decimal TotalAmount { get; set; }
+
+        public Guid PayReceiveFriend { get; set; }
+
+      
 
     }
 
@@ -57,6 +61,37 @@ namespace Hisab.Common.BO
 
 
     }
+
+   
+
+    public class SettlementAccountBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid FriendId { get; set; }
+
+        public string FriendName { get; set; }
+
+        public AvatarEnum FriendAvatar { get; set; }
+
+        public AccountBO AccountPayable { get; set; }
+
+        public AccountBO AccountReceivable { get; set; }
+
+        public SettlementAccountBO()
+        {
+            AccountPayable = new AccountBO();
+            AccountReceivable = new AccountBO();
+
+            AccountPayable.AccountTypeId = ApplicationAccountType.AccountPayable;
+            AccountReceivable.AccountTypeId = ApplicationAccountType.AccountRecievable;
+
+        }
+    }
+
+    
 
     public class AccountBO
     {

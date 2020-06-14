@@ -111,5 +111,25 @@ namespace Hisab.UI.ViewModels
         }
     }
 
-    
+    public class SettlementAccountVM
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid FriendId { get; set; }
+
+        public string FriendName { get; set; }
+
+        public AvatarVm FriendAvatar { get; set; }
+
+        public decimal AmountPayable { get; set; }
+
+        public decimal AmountReceivable { get; set; }
+
+        public decimal NetAmount { get; set; }
+    }
+
+
+
 }

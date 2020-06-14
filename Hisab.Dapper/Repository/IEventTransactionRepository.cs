@@ -51,6 +51,10 @@ namespace Hisab.Dapper.Repository
         EventUserAccountRawBO GetDebitUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType);
 
         EventUserAccountRawBO GetCreditUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType);
+
+        List<EventUserAccountRawBO> GetDebitBalanceForSettlementAccount(Guid eventId, Guid userId, ApplicationAccountType AccountType);
+
+        List<EventUserAccountRawBO> GetCreditBalanceForSettlementAccount(Guid eventId, Guid userId, ApplicationAccountType AccountType);
     }
 
     internal class EventTransactionRepository : RepositoryBase, IEventTransactionRepository
@@ -579,6 +583,70 @@ namespace Hisab.Dapper.Repository
               new { eventId, userId, AccountType }, Transaction);
 
             return EventTransactionJournalResult.FirstOrDefault();
+        }
+
+        public List<EventUserAccountRawBO> GetDebitBalanceForSettlementAccount(Guid eventId, Guid userId, ApplicationAccountType AccountType)
+        {
+            if(AccountType == ApplicationAccountType.Cash || AccountType == ApplicationAccountType.Expense)
+            {
+                throw new Exception("Invalid Account Type for Settlement");
+            }
+            
+            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
+                   SELECT
+	                   j.EventId,
+	                   j.[DebitAccount] as AccountId,
+	                   1 as EventFriendAccountAction,
+					   j.[PayReceiveFriend],
+					  
+	                   sum(j.Amount) TotalAmount -- Debit balance
+                      FROM [EventFriendJournal] j
+                        inner join [dbo].[UserAccount] ua on ua.AccountId = j.[DebitAccount]
+	                    inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
+						inner join [dbo].[ApplicationUser] u on u.Id = j.[PayReceiveFriend]
+                    where 
+	                    j.EventId = @{nameof(eventId)} -- in the event
+	                    and j.UserId = @{nameof(userId)} -- in the user book
+						and a.Id = @{nameof(AccountType)} -- Accounts Type
+                    group by
+	                    j.EventId,
+	                    j.DebitAccount ,
+						[PayReceiveFriend]",
+              new { eventId, userId, AccountType }, Transaction);
+
+            return EventTransactionJournalResult.ToList();
+        }
+
+        public List<EventUserAccountRawBO> GetCreditBalanceForSettlementAccount(Guid eventId, Guid userId, ApplicationAccountType AccountType)
+        {
+            if (AccountType == ApplicationAccountType.Cash || AccountType == ApplicationAccountType.Expense)
+            {
+                throw new Exception("Invalid Account Type for Settlement");
+            }
+
+            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
+                   SELECT
+	                   j.EventId,
+	                   j.[CreditAccount] as AccountId,
+	                   1 as EventFriendAccountAction,
+					   j.[PayReceiveFriend],
+					  
+	                   sum(j.Amount) TotalAmount -- Credit balance
+                      FROM [EventFriendJournal] j
+                        inner join [dbo].[UserAccount] ua on ua.AccountId = j.[CreditAccount]
+	                    inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
+						inner join [dbo].[ApplicationUser] u on u.Id = j.[PayReceiveFriend]
+                    where 
+	                    j.EventId = @{nameof(eventId)} -- in the event
+	                    and j.UserId = @{nameof(userId)} -- in the user book
+						and a.Id = @{nameof(AccountType)} -- Accounts Type
+                    group by
+	                    j.EventId,
+	                    j.CreditAccount,
+						[PayReceiveFriend]		 ",
+              new { eventId, userId, AccountType }, Transaction);
+
+            return EventTransactionJournalResult.ToList();
         }
     }
 }

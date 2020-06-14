@@ -34,6 +34,8 @@ namespace Hisab.BL
         Task<decimal> GetAmountFriendsOweToMe(Guid eventId, Guid userId);
 
         Task<decimal> GetMyContributions(Guid eventId, Guid userId);
+
+        Task<List<SettlementAccountBO>> GetSettlementAccounts(EventBO eventBO, Guid userId);
     }
 
     public class EventTransactionManager : IEventTransactionManager
@@ -369,6 +371,70 @@ namespace Hisab.BL
                 var result = await _eventJournalHelper.GetCashAccount(userId, eventId);
 
                 return System.Math.Abs(result.CalculateBalance()); // Cash given will be in negative (credit) balance.
+
+
+
+            }
+        }
+
+        public async Task<List<SettlementAccountBO>> GetSettlementAccounts(EventBO eventBO, Guid userId)
+        {
+            var retVal = new List<SettlementAccountBO>();
+
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+
+               
+                var debitAccountReceivable = context.EventTransactionRepository.GetDebitBalanceForSettlementAccount(eventBO.Id, userId, ApplicationAccountType.AccountRecievable);
+                var creditAccountReceivable = context.EventTransactionRepository.GetCreditBalanceForSettlementAccount(eventBO.Id, userId, ApplicationAccountType.AccountRecievable);
+
+
+                var debitAccountPayable = context.EventTransactionRepository.GetDebitBalanceForSettlementAccount(eventBO.Id, userId, ApplicationAccountType.AccountPayable);
+                var creditAccountPayable = context.EventTransactionRepository.GetCreditBalanceForSettlementAccount(eventBO.Id, userId, ApplicationAccountType.AccountPayable);
+
+                foreach(var friend in eventBO.Friends.Where(x => x.UserId != userId)) // dont include current user
+                {
+                    var settlement = new SettlementAccountBO();
+
+                    settlement.EventId = eventBO.Id;
+                    settlement.FriendId = friend.UserId;
+                    settlement.FriendAvatar = friend.Avatar;
+                    settlement.FriendName = friend.NickName;
+
+                    var friendDebitPayable = debitAccountPayable.Where(x => x.PayReceiveFriend == friend.UserId).FirstOrDefault();
+                    if(friendDebitPayable != null)
+                    {
+                        settlement.AccountPayable.DebitTotal = friendDebitPayable.TotalAmount;
+                    }
+
+                    var friendCreditPayable = creditAccountPayable.Where(x => x.PayReceiveFriend == friend.UserId).FirstOrDefault();
+                    if (friendCreditPayable != null)
+                    {
+                        settlement.AccountPayable.CreditTotal = friendCreditPayable.TotalAmount;
+                    }
+
+
+                    var friendDebitReceivable = debitAccountReceivable.Where(x => x.PayReceiveFriend == friend.UserId).FirstOrDefault();
+                    if (friendDebitReceivable != null)
+                    {
+                        settlement.AccountReceivable.DebitTotal = friendDebitReceivable.TotalAmount;
+                    }
+
+                    var friendCreditReceivable = creditAccountReceivable.Where(x => x.PayReceiveFriend == friend.UserId).FirstOrDefault();
+                    if (friendCreditReceivable != null)
+                    {
+                        settlement.AccountReceivable.CreditTotal = friendCreditReceivable.TotalAmount;
+                    }
+
+                    retVal.Add(settlement);
+
+                }
+
+               
+
+               
+                return retVal;
 
 
 

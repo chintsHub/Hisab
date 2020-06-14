@@ -7,39 +7,66 @@
 
 <h1>EventSettlement</h1>
 
-<div class="card container ">
-         
-    <div class="row ">
+<div class="container ">
 
-        <div class="col-2 col-md-2">
-            <img class="friendImage" src="~/img/icons8-user-male-skin-type-5-50.png" alt="Avatar">
-        </div>
-        <div class="col-6 col-md-6">
+    @foreach (var settlement in Model.SettlementAccounts)
+    {
+        <div class="card">
+            <div class="row card-body">
 
-            <div class="card-body">
-                <div>Nick Name</div>
-                <div>Email</div>
+                <div class="col-3">
+                    <div>
+                        <img class="friendImage" src="@settlement.FriendAvatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
+                    </div>
+                   
+                </div>
+                <div class="col-9">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>@settlement.FriendName</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>To Pay</td>
+                                <td>@settlement.AmountPayable</td>
+                            </tr>
+                            <tr>
+                                <td>To Receive</td>
+                                <td>@settlement.AmountReceivable</td>
+                            </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Net</td>
+                                <td>@settlement.NetAmount</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
             </div>
-            <div class="custom-control custom-checkbox checkbox-xl ">
+            <div class="card-footer tileFooter">
+                @if (settlement.NetAmount > 0)
+                {
+                    <a><i class="fa fa-wallet"></i> Acknowledge - payment recevied</a>
+                }
+                else
+                {
+                    <a><i class="fa fa-wallet"></i> Acknowledge - amount paid</a>
+                }
 
-                <input type="checkbox" class="custom-control-input" id="checkbox-3" checked="">
-                <label class="custom-control-label" for="checkbox-3">
-                    I acknowledge, payment has received.
-                </label>
 
             </div>
-        </div>
 
-        <div class="col-4 col-md-4">
-
-            <div>To Pay / To Receive </div>
-            <div>$$$ </div>
-            
-
-        </div>
-        
     </div>
-    
+    }
+
+
 
 
 
