@@ -5,7 +5,50 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>EventSettlement</h1>
+
+<!-- Modal -->
+<div class="modal fade" id="settlementModal" tabindex="-1" role="dialog" aria-labelledby="settlementModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Settlement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="settlementTransactionForm" method="post">
+
+                @Html.HiddenFor(Model => Model.SettlementTransaction.EventId)
+                @Html.HiddenFor(Model => Model.SettlementTransaction.PaidToUserId)
+                @Html.HiddenFor(Model => Model.SettlementTransaction.Amount)
+
+                <div class="modal-body">
+                    <p>
+                        I acknowledge, that I have made a payment to:
+                    </p>
+                    <div class="form-group">
+                        <p><div id="paymentTo"></div></p>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <div id="transAmount"></div>
+
+                    </div>
+
+                    <p>This will create a settlement transaction.</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button id="settlementTransButton" type="button" class="btn btn-primary">Save</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="container ">
 
@@ -18,34 +61,39 @@
                     <div>
                         <img class="friendImage" src="@settlement.FriendAvatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
                     </div>
-                   
+                    <div>
+                        @settlement.FriendName
+                    </div>
                 </div>
                 <div class="col-9">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td>@settlement.FriendName</td>
-                                <td>Amount</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>To Pay</td>
-                                <td>@settlement.AmountPayable</td>
-                            </tr>
-                            <tr>
-                                <td>To Receive</td>
-                                <td>@settlement.AmountReceivable</td>
-                            </tr>
-                            
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>Net</td>
-                                <td>@settlement.NetAmount</td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <div id="@settlement.FriendId">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>@settlement.FriendName</td>
+                                    <td>Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>To Pay</td>
+                                    <td>@settlement.AmountPayable</td>
+                                </tr>
+                                <tr>
+                                    <td>To Receive</td>
+                                    <td>@settlement.AmountReceivable</td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Net</td>
+                                    <td>@settlement.NetAmount</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                   
 
                 </div>
 
@@ -53,17 +101,26 @@
             <div class="card-footer tileFooter">
                 @if (settlement.NetAmount > 0)
                 {
-                    <a><i class="fa fa-wallet"></i> Acknowledge - payment recevied</a>
+                    <a><i class="fa fa-wallet"></i> Alert</a>
                 }
-                else
+                else if(settlement.NetAmount < 0)
                 {
-                    <a><i class="fa fa-wallet"></i> Acknowledge - amount paid</a>
+
+                    <button id="@settlement.UserId"
+                            data-friendId="@settlement.FriendId"
+                            data-friendName="@settlement.FriendName"
+                            data-eventid="@settlement.EventId"
+                            data-tranAmount="@settlement.NetAmount"
+                            data-toggle="modal"
+                            data-target="#settlementModal">
+                        <i class="fa fa-wallet"></i> Acknowledge payment
+                    </button>
                 }
 
 
             </div>
 
-    </div>
+        </div>
     }
 
 
@@ -73,3 +130,9 @@
 
 
 </div>
+
+@section Scripts{
+
+    <script src="~/js/Settlement.js" asp-append-version="true"></script>
+
+}

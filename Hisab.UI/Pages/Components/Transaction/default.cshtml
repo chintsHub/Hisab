@@ -14,6 +14,10 @@
             {
                 <i class="fa fa-wallet"></i>
             }
+            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Settlement)
+            {
+                <i class="fa fa-handshake"></i>
+            }
 
         </div>
 

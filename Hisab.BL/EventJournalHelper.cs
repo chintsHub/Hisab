@@ -16,6 +16,8 @@ namespace Hisab.BL
 
         Task<List<EventFriendJournalBO>> CreateLendToFriendJournals(NewTransactionBO newTransactionBO);
 
+        Task<List<EventFriendJournalBO>> CreateSettlementJournals(NewTransactionBO newTransactionBO);
+
         Task<List<EventTransactionJournalBO>> CreateExpenseJournalPaidFromPool(NewTransactionBO newTransactionBO);
 
         Task<EventUserAccountBO> GetExpenseAccount(Guid userId, Guid eventId);
@@ -191,6 +193,46 @@ namespace Hisab.BL
                     // Debit Cash Account and credit Accounts payable
                     UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
                     UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountPayable).AccountId,
+                    Amount = newTransactionBO.TotalAmount,
+                    TransactionId = newTransactionBO.TransactionId,
+                    UserId = newTransactionBO.LendToFriendUserId.Value,
+                    PayRecieveFriendId = newTransactionBO.PaidByUserId
+                });
+
+                return journals;
+            }
+        }
+
+        public async Task<List<EventFriendJournalBO>> CreateSettlementJournals(NewTransactionBO newTransactionBO)
+        {
+            var journals = new List<EventFriendJournalBO>();
+
+            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
+            {
+                var accounts = context.EventTransactionRepository.GetEventUserAccounts(newTransactionBO.EventId);
+
+                
+
+                // In the books of the payer
+                journals.Add(new EventFriendJournalBO()
+                {
+                    EventId = newTransactionBO.EventId,
+                    // Debit Account Payable and Credit Cash Account
+                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidByUserId && x.AccountTypeId == ApplicationAccountType.AccountPayable).AccountId,
+                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidByUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
+                    Amount = newTransactionBO.TotalAmount,
+                    TransactionId = newTransactionBO.TransactionId,
+                    UserId = newTransactionBO.PaidByUserId,
+                    PayRecieveFriendId = newTransactionBO.LendToFriendUserId
+                });
+
+                // In the books of the friend
+                journals.Add(new EventFriendJournalBO()
+                {
+                    EventId = newTransactionBO.EventId,
+                    // Debit Cash Account and credit Accounts payable
+                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
+                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountRecievable).AccountId,
                     Amount = newTransactionBO.TotalAmount,
                     TransactionId = newTransactionBO.TransactionId,
                     UserId = newTransactionBO.LendToFriendUserId.Value,

@@ -19,6 +19,8 @@ namespace Hisab.BL
 
         Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO);
 
+        Task<bool> CreateSettlementTransaction(NewTransactionBO newTransactionBO);
+
         Task<EventAccountBO> GetEventAccount(Guid eventId);
 
         Task<List<TransactionBO>> GetTransactions(Guid eventId);
@@ -439,6 +441,36 @@ namespace Hisab.BL
 
 
             }
+        }
+
+        public async Task<bool> CreateSettlementTransaction(NewTransactionBO newTransactionBO)
+        {
+            var retVal = false;
+
+            // setup
+            newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
+            newTransactionBO.LastModifiedDate = DateTime.UtcNow;
+            newTransactionBO.TransactionType = TransactionType.Settlement;
+            newTransactionBO.TransactionId = Guid.NewGuid();
+
+            //Event Journal
+            var eventFriendJournals = await _eventJournalHelper.CreateSettlementJournals(newTransactionBO);
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+
+
+                var transRow = context.EventTransactionRepository.CreateTransaction(newTransactionBO);
+
+
+                var journals = context.EventTransactionRepository.CreateEventFriendJournals(eventFriendJournals);
+
+                context.SaveChanges();
+
+                retVal = true;
+            }
+
+            return retVal;
         }
     }
 }

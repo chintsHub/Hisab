@@ -130,6 +130,18 @@ namespace Hisab.UI.ViewModels
         public decimal NetAmount { get; set; }
     }
 
+    public class SettlementTransaction
+    {
+        public Guid EventId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public Guid PaidByUserId { get; set; }
+
+        public Guid PaidToUserId { get; set; }
+
+        public decimal Amount { get; set; }
+    }
 
 
 }

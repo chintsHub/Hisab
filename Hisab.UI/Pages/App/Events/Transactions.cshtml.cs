@@ -74,10 +74,12 @@ namespace Hisab.UI
                         tranVM.SharedWith = "Money Pool";
                     }
 
-                    if (tran.TransactionType == Common.BO.TransactionType.LendToFriend)
+                    if (tran.TransactionType == Common.BO.TransactionType.LendToFriend || tran.TransactionType == Common.BO.TransactionType.Settlement)
                     {
                         tranVM.SharedWith = tran.LendToFriendName;
                     }
+
+                  
 
                     Transactions.Add(tranVM);
 
