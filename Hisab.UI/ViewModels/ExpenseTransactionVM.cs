@@ -29,6 +29,8 @@ namespace Hisab.UI.ViewModels
 
         public Decimal Amount { get; set; }
 
+        public string Comments { get; set; }
+
         public TransactionVM()
         {
             
@@ -41,6 +43,15 @@ namespace Hisab.UI.ViewModels
         public Guid TransactionId { get; set; }
 
         public Guid EventId { get; set; }
+    }
+
+    public class UpdateCommentsVM
+    {
+        public Guid TransactionId { get; set; }
+
+        public Guid EventId { get; set; }
+
+        public string Comment { get; set; }
     }
 
     public class ExpenseTransactionVM
@@ -99,7 +110,7 @@ namespace Hisab.UI.ViewModels
 
         public TransactionType TransactionType { get; set; }
 
-        public Guid? LendToFriendUserId { get; set; }
+        public Guid? PaidToFriendUserId { get; set; }
 
         public Guid? EventPoolId { get; set; }
 

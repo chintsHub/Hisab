@@ -78,7 +78,7 @@ namespace Hisab.UI
                 EventId = SettlementTransaction.EventId,
                 CreatedByUserId = user.Id,
                 Description = $"Settlement - from {user.NickName}",
-                LendToFriendUserId = SettlementTransaction.PaidToUserId,
+                PaidToFriendUserId = SettlementTransaction.PaidToUserId,
                 TotalAmount = Math.Abs(SettlementTransaction.Amount),
                 TransactionDate = DateTime.Now,
                 PaidByUserId = user.Id,

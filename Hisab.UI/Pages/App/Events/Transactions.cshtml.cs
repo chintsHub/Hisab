@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
+using Hisab.Common.BO;
 using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,6 +21,9 @@ namespace Hisab.UI
 
         [BindProperty]
         public DeleteTransactionVM DeleteTransactionVm { get; set; }
+
+        [BindProperty]
+        public UpdateCommentsVM UpdateCommentVm { get; set; }
 
         public TransactionsModel(IEventTransactionManager transactionManager, IToastNotification toastNotification, IEventManager eventManager)
         {
@@ -50,7 +54,8 @@ namespace Hisab.UI
                         PaidById = tran.PaidById,
                         PaidByName = tran.PaidByName,
                         TransactionType = tran.TransactionType,
-                        PaidByEmail = tran.PaidByEmail
+                        PaidByEmail = tran.PaidByEmail,
+                        Comments = tran.Comments
 
                     };
 
@@ -76,7 +81,7 @@ namespace Hisab.UI
 
                     if (tran.TransactionType == Common.BO.TransactionType.LendToFriend || tran.TransactionType == Common.BO.TransactionType.Settlement)
                     {
-                        tranVM.SharedWith = tran.LendToFriendName;
+                        tranVM.SharedWith = tran.PaidToFriendName;
                     }
 
                   
@@ -105,7 +110,24 @@ namespace Hisab.UI
             return new JsonResult(new { success = false, responseText = "Transaction not Deleted" });
         }
 
-            
-        
+        public async Task<IActionResult> OnPostUpdateComment()
+        {
+            var updateComment = new UpdateCommentsBO()
+            {
+                EventId = UpdateCommentVm.EventId,
+                TransactionId = UpdateCommentVm.TransactionId,
+                Comments = UpdateCommentVm.Comment
+            };
+            var retVal = await _transactionManager.UpdateComments(updateComment);
+
+            if (retVal)
+            {
+                _toastNotification.AddSuccessToastMessage("Comments added successfully");
+                return new JsonResult(new { success = true, transactionId= UpdateCommentVm.TransactionId, responseText = "Comments added successfully" });
+            }
+
+            return new JsonResult(new { success = false, responseText = "Error" });
+        }
+
     }
 }

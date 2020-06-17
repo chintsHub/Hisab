@@ -27,6 +27,8 @@ namespace Hisab.Dapper.Repository
         int CreateTransactionJournal(int transactionId, string particulars, int accountId, decimal debitAmount,
             decimal creditAmount);
 
+        int UpdateComments(UpdateCommentsBO updateComment);
+
         int CreateTransactionSettlement(int eventId, int transactionId, int payerEventFriendId,
             int receiverEventFriendId, decimal amount);
 
@@ -70,6 +72,7 @@ namespace Hisab.Dapper.Repository
                    SELECT 
 	                    e.[Id] as TransactionId
                         ,e.[EventId]
+                        ,e.Comments
                         
 	                    ,[TransactionDate]
 	                    ,[Description] as TransactionDescription
@@ -80,15 +83,15 @@ namespace Hisab.Dapper.Repository
 	                    ,u.NickName as PaidByName
                         ,u.Email as PaidByEmail
 	     
-                        ,[LendToFriendUserId]
-	                    ,u1.NickName LendToFriendName
+                        ,[PaidToFriendUserId]
+	                    ,u1.NickName PaidToFriendName
 
 	                    ,s.UserId 
 	                    ,u3.NickName 
                     FROM 
 	                    EventTransaction e 
                         left outer join ApplicationUser u on u.Id = e.PaidByUserId
-	                    left outer join ApplicationUser u1 on u1.Id = e.LendToFriendUserId
+	                    left outer join ApplicationUser u1 on u1.Id = e.PaidToFriendUserId
 	                    left outer join [EventTransactionSplit] s on s.TransactionId = e.Id
 	                    left outer join ApplicationUser u3 on u3.Id = s.UserId
 	                where
@@ -223,7 +226,7 @@ namespace Hisab.Dapper.Repository
                        ,[PaidByUserId]
                        ,[LastModifiedDate]
                        ,[TransactionType]
-                       ,[LendToFriendUserId])
+                       ,[PaidToFriendUserId])
                      VALUES
                            (@{nameof(newTransactionBO.TransactionId)}
                            ,@{nameof(newTransactionBO.EventId)}
@@ -232,7 +235,7 @@ namespace Hisab.Dapper.Repository
                            ,@{nameof(newTransactionBO.TotalAmount)}
                            ,@{nameof(newTransactionBO.Description)}
                            ,@{nameof(newTransactionBO.PaidByUserId)},@{nameof(newTransactionBO.LastModifiedDate)}
-                           ,@{nameof(newTransactionBO.TransactionType)},@{nameof(newTransactionBO.LendToFriendUserId)})   ";
+                           ,@{nameof(newTransactionBO.TransactionType)},@{nameof(newTransactionBO.PaidToFriendUserId)})   ";
 
             int transId = Connection.Execute(command,
                 new
@@ -246,7 +249,7 @@ namespace Hisab.Dapper.Repository
                     newTransactionBO.PaidByUserId,
                     newTransactionBO.LastModifiedDate,
                     newTransactionBO.TransactionType,
-                    newTransactionBO.LendToFriendUserId
+                    newTransactionBO.PaidToFriendUserId
 
                 }, transaction: Transaction);
 
@@ -647,6 +650,33 @@ namespace Hisab.Dapper.Repository
               new { eventId, userId, AccountType }, Transaction);
 
             return EventTransactionJournalResult.ToList();
+        }
+
+        public int UpdateComments(UpdateCommentsBO updateComment)
+        {
+            string command = $@"
+
+                   UPDATE [dbo].[EventTransaction]
+                   SET 
+	                    [LastModifiedDate] = @{nameof(updateComment.LastModifiedDate)}
+                        ,[Comments] = @{nameof(updateComment.Comments)}
+                    WHERE 
+	                Id = @{nameof(updateComment.TransactionId)}
+	                and EventId = @{nameof(updateComment.EventId)}     ";
+
+            int row = Connection.Execute(command,
+                new
+                {
+                    updateComment.TransactionId,
+                    updateComment.EventId,
+                    updateComment.Comments,
+                    updateComment.LastModifiedDate
+                   
+
+                }, transaction: Transaction);
+
+
+            return row;
         }
     }
 }

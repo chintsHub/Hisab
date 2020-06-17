@@ -55,7 +55,39 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <button id="deleteTransButton" type="button" class="btn btn-danger">Delete</button>
                 </div>
-            </form> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="tranCommentModal" tabindex="-1" role="dialog" aria-labelledby="tranCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Add / Update Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="commentTransactionForm" method="post">
+                @Html.HiddenFor(Model => Model.UpdateCommentVm.TransactionId)
+                @Html.HiddenFor(Model => Model.UpdateCommentVm.EventId)
+                <div class="modal-body">
+                   
+                    <div class="form-group">
+
+                        <textarea class="form-control" aria-label="With textarea" asp-for="@Model.UpdateCommentVm.Comment"></textarea>
+
+                    </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button id="commentTransButton" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

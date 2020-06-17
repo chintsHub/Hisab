@@ -77,4 +77,52 @@
 
 
     })
+
+    $('#tranCommentModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+       
+        var id = button.data('id');
+        var eventId = button.data('eventid');
+        var comments = document.getElementById("comment_" + id).innerHTML;
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+
+        
+        modal.find('#UpdateCommentVm_TransactionId').val(id);
+        modal.find('#UpdateCommentVm_EventId').val(eventId);
+        modal.find('#UpdateCommentVm_Comment').val(comments);
+
+        var savebutton = modal.find('#commentTransButton');
+
+        savebutton.click(function OnSaveClick(e) {
+            e.preventDefault();
+
+            $.post(this.baseURI + "?handler=UpdateComment", $("#commentTransactionForm").serialize()).done(function (data) {
+                //hack to prevent event firing multiple times
+                var old_element = document.getElementById("commentTransButton");
+                var new_element = old_element.cloneNode(true);
+                old_element.parentNode.replaceChild(new_element, old_element);
+
+                if (data.success) {
+                    var commentDiv = document.getElementById("comment_" + data.transactionId);
+
+                    var changedComments = document.getElementById("UpdateCommentVm_Comment").value;
+
+                    commentDiv.innerHTML = changedComments;
+
+                    
+                }
+                
+                
+                $('#tranCommentModal').modal('toggle');
+
+            });
+
+            removeEventListener('click', this, false);
+        });
+       
+
+
+    })
 });

@@ -183,7 +183,7 @@ namespace Hisab.BL
                     Amount = newTransactionBO.TotalAmount,
                     TransactionId = newTransactionBO.TransactionId,
                     UserId = newTransactionBO.PaidByUserId,
-                    PayRecieveFriendId = newTransactionBO.LendToFriendUserId
+                    PayRecieveFriendId = newTransactionBO.PaidToFriendUserId
                 });
 
                 // In the books of the friend
@@ -191,11 +191,11 @@ namespace Hisab.BL
                 {
                     EventId = newTransactionBO.EventId,
                     // Debit Cash Account and credit Accounts payable
-                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
-                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountPayable).AccountId,
+                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
+                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountPayable).AccountId,
                     Amount = newTransactionBO.TotalAmount,
                     TransactionId = newTransactionBO.TransactionId,
-                    UserId = newTransactionBO.LendToFriendUserId.Value,
+                    UserId = newTransactionBO.PaidToFriendUserId.Value,
                     PayRecieveFriendId = newTransactionBO.PaidByUserId
                 });
 
@@ -223,7 +223,7 @@ namespace Hisab.BL
                     Amount = newTransactionBO.TotalAmount,
                     TransactionId = newTransactionBO.TransactionId,
                     UserId = newTransactionBO.PaidByUserId,
-                    PayRecieveFriendId = newTransactionBO.LendToFriendUserId
+                    PayRecieveFriendId = newTransactionBO.PaidToFriendUserId
                 });
 
                 // In the books of the friend
@@ -231,11 +231,11 @@ namespace Hisab.BL
                 {
                     EventId = newTransactionBO.EventId,
                     // Debit Cash Account and credit Accounts payable
-                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
-                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.LendToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountRecievable).AccountId,
+                    UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
+                    UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountRecievable).AccountId,
                     Amount = newTransactionBO.TotalAmount,
                     TransactionId = newTransactionBO.TransactionId,
-                    UserId = newTransactionBO.LendToFriendUserId.Value,
+                    UserId = newTransactionBO.PaidToFriendUserId.Value,
                     PayRecieveFriendId = newTransactionBO.PaidByUserId
                 });
 

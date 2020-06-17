@@ -1,101 +1,111 @@
 ﻿@model TransactionVM 
-<div class="transaction" id="@Model.TransactionId" data-isMyTransaction="@((User.Identity.Name == Model.PaidByEmail)?true:false)" >
-    <div class="row ">
-        <div class="col-12 col-xs-12 transactionHeader" style="text-align:left">
-            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
-            {
-                <i class="fa fa-receipt"></i>
-            }
-            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.ContributionToPool)
-            {
-                <i class="fa fa-piggy-bank"></i>
-            }
-            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.LendToFriend)
-            {
-                <i class="fa fa-wallet"></i>
-            }
-            @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Settlement)
-            {
-                <i class="fa fa-handshake"></i>
-            }
-
-        </div>
-
-    </div>
-
-    <div class="row transactionBody">
-
-        <div class="col-3 transactionColumnContent">@Model.TransactionDate.ToShortDateString()</div>
-        <div class="col-6 transactionColumnContent">@Model.TransactionDescription</div>
-        <div class="col-3 transactionColumnContent">@Model.Amount </div>
-    </div>
-    <div class="row transactionBody">
-        <div class="col-4  transactionColumn">
-            <div class="row transactionPaidby ">
-                Paid by:
-            </div>
-            <div class="row transactionColumnContent">
+    <div class="transaction" id="@Model.TransactionId" data-isMyTransaction="@((User.Identity.Name == Model.PaidByEmail)?true:false)">
+        <div class="row ">
+            <div class="col-12 col-xs-12 transactionHeader" style="text-align:left">
                 @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
                 {
-                    <span>Shared With:</span>
+                    <i class="fa fa-receipt"></i>
                 }
-                else
+                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.ContributionToPool)
                 {
-                    <span>Paid To:</span>
+                    <i class="fa fa-piggy-bank"></i>
+                }
+                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.LendToFriend)
+                {
+                    <i class="fa fa-wallet"></i>
+                }
+                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Settlement)
+                {
+                    <i class="fa fa-handshake"></i>
                 }
 
             </div>
-        </div>
-        <div class="col-8 ">
-            <div class="row transactionShared">
-                @Model.PaidByName
-            </div>
-            <div class="row transactionColumnContent">
-                @Model.SharedWith
-            </div>
+
         </div>
 
-    </div>
+        <div class="row transactionBody">
 
+            <div class="col-3 transactionColumnContent">@Model.TransactionDate.ToShortDateString()</div>
+            <div class="col-6 transactionColumnContent">@Model.TransactionDescription</div>
+            <div class="col-3 transactionColumnContent">@Model.Amount </div>
+        </div>
+        <div class="row transactionBody">
+            <div class="col-4  transactionColumn">
+                <div class="row transactionPaidby ">
+                    Paid by:
+                </div>
+                <div class="row transactionColumnContent">
+                    @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
+                    {
+                        <span>Shared With:</span>
+                    }
+                    else
+                    {
+                        <span>Paid To:</span>
+                    }
 
-    <div class="row transactionFooter ">
-        
-        <div class="col-11 col-xs-11 transactionButtons">
-
-            @if (User.Identity.Name == Model.PaidByEmail)
+                </div>
+            </div>
+            <div class="col-8 ">
+                <div class="row transactionShared">
+                    @Model.PaidByName
+                </div>
+                <div class="row transactionColumnContent">
+                    @Model.SharedWith
+                </div>
+            </div>
+            @if (!String.IsNullOrEmpty(Model.Comments))
             {
-                <button id="delete_@Model.TransactionId" 
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading " style="padding:5px">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-comments"></i> Comments</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div id="comment_@Model.TransactionId" style="padding:10px">@Model.Comments</div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        
+
+        <div class="row transactionFooter ">
+
+            <div class="col-11 col-xs-11 transactionButtons">
+
+                @if (User.Identity.Name == Model.PaidByEmail)
+                {
+                    <button id="delete_@Model.TransactionId"
                             data-id="@Model.TransactionId"
                             data-eventid="@Model.EventId"
-                            data-tranDescription="@Model.TransactionDescription" 
-                            data-tranAmount="@Model.Amount" data-toggle="modal" 
+                            data-tranDescription="@Model.TransactionDescription"
+                            data-tranAmount="@Model.Amount" data-toggle="modal"
                             data-target="#tranDeleteModal">
-                <i class="fa fa-trash"></i> Delete</button>
-            }
-            else
-            {
-               
-                <button  >
-                            <i class="fa fa-exclamation-triangle"></i> Alert payer
-                </button>
-                @*<div class="dropdown">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-exclamation-circle"></i> Ask payer to
+                        <i class="fa fa-trash"></i> Delete
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Check Transaction Amount</a>
-                        <a class="dropdown-item" href="#">Check Split</a>
-                        <a class="dropdown-item" href="#">Exclude me from the split</a>
-                    </div>
-                </div>*@
-            }
+                }
+                
+                    <button id="comment_@Model.TransactionId"
+                            data-id="@Model.TransactionId"
+                            data-eventid="@Model.EventId"
+                            data-comments="@Model.Comments" data-toggle="modal"
+                            data-target="#tranCommentModal">
+                        <i class="fa fa-comment"></i> Comment
+                    </button>
+                   
+                
 
-            @*<button><i class="fa fa-edit"></i> Edit</button>*@
 
 
 
+            </div>
         </div>
-    </div>
 
 
-</div>  @*end of transaction*@
+    </div>  @*end of transaction*@

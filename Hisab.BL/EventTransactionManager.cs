@@ -27,6 +27,8 @@ namespace Hisab.BL
 
         Task<bool> DeleteTransaction(Guid transactionId);
 
+        Task<bool> UpdateComments(UpdateCommentsBO updateComment);
+
         Task<decimal> GetExpenseAccountBalance(Guid eventId, Guid userId);
 
         Task<decimal> GetTotalExpense(Guid eventId);
@@ -471,6 +473,25 @@ namespace Hisab.BL
             }
 
             return retVal;
+        }
+
+        public async Task<bool> UpdateComments(UpdateCommentsBO updateComment)
+        {
+            updateComment.LastModifiedDate = DateTime.Now;
+
+            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
+            {
+
+
+                var transRow = context.EventTransactionRepository.UpdateComments(updateComment);
+
+                context.SaveChanges();
+
+                if (transRow == 1)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

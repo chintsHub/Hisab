@@ -26,8 +26,10 @@ namespace Hisab.Common.BO
 
         public decimal TotalAmount { get; set; }
 
-        public Guid LendToFriendUserId { get; set; }
-        public string LendToFriendName { get; set; }
+        public Guid PaidToFriendUserId { get; set; }
+        public string PaidToFriendName { get; set; }
+
+        public string Comments { get; set; }
     }
    
 
@@ -153,7 +155,7 @@ namespace Hisab.Common.BO
 
         public TransactionType TransactionType { get; set; }
 
-        public Guid? LendToFriendUserId { get; set; }
+        public Guid? PaidToFriendUserId { get; set; }
 
         public NewTransactionBO()
         {
@@ -211,9 +213,19 @@ namespace Hisab.Common.BO
 
     }
 
-    
+    public class UpdateCommentsBO
+    {
+        public Guid TransactionId { get; set; }
 
-    
+        public Guid EventId { get; set; }
+
+        public string Comments { get; set; }
+
+        public DateTime LastModifiedDate { get; set; }
+    }
+
+
+
     public enum TransactionType
     {
         Expense = 1,

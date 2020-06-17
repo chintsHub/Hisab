@@ -109,7 +109,7 @@ namespace Hisab.UI
                 }
             }
 
-            if(ContributeVM.LendToFriendUserId != null)
+            if(ContributeVM.PaidToFriendUserId != null)
             {
                 // Contribute to Friend
                 newTrans.EventId = ContributeVM.EventId;
@@ -118,7 +118,7 @@ namespace Hisab.UI
                 newTrans.TotalAmount = ContributeVM.Amount;
                 newTrans.TransactionDate = ContributeVM.TransactionDate;
                 newTrans.Description = ContributeVM.Description;
-                newTrans.LendToFriendUserId = ContributeVM.LendToFriendUserId.Value;
+                newTrans.PaidToFriendUserId = ContributeVM.PaidToFriendUserId.Value;
 
                 var result = await _transactionManager.CreateContributeToFriend(newTrans);
                 if (result)

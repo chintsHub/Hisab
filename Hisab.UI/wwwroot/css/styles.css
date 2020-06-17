@@ -307,7 +307,8 @@ p {
       padding: 5px;
       background-color: #F4F5F7; }
     .transactions .transactionBody .transactionColumnContent {
-      padding: 5px; }
+      padding: 5px;
+      border-bottom: solid; }
   .transactions .transactionHeader {
     background-color: #27496d;
     padding: 5px;

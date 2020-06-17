@@ -315,4 +315,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EventAccountAction" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="c9ffe5f6-56e7-4d1d-9ac7-4957772935c6" ChangeDateTime="06/17/2020 01:03:17">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[LendToFriendUserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PaidToFriendUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e946eba6-a668-4ac9-bb80-a204bef0f7fb" ChangeDateTime="06/17/2020 01:39:46">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[Notes]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Comment" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="99d75b71-8424-4b9d-8933-5b19c0beda21" ChangeDateTime="06/17/2020 01:39:52">
+    <Property Name="ElementName" Value="[dbo].[EventTransaction].[Comment]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EventTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Comments" />
+  </Operation>
 </Operations>
