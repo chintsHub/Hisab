@@ -7,5 +7,8 @@
         public string SecretKey { get; set; }
     }
 
-   
+    public class Announcements
+    {
+        public string HeaderAnnouncement { get; set; }
+    }
 }

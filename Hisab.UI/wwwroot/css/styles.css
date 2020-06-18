@@ -159,6 +159,22 @@ header {
     header .userMenu li a:hover {
       color: #e2ed07;
       background-color: #008da8; }
+  header .announcementOuter {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 999; }
+    header .announcementOuter .announcement {
+      background-color: #e2ed07;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: black;
+      display: inline-block;
+      margin: 0 auto;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: auto; }
 
 /* ----------------------------- Navigation ---------------------- */
 .hamburgerNav {

@@ -1,6 +1,8 @@
 ﻿using Hisab.BL;
 using Hisab.Common.BO;
+using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +13,14 @@ namespace Hisab.UI.Pages.Components.Header
     public class HeaderViewComponent : ViewComponent
     {
         private IUserSettingManager _userSettingManager;
+        private IConfiguration _configuration;
 
-        public HeaderViewComponent(IUserSettingManager userSettingManager)
+        public string Announcement { get; set; }
+
+        public HeaderViewComponent(IUserSettingManager userSettingManager, IConfiguration configuration)
         {
             _userSettingManager = userSettingManager;
+            _configuration = configuration;
         }
         
         public async Task<IViewComponentResult> InvokeAsync()
@@ -25,8 +31,9 @@ namespace Hisab.UI.Pages.Components.Header
                 user = await _userSettingManager.GetUserSettings(User.Identity.Name);
                 return View("default", user.NickName);
             }
-            
-            return View("default","");
+            var announcements = _configuration.GetSection("Announcements").Get<Announcements>();
+
+            return View("default", announcements.HeaderAnnouncement);
         }
     }
 }
