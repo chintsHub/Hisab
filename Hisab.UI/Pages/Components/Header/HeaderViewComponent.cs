@@ -15,7 +15,7 @@ namespace Hisab.UI.Pages.Components.Header
         private IUserSettingManager _userSettingManager;
         private IConfiguration _configuration;
 
-        public string Announcement { get; set; }
+        
 
         public HeaderViewComponent(IUserSettingManager userSettingManager, IConfiguration configuration)
         {
@@ -25,15 +25,20 @@ namespace Hisab.UI.Pages.Components.Header
         
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            var vm = new HeaderVm();
+            var announcements = _configuration.GetSection("Announcements").Get<Announcements>();
+            vm.HeaderAnnouncement = announcements.HeaderAnnouncement;
+
             UserSettingsBO user = null;
             if(User.Identity.IsAuthenticated)
             {
                 user = await _userSettingManager.GetUserSettings(User.Identity.Name);
-                return View("default", user.NickName);
+                vm.NickName = user.NickName;
+                return View("default", vm);
             }
-            var announcements = _configuration.GetSection("Announcements").Get<Announcements>();
+            
 
-            return View("default", announcements.HeaderAnnouncement);
+            return View("default", vm);
         }
     }
 }

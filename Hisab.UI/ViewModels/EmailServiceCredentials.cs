@@ -11,4 +11,11 @@
     {
         public string HeaderAnnouncement { get; set; }
     }
+
+    public class HeaderVm
+    {
+        public string HeaderAnnouncement { get; set; }
+
+        public string NickName { get; set; }
+    }
 }

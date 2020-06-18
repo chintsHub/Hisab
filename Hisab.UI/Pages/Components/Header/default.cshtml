@@ -1,10 +1,10 @@
-﻿@model string
+﻿@model HeaderVm
 
     <header class="clearfix">
-        @if (!String.IsNullOrEmpty(Model))
+        @if (!String.IsNullOrEmpty(Model.HeaderAnnouncement))
         {
             <div class="announcementOuter">
-                <div class="announcement">@Model</div>
+                <div class="announcement">@Model.HeaderAnnouncement</div>
             </div>
         }
 
@@ -26,7 +26,7 @@
             {
 
                 <button type="button" class="btn btn-lg logoutButton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Hey @Model <span class="caret"></span>
+                    Hey @Model.NickName <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu userMenu">
 

@@ -83,7 +83,13 @@
        
         var id = button.data('id');
         var eventId = button.data('eventid');
-        var comments = document.getElementById("comment_" + id).innerHTML;
+
+        var comments = "";
+        if (document.getElementById("commentContent_" + id)) {
+            comments = document.getElementById("commentContent_" + id).innerHTML;
+        }
+
+        
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
@@ -105,10 +111,10 @@
                 old_element.parentNode.replaceChild(new_element, old_element);
 
                 if (data.success) {
-                    var commentDiv = document.getElementById("comment_" + data.transactionId);
-
+                    var commentDiv = document.getElementById("commentContent_" + data.transactionId);
+                    var commentPannel = document.getElementById("commentPanel_" + data.transactionId);
                     var changedComments = document.getElementById("UpdateCommentVm_Comment").value;
-
+                    commentPannel.style.display = "block";
                     commentDiv.innerHTML = changedComments;
 
                     

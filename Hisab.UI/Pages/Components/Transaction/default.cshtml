@@ -54,23 +54,22 @@
                     @Model.SharedWith
                 </div>
             </div>
-            @if (!String.IsNullOrEmpty(Model.Comments))
-            {
-                <div class="panel-group">
+           
+                <div id="commentPanel_@Model.TransactionId" class="panel-group" style='display:@(String.IsNullOrEmpty(Model.Comments)?"none":"block")'>
                     <div class="panel panel-default">
                         <div class="panel-heading " style="padding:5px">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse1"><i class="fa fa-comments"></i> Comments</a>
+                                <a data-toggle="collapse" href="#collapse_@Model.TransactionId"><i class="fa fa-comments"></i> Comments</a>
                             </h4>
                         </div>
 
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <div id="comment_@Model.TransactionId" style="padding:10px">@Model.Comments</div>
+                        <div id="collapse_@Model.TransactionId" class="panel-collapse collapse">
+                            <div id="commentContent_@Model.TransactionId" style="padding:10px">@Model.Comments</div>
 
                         </div>
                     </div>
                 </div>
-            }
+           
 
         </div>
         
