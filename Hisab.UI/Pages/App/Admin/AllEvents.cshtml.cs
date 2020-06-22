@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Hisab.BL;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hisab.UI.Pages.App.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class AllEventsModel : PageModel
     {
         private IEventManager _eventManager;

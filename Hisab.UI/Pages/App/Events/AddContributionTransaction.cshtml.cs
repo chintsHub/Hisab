@@ -6,6 +6,7 @@ using Hisab.BL;
 using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ using NToastNotify;
 
 namespace Hisab.UI
 {
+    [Authorize(Roles = "App User, Admin")]
     public class AddContributionTransactionModel : PageModel
     {
         private IEventManager _eventManager;

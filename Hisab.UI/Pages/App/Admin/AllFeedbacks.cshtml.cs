@@ -6,11 +6,13 @@ using Hisab.BL;
 using Hisab.UI.Extensions;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hisab.UI.Pages.App.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class AllFeedbacksModel : PageModel
     {
         private IFeedbackManager _feedbackManager;

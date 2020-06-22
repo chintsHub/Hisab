@@ -59,7 +59,7 @@ namespace Hisab.AWS
                 "<body>" +
                   $"<div style=\"background-color: #F4F5F7; padding: 15px 32px;   \"> " +
                   $"Hey {name}, <br/><br/>" +
-                  $"Welcome to Hisab. Please click on <i>Confirm Email</i> button to finish the registeration process. <br/><br/>" +
+                  $"Welcome to Hisaab. Please click on <i>Confirm Email</i> button to finish the registration process. <br/><br/>" +
                   $"<a style=\"background-color: #e2ed07;color:#003B5C;padding: 15px 32px; text-align: center;text-decoration: none; display: inline-block; font-size: 16px; \" href={registerLink}>Confirm Email</a> </div>" +
                  "</body>";
 

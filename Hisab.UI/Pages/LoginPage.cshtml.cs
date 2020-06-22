@@ -27,14 +27,15 @@ namespace Hisab.UI
             
         }
 
-        public void OnGet()
+        public void OnGet(string returnUrl = null)
         {
             loginVm = new LoginVM();
 
-
+            //setting up ReturnUrl
+            ViewData["ReturnUrl"] = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -48,13 +49,13 @@ namespace Hisab.UI
 
 
                     // Returnurl - or can be passed in as Login method parameter
-                    if (Request.Query.Keys.Contains("ReturnUrl"))
+                    if (!String.IsNullOrEmpty(ReturnUrl))
                     {
-                        return RedirectToPage(Request.Query["ReturnUrl"].First());
+                        return Redirect(ReturnUrl);
                     }
                     else
                     {
-                        return RedirectToPage("Events");
+                        return RedirectToPage("/App/Events");
                     }
 
                 }

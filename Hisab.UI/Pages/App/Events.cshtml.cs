@@ -7,6 +7,7 @@ using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Hisab.UI
 {
+    [Authorize(Roles ="App User, Admin")]
     public class EventsModel : PageModel
     {
         public List<EventCardVm> Events { get; set; }

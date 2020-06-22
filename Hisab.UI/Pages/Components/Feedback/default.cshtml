@@ -2,39 +2,19 @@
 
 <div class="transaction">
     <div class="row transactionHeader">
-        <div class="col-3 col-xs-3">@Model.FeedbackDate</div>
+        <div class="col-3 col-xs-3">@Model.FeedbackDate.ToShortDateString()</div>
         <div class="col-9 col-xs-9">@Model.NickName</div>
         
     </div>
     <div class="row transactionBody">
         <div class="col-12 col-xs-12">
-            <div class="transactionPaidby">@Model.Message </div>
+            <div class="testimony">@Model.Message </div>
             
         </div>
 
     </div>
 
-    @*<div class="row transactionFooter">
-        <div class="col-1 col-xs-1"><i class="fa fa-check-circle"></i></div>
-        <div class="col-11 col-xs-11 transactionButtons">
-            <button><i class="fa fa-trash"></i> Delete</button>
-            <button><i class="fa fa-edit"></i> Edit</button>
-
-            <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-exclamation-circle"></i> Ask payer to
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Check Transaction Amount</a>
-                    <a class="dropdown-item" href="#">Check Split</a>
-                    <a class="dropdown-item" href="#">Exclude me from the split</a>
-                </div>
-            </div>
-            <a asp-page="ExpenseTransactionDetails" asp-route-id="@Guid.NewGuid()" asp-route-transId="@Guid.NewGuid()">
-                <i class="fa fa-edit"></i>Edit
-            </a>
-        </div>
-    </div>*@
+    
 
 
 </div>  @*end of transaction*@

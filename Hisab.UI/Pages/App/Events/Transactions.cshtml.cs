@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Hisab.BL;
 using Hisab.Common.BO;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NToastNotify;
 
 namespace Hisab.UI
 {
+    [Authorize(Roles = "App User, Admin")]
     public class TransactionsModel : PageModel
     {
         IEventTransactionManager _transactionManager;

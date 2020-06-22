@@ -9,7 +9,7 @@
 
 
 <!-- Default form login -->
-    <form asp-page="LoginPage" method="post" class="text-center border border-light p-5 loginForm">
+    <form asp-page="LoginPage" method="post" class="text-center border border-light p-5 loginForm" asp-route-returnurl="@ViewData["ReturnUrl"]">
 
         @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 

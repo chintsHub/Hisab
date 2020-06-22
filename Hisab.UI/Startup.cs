@@ -10,10 +10,12 @@ using Hisab.Dapper.IdentityStores;
 using Hisab.Dapper.Repository;
 using Hisab.UI.Services;
 using Hisab.UI.ViewModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,7 +41,11 @@ namespace Hisab.UI
             var connectionString = _configuration.GetConnectionString("hisabDb");
             var emailCredentials = _configuration.GetSection("EmailServiceCredentials").Get<EmailServiceCredentials>();
 
-                          
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
             services.AddScoped<IUserStore<ApplicationUser>, UserStore>();
             services.AddScoped<IRoleStore<ApplicationRole>, RoleStore>();
@@ -47,26 +53,49 @@ namespace Hisab.UI
             services.AddIdentity<ApplicationUser, ApplicationRole>(config =>
                 {
                     config.SignIn.RequireConfirmedEmail = true; //default value is false
+                    
                 })
                 .AddDefaultTokenProviders()
                 .AddSignInManager<HisabSignInManager<ApplicationUser>>();
 
-            services.Configure<DataProtectionTokenProviderOptions>(options =>
-                options.TokenLifespan = TimeSpan.FromHours(24));
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
 
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/Home");
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Login";
+                options.AccessDeniedPath = "/App/AccessDenied";
+                options.SlidingExpiration = true;
+            });
 
             services.AddMvc()
-                 .AddRazorPagesOptions(options =>
-                 {
-
-                     options.Conventions.AuthorizeFolder("/App");
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddNToastNotifyToastr();
 
 
-                 })
-                 .AddNToastNotifyToastr();
-
-
+            
 
             services.AddScoped<IDbConnectionProvider>(sp => new DbConnectionProvider(connectionString));
 
@@ -90,7 +119,7 @@ namespace Hisab.UI
 
             services.AddScoped<IEventTransactionManager>(sp => new EventTransactionManager(sp.GetService<IDbConnectionProvider>(), sp.GetService<IEventJournalHelper>()));
 
-            services.AddAuthentication().AddCookie();
+           
 
             services.AddScoped<ISieveCustomFilterMethods, HisabCustomFilter>();
             services.AddScoped<SieveProcessor>();
@@ -135,8 +164,9 @@ namespace Hisab.UI
 
             app.UseNToastNotify();
 
+    
 
-            app.UseMvc
+           app.UseMvc
             (options =>
             {
                 options.MapRoute("Default", "/{controller}/{action}/{id?}",
