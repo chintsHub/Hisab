@@ -26,5 +26,7 @@ namespace Hisab.UI.ViewModels
         public int BadgeCount { get; set; }
 
         public bool IsEventMenu { get; set; }
+
+        public Guid? EventId { get; set; }
     }
 }

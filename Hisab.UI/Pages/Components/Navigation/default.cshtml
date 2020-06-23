@@ -11,7 +11,7 @@
         <ul id="hamburgerMenu" class="hamburgerMenuItems">
             @foreach (var item in Model.Items)
             {
-                <li class="@(item.IsCurrentPage == true ? "active" : "")"> <a asp-page="@item.Page"> @item.Label</a></li>
+                <li class="@(item.IsCurrentPage == true ? "active" : "")"> <a asp-page="@item.Page" asp-route-id="@item.EventId" > @item.Label</a></li>
 
             }
 

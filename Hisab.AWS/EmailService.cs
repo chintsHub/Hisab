@@ -29,13 +29,13 @@ namespace Hisab.AWS
             {
                 var destination = new Destination(new List<string>{toEmail});
                 var message = new Message();
-                message.Subject = new Content("Registration: Welcome to Hisab.io");
+                message.Subject = new Content("Registration: Welcome to Hisaab.io");
                 //message.Body = new Body(new Content($"Welcome to hisab. Please click on this link to finish registration. {registerLink}"));
 
                 message.Body = new Body();
                 message.Body.Html = new Content(GetRegisterEmailBody(registerLink,name));
 
-                var sendRequest = new SendEmailRequest("register@hisab.io", destination, message);
+                var sendRequest = new SendEmailRequest("register@hisaab.io", destination, message);
 
                 var response = await client.SendEmailAsync(sendRequest);
 
@@ -52,7 +52,7 @@ namespace Hisab.AWS
         {
             string body =
                 "<div style=\"background-color:#008da8;color:#ffffff; padding: 1rem 2%; \">" +
-                  "<div> <h1 style=\"font-size: 2rem;font-weight: 300; letter-spacing: 10px; \"> Hisab </h1> <h2 style=\"font-size: 1rem;font-weight: 300; \">Managing Trip Expenses, Simplified</h2></div>" +
+                  "<div> <h1 style=\"font-size: 2rem;font-weight: 300; letter-spacing: 10px; \"> Hisaab </h1> <h2 style=\"font-size: 1rem;font-weight: 300; \">Managing Trip Expenses, Simplified</h2></div>" +
                      
                 "</div>" +
 
@@ -81,7 +81,7 @@ namespace Hisab.AWS
 
                 
 
-                var sendRequest = new SendEmailRequest("admin@hisab.io", destination, message);
+                var sendRequest = new SendEmailRequest("admin@hisaab.io", destination, message);
 
                 var response = await client.SendEmailAsync(sendRequest);
 
@@ -96,7 +96,7 @@ namespace Hisab.AWS
         {
             string body =
                 "<div style=\"background-color:#008da8;color:#ffffff; padding: 1rem 2%; \">" +
-                  "<div> <h1 style=\"font-size: 2rem;font-weight: 300; letter-spacing: 10px; \"> Hisab </h1> <h2 style=\"font-size: 1rem;font-weight: 300; \">Managing Trip Expenses, Simplified</h2></div>" +
+                  "<div> <h1 style=\"font-size: 2rem;font-weight: 300; letter-spacing: 10px; \"> Hisaab </h1> <h2 style=\"font-size: 1rem;font-weight: 300; \">Managing Trip Expenses, Simplified</h2></div>" +
 
                 "</div>" +
 

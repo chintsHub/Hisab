@@ -6,7 +6,9 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1 style="float:left; margin:10px">Add Expense</h1>
+<div style="float:left; margin:10px">
+    <h2>Add Expense</h2>
+</div>
 
 <div style="float:right; margin:10px" class="pageButton">
     <a asp-page="/app/events/dashboard" asp-route-id="@Model.ExpenseVM.EventId"><i class="fa fa-undo-alt"></i> Back </a>
@@ -15,7 +17,7 @@
 <div class="clearfix"></div>
 
 <div>
-    
+
     @if (!String.IsNullOrEmpty(Model.ErrorMessage))
     {
         <div class="alert alert-danger" role="alert">
@@ -27,12 +29,12 @@
         @Html.HiddenFor(x => x.ExpenseVM.EventId)
         <div id="SlickSlider" class="slider sliderContent">
             <div>
-                <h1><strong>Step 1 - Expense Details</strong></h1>
+                <h3>Step 1 of 3 - Expense Details</h3>
 
                 <div class="form-group row">
                     <label for="expenseTitle" class="col-sm-2 col-form-label">Expense Description:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" asp-for="@Model.ExpenseVM.ExpenseDescription">
+                        <input type="text" class="form-control" asp-for="@Model.ExpenseVM.ExpenseDescription" placeholder="Dinning out with friends">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,8 +60,8 @@
 
             </div>
             <div>
-                <h1><strong>Step 2 - Split</strong> </h1>
-                <h3><i>You can exclude friends by simply unchecking them</i></h3>
+                <h3>Step 2 of 3 - Expense shared with </h3>
+                
 
                 <table class="table">
                     <thead>
@@ -76,7 +78,7 @@
                             <td>
                                 <div class="custom-control custom-checkbox checkbox-xl " style="margin:5px">
                                     @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].UserId)
-                                    
+
                                     <input type="checkbox" class="custom-control-input" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
                                     <label class="custom-control-label" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
                                         @Model.ExpenseVM.ExpenseSharedWith[i].Name
@@ -100,7 +102,7 @@
                 </table>
             </div>
             <div>
-                <h1><strong>Step 3 - Confirmation</strong> </h1>
+                <h3>Step 3 of 3 - Confirmation </h3>
                 <div id="confirmDiv" class="alert alert-info"></div>
                 <div class="col-11 col-xs-11 transactionButtons">
 
@@ -132,7 +134,7 @@
 
                 // normal options...
                 infinite: false,
-                
+
 
                 // the magic
                 responsive: [{
@@ -162,5 +164,5 @@
     </script>
 
     <script src="~/js/AddExpense.js" asp-append-version="true"></script>
-    
+
 }

@@ -50,6 +50,15 @@
     </div>
 </div>
 
+<div style="float:left; margin:10px">
+    <h2>Settlement</h2>
+</div>
+<div style="float:right; margin:10px" class="pageButton">
+    <a asp-page="/app/events/dashboard" asp-route-id="@ViewBag.EventId"><i class="fa fa-undo-alt"></i> Back </a>
+</div>
+
+<div class="clearfix"></div>
+
 <div class="container ">
 
     @foreach (var settlement in Model.SettlementAccounts)
@@ -93,13 +102,13 @@
                             </tfoot>
                         </table>
                     </div>
-                   
+
 
                 </div>
 
             </div>
             <div class="card-footer tileFooter">
-                @if(settlement.NetAmount < 0)
+                @if (settlement.NetAmount < 0)
                 {
 
                     <button id="@settlement.UserId"

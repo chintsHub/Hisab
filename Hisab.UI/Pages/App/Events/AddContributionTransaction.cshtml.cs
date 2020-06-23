@@ -43,10 +43,10 @@ namespace Hisab.UI
            
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var eventAccount = await _transactionManager.GetEventAccount(Id);
-
+            
                 ContributeVM.NickName = user.NickName;
                 ContributeVM.UserId = user.Id;
-                ContributeVM.TransactionDate = DateTime.Now;
+                ContributeVM.TransactionDate = DateTime.Now.Date;
                 ContributeVM.EventId = Id;
                 ContributeVM.EventPoolId = eventAccount.AccountId;
 
@@ -97,7 +97,7 @@ namespace Hisab.UI
                 newTrans.CreatedByUserId = ContributeVM.UserId;
                 newTrans.PaidByUserId = ContributeVM.UserId;
                 newTrans.TotalAmount = ContributeVM.Amount;
-                newTrans.TransactionDate = ContributeVM.TransactionDate;
+                newTrans.TransactionDate = ContributeVM.TransactionDate.Date;
                 newTrans.Description = ContributeVM.Description;
                 newTrans.EventPoolAccountId = ContributeVM.EventPoolId.Value;
 

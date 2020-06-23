@@ -41,6 +41,7 @@ namespace Hisab.UI
         {
             var eve = await _eventManager.GetEventById(Id);
             this.ViewData.Add("EventTitle", eve.EventName);
+            this.ViewData.Add("EventId", eve.Id);
 
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 

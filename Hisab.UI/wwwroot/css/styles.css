@@ -236,6 +236,16 @@ header {
     border-right: none; }
 
 /*------- Main-----*/
+h2 {
+  font-size: 1.5rem;
+  font-weight: 300; }
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 15px; }
+
 .mainContent {
   min-height: 500px;
   position: relative;
@@ -265,6 +275,9 @@ p {
 
 .card-columns {
   column-count: 1; }
+
+.pageForm {
+  padding: 1rem 2%; }
 
 .pageToolbar {
   padding: 0 2% 2% 2%; }

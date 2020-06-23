@@ -5,18 +5,22 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div style="float:left">
-    <h1>Transactions</h1>
+
+<div style="float:left; margin:10px">
+    <h2>Transactions</h2>
 </div>
 
+
 <div style="float:right">
-    <span>Paid by me</span>
-    <label class="switch">
+    
+        <span>Paid by me</span>
+        <label class="switch">
 
-        <input id="paidByMeCheckbox" type="checkbox">
-        <span class="slider round"></span>
+            <input id="paidByMeCheckbox" type="checkbox">
+            <span class="slider round"></span>
 
-    </label>
+        </label>
+    
 </div>
 
 
@@ -74,13 +78,13 @@
                 @Html.HiddenFor(Model => Model.UpdateCommentVm.TransactionId)
                 @Html.HiddenFor(Model => Model.UpdateCommentVm.EventId)
                 <div class="modal-body">
-                   
+
                     <div class="form-group">
 
                         <textarea class="form-control" aria-label="With textarea" asp-for="@Model.UpdateCommentVm.Comment"></textarea>
 
                     </div>
-                    
+
 
                 </div>
                 <div class="modal-footer">

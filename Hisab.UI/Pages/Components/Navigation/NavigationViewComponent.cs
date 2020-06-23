@@ -35,7 +35,7 @@ namespace Hisab.UI.Pages.Components.Navigation
                 
                 if(pages.Count() > 3)
                 {
-                    return View(EventMenu(path));
+                    return View(EventMenu(path, Guid.Parse(pages[3])));
                 }
                 
                 return View(AppMenu(path));
@@ -68,16 +68,16 @@ namespace Hisab.UI.Pages.Components.Navigation
             return nav;
         }
 
-        private NavigationVM EventMenu(string path)
+        private NavigationVM EventMenu(string path, Guid EventId)
         {
             var nav = new NavigationVM();
 
             
-            nav.Items.Add(new NavigationItemVM() { Page = "Dashboard", Label = "Dashboard", IsCurrentPage = path.Contains("dashboard") ? true : false, IsEventMenu=true });
+            nav.Items.Add(new NavigationItemVM() { Page = "Dashboard", EventId= EventId, Label = "Dashboard", IsCurrentPage = path.Contains("dashboard") ? true : false, IsEventMenu=true });
             
-            nav.Items.Add(new NavigationItemVM() { Page = "Transactions", Label = "Transactions", IsCurrentPage = path.Contains("transactions") ? true : false, IsEventMenu = true });
-            nav.Items.Add(new NavigationItemVM() { Page = "EventSettings", Label = "Settings", IsCurrentPage = path.Contains("settings") ? true : false, IsEventMenu = true });
-            nav.Items.Add(new NavigationItemVM() { Page = "EventSettlement", Label = "Settlement", IsCurrentPage = path.Contains("EventSettlement") ? true : false, IsEventMenu = true });
+            nav.Items.Add(new NavigationItemVM() { Page = "Transactions", EventId = EventId, Label = "Transactions", IsCurrentPage = path.Contains("transactions") ? true : false, IsEventMenu = true });
+            nav.Items.Add(new NavigationItemVM() { Page = "EventSettings", EventId = EventId, Label = "Settings", IsCurrentPage = path.Contains("settings") ? true : false, IsEventMenu = true });
+            nav.Items.Add(new NavigationItemVM() { Page = "EventSettlement", EventId = EventId, Label = "Settlement", IsCurrentPage = path.Contains("EventSettlement") ? true : false, IsEventMenu = true });
 
             nav.Items.Add(new NavigationItemVM() { Page = "/app/events", Label = "My Events", IsCurrentPage = path.Contains("Events") ? true : false });
             
