@@ -25,7 +25,7 @@ namespace Hisab.UI
         private IEventTransactionManager _transactionManager;
         private IToastNotification _toastNotification;
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public ExpenseTransactionVM ExpenseVM { get; set; }
 
         public string SuccessMessage { get; set; }
@@ -43,90 +43,109 @@ namespace Hisab.UI
 
         public async Task<IActionResult> OnGet(Guid Id)
         {
-                ExpenseVM = new ExpenseTransactionVM();
-                var eve = await _eventManager.GetEventById(Id);
-                var eventAccount = await _transactionManager.GetEventAccount(Id);
+            await LoadViewModel(Id);
+
+            return Page();
+        }
+
+        private async Task LoadViewModel(Guid Id)
+        {
+            ExpenseVM = new ExpenseTransactionVM();
+            var eve = await _eventManager.GetEventById(Id);
+            var eventAccount = await _transactionManager.GetEventAccount(Id);
 
 
-                ExpenseVM.EventId = Id;
-                
+            ExpenseVM.EventId = Id;
 
-                foreach (var f in eve.Friends.OrderBy(x => x.NickName))
+
+            foreach (var f in eve.Friends.OrderBy(x => x.NickName))
+            {
+                if (f.Email.ToLower() == User.Identity.Name.ToLower())
                 {
-                    if (f.Email.ToLower() == User.Identity.Name.ToLower())
-                    {
-                        ExpenseVM.ExpensePaidById = f.UserId;
+                    ExpenseVM.ExpensePaidById = f.UserId;
 
-                        ExpenseVM.PaidByList.Add(new PaidByVM() { Id = f.UserId, Name = f.NickName });
-                        var eventBalance = eventAccount.CalculateBalance();
-                        if (eventBalance > 0)
-                        {
-                            ExpenseVM.PaidByList.Add(new PaidByVM() { Id = eventAccount.AccountId, Name = $"Event Account ({eventBalance})" });
-                        }
-                        
+                    ExpenseVM.PaidByList.Add(new PaidByVM() { Id = f.UserId, Name = f.NickName });
+                    var eventBalance = eventAccount.CalculateBalance();
+                    if (eventBalance > 0)
+                    {
+                        ExpenseVM.PaidByList.Add(new PaidByVM() { Id = eventAccount.AccountId, Name = $"Event Account ({eventBalance})" });
                     }
-                    ExpenseVM.ExpenseSharedWith.Add(new EventFriendSharedVM()
-                    {
-                            EventId = f.EventId,
-                            UserId = f.UserId,
-                            Email = f.Email,
-                            Name = f.NickName,
-                            Status = f.EventFriendStatus.GetDescription(),
-                            EventFriendStatus = f.EventFriendStatus,
-                            IsFriendActive = f.IsFriendActive,
-                            Avatar = HisabImageManager.GetAvatar(f.Avatar),
-                            IsShared = true
-
-                    });
-
-                   
 
                 }
+                ExpenseVM.ExpenseSharedWith.Add(new EventFriendSharedVM()
+                {
+                    EventId = f.EventId,
+                    UserId = f.UserId,
+                    Email = f.Email,
+                    Name = f.NickName,
+                    Status = f.EventFriendStatus.GetDescription(),
+                    EventFriendStatus = f.EventFriendStatus,
+                    IsFriendActive = f.IsFriendActive,
+                    Avatar = HisabImageManager.GetAvatar(f.Avatar),
+                    IsShared = true
+
+                });
+
+
+
+            }
 
             this.ViewData.Add("EventTitle", eve.EventName);
-            return Page();
         }
 
         public async Task<IActionResult> OnPost()
         {
-            var newTrans = new NewTransactionBO();
+            bool hasError = false;
+           
 
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            newTrans.CreatedByUserId = user.Id;
-            newTrans.Description = ExpenseVM.ExpenseDescription;
-            newTrans.EventId = ExpenseVM.EventId;
-            newTrans.TransactionDate = ExpenseVM.ExpenseDate.Date;
-            newTrans.TotalAmount = ExpenseVM.ExpensePaid;
-            newTrans.PaidByUserId = ExpenseVM.ExpensePaidById;
-            
-
-            foreach(var split in ExpenseVM.ExpenseSharedWith)
-            {
-                if(split.IsShared)
-                {
-                    var splitBO = new TransactionSplitBO();
-                    splitBO.EventId = ExpenseVM.EventId;
-                    splitBO.UserId = split.UserId;
-                    newTrans.TransactionSplits.Add(splitBO);
-                }
-                
-            }
-            var result = await _transactionManager.CreateExpenseTransaction(newTrans);
-
-            if(result.Success)
-            {
-                SuccessMessage = result.Messge;
-                _toastNotification.AddSuccessToastMessage(result.Messge);
-
-                return RedirectToPage("Dashboard", new { id = ExpenseVM.EventId });
-            }
+            if (!ModelState.IsValid)
+                hasError = true;
             else
             {
-                ErrorMessage = result.Messge;
+                var newTrans = new NewTransactionBO();
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                newTrans.CreatedByUserId = user.Id;
+                newTrans.Description = ExpenseVM.ExpenseDescription;
+                newTrans.EventId = ExpenseVM.EventId;
+                newTrans.TransactionDate = ExpenseVM.ExpenseDate.Date;
+                newTrans.TotalAmount = ExpenseVM.ExpensePaid;
+                newTrans.PaidByUserId = ExpenseVM.ExpensePaidById;
+
+
+                foreach (var split in ExpenseVM.ExpenseSharedWith)
+                {
+                    if (split.IsShared)
+                    {
+                        var splitBO = new TransactionSplitBO();
+                        splitBO.EventId = ExpenseVM.EventId;
+                        splitBO.UserId = split.UserId;
+                        newTrans.TransactionSplits.Add(splitBO);
+                    }
+
+                }
+                var result = await _transactionManager.CreateExpenseTransaction(newTrans);
+
+                if (result.Success)
+                {
+                    SuccessMessage = result.Messge;
+                    _toastNotification.AddSuccessToastMessage(result.Messge);
+
+                    return RedirectToPage("Dashboard", new { id = ExpenseVM.EventId });
+                }
+                else
+                {
+                    ErrorMessage = result.Messge;
+                    hasError = true;
+                }
             }
 
-            return await OnGet(ExpenseVM.EventId);
+            if(hasError)
+            {
+                //reload model
+                await LoadViewModel(ExpenseVM.EventId);
+            }
+
+            return Page();
         }
     }
 }

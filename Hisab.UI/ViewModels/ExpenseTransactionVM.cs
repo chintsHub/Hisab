@@ -63,18 +63,17 @@ namespace Hisab.UI.ViewModels
 
         public DateTime ExpenseDate { get; set; }
 
+        [Required(ErrorMessage ="Expense Description is required")]
         public string ExpenseDescription { get; set; }
 
         
         public Guid ExpensePaidById { get; set; }
+
+        [Range(0.1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public decimal ExpensePaid { get; set; }
         public List<PaidByVM> PaidByList { get; set; }
 
-        public TransactionType TransactionType { get; set; }
-
-        public decimal ExpensePaidFromPool { get; set; }
-
-        public decimal MaxAllowedPoolAmount { get; set; }
+              
 
         public List<EventFriendSharedVM> ExpenseSharedWith { get; set; }
 

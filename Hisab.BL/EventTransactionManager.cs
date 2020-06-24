@@ -58,6 +58,13 @@ namespace Hisab.BL
         {
             var retVal = new ManagerResponse();
 
+            if(newTransactionBO.TransactionSplits.Count == 0)
+            {
+                retVal.Messge = "The bill must be shared with atleat 1 Friend";
+                retVal.Success = false;
+                return retVal;
+            }
+
             // setup
             newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
             newTransactionBO.LastModifiedDate = DateTime.UtcNow;
