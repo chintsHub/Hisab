@@ -88,6 +88,12 @@ namespace Hisab.UI
 
         public async Task<IActionResult> OnPost()
         {
+            
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
+            
             var newTrans = new NewTransactionBO();
 
             if (ContributeVM.EventPoolId != null)

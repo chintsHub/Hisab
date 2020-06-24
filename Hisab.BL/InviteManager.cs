@@ -67,7 +67,7 @@ namespace Hisab.BL
 
             if (user == null)
             {
-                response.Messge = $"User with the email address {userEmail} does not exist.";
+                response.Messge = $"User with the email address {userEmail} is not registered with Hisaab.";
                 response.Success = false;
                 return response;
             }

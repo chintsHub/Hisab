@@ -100,11 +100,13 @@ namespace Hisab.UI.ViewModels
         public Guid UserId { get; set; }
         public string NickName { get; set; }
 
+        [Range(0.1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public Decimal Amount { get; set; }
 
 
         public DateTime TransactionDate { get; set; }
 
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
         public DateTime LastModifiedDate { get; set; }
