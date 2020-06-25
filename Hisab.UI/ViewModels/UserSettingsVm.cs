@@ -6,12 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hisab.UI.ViewModels
 {
-    public class OldUserSettingsVm
-    {
-        public ChangePasswordVm ChangePasswordVm { get; set; }
-
-        public UpdateUserSettingsVm UpdateNickNameVm { get; set; }
-    }
+   
 
     public class AvatarVm
     {

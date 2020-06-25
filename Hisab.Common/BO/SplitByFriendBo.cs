@@ -34,18 +34,7 @@ namespace Hisab.Common.BO
    
 
 
-    public class SettlementBo
-    {
-        public int TransactionId { get; set; }
-
-        public int EventId { get; set; }
-
-        public int PayerFriendId { get; set; }
-
-        public int ReceiverFriendId { get; set; }
-
-        public decimal Amount { get; set; }
-    }
+    
 
     public class SettlementData
     {
@@ -60,50 +49,7 @@ namespace Hisab.Common.BO
 
     }
 
-    public class TransactionJournalBo
-    {
-        public int TransactionId { get; set; }
-
-        public string Particulars { get; set; }
-
-        public int AccountId { get; set; }
-
-        public decimal DebitAmount { get; set; }
-
-        public decimal CreditAmount { get; set; }
-    }
-
-    
-
-    public class SplitPerFriendTransactionBo 
-    {
-        public List<SplitPerFriendBo> Friends { get; set; }
-
-        public Decimal PaidByPoolAmount { get; set; }
-        
-
-        public SplitPerFriendTransactionBo()
-        {
-            Friends = new List<SplitPerFriendBo>();
-
-            
-        }
-    }
-
-    public class SplitPerFriendBo
-    {
-        public int EventFriendId { get; set; }
-
-        public  decimal AmountDue { get; set; }
-
-        public decimal AmountPaid { get; set; }
-
-        public bool IncludeInSplit { get; set; }
-
-        public decimal NetAmountToSettle { get; set; }
-
-        public decimal AlreadySettled { get; set; }
-    }
+      
 
     public class EventPoolTransactionBo 
     {
@@ -115,22 +61,7 @@ namespace Hisab.Common.BO
         }
     }
 
-    public class PoolFriendEntryBo
-    {
-        public int EventFriendId { get; set; }
-
-        public decimal DepositAmount { get; set; }
-    }
-
-    public enum SplitType
-    {
-        NotApplicable = 0,
-        SplitPerFriend = 1,
-        SplitPerHead,
-        SplitByRate
-        
-    }
-
+  
     public class NewTransactionBO
     {
         public Guid TransactionId { get; set; }

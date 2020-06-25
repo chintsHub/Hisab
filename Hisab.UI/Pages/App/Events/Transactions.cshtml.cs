@@ -54,7 +54,7 @@ namespace Hisab.UI
                         TransactionDescription = tran.TransactionDescription,
                         Amount = tran.TotalAmount,
                         PaidById = tran.PaidById,
-                        PaidByName = tran.PaidByName,
+                        PaidByName = tran.PaidByName.Trim(),
                         TransactionType = tran.TransactionType,
                         PaidByEmail = tran.PaidByEmail,
                         Comments = tran.Comments
@@ -73,7 +73,7 @@ namespace Hisab.UI
 
                     if (tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
                     {
-                        tran.PaidByName += "Using Money Pool";
+                        tranVM.PaidByName = tran.PaidByName.Trim() + " (using Money Pool)";
                     }
 
                     if (tran.TransactionType == Common.BO.TransactionType.ContributionToPool)

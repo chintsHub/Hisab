@@ -229,18 +229,7 @@ namespace Hisab.Common.BO
         }
     }
 
-    public class EventInviteBO
-    {
-        public Guid EventId { get; set; }
-
-        public Guid UserId { get; set; } 
-
-        public string EventName { get; set; }
-
-        public string EventOwner { get; set; }
-
-        public int EventFriendId { get; set; }
-    }
+    
 
     public enum AvatarEnum
     {

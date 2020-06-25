@@ -30,7 +30,7 @@
                 </button>
                 <ul class="dropdown-menu userMenu">
 
-                    <li><a asp-controller="AppHome" asp-action="Logout" class="">Log out</a></li>
+                    <li><a asp-page="/LoginPage" asp-page-handler="Logout" >Log out</a></li>
 
                     @if (User.IsInRole("Admin"))
                     {

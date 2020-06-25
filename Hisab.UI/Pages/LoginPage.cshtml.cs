@@ -35,6 +35,13 @@ namespace Hisab.UI
             ViewData["ReturnUrl"] = returnUrl;
         }
 
+        public async Task<IActionResult> OnGetLogout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToPage("/LoginPage");
+        }
+
         public async Task<IActionResult> OnPostAsync(string ReturnUrl)
         {
             if (ModelState.IsValid)
