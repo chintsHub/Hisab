@@ -49,7 +49,7 @@ namespace Hisab.BL
             using(var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var testimony = context.FeedbackRepository.GetTestimonyFeedBack();
-
+                context.CloseConnection();
                 return testimony;
             }
         }
@@ -59,7 +59,7 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var feedbacks = context.FeedbackRepository.GetAllFeedBacks();
-
+                context.CloseConnection();
                 return feedbacks;
             }
         }

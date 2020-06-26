@@ -117,7 +117,11 @@ namespace Hisab.Dapper.Repository
         {
             string command = $@"SELECT * FROM [ApplicationUser] WHERE [NormalizedUserName] = @{nameof(normalizedUserName)}";
 
-            return await Connection.QuerySingleOrDefaultAsync<ApplicationUser>(command, transaction: Transaction,param: new { normalizedUserName });
+
+            var retVal =  await Connection.QuerySingleOrDefaultAsync<ApplicationUser>(command, transaction: Transaction,param: new { normalizedUserName });
+            
+
+            return retVal;
         }
 
         public Task<string> GetNormalizedUserNameAsync(ApplicationUser user)

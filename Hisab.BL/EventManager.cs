@@ -102,7 +102,7 @@ namespace Hisab.BL
             {
                 var events = context.EventRepository.GetEventsForUser(userId);
 
-                
+                context.CloseConnection();
                 return events;
                 
             }
@@ -114,7 +114,7 @@ namespace Hisab.BL
             {
                 var events = context.EventRepository.GetAllEvents();
 
-
+                context.CloseConnection();
                 return events;
 
             }
@@ -126,7 +126,7 @@ namespace Hisab.BL
             {
                 var events = context.EventRepository.GetEventById(eventId);
 
-
+                context.CloseConnection();
                 return events;
 
             }

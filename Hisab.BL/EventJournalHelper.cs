@@ -24,7 +24,7 @@ namespace Hisab.BL
 
         Task<EventUserAccountBO> GetCashAccount(Guid userId, Guid eventId);
 
-        EventUserAccountBO GetAccountReceivable(Guid userId, Guid eventId);
+       
 
 
     }
@@ -57,7 +57,7 @@ namespace Hisab.BL
                     EventFriendAccountAction = JournalAction.Credit,
                     Amount = newTransactionBO.TotalAmount
                 };
-
+                context.CloseConnection();
                 return journal;
             }
 
@@ -95,6 +95,7 @@ namespace Hisab.BL
                     
                     
                 }
+                context.CloseConnection();
             }
 
 
@@ -157,6 +158,7 @@ namespace Hisab.BL
                         });
                     }
                 }
+                context.CloseConnection();
             }
 
             return journals;
@@ -198,7 +200,7 @@ namespace Hisab.BL
                     UserId = newTransactionBO.PaidToFriendUserId.Value,
                     PayRecieveFriendId = newTransactionBO.PaidByUserId
                 });
-
+                context.CloseConnection();
                 return journals;
             }
         }
@@ -239,6 +241,7 @@ namespace Hisab.BL
                     PayRecieveFriendId = newTransactionBO.PaidByUserId
                 });
 
+                context.CloseConnection();
                 return journals;
             }
         }
@@ -270,6 +273,8 @@ namespace Hisab.BL
                 var balanceFromEventFriend = context.EventTransactionRepository.GetDebitUserAccountBalanceFromEventFriendJournal(eventId, userId, ApplicationAccountType.Expense);
                 if (balanceFromEventFriend != null)
                     retVal.DebitTotal += balanceFromEventFriend.TotalAmount;
+
+                context.CloseConnection();
             }
 
             return retVal;
@@ -317,14 +322,13 @@ namespace Hisab.BL
                 {
                     retVal.DebitTotal += debitbalanceFromUserBook.TotalAmount;
                 }
+
+                context.CloseConnection();
             }
 
             return retVal;
         }
 
-        public EventUserAccountBO GetAccountReceivable(Guid userId, Guid eventId)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

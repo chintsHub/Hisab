@@ -84,9 +84,14 @@ namespace Hisab.Dapper.IdentityStores
             //{
             //await context.InitializeWithTransaction();
             var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider);
-                var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
+            var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
 
-                return user;
+
+            context.CloseConnection();
+
+            return user;
+
+            
 
             //}
         }

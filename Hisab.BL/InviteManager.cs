@@ -50,7 +50,7 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var events = context.EventInviteRepository.GetUserInvites(userId);
-
+                context.CloseConnection();
                 return events;
 
             }
@@ -129,7 +129,7 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var events = context.EventInviteRepository.GetPendingInvites(eventId);
-
+                context.CloseConnection();
                 return events;
 
             }
@@ -141,7 +141,7 @@ namespace Hisab.BL
             {
                 var events = context.EventInviteRepository.GetRecommendedFriends(userId, currentEventId);
 
-                
+                context.CloseConnection();
                 return events;
 
             }
@@ -152,7 +152,7 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var result = context.EventInviteRepository.DeleteInvite(eventId, userId);
-
+                context.CloseConnection();
                 return result;
 
             }

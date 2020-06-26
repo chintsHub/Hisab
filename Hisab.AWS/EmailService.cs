@@ -35,7 +35,7 @@ namespace Hisab.AWS
                 message.Body = new Body();
                 message.Body.Html = new Content(GetRegisterEmailBody(registerLink,name));
 
-                var sendRequest = new SendEmailRequest("register@hisaab.io", destination, message);
+                var sendRequest = new SendEmailRequest("register@hisab.io", destination, message);
 
                 var response = await client.SendEmailAsync(sendRequest);
 
@@ -81,7 +81,7 @@ namespace Hisab.AWS
 
                 
 
-                var sendRequest = new SendEmailRequest("admin@hisaab.io", destination, message);
+                var sendRequest = new SendEmailRequest("admin@hisab.io", destination, message);
 
                 var response = await client.SendEmailAsync(sendRequest);
 

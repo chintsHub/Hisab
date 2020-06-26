@@ -290,6 +290,7 @@ namespace Hisab.BL
 
                 var result = context.EventTransactionRepository.GetEventExpense(eventId);
 
+                context.CloseConnection();
                 
                 return result;
 
@@ -328,7 +329,7 @@ namespace Hisab.BL
                     EventId = eventId,
                     UserId = userId
                 };
-
+                context.CloseConnection();
                 return account.CalculateBalance();
 
 
@@ -366,7 +367,7 @@ namespace Hisab.BL
                     EventId = eventId,
                     UserId = userId
                 };
-
+                context.CloseConnection();
                 return account.CalculateBalance();
 
 
@@ -380,7 +381,7 @@ namespace Hisab.BL
             {
 
                 var result = await _eventJournalHelper.GetCashAccount(userId, eventId);
-
+                context.CloseConnection();
                 return System.Math.Abs(result.CalculateBalance()); // Cash given will be in negative (credit) balance.
 
 

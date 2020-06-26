@@ -19,6 +19,8 @@ namespace Hisab.Dapper
         IFeedbackRepository FeedbackRepository { get;  }
 
         void SaveChanges();
+
+        void CloseConnection();
     } 
 
 

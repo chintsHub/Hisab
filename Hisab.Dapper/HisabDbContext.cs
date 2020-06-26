@@ -32,6 +32,13 @@ namespace Hisab.Dapper
         }
 
    
+        public void CloseConnection()
+        {
+            if(_connection != null && _connection.State == ConnectionState.Open)
+            {
+                _connection.Close();
+            }
+        }
 
         public IAccountTypeRepository AccountTypeRepository
         {

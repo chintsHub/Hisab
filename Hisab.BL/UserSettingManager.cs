@@ -59,7 +59,7 @@ namespace Hisab.BL
             using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
             {
                 var user = await context.ApplicationUserRepository.FindByNameAsync(userName);
-
+                context.CloseConnection();
                 return new UserSettingsBO 
                 { 
                     NickName = user.NickName, 
