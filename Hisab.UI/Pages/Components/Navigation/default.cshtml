@@ -1,0 +1,42 @@
+﻿@model NavigationVM
+
+@if (Model.Items.Count > 4)
+{
+    
+    <nav class="clearfix hamburgerNav">
+        <button id="hamburgerBtn"><i class="fa fa-bars"></i></button>
+        <div id="eventTitle" class="eventTitle">
+            @ViewBag.EventTitle
+        </div>
+        <ul id="hamburgerMenu" class="hamburgerMenuItems">
+            @foreach (var item in Model.Items)
+            {
+                <li class="@(item.IsCurrentPage == true ? "active" : "")"> <a asp-page="@item.Page" asp-route-id="@item.EventId" > @item.Label</a></li>
+
+            }
+
+        </ul>
+
+    </nav>
+
+}
+else
+{
+    <nav class="clearfix defaultNav">
+        <ul>
+            @foreach (var item in Model.Items)
+            {
+                <li class="@(item.IsCurrentPage == true ? "active" : "")"> <a asp-page="@item.Page"> @item.Label</a></li>
+
+            }
+
+        </ul>
+
+    </nav>
+
+}
+
+<script type="text/javascript" src="~/js/Navigation.js" defer></script>
+
+
+

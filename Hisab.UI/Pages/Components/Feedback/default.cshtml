@@ -1,0 +1,20 @@
+﻿@model FeedBackItemVm
+
+<div class="transaction">
+    <div class="row transactionHeader">
+        <div class="col-3 col-xs-3">@Model.FeedbackDate.ToShortDateString()</div>
+        <div class="col-9 col-xs-9">@Model.NickName</div>
+        
+    </div>
+    <div class="row transactionBody">
+        <div class="col-12 col-xs-12">
+            <div class="testimony">@Model.Message </div>
+            
+        </div>
+
+    </div>
+
+    
+
+
+</div>  @*end of transaction*@

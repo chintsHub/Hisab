@@ -4,45 +4,37 @@ using System.Text;
 
 namespace Hisab.Common.BO
 {
-    public class TransactionBo
+    
+    public class TransactionBO
     {
-        public int Id { get; set; }
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
 
-        public string Description { get; set; }
+        
+        public Guid TransactionId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public string TransactionDescription { get; set; }
+
+        public string PaidByName { get; set; }
+        public Guid PaidById { get; set; }
+        public string PaidByEmail { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public List<EventFriendBO> SharedWith { get; set; }
 
         public decimal TotalAmount { get; set; }
 
-        public  SplitType SplitType { get; set; }
+        public Guid PaidToFriendUserId { get; set; }
+        public string PaidToFriendName { get; set; }
 
-        public List<TransactionJournalBo> Journals { get; set; }
-
-        public List<SettlementBo> Settlements { get; set; }
-
-        public int CreatedByUserId { get; set; }
-        public string NickName { get; set; }
-
-        public DateTime CreatedDateTime { get; set; }
-
-
-        public TransactionBo()
-        {
-            Settlements = new List<SettlementBo>();
-        }
+        public string Comments { get; set; }
     }
+   
 
-    public class SettlementBo
-    {
-        public int TransactionId { get; set; }
 
-        public int EventId { get; set; }
-
-        public int PayerFriendId { get; set; }
-
-        public int ReceiverFriendId { get; set; }
-
-        public decimal Amount { get; set; }
-    }
+    
 
     public class SettlementData
     {
@@ -57,85 +49,127 @@ namespace Hisab.Common.BO
 
     }
 
-    public class TransactionJournalBo
-    {
-        public int TransactionId { get; set; }
+      
 
-        public string Particulars { get; set; }
-
-        public int AccountId { get; set; }
-
-        public decimal DebitAmount { get; set; }
-
-        public decimal CreditAmount { get; set; }
-    }
-
-    public class EventAccountBo
-    {
-        public int AccountId { get; set; }
-
-        public int EventId { get; set; }
-
-        public int EventFriendId { get; set; }
-
-        public int AccountTypeId { get; set; }
-    }
-
-    public class SplitPerFriendTransactionBo : TransactionBo
-    {
-        public List<SplitPerFriendBo> Friends { get; set; }
-
-        public Decimal PaidByPoolAmount { get; set; }
-        
-
-        public SplitPerFriendTransactionBo()
-        {
-            Friends = new List<SplitPerFriendBo>();
-
-            Journals = new List<TransactionJournalBo>();
-        }
-    }
-
-    public class SplitPerFriendBo
-    {
-        public int EventFriendId { get; set; }
-
-        public  decimal AmountDue { get; set; }
-
-        public decimal AmountPaid { get; set; }
-
-        public bool IncludeInSplit { get; set; }
-
-        public decimal NetAmountToSettle { get; set; }
-
-        public decimal AlreadySettled { get; set; }
-    }
-
-    public class EventPoolTransactionBo : TransactionBo
+    public class EventPoolTransactionBo 
     {
         public int EventFriendId { get; set; }
 
         public EventPoolTransactionBo()
         {
-            Journals = new List<TransactionJournalBo>();
+            
         }
     }
 
-    public class PoolFriendEntryBo
+  
+    public class NewTransactionBO
     {
-        public int EventFriendId { get; set; }
+        public Guid TransactionId { get; set; }
 
-        public decimal DepositAmount { get; set; }
+        public Guid EventId { get; set; }
+
+        public Guid EventPoolAccountId { get; set; }
+
+        public Guid CreatedByUserId { get; set; }
+
+        public DateTime TransactionDate { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public string Description { get; set; }
+
+        public Guid PaidByUserId { get; set; }
+
+        public DateTime LastModifiedDate { get; set; }
+
+        public List<TransactionSplitBO> TransactionSplits { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public Guid? PaidToFriendUserId { get; set; }
+
+        public NewTransactionBO()
+        {
+            TransactionSplits = new List<TransactionSplitBO>();
+        }
     }
 
-    public enum SplitType
+    public class TransactionSplitBO
     {
-        NotApplicable = 0,
-        SplitPerFriend = 1,
-        SplitPerHead,
-        SplitByRate
-        
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public decimal SplitPercentage { get; set; }
+
+        public decimal SplitAmount { get; set; }
     }
 
+    public class EventFriendJournalBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public Guid UserDebitAccountId { get; set; }
+
+        public Guid UserCreditAccountId { get; set; }
+
+        public Guid? PayRecieveFriendId { get; set; }
+
+        public Decimal Amount { get; set; }
+
+    }
+
+    public class EventTransactionJournalBO
+    {
+        public Guid EventId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public Guid TransactionId { get; set; }
+
+        public Guid EventAccountId { get; set; }
+
+        public JournalAction EventAccountAction { get; set; }
+
+        public Guid EventFriendAccountId { get; set; }
+        public JournalAction EventFriendAccountAction { get; set; }
+
+        public decimal Amount { get; set; }
+
+    }
+
+    public class UpdateCommentsBO
+    {
+        public Guid TransactionId { get; set; }
+
+        public Guid EventId { get; set; }
+
+        public string Comments { get; set; }
+
+        public DateTime LastModifiedDate { get; set; }
+    }
+
+
+
+    public enum TransactionType
+    {
+        Expense = 1,
+        ContributionToPool = 2,
+        LendToFriend = 3,
+        ExpenseFromPool = 4,
+        Settlement = 5
+    }
+
+    public enum JournalAction
+    {
+        Debit = 1,
+        Credit = 2
+    }
    
 }

@@ -1,0 +1,52 @@
+﻿@model HeaderVm
+
+    <header class="clearfix">
+        @if (!String.IsNullOrEmpty(Model.HeaderAnnouncement))
+        {
+            <div class="announcementOuter">
+                <div class="announcement">@Model.HeaderAnnouncement</div>
+            </div>
+        }
+
+        <div class="hisabLogo">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h1><a href="@Url.Page("/App/Events")">Hisaab</a></h1>
+
+            }
+            else
+            {
+                <h1><a href="@Url.Page("Index")">Hisaab</a></h1>
+                
+            }
+        </div>
+        <form>
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                <button type="button" class="btn btn-lg logoutButton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hey @Model.NickName <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu userMenu">
+
+                    <li><a asp-page="/LoginPage" asp-page-handler="Logout" >Log out</a></li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-page="/App/Admin/AllUsers">Admin</a></li>
+                    }
+                </ul>
+
+
+
+            }
+            else
+            {
+                <a asp-page="LoginPage" class="loginButtonLink">Log in</a>
+            }
+
+        </form>
+
+
+    </header>

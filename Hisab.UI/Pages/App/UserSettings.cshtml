@@ -1,0 +1,104 @@
+﻿@page
+@model Hisab.UI.UserSettingsModel
+@using Hisab.UI.Extensions
+@{
+    ViewData["Title"] = "UserSettings";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container">
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+        <div class="row">
+            <div class="col-md-6 col-12 col-xs-12 ">
+                <div class="card settingsCard">
+                    <form asp-page-handler="UserSettings" method="post">
+
+                        <div class="card-header bg-warning">Change User Name</div>
+                        <div class="card-body">
+                            @if (!String.IsNullOrEmpty(Model.UserSettingsMessage))
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @Model.UserSettingsMessage
+                                </div>
+                            }
+                            
+
+                            <div class="form-group">
+                                <label>Enter User Name:</label>
+                                <input asp-for="@Model.UserSettingsVm.UserName" class="form-control" type="text" />
+                                <span asp-validation-for="@Model.UserSettingsVm.UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Choose Avatar:</label>
+                                @Html.HiddenFor(Model => Model.UserSettingsVm.SelectedAvatarId)
+                                <span asp-validation-for="@Model.UserSettingsVm.SelectedAvatarId" class="text-danger"></span>
+                                <div class="customCombobox" id="customCombobox1">
+                                    <div id="comboSelection"></div>
+                                </div>
+                                <ul class="ulcustomCombobox" id="ulcustomCombobox1">
+                                    @foreach (var avatar in Model.UserSettingsVm.Avatars)
+                                    {
+                                        <li id="@Convert.ToInt32(avatar.Avatar)">
+                                            <a>
+                                                <img src="@avatar.AvatarImagePath" class="imgDisplay" asp-append-version="true" />
+                                                <p class="imageText">@avatar.Avatar.GetDescription()</p>
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer bg-warning">
+                            <button class="btn btn-primary footerButtons">Save</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-12 col-xs-12 ">
+                <div class="card settingsCard">
+                    <form asp-page-handler="UpdatePassword" method="post">
+                        <div class="card-header bg-warning">Change Password</div>
+                        <div class="card-body">
+
+                            <p>
+                                You will be asked to login again after sucessfully updating your password.
+                            </p>
+
+
+                            <div class="form-group">
+                                <label>Enter new Password:</label>
+                                <input class="form-control" type="password" asp-for="@Model.PasswordVm.NewPassword" />
+                                <span asp-validation-for="@Model.PasswordVm.NewPassword" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer bg-warning">
+                            <button class="btn btn-primary footerButtons">Save</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+    <script src="~/js/UserSettings.js" asp-append-version="true"></script>
+
+}

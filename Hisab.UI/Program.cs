@@ -49,15 +49,12 @@ namespace Hisab.UI
             }
             catch (Exception ex)
             {
-                Log.Write(LogEventLevel.Error,"{@LogDetail}", LogHelper.CreateLogDetail(LogType.Error, "", ex: ex));
-                
-                
+                Log.Write(LogEventLevel.Error, "{@LogDetail}", LogHelper.CreateLogDetail(LogType.Error, "", ex: ex));
+
+
             }
 
-
-           
-
-
+                                 
             await webHost.RunAsync();
 
             

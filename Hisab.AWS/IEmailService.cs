@@ -5,8 +5,8 @@ namespace Hisab.AWS
 {
     public interface IEmailService
     {
-        Task<HttpStatusCode> SendRegistrationEmail(string toEmail, string registerLink);
+        Task<HttpStatusCode> SendRegistrationEmail(string toEmail, string name, string registerLink);
 
-        Task<HttpStatusCode> SendForgotPasswordLink(string toEmail, string forgotPasswordLink);
+        Task<HttpStatusCode> SendForgotPasswordLink(string toEmail, string name, string forgotPasswordLink);
     }
 }

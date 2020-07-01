@@ -1,0 +1,22 @@
+﻿@page
+@model Hisab.UI.ConfirmEmailModel
+@{
+    ViewData["Title"] = "ConfirmEmail";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <div class="onlyContent">
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+        @if (ModelState.IsValid)
+        {
+            <p>
+                Thank you for confirming your email. You can now <a asp-page="/LoginPage">Login</a>
+            </p>
+            <p>
+
+            </p>
+        }
+
+    </div>
+

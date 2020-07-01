@@ -1,12 +1,17 @@
 ﻿CREATE TABLE [dbo].[EventTransaction]
 (
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [TotalAmount] DECIMAL(18, 4) NOT NULL, 
-    [Description] VARCHAR(200) NOT NULL, 
-    [SplitType] INT NOT NULL, 
-    [EventId] INT NOT NULL, 
-    [CreatedbyUserId] INT NOT NULL, 
-    [CreatedDateTime] DATETIME NOT NULL, 
-    CONSTRAINT [FK_EventTransaction_Event] FOREIGN KEY ([EventId]) REFERENCES [Event]([Id]), 
-    CONSTRAINT [FK_EventTransaction_ApplicationUser] FOREIGN KEY ([CreatedbyUserId]) REFERENCES [ApplicationUser]([Id])
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [EventId] UNIQUEIDENTIFIER NOT NULL, 
+    [CreatedbyUserId] UNIQUEIDENTIFIER NOT NULL, 
+    [TransactionDate] DATE NOT NULL, 
+    [TotalAmount] DECIMAL(18, 2) NOT NULL, 
+    [Description] VARCHAR(100) NOT NULL, 
+    [PaidByUserId] UNIQUEIDENTIFIER NOT NULL, 
+    [LastModifiedDate] DATETIME NOT NULL, 
+    [TransactionType] INT NOT NULL, 
+    [PaidToFriendUserId] UNIQUEIDENTIFIER NULL, 
+    [Comments] VARCHAR(4000) NULL, 
+    CONSTRAINT [FK_EventTransaction_EventFriend] FOREIGN KEY ([PaidByUserId],EventId) REFERENCES [EventFriend](UserId,EventId), 
+    CONSTRAINT [FK_EventTransaction_ApplicationUser] FOREIGN KEY ([CreatedbyUserId]) REFERENCES [ApplicationUser]([Id]), 
+    CONSTRAINT [FK_PaidToFriend_ApplicationUser] FOREIGN KEY ([PaidToFriendUserId]) REFERENCES [ApplicationUser]([Id]) 
 )

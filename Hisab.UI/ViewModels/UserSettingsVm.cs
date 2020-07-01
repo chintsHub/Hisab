@@ -1,11 +1,38 @@
-﻿namespace Hisab.UI.ViewModels
-{
-    public class UserSettingsVm
-    {
-        public ChangePasswordVm ChangePasswordVm { get; set; }
+﻿using Hisab.Common.BO;
+using Hisab.UI.Extensions;
+using Hisab.UI.Services;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-        public UpdateNickNameVm UpdateNickNameVm { get; set; }
+namespace Hisab.UI.ViewModels
+{
+   
+
+    public class AvatarVm
+    {
+        public AvatarEnum Avatar { get; set; }
+
+        public string AvatarImagePath { get; set; }
+
+        
     }
 
-   
+    public class UserSettingsVm
+    {
+        [Required]
+        public string UserName { get; set; }
+
+        public List<AvatarVm> Avatars { get; }
+
+        [Range(1, 5, ErrorMessage = "Please select an Avatar")]
+        public int SelectedAvatarId { get; set; }
+
+               
+
+        public UserSettingsVm()
+        {
+            Avatars = HisabImageManager.GetAvatars();
+           
+        }
+    }
 }

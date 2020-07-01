@@ -1,0 +1,172 @@
+﻿@page
+@model Hisab.UI.Pages.App.Admin.AllFeedbacksModel
+@{
+    ViewData["Title"] = "AllFeedbacks";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<!-- Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editFeedbackForm" method="post">
+                @Html.HiddenFor(Model => Model.UpdateTestimonyVm.Id)
+                <div class="modal-body">
+                    
+                    <div class="form-group">
+
+                       <div id="testimonyMessage"></div>
+
+                    </div>
+                    
+                    <div class="form-group">
+
+                        <div class="custom-control custom-checkbox checkbox-xl ">
+
+                            <input asp-for="@Model.UpdateTestimonyVm.ShowAsTestimony" type="checkbox" class="custom-control-input" id="showAsTestimonyCheckbox">
+                            <label asp-for="@Model.UpdateTestimonyVm.ShowAsTestimony" class="custom-control-label" for="showAsTestimonyCheckbox"></label>
+
+                        </div>
+
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="saveFeedback" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+
+
+
+    <table class="bg-white"
+           data-toggle="table"
+           data-unique-id="id"
+           data-url="@Url.Page("/App/Admin/AllFeedbacks", "LoadData")"
+           id="table"
+           data-toolbar="#toolbar"
+           data-filter-control="true"
+           @*data-search="true"*@
+           data-show-refresh="true"
+           data-show-toggle="true"
+           @*data-show-fullscreen="true"*@
+           data-show-columns="true"
+           data-show-columns-toggle-all="true"
+           @*data-detail-view="true"*@
+           @*data-show-export="true"*@
+           data-click-to-select="true"
+           @*data-detail-formatter="detailFormatter"*@
+           data-minimum-count-columns="2"
+           data-show-pagination-switch="true"
+           data-pagination="true"
+           data-show-extended-pagination="true"
+           data-total-not-filtered-field="totalNotFiltered"
+           data-id-field="id"
+           data-page-list="[10, 25, 50, 100, all]"
+           data-show-footer="true"
+           data-side-pagination="server">
+        <thead>
+            <tr>
+                <th data-formatter="operateFormatter">Actions</th> @*data-events="operateEvents"*@
+                @*<th data-field="id">ID</th>*@
+                <th data-field="feedbackDate" data-filter-control="input" data-sortable="true" >Date</th>
+                <th data-field="feedbackTypeName" data-filter-control="select" data-sortable="true">Feedback Type</th>
+                <th data-field="message" data-filter-control="input" data-sortable="true">Message</th>
+                <th data-field="nickName" data-filter-control="input" data-sortable="true">Name</th>
+                <th data-field="userName" data-filter-control="input" data-sortable="true">User Name</th>
+                <th data-field="showAsTestimony" >Show as Testimony</th>
+            </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+@section scripts{
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+    <script>
+        function operateFormatter(value, row, index) {
+
+            if (row.feedbackTypeName == 'Testimony') {
+                return [
+                   
+                    '<button id="' + row.id + '" ', 'data-message="' + row.message + '" ',
+                    'data-id="' + row.id + '" ',
+                    'data-showAsTestimony="' + row.showAsTestimony + '" ',
+                    'type="button" class="btn btn-primary" data-toggle="modal" data-target="#feedbackModal">',
+                    'Edit',
+                    '</button>'
+                ].join('')
+            }
+            else {
+                return [
+                    
+                ].join('')
+            }
+
+            
+        }
+
+
+
+        // Execute something when the modal window is shown.
+        $('#feedbackModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var message = button.data('message'); // Extract info from data-* attributes
+            var showAsTestimony = button.data('showastestimony');
+            var id = button.data('id');
+            
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal.find('.modal-title').text('Testimony');
+            modal.find('#testimonyMessage').html(message);
+            modal.find('#showAsTestimonyCheckbox').prop('checked', showAsTestimony);
+            
+            modal.find('#UpdateTestimonyVm_Id').val(id);
+
+
+           
+
+            var savebutton = modal.find('#saveFeedback');
+
+
+            savebutton.click(function OnSaveClick(e) {
+                e.preventDefault();
+
+                $.post(this.baseURI, $("#editFeedbackForm").serialize()).done(function (data) {
+                    //hack to prevent event firing multiple times
+                    var old_element = document.getElementById("saveFeedback");
+                    var new_element = old_element.cloneNode(true);
+                    old_element.parentNode.replaceChild(new_element, old_element);
+
+                    $('#feedbackModal').modal('toggle');
+                    $('#table').bootstrapTable('refresh');
+                });
+
+                removeEventListener('click', this, false);
+            });
+
+        });
+
+
+    </script>
+}
+
+

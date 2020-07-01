@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,10 +9,22 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Hisab.Dapper.IdentityStores
 {
-    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>, IUserRoleStore<ApplicationUser>, IUserEmailStore<ApplicationUser>
+    public class UserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>, IUserRoleStore<ApplicationUser>, IUserEmailStore<ApplicationUser>, IQueryableUserStore<ApplicationUser>
     {
         
         private IDbConnectionProvider dbConnectionProvider;
+
+        public IQueryable<ApplicationUser> Users
+        {
+            get
+            {
+                using (var context = HisabContextFactory.InitializeAsync(dbConnectionProvider).Result)
+                {
+                    var userList = context.ApplicationUserRepository.GetAllUsers();
+                    return userList.AsQueryable();
+                }
+            }
+        }
 
         public UserStore(IDbConnectionProvider dbConnectionProvider)
         {
@@ -25,6 +38,10 @@ namespace Hisab.Dapper.IdentityStores
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(dbConnectionProvider))
             {
                 //await context.InitializeWithTransaction();
+                user.Id = System.Guid.NewGuid();
+
+                if (user.AvatarId == 0)
+                    user.AvatarId = 1;
 
                 var result =  await context.ApplicationUserRepository.CreateAsync(user, cancellationToken);
 
@@ -63,15 +80,20 @@ namespace Hisab.Dapper.IdentityStores
 
         public async Task<ApplicationUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
-            using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
-            {
-                //await context.InitializeWithTransaction();
+            //using (var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider))
+            //{
+            //await context.InitializeWithTransaction();
+            var context = await HisabContextFactory.InitializeAsync(dbConnectionProvider);
+            var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
 
-                var user =  await context.ApplicationUserRepository.FindByNameAsync(normalizedUserName);
 
-                return user;
+            context.CloseConnection();
 
-            }
+            return user;
+
+            
+
+            //}
         }
 
         public Task<string> GetNormalizedUserNameAsync(ApplicationUser user, CancellationToken cancellationToken)

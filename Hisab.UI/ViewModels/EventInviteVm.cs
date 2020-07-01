@@ -1,18 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Hisab.Common.BO;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hisab.UI.ViewModels
 {
-    public class EventInviteVm
+   
+
+    public class UserEventInviteVM
     {
-        public int EventId { get; set; }
+        public Guid UserId { get; set; }
 
-        public string EventName { get; set; }
+        public string NickName { get; set; }
 
-        public string EventOwner { get; set; }
+        public Guid EventId { get; set; }
 
-        [Required]
-        public int EventFriendId { get; set; }
+        public InviteStatus InviteStatus { get; set; }
+
+        public AvatarVm Avatar { get; set; }
     }
 
-   
+
 }

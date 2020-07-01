@@ -53,8 +53,10 @@ namespace Hisab.Dapper
                 var sqlConnection = new SqlConnection(connectionProvider.GetConnectionString());
                 await sqlConnection.OpenAsync();
 
-                
+
                 return sqlConnection;
+
+
 
             }
             catch (Exception ex)

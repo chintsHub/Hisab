@@ -1,0 +1,484 @@
+﻿/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*  apply a natural box layout model to all elements  */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* ----------------------------- Body ---------------------- */
+body {
+    font-family: $defaultFont;
+    font-weight: $normalWeight;
+    font-size: 16px; // always default size.
+    //rem css is based upon default font size. Browser zoom in out will change default size
+    
+    color:$defaultFontColor;
+}
+// end of body
+
+div#wrapper {
+    background-color: $bodyColor;
+   
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+
+/* ----------------------------- Header ---------------------- */
+header {
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    padding: 1rem $gutter;
+
+    .hisabLogo {
+        float: left;
+
+        h1 {
+            a {
+                font-size: 1.5rem;
+                font-weight: $normalWeight;
+                letter-spacing: 10px;
+                text-decoration: inherit;
+                color: inherit;
+                cursor: pointer;
+            }
+        }
+
+
+        h2 {
+            font-size: 1rem;
+            font-weight: $normalWeight;
+        }
+    }
+
+    .logoutButton {
+        background-color: #e2ed07;
+        color: $defaultFontColor;
+    }
+
+    .loginButtonLink {
+        background-color: #e2ed07;
+        border: none;
+        color: $defaultFontColor;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    form {
+        float: right;
+
+        input {
+            width: 6rem;
+            transition: width .5s;
+            //:focus{width:8rem;} this nesting didnt work
+        }
+    }
+
+    form input:focus {
+        width: 8rem;
+    }
+
+    .userMenu {
+        background-color: $secondaryColor;
+
+        li {
+
+            a {
+                display: block; // this will make entire nav area clickable and not just the link
+                text-align: center;
+                font-weight: $boldWeight;
+                padding: .5rem;
+                color: $primaryFontColor;
+                text-decoration: none;
+                transition: background-color 0.75s ease, color 0.75s ease;
+            }
+
+            a:hover {
+                color: #e2ed07;
+                background-color: $primaryColor;
+            }
+        }
+    }
+
+    .announcementOuter {
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+
+        .announcement {
+            background-color: #e2ed07;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            color: black;
+            display: inline-block;
+            margin: 0 auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: auto;
+        }
+    }
+}
+// end of header
+
+/* ----------------------------- Navigation ---------------------- */
+.hamburgerNav {
+    background-color: $secondaryColor;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    
+    .hamburgerMenuItems {
+        display: none;
+        /*position: absolute;
+        background-color: $secondaryColor;*/
+    }
+
+    ul li a {
+        display: block; // this will make entire nav area clickable and not just the link
+        font-weight: $boldWeight;
+        padding: .5rem;
+        color: $primaryFontColor;
+        text-decoration: none;
+        transition: background-color 0.75s ease, color 0.75s ease;
+        border-bottom: solid 1px rgba(0,0,0,0.3);
+    }
+
+    ul li.active a {
+        background-color: darken($secondaryColor, 10%);
+    }
+
+    ul li a:hover {
+        color: $secondaryColor;
+        background-color: $primaryColor;
+    }
+
+    .eventTitle {
+        float: right;
+        font-weight: $boldWeight;
+        padding: .5rem;
+        color: $primaryFontColor;
+        
+    }
+
+
+
+    button {
+        /*width: auto;*/
+        padding: 10px;
+        background: #e2ed07;
+        color: $defaultFontColor;
+        font-size: 17px;
+        border: 1px solid grey;
+        cursor: pointer;
+    }
+}
+
+.defaultNav {
+    background-color: $secondaryColor;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    //display -: block - The children take full width eg. paragraph
+    //disply -:  Inline - The html will flow on the same line eg. italics
+    //flex
+    ul {
+        display: flex;
+    }
+
+    ul li {
+        //float: left; // float will make the element collapse
+        flex-basis: 25%; //width
+        border-right: 1px solid rgba(0,0,0,0.3); //overall lay black boder with 30% opacity
+        a {
+            display: block; // this will make entire nav area clickable and not just the link
+            text-align: center;
+            font-weight: $boldWeight;
+            padding: .5rem;
+            color: $primaryFontColor;
+            text-decoration: none;
+            transition: background-color 0.75s ease, color 0.75s ease;
+        }
+    }
+    //end of ul
+    ul li.active a {
+        background-color: darken($secondaryColor, 10%);
+    }
+
+    ul li a:hover {
+        color: $secondaryColor;
+        background-color: $primaryColor;
+    }
+
+    ul li:last-child {
+        border-right: none;
+    }
+}
+// end of nav
+
+
+
+/*------- Main-----*/
+h2 {
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: $normalWeight;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+
+.mainContent{
+    min-height:500px;
+    position:relative;
+    /*margin-bottom:20px;*/
+}
+
+p{
+    padding:10px;
+}
+
+.carouselImage {
+    width: 100%;
+}
+
+.onlyContent {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.carouselContent {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1;
+
+ }
+
+
+    .card-columns{
+        column-count:1;
+    }
+
+
+
+
+.pageForm {
+    padding: 1rem $gutter;
+}
+
+
+.pageToolbar {
+    padding: 0 $gutter $gutter $gutter;
+   
+}
+
+.pageButton {
+    padding: 10px;
+    background: #e2ed07;
+    color: $defaultFontColor;
+    font-size: 17px;
+    border: 1px solid grey;
+    cursor: pointer;
+    margin:2px 4px;
+}
+
+
+.eventDashboardTiles {
+    padding: 0px;
+    
+}
+
+.friendImage{
+    max-height:100px;
+    max-width:100px;
+}
+
+.friendsContainer{
+    margin-top:5px;
+}
+
+.tileFooter {
+    background-color: $defaultFontColor;
+    padding: 5px;
+
+    a, button {
+        background: #e2ed07;
+        color: $defaultFontColor;
+        border: 1px solid grey;
+        cursor: pointer;
+        font-size: 17px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.transactions {
+    background-color: $bodyColor;
+    max-width: 700px;
+
+    .transaction {
+        margin-top: 20px;
+        /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+        color: white;
+    }
+
+    .transactionBody {
+        /*background-color: #0c7b93;*/
+        background-color: white;
+        color: black;
+        border: solid;
+
+        .transactionPaidby {
+            border-bottom: solid;
+            padding: 5px;
+            background-color: #F4F5F7;
+        }
+
+        .transactionColumn {
+            border-right: solid;
+        }
+
+        .transactionShared {
+            border-bottom: solid;
+            padding: 5px;
+            background-color: #F4F5F7;
+        }
+
+        .transactionColumnContent {
+            padding: 5px;
+            border-bottom: solid;
+        }
+    }
+
+    .transactionHeader {
+        background-color: #27496d;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .transactionFooter {
+        padding: 5px;
+        border: solid;
+        border-color: #27496d
+    }
+} //end of transactions
+
+.transactionButtons {
+
+    a, button {
+        background: #e2ed07;
+        color: $defaultFontColor;
+        border: 1px solid grey;
+        cursor: pointer;
+        font-size: 17px;
+        padding: 5px;
+        float: right;
+    }
+}
+
+.actionPanel {
+    position: absolute;
+    bottom: 0px;
+    max-width: 500px;
+    background-color: $secondaryColor;
+    padding:5px;
+    align-content:center;
+}
+
+.alertHeading {
+    background-color: #f8d7da;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.checkbox-xl .custom-control-label::before,
+.checkbox-xl .custom-control-label::after {
+    top: 1.2rem;
+    width: 1.85rem;
+    height: 1.85rem;
+}
+
+.checkbox-xl .custom-control-label {
+    padding-top: 23px;
+    padding-left: 10px;
+}
+
+.scroller {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.footerButtons{
+    float:right;
+}
+
+.settingsCard {
+    margin: 5px;
+}
+
+.stitched {
+    padding: 20px;
+    margin: 10px;
+    background: #bd6caa;
+    color: #fff;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3em;
+    border: 2px dashed #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px #bd6caa, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+    text-shadow: -1px -1px #aa3030;
+    font-weight: normal;
+}
+
+.testimony {
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: $normalWeight;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+/*------- End of Main-----*/
+/*-------------------------------Footer----------------------- */
+footer {
+    display: none;
+    /*width: 100%;
+    position: fixed;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    background-color: $primaryColor;
+    color: $primaryFontColor;
+    text-align: center;
+    /*padding: 0.75rem;*/
+    /*font-size: .9rem;*/
+    /*p {
+        padding: 0px;
+    }*/
+}
+    /*-------------------------------Footer----------------------- */
+    // will counter attacks element from being collapse
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }

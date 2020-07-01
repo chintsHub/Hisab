@@ -1,0 +1,117 @@
+﻿@page "/app/events/{id}/AddContributionTransaction"
+@model Hisab.UI.AddContributionTransactionModel
+@{
+    ViewData["Title"] = "ContributionTransactionDetails";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div style="float:left; margin:10px">
+    <h2>Add Contribution</h2>
+</div>
+<div style="float:right; margin:10px" class="pageButton">
+    <a asp-page="/app/events/dashboard" asp-route-id="@Model.ContributeVM.EventId"><i class="fa fa-undo-alt"></i> Back </a>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="pageForm">
+
+
+    <form method="post">
+        @Html.HiddenFor(x => x.ContributeVM.EventId)
+        <div class="form-group row">
+            <label for="contributionTitle" class="col-sm-2 col-form-label">Title:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="@Model.ContributeVM.Description" placeholder="Deposit">
+                <span asp-validation-for="@Model.ContributeVM.Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contributionDate" class="col-sm-2 col-form-label">Date:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="date" asp-for="@Model.ContributeVM.TransactionDate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contributionAmount" class="col-sm-2 col-form-label">Amount:</label>
+            <div class="col-sm-10">
+                <input class="form-control" asp-for="@Model.ContributeVM.Amount">
+                <span asp-validation-for="@Model.ContributeVM.Amount" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div id="equalSplitContent">
+            <table class="table  table-striped table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">From</th>
+                        <th scope="col"></th>
+                        <th scope="col">To</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>
+                            @Model.ContributeVM.NickName
+                            @Html.HiddenFor(x => x.ContributeVM.UserId)
+                        </td>
+                        <td>
+                            =>
+                        </td>
+                        <td>
+                            @if (Model.ContributeVM.EventPoolId != null)
+                            {
+                                <h1>Money Pool</h1>
+                                <p>The amount in the Money Pool can be used to pay the event expenses.</p>
+                                @Html.HiddenFor(x => x.ContributeVM.EventPoolId)
+                            }
+                            else
+                            {
+                                <select asp-for="@Model.ContributeVM.PaidToFriendUserId" asp-items="@(new SelectList(Model.ContributeVM.Friends,"UserId","Name"))">
+                                </select>
+                            }
+
+
+
+                        </td>
+                    </tr>
+
+
+
+
+
+
+                </tbody>
+
+
+            </table>
+        </div>
+
+
+
+        <div class="row transactionFooter">
+            <div class="col-11 col-xs-11 transactionButtons">
+
+                <button><i class="fa fa-edit"></i> Save</button>
+
+             
+            </div>
+        </div>
+
+
+    </form>
+
+
+</div>
+
+
+
+
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+}
+

@@ -34,7 +34,7 @@ namespace Hisab.Database.Test
         {
             
 
-           _output.Information("Running Integration Test for AccountType:NotReturnNullForAccountTypes ");
+           _output.Information("Running Integration Test for AccountTypeId:NotReturnNullForAccountTypes ");
            
 
             using (var context = await HisabContextFactory.InitializeAsync(_connection))
@@ -49,7 +49,7 @@ namespace Hisab.Database.Test
         [Fact]
         public async void ReturnTwoAccountTypes()
         {
-            _output.Information("Running Integration Test for AccountType:ReturnTwoAccountTypes ");
+            _output.Information("Running Integration Test for AccountTypeId:ReturnTwoAccountTypes ");
             using (var context = await HisabContextFactory.InitializeAsync(_connection))
             {
                 _sut = context.AccountTypeRepository.GetAccountTypes();

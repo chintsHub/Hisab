@@ -1,0 +1,73 @@
+﻿@page
+
+@model Hisab.UI.EventsModel
+@{
+    ViewData["Title"] = "Events";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<!-- Button trigger modal -->
+<button type="button" id="eventModalButton" class="pageButton" data-toggle="modal" data-target="#newEventModal">
+    Create New Event
+</button>
+
+<div class="clearfix"></div>
+
+<div id="eventModalPlaceHolder">
+    <partial name="_EventModal" model="@Model.NewEvent" />
+
+</div>
+
+
+
+
+<div class="container">
+    
+
+        @if (Model.Events.Count > 0)
+        {
+            <div class="card-columns">
+                @foreach (var hisabEvent in Model.Events)
+                {
+
+                    <vc:event-card event-card-vm="@hisabEvent"></vc:event-card>
+
+
+                }
+            </div>
+        }
+        else
+        {
+            <div class="stitched">
+                            	
+                <p>Welcome to Hisab !! Let's get you started &#128522</p>
+
+                <p>Create your first event &#9971 by clicking "Create New Event" button at the top &#11014 </p>
+
+                <p>Or Check your invites &#128140 to join any events created by your friends. </p>
+
+            </div>
+        }
+
+
+
+   
+</div>
+
+@section scripts{
+
+    <script src="~/js/AppHome.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+            var getModal = "@Url.Page("/App/Events",pageHandler: "EventModalLoad")";
+            var postUrl =  "@Url.Page("/App/Events",pageHandler: "CreateEvent")";
+            var page = new HomePage(getModal, postUrl);
+            page.Init();
+
+
+        });
+    </script>
+
+}

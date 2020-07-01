@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.BL", "Hisab.BL\Hisab.BL.csproj", "{2A5BCCE8-6FBE-40EE-91FC-F94FD569D358}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.UI", "Hisab.UI\Hisab.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.AWS", "Hisab.AWS\Hisab.AWS.csproj", "{9806DC3D-EF58-44D1-AC53-12C65D736B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hisab.Common", "Hisab.Common\Hisab.Common.csproj", "{E001E504-7A83-45E8-9528-1C157205BF90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hisab.Common", "Hisab.Common\Hisab.Common.csproj", "{E001E504-7A83-45E8-9528-1C157205BF90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,45 @@
+﻿@page
+@model Hisab.UI.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="container loginForm">
+
+
+    <form method="post">
+        @if (!String.IsNullOrEmpty(Model.SucessMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @Model.SucessMessage
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Feedback Type:</label>
+                    <select asp-for="@Model.FeedbackVm.Feedback" asp-items="@Model.FeedbackVm.FeedbackList"></select>
+
+                </div>
+                <div class="form-group">
+                    <textarea asp-for="@Model.FeedbackVm.Message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button>Send Message</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+}
