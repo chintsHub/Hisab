@@ -38,7 +38,7 @@ namespace Hisab.Common.BO
     {
         public Guid EventId { get; set; }
 
-        public Guid UserAccountId { get; set; }
+        
 
         public JournalAction EventFriendAccountAction { get; set; }
 

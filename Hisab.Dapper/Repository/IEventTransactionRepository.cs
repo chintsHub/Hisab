@@ -547,7 +547,7 @@ namespace Hisab.Dapper.Repository
             var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
                     SELECT
 	                   j.EventId,
-	                   j.[DebitAccount] as AccountId,
+	                   -- j.[DebitAccount] as AccountId,
 	                   1 as EventFriendAccountAction,
 	                   sum(j.Amount) TotalAmount -- Debit balance
                       FROM [EventFriendJournal] j
@@ -558,8 +558,8 @@ namespace Hisab.Dapper.Repository
 	                    and j.UserId = @{nameof(userId)}
 						and a.Id = @{nameof(AccountType)}
                     group by
-	                    j.EventId,
-	                    j.DebitAccount ",
+	                    j.EventId
+	                    -- j.DebitAccount ",
                new { eventId, userId, AccountType }, Transaction);
 
             return EventTransactionJournalResult.FirstOrDefault();
@@ -570,7 +570,7 @@ namespace Hisab.Dapper.Repository
             var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
                     SELECT
 	                   j.EventId,
-	                   j.[CreditAccount] as AccountId,
+	                   -- j.[CreditAccount] as AccountId,
 	                   2 as EventFriendAccountAction, --Credit
 	                   sum(j.Amount) TotalAmount -- Credit balance
                       FROM [EventFriendJournal] j
@@ -581,8 +581,8 @@ namespace Hisab.Dapper.Repository
 	                    and j.UserId = @{nameof(userId)}
 						and a.Id = @{nameof(AccountType)}
                     group by
-	                    j.EventId,
-	                    j.CreditAccount",
+	                    j.EventId
+	                    -- j.CreditAccount",
               new { eventId, userId, AccountType }, Transaction);
 
             return EventTransactionJournalResult.FirstOrDefault();

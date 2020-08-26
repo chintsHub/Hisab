@@ -382,7 +382,7 @@ namespace Hisab.BL
 
                 var result = await _eventJournalHelper.GetCashAccount(userId, eventId);
                 context.CloseConnection();
-                return System.Math.Abs(result.CalculateBalance()); // Cash given will be in negative (credit) balance.
+                return System.Math.Abs(result.CreditTotal); // Cash given will be in negative (credit) balance.
 
 
 
