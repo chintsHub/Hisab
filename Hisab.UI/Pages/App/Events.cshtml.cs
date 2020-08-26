@@ -43,7 +43,7 @@ namespace Hisab.UI
 
             Events = new List<EventCardVm>();
 
-            foreach (var eventBo in events)
+            foreach (var eventBo in events.Where(e => e.EventStatus == EventStatus.Active))
             {
                 Events.Add(new EventCardVm()
                 {
