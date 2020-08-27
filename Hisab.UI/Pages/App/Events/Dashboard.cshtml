@@ -5,18 +5,26 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+    
+
+
     <div class="container">
         @Html.HiddenFor(x => x.Event.EventId)
         <div class="row">
-            <div class="col-6 col-md-4 eventDashboardTiles">
+            <p id="AllexpenseContent" class=""></p>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-6 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
 
-                        <h5 class="card-title">My Expenses</h5>
+                        <h5 class="card-text">My Expenses</h5>
                         <div id="expenseSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
-                        <p id="expenseContent" class="card-text"></p>
+                        <div id="expenseContent" class="card-title tileNumbers"></div>
+
+
 
                     </div>
                     <div class="card-footer tileFooter">
@@ -26,51 +34,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 eventDashboardTiles">
+            <div class="col-6 col-md-6 eventDashboardTiles ">
                 <div class="card ">
                     <div class="card-body">
-
-                        <h5 class="card-title">Total Expenses</h5>
-                        <div id="AllexpenseSpinner" class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
+                        <h5 class="card-text">My Contributions</h5>
+                        <div id="MyContributionsSpinner" class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
                         </div>
-                        <p id="AllexpenseContent" class="card-text"></p>
+                        <div id="MyContributionsContent" class="card-title tileNumbers"></div>
 
                     </div>
                     <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/Transactions" asp-route-id="@Model.Event.EventId">
-                            Details <i class="fa fa-arrow-circle-right"></i>
+                        <a asp-page="/app/events/AddContributionTransaction" asp-route-id="@Model.Event.EventId" asp-page-handler="ToFriend">
+                            <i class="fa fa-wallet"></i> Lend money
                         </a>
+
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 eventDashboardTiles">
+            <div class="col-6 col-md-6 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-title">I owe Friends</h5>
+                        <h5 class="card-text">I owe Friends</h5>
                         <div id="AmountIOweToFriendsSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
-                        <p id="AmountIOweToFriendsContent" class="card-text"></p>
-
-                    </div>
-                    <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/EventSettlement"asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-handshake"></i> Settle
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 eventDashboardTiles">
-                <div class="card ">
-                    <div class="card-body">
-                        <h5 class="card-title">Friends owe me</h5>
-                        <div id="AmountFriendsOweToMeSpinner" class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <p id="AmountFriendsOweToMeContent" class="card-text"></p>
+                        <div id="AmountIOweToFriendsContent" class="card-title tileNumbers"></div>
 
                     </div>
                     <div class="card-footer tileFooter">
@@ -82,48 +71,33 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 eventDashboardTiles">
+            <div class="col-6 col-md-6 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-title">My Contributions</h5>
-                        <div id="MyContributionsSpinner" class="spinner-border" role="status">
+                        <h5 class="card-text">Friends owe me</h5>
+                        <div id="AmountFriendsOweToMeSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
-                        <p id="MyContributionsContent" class="card-text"></p>
+                        <div id="AmountFriendsOweToMeContent" class="card-title tileNumbers"></div>
 
                     </div>
                     <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/AddContributionTransaction" asp-route-id="@Model.Event.EventId" asp-page-handler="ToFriend">
-                            <i class="fa fa-wallet"></i> Lend money
+                        <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
+                            <i class="fa fa-handshake"></i> Settle
                         </a>
+
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-6 col-md-4 eventDashboardTiles">
-                <div class="card ">
-                    <div class="card-body">
-                        <h5 class="card-title">Money Pool</h5>
-                        <div id="EventAccountBalanceSpinner" class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <p id="EventAccountBalanceContent" class="card-text"></p>
 
-                    </div>
-                    <div class="card-footer tileFooter">
 
-                        <a asp-page="/app/events/AddContributionTransaction" asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-piggy-bank"></i> Deposit
-                        </a>
-
-                    </div>
-                </div>
-            </div>
 
 
 
         </div>
+
 
     </div>
 

@@ -246,6 +246,10 @@ h3 {
   margin-top: 5px;
   margin-bottom: 15px; }
 
+.tileNumbers {
+  font-size: 20px;
+  float: right; }
+
 .mainContent {
   min-height: 500px;
   position: relative;
@@ -292,7 +296,7 @@ p {
   margin: 2px 4px; }
 
 .eventDashboardTiles {
-  padding: 0px; }
+  padding: 1px; }
 
 .friendImage {
   max-height: 100px;

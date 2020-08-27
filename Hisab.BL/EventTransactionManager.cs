@@ -15,13 +15,13 @@ namespace Hisab.BL
     {
         Task<ManagerResponse> CreateExpenseTransaction(NewTransactionBO newTransactionBO);
 
-        Task<bool> CreateContributeToPoolTransaction(NewTransactionBO newTransactionBO);
+        
 
         Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO);
 
         Task<bool> CreateSettlementTransaction(NewTransactionBO newTransactionBO);
 
-        Task<EventAccountBO> GetEventAccount(Guid eventId);
+        
 
         Task<List<TransactionBO>> GetTransactions(Guid eventId);
 
@@ -77,33 +77,12 @@ namespace Hisab.BL
             //Journals
             List<EventFriendJournalBO> eventFriendJournals = null;
             List<EventTransactionJournalBO> transactionJournals = null;
-            var eventAccount = await GetEventAccount(newTransactionBO.EventId);
-            if (newTransactionBO.PaidByUserId == eventAccount.AccountId)
-            {
-                // Bill is paid from the pool amount
-                if(eventAccount.CalculateBalance() >= newTransactionBO.TotalAmount)
-                {
-                    newTransactionBO.EventPoolAccountId = eventAccount.AccountId;
-                    //overwriting as the exp is paid from pool. So setting paidByUserId is irrelevant
-                    newTransactionBO.PaidByUserId = newTransactionBO.CreatedByUserId;
-                    newTransactionBO.TransactionType = TransactionType.ExpenseFromPool;
-
-                    transactionJournals = await _eventJournalHelper.CreateExpenseJournalPaidFromPool(newTransactionBO);
-                 
-                }
-                else
-                {
-                    retVal.Messge = "Not enough balance in the Account to pay this bill";
-                    retVal.Success = false;
-                    return retVal;
-                }
-            }
-            else
-            {
-                // Bill is paid by a friend
-                newTransactionBO.TransactionType = TransactionType.Expense;
-                eventFriendJournals = await _eventJournalHelper.CreateExpenseJournalPaidByFriend(newTransactionBO);
-            }
+            
+            
+            // Bill is paid by a friend
+            newTransactionBO.TransactionType = TransactionType.Expense;
+            eventFriendJournals = await _eventJournalHelper.CreateExpenseJournalPaidByFriend(newTransactionBO);
+            
             
 
             using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
@@ -168,48 +147,9 @@ namespace Hisab.BL
             }
         }
 
-        public async Task<EventAccountBO> GetEventAccount(Guid eventId)
-        {
-            using (var context = await HisabContextFactory.InitializeAsync(_connectionProvider))
-            {
+        
 
-                var account = context.EventTransactionRepository.GetEventAccount(eventId);
-
-                return account;
-
-            }
-        }
-
-        public async Task<bool> CreateContributeToPoolTransaction(NewTransactionBO newTransactionBO)
-        {
-
-            var retVal = false;
-
-            // setup
-            newTransactionBO.TotalAmount = decimal.Round(newTransactionBO.TotalAmount, 2);
-            newTransactionBO.LastModifiedDate = DateTime.UtcNow;
-            newTransactionBO.TransactionType = TransactionType.ContributionToPool;
-            newTransactionBO.TransactionId = Guid.NewGuid();
-
-            //Event Journal
-            var eventTransJournal = await _eventJournalHelper.CreateContributeToPoolJournals(newTransactionBO);
-
-            using (var context = await HisabContextFactory.InitializeUnitOfWorkAsync(_connectionProvider))
-            {
-
-
-                var transRow = context.EventTransactionRepository.CreateTransaction(newTransactionBO);
-                
-
-                var journals = context.EventTransactionRepository.CreateEventTransactionJournal(eventTransJournal);
-
-                context.SaveChanges();
-
-                retVal = true;
-            }
-
-            return retVal;
-        }
+        
 
         public async Task<bool> CreateContributeToFriend(NewTransactionBO newTransactionBO)
         {

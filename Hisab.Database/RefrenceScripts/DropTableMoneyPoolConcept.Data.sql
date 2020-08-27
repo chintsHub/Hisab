@@ -1,0 +1,10 @@
+﻿
+if EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'EventTransactionJournal') 
+	BEGIN
+		DROP TABLE [dbo].[EventTransactionJournal]
+	End
+
+if EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'EventAccount') 
+	BEGIN
+		DROP TABLE [dbo].[EventAccount]
+	End

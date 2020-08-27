@@ -10,7 +10,7 @@
             var spinner = document.getElementById("expenseSpinner");
             var expenseContent = document.getElementById("expenseContent");
             spinner.style.display = "none";
-            expenseContent.innerHTML = response.balance;
+            expenseContent.innerHTML =  response.balance;
         },
         failure: function (response) {
             //handle the error
@@ -23,10 +23,9 @@
         contentType: "application/json",
         dataType: "json",
         success: function (response) {
-            var spinner = document.getElementById("AllexpenseSpinner");
+            
             var expenseContent = document.getElementById("AllexpenseContent");
-            spinner.style.display = "none";
-            expenseContent.innerHTML = response.totalExpense;
+            expenseContent.innerHTML = "Total event expenses: " + response.totalExpense;
         },
         failure: function (response) {
             //handle the error
@@ -81,19 +80,5 @@
         }
     });
 
-    $.ajax({
-        type: "GET",
-        url: this.baseURI + "?handler=EventAccountBalance",
-        contentType: "application/json",
-        dataType: "json",
-        success: function (response) {
-            var spinner = document.getElementById("EventAccountBalanceSpinner");
-            var expenseContent = document.getElementById("EventAccountBalanceContent");
-            spinner.style.display = "none";
-            expenseContent.innerHTML = response.eventBalance;
-        },
-        failure: function (response) {
-            //handle the error
-        }
-    });
+   
 });

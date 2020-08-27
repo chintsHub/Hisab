@@ -11,3 +11,4 @@ Post-Deployment Script Template
 */
 :r ".\AccountType.Data.sql"
 :r ".\ApplicationRole.Data.sql"
+:r ".\DropTableMoneyPoolConcept.Data.sql"

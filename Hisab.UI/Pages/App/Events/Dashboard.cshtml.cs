@@ -116,11 +116,6 @@ namespace Hisab.UI
             return new JsonResult(new { myContributions = myContributions });
         }
 
-        public async Task<IActionResult> OnGetEventAccountBalance(Guid Id)
-        {
-            var eventBalance = await _eventTransactionManager.GetEventAccount(Id);
-
-            return new JsonResult(new { eventBalance = eventBalance.CalculateBalance() });
-        }
+       
     }
 }

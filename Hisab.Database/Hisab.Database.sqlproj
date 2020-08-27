@@ -70,9 +70,7 @@
     <Build Include="dbo\Tables\ApplicationAccountType.sql" />
     <Build Include="dbo\Tables\ApplicationUserRole.sql" />
     <Build Include="dbo\Tables\EventFriend.sql" />
-    <Build Include="dbo\Tables\EventAccount.sql" />
     <Build Include="dbo\Tables\EventTransaction.sql" />
-    <Build Include="dbo\Tables\EventTransactionJournal.sql" />
     <Build Include="dbo\Tables\EventTransactionSplit.sql" />
     <Build Include="dbo\Tables\EventFriendJournal.sql" />
     <Build Include="dbo\Tables\UserFeedback.sql" />
@@ -89,5 +87,10 @@
   <ItemGroup>
     <None Include="RefrenceScripts\AccountType.Data.sql" />
     <None Include="RefrenceScripts\ApplicationRole.Data.sql" />
+    <None Include="RefrenceScripts\DropMoneyPoolConcept.Data.sql" />
+    <None Include="RefrenceScripts\DropTableMoneyPoolConcept.Data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="RefrenceScripts\Script.PreDeployment1.sql" />
   </ItemGroup>
 </Project>

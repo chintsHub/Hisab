@@ -44,11 +44,11 @@ namespace Hisab.Dapper.Repository
 
         List<EventUserAccountBO> GetEventUserAccounts(Guid eventId);
 
-        EventAccountBO GetEventAccount(Guid eventId);
+       
 
         void DeleteTransaction(Guid transactionId);
 
-        List<EventUserAccountRawBO> GetUserAccountBalancesFromEventTransactions(Guid eventId, Guid userId, ApplicationAccountType AccountType);
+        
 
         EventUserAccountRawBO GetDebitUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType);
 
@@ -407,43 +407,7 @@ namespace Hisab.Dapper.Repository
             return transIds;
         }
 
-        public EventAccountBO GetEventAccount(Guid eventId)
-        {
-            var result = Connection.Query<EventAccountBO>($@"
-                              SELECT 
-	                             [AccountId]
-                                 ,[EventId]
-                                 ,[Event].[Name] as EventName
-                                 ,[AccountTypeId]
-	                             ,COALESCE(DebitBalance.DebitTotal,0) DebitTotal
-	                             ,COALESCE(CreditBalance.CreditTotal,0) CreditTotal
-                            FROM [dbo].[EventAccount] e
-                                inner join [Event] on [Event].Id = e.EventId
-                            left outer join
-                            (select 
-	                            EventAccountId,
-	                            sum(Amount) DebitTotal
-                             from [dbo].[EventTransactionJournal] e
-                            where 
-	                            e.EventId = @{nameof(eventId)} and e.EventAccountAction = 1 -- Debit balance
-                            group by 
-	                            EventAccountId) DebitBalance on e.AccountId = DebitBalance.EventAccountId
-                            left outer join
-
-                            (select 
-	                            EventAccountId,
-	                            sum(Amount) CreditTotal
-                             from [dbo].[EventTransactionJournal] e
-                            where 
-	                            e.EventId = @{nameof(eventId)} and e.EventAccountAction = 2 -- Credit balance
-                            group by 
-	                            EventAccountId) CreditBalance on e.AccountId = CreditBalance.EventAccountId
-                        
-                            where e.EventId = @{nameof(eventId)}",
-              new { eventId }, Transaction);
-
-            return result.FirstOrDefault();
-        }
+        
 
         public int CreateEventTransactionJournal(EventTransactionJournalBO journal)
         {
@@ -514,33 +478,7 @@ namespace Hisab.Dapper.Repository
             
         }
 
-        public List<EventUserAccountRawBO> GetUserAccountBalancesFromEventTransactions(Guid eventId, Guid userId, ApplicationAccountType AccountType)
-        {
-            
-
-            var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
-                    SELECT
-	                    j.EventId,
-	                    j.UserAccountId as AccountId,
-	                    [EventFriendAccountAction],
-	                    sum(j.Amount) TotalAmount
-                      FROM [EventTransactionJournal] j
-					  inner join [dbo].[UserAccount] ua on ua.AccountId = j.UserAccountId
-					  inner join [dbo].[ApplicationAccountType] a on a.Id = ua.AccountTypeId
-                    where 
-	                    j.EventId = @{nameof(eventId)}
-	                    and j.UserId = @{nameof(userId)}
-						and a.Id = @{nameof(AccountType)}
-                    group by
-	                    j.EventId,
-	                    j.UserAccountId,
-	                    [EventFriendAccountAction] ",
-                new { eventId, userId, AccountType }, Transaction);
-
-            
-
-            return EventTransactionJournalResult.ToList();
-        }
+        
 
         public EventUserAccountRawBO GetDebitUserAccountBalanceFromEventFriendJournal(Guid eventId, Guid userId, ApplicationAccountType AccountType)
         {
