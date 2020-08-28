@@ -197,21 +197,7 @@ namespace Hisab.Common.BO
         //http://taylorhutchison.com/2016/03/23/dapper-orm-complex-queries.html
     }
 
-    public class EventDashboardStatBo
-    {
-
-        public decimal TotalEventExpense { get; set; }
-
-        public decimal TotalEventPoolBalance { get; set; }
-
-        public decimal MyEventExpense { get; set; }
-
-        public decimal MyContributions { get; set; }
-
-        public decimal MyNetAmount { get; set; }
-
-
-    }
+    
 
     public class EventSettingsBO
     {

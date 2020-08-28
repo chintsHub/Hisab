@@ -115,7 +115,7 @@ namespace Hisab.UI.ViewModels
 
         public Guid? PaidToFriendUserId { get; set; }
 
-        public Guid? EventPoolId { get; set; }
+        
 
         public List<EventFriendVm> Friends { get; set; }
 

@@ -2,14 +2,11 @@
     <div class="transaction" id="@Model.TransactionId" data-isMyTransaction="@((User.Identity.Name == Model.PaidByEmail)?true:false)">
         <div class="row ">
             <div class="col-12 col-xs-12 transactionHeader" style="text-align:left">
-                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
+                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense )
                 {
                     <i class="fa fa-receipt"></i>
                 }
-                @if (Model.TransactionType == Hisab.Common.BO.TransactionType.ContributionToPool)
-                {
-                    <i class="fa fa-piggy-bank"></i>
-                }
+                
                 @if (Model.TransactionType == Hisab.Common.BO.TransactionType.LendToFriend)
                 {
                     <i class="fa fa-wallet"></i>
@@ -35,7 +32,7 @@
                     Paid by:
                 </div>
                 <div class="row transactionColumnContent">
-                    @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense || Model.TransactionType == Hisab.Common.BO.TransactionType.ExpenseFromPool)
+                    @if (Model.TransactionType == Hisab.Common.BO.TransactionType.Expense )
                     {
                         <span>Shared With:</span>
                     }

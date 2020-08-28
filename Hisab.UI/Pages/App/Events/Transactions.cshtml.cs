@@ -62,7 +62,7 @@ namespace Hisab.UI
                     };
 
 
-                    if (tran.TransactionType == Common.BO.TransactionType.Expense || tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
+                    if (tran.TransactionType == Common.BO.TransactionType.Expense )
                     {
                         foreach (var friend in tran.SharedWith)
                         {
@@ -71,15 +71,7 @@ namespace Hisab.UI
 
                     }
 
-                    if (tran.TransactionType == Common.BO.TransactionType.ExpenseFromPool)
-                    {
-                        tranVM.PaidByName = tran.PaidByName.Trim() + " (using Money Pool)";
-                    }
-
-                    if (tran.TransactionType == Common.BO.TransactionType.ContributionToPool)
-                    {
-                        tranVM.SharedWith = "Money Pool";
-                    }
+                                    
 
                     if (tran.TransactionType == Common.BO.TransactionType.LendToFriend || tran.TransactionType == Common.BO.TransactionType.Settlement)
                     {

@@ -35,24 +35,11 @@ namespace Hisab.UI
 
 
         }
-        public async Task<IActionResult> OnGet(Guid Id)
+        public void OnGet(Guid Id)
         {
-            ContributeVM = new ContributeVM();
             
-            
-           
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);
-                var eventAccount = await _transactionManager.GetEventAccount(Id);
-            
-                ContributeVM.NickName = user.NickName;
-                ContributeVM.UserId = user.Id;
-                ContributeVM.TransactionDate = DateTime.Now.Date;
-                ContributeVM.EventId = Id;
-                ContributeVM.EventPoolId = eventAccount.AccountId;
 
-            this.ViewData.Add("EventTitle", eventAccount.EventName);
-
-            return Page();
+            
         }
 
         public async Task<IActionResult> OnGetToFriend(Guid Id)
@@ -96,26 +83,7 @@ namespace Hisab.UI
             
             var newTrans = new NewTransactionBO();
 
-            if (ContributeVM.EventPoolId != null)
-            {
-                // Contribute to Pool
-                newTrans.EventId = ContributeVM.EventId;
-                newTrans.CreatedByUserId = ContributeVM.UserId;
-                newTrans.PaidByUserId = ContributeVM.UserId;
-                newTrans.TotalAmount = ContributeVM.Amount;
-                newTrans.TransactionDate = ContributeVM.TransactionDate.Date;
-                newTrans.Description = ContributeVM.Description;
-                newTrans.EventPoolAccountId = ContributeVM.EventPoolId.Value;
-
-                var result = await _transactionManager.CreateContributeToPoolTransaction(newTrans);
-
-                if(result)
-                {
-                    _toastNotification.AddSuccessToastMessage($"The Amount of {ContributeVM.Amount} is contributed to the Money pool.");
-
-                    return RedirectToPage("Dashboard", new { id = ContributeVM.EventId });
-                }
-            }
+            
 
             if(ContributeVM.PaidToFriendUserId != null)
             {

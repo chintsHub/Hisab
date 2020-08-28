@@ -51,15 +51,7 @@ namespace Hisab.Common.BO
 
       
 
-    public class EventPoolTransactionBo 
-    {
-        public int EventFriendId { get; set; }
-
-        public EventPoolTransactionBo()
-        {
-            
-        }
-    }
+    
 
   
     public class NewTransactionBO
@@ -68,7 +60,7 @@ namespace Hisab.Common.BO
 
         public Guid EventId { get; set; }
 
-        public Guid EventPoolAccountId { get; set; }
+        
 
         public Guid CreatedByUserId { get; set; }
 
@@ -160,9 +152,9 @@ namespace Hisab.Common.BO
     public enum TransactionType
     {
         Expense = 1,
-        ContributionToPool = 2,
+        //ContributionToPool = 2,
         LendToFriend = 3,
-        ExpenseFromPool = 4,
+        //ExpenseFromPool = 4,
         Settlement = 5
     }
 

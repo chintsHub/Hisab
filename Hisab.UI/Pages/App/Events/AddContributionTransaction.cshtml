@@ -61,17 +61,9 @@
                             =>
                         </td>
                         <td>
-                            @if (Model.ContributeVM.EventPoolId != null)
-                            {
-                                <h1>Money Pool</h1>
-                                <p>The amount in the Money Pool can be used to pay the event expenses.</p>
-                                @Html.HiddenFor(x => x.ContributeVM.EventPoolId)
-                            }
-                            else
-                            {
-                                <select asp-for="@Model.ContributeVM.PaidToFriendUserId" asp-items="@(new SelectList(Model.ContributeVM.Friends,"UserId","Name"))">
-                                </select>
-                            }
+                            <select asp-for="@Model.ContributeVM.PaidToFriendUserId" asp-items="@(new SelectList(Model.ContributeVM.Friends,"UserId","Name"))">
+                            </select>
+                            
 
 
 
