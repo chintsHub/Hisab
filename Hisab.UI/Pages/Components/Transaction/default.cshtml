@@ -24,7 +24,7 @@
 
             <div class="col-3 transactionColumnContent">@Model.TransactionDate.ToShortDateString()</div>
             <div class="col-6 transactionColumnContent">@Model.TransactionDescription</div>
-            <div class="col-3 transactionColumnContent">@Model.Amount </div>
+            <div class="col-3 transactionColumnContent">@Model.CurrencySymbol @Model.Amount </div>
         </div>
         <div class="row transactionBody">
             <div class="col-4  transactionColumn">

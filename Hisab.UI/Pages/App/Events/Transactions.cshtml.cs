@@ -57,7 +57,8 @@ namespace Hisab.UI
                         PaidByName = tran.PaidByName.Trim(),
                         TransactionType = tran.TransactionType,
                         PaidByEmail = tran.PaidByEmail,
-                        Comments = tran.Comments
+                        Comments = tran.Comments,
+                        CurrencySymbol = Currency.GetCurrencySymbolFromCode(tran.CurrencyCode,false)
 
                     };
 

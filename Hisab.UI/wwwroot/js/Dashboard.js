@@ -25,7 +25,7 @@
         success: function (response) {
             
             var expenseContent = document.getElementById("AllexpenseContent");
-            expenseContent.innerHTML = "Total event expenses: " + response.totalExpense;
+            expenseContent.innerHTML = response.totalExpense;
         },
         failure: function (response) {
             //handle the error

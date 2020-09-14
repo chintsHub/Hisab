@@ -29,34 +29,42 @@
                         }
 
 
-                        <div class="form-group">
-                            <label>Event Name:</label>
-                            <input asp-for="@Model.SettingsVM.EventName" class="form-control" type="text" />
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Event Name:</label>
+                            <input asp-for="@Model.SettingsVM.EventName" class="form-control col-sm-6" type="text" />
 
                         </div>
 
-                        <div class="form-group">
-                            <label>Choose Event Image:</label>
-                            @Html.HiddenFor(Model => Model.SettingsVM.SelectedEventImage)
+                        <div class="form-group row ">
+                            <label for="expenseDate" class="col-sm-4 col-form-label">Currency:</label>
+                            
+                            @*<div class="col-sm-6">*@
+                            <select id="currencySelect" class="form-control col-sm-6" asp-for="@Model.SettingsVM.SelectedCurrency" asp-items="@(new SelectList(Model.SettingsVM.CountryCurrency,"Code","Name"))">
+                            </select>
+                            @*</div>*@
+                        </div>
 
-                            <div class="customCombobox" id="customCombobox1">
-                                <div id="comboSelection"></div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Choose Event Image:</label>
+                                @Html.HiddenFor(Model => Model.SettingsVM.SelectedEventImage)
+                            <div class="col-sm-6">
+                                <div class="customCombobox" id="customCombobox1">
+                                    <div id="comboSelection"></div>
+                                </div>
+                                <ul class="ulcustomCombobox" id="ulcustomCombobox1">
+                                    @foreach (var avatar in Model.SettingsVM.EventImages)
+                                    {
+                                        <li id="@Convert.ToInt32(avatar.Id)">
+                                            <a>
+                                                <img src="@avatar.ImagePath" class="imgDisplay" asp-append-version="true" />
+                                                <p class="imageText">@avatar.ImageName</p>
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
                             </div>
-                            <ul class="ulcustomCombobox" id="ulcustomCombobox1">
-                                @foreach (var avatar in Model.SettingsVM.EventImages)
-                                {
-                                    <li id="@Convert.ToInt32(avatar.Id)">
-                                        <a>
-                                            <img src="@avatar.ImagePath" class="imgDisplay" asp-append-version="true" />
-                                            <p class="imageText">@avatar.ImageName</p>
-                                        </a>
-                                    </li>
-                                }
-
-                            </ul>
-
-
-                        </div>
+                         </div>
 
                         @if (Model.SettingsVM.Friends.Count > 0)
                         {
@@ -91,7 +99,7 @@
                                     <label class="switch">
                                         @if (Model.SettingsVM.Friends[i].EventFriendStatus == Hisab.Common.BO.EventFriendStatus.EventAdmin)
                                         {
-                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsFriendActive" disabled >
+                                            <input type="checkbox" asp-for="@Model.SettingsVM.Friends[i].IsFriendActive" disabled>
                                         }
                                         else
                                         {

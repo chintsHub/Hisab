@@ -39,7 +39,7 @@ namespace Hisab.Dapper.Repository
         int UpdateFriend(int kidsCount, int adultCount, int eventFriendId);
         int UpdateFriend(int kidsCount, int adultCount, string email, int eventFriendId);
 
-        int CreateEventAccount(Guid eventId, ApplicationAccountType applicationAccountType);
+        
 
         int CreateExpenseAccount(int eventId);
 
@@ -57,14 +57,14 @@ namespace Hisab.Dapper.Repository
         {
             var eventPic = newNewEvent.EventPic.Id;
 
-            string command = $@"INSERT INTO [dbo].[Event] ([Id], [UserId] ,[Name] ,[CreateDate],[Status],[EventPic])  
+            string command = $@"INSERT INTO [dbo].[Event] ([Id], [UserId] ,[Name] ,[CreateDate],[Status],[EventPic], [CurrencyCode])  
                     VALUES (
                         @{nameof(newNewEvent.Id)},
                         @{nameof(newNewEvent.EventOwner.UserId)}, 
                         @{nameof(newNewEvent.EventName)},
                         @{nameof(newNewEvent.CreateDateTime)}, 
                         @{nameof(newNewEvent.Status)},
-                        @{nameof(eventPic)});
+                        @{nameof(eventPic)},@{nameof(newNewEvent.CurrencyCode)});
             ";
 
             var result = Connection.Execute(command,
@@ -75,7 +75,8 @@ namespace Hisab.Dapper.Repository
                     newNewEvent.EventName,
                     newNewEvent.CreateDateTime,
                     newNewEvent.Status,
-                    eventPic
+                    eventPic,
+                    newNewEvent.CurrencyCode
 
                 }, transaction: Transaction);
 
@@ -86,25 +87,7 @@ namespace Hisab.Dapper.Repository
             return false;
         }
 
-        public int CreateEventAccount(Guid eventId, ApplicationAccountType applicationAccountType)
-        {
-            Guid accountId = Guid.NewGuid();
-
-            string command = $@"INSERT INTO [dbo].[EventAccount] ([AccountId] ,[EventId] ,[AccountTypeId])
-                    VALUES (@{nameof(accountId)}, @{nameof(eventId)},@{nameof(applicationAccountType)});";
-
-            var result = Connection.Execute(command,
-                new
-                {
-                    accountId,
-                    eventId,
-                    applicationAccountType
-
-                }, transaction: Transaction);
-
-           
-            return result;
-        }
+       
 
         public int CreateExpenseAccount(int eventId)
         {
@@ -185,6 +168,7 @@ namespace Hisab.Dapper.Repository
 	                    e.Status as EventStatus,
 	                    e.EventPic,
 	                    e.UserId as OwnerUserId,
+                        e.CurrencyCode,
 	                    u.NickName as OwnerName,
 
 	                    ef.Status as EventFriendStatus
@@ -228,7 +212,7 @@ namespace Hisab.Dapper.Repository
                         e.Status as EventStatus,
                         e.EventPic as EventPicId,
                         e.CreateDate,
-
+                        e.CurrencyCode,
                         ef.UserId,
                         ef.EventId,
                         ef.Status as EventFriendStatus,
@@ -300,10 +284,11 @@ namespace Hisab.Dapper.Repository
             var eventRow = Connection.Execute($@"UPDATE [Event]
                     SET
                     [Name] = @{nameof(eventSettingsBO.EventName)},
-                    [EventPic] = @{nameof(eventSettingsBO.SelectedEventImage)}
+                    [EventPic] = @{nameof(eventSettingsBO.SelectedEventImage)},
+                    [CurrencyCode] = @{nameof(eventSettingsBO.SelectedCurrency)}
                     
                     WHERE [Id] = @{nameof(eventSettingsBO.EventId)}", 
-                        new { eventSettingsBO.EventName, eventSettingsBO.EventId, eventSettingsBO.SelectedEventImage }, transaction: Transaction);
+                        new { eventSettingsBO.EventName, eventSettingsBO.EventId, eventSettingsBO.SelectedEventImage, eventSettingsBO.SelectedCurrency }, transaction: Transaction);
 
                 foreach (var friend in eventSettingsBO.Friends)
                 {

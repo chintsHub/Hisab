@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hisab.BL;
+using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
 using Hisab.UI.Extensions;
 using Hisab.UI.Services;
@@ -46,7 +47,7 @@ namespace Hisab.UI
                 {
                     EventId = eve.Id,
                     EventName = eve.EventName,
-
+                    CurrencySymbol = Currency.GetCurrencySymbolFromCode(eve.CurrencyCode,true)
                 };
 
                 this.ViewData.Add("EventTitle", Event.EventName);

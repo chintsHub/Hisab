@@ -21,7 +21,7 @@ namespace Hisab.Common.BO
 
         public HisabImage EventPic { get; set; }
 
-
+        public string CurrencyCode { get; set; }
 
     }
 
@@ -143,6 +143,8 @@ namespace Hisab.Common.BO
 
         public int EventPic { get; set; }
 
+        public string CurrencyCode { get; set; }
+
         public string OwnerName { get; set; }
         public Guid OwnerUserId { get; set; }
 
@@ -190,6 +192,8 @@ namespace Hisab.Common.BO
 
         public DateTime CreateDate { get; set; }
 
+        public string CurrencyCode { get; set; }
+
         public List<EventFriendBO> Friends { get; set; }
 
         //public EventDashboardStatBo DashboardStats { get; set; }
@@ -208,6 +212,8 @@ namespace Hisab.Common.BO
         public int SelectedEventImage { get; set; }
 
         public List<EventFriendBO> Friends { get; set; }
+
+        public string SelectedCurrency { get; set; }
 
         public EventSettingsBO()
         {

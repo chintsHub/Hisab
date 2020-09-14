@@ -12,7 +12,7 @@ namespace Hisab.UI.ViewModels
     {
         public Guid EventId { get; set; }
 
-        
+        public string CurrencySymbol { get; set; }
 
         public Guid TransactionId { get; set; }
 
@@ -91,6 +91,13 @@ namespace Hisab.UI.ViewModels
         public Guid Id { get; set; }
 
         public String Name { get; set; }
+    }
+
+    public class CurrencyVM
+    {
+        public string Code { get; set; }
+
+        public string Name { get; set; }
     }
 
     public class ContributeVM

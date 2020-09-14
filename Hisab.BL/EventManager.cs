@@ -70,13 +70,6 @@ namespace Hisab.BL
                         var friendResult = context.EventRepository.AddEventOwnerToEvent(newNewEvent.EventOwner);
                     }
                                     
-                    
-
-                    //create Accounts
-                    var currentAccountId = context.EventRepository.CreateEventAccount(newNewEvent.Id,ApplicationAccountType.Cash);
-                    //var expenseAccountId = context.EventRepository.CreateExpenseAccount(newNewEvent.Id);
-                    //var owerAccount = context.EventRepository.CreateEventFriendAccount(newNewEvent.Id, friendId);
-
                     context.SaveChanges();
 
                     return newNewEvent.Id;

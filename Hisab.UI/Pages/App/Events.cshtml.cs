@@ -32,6 +32,7 @@ namespace Hisab.UI
         {
             _eventManager = eventManager;
             _userManager = userManager;
+            NewEvent = new NewEventVm();
         }
         
 
@@ -49,14 +50,18 @@ namespace Hisab.UI
                 {
                     EventId = eventBo.Id,
                     EventName = eventBo.EventName,
+                    CurrencySymbol = Currency.GetCurrencySymbolFromCode(eventBo.CurrencyCode),
                     CreatedUserNickName = eventBo.OwnerName,
                     EventMessage = "Event Created by: " + eventBo.OwnerName,
                     EventImagePath = HisabImageManager.GetEventImages()
                                     .Where<HisabImage>(x => x.Id == eventBo.EventPic).FirstOrDefault().ImagePath
                 });
             }
-            
 
+            foreach(var cur in Currency.GetAll())
+            {
+                NewEvent.CountryCurrency.Add(new CurrencyVM() { Code = cur.Key, Name = cur.Value });
+            }
             return Page();
         }
 
@@ -89,7 +94,8 @@ namespace Hisab.UI
                             Status = EventFriendStatus.EventAdmin
 
                         },
-                        EventPic = HisabImageManager.GetRandomEventImage()
+                        EventPic = HisabImageManager.GetRandomEventImage(),
+                        CurrencyCode = NewEvent.SelectedCurrency
                     };
 
                     var eventId = await _eventManager.CreateEvent(eventBo);

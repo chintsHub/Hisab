@@ -72,6 +72,7 @@ namespace Hisab.Dapper.Repository
                    SELECT 
 	                    e.[Id] as TransactionId
                         ,e.[EventId]
+                        ,eve.CurrencyCode
                         ,e.Comments
                         
 	                    ,[TransactionDate]
@@ -90,6 +91,7 @@ namespace Hisab.Dapper.Repository
 	                    ,u3.NickName 
                     FROM 
 	                    EventTransaction e 
+                        inner join [Event] eve on eve.Id = e.EventId
                         left outer join ApplicationUser u on u.Id = e.PaidByUserId
 	                    left outer join ApplicationUser u1 on u1.Id = e.PaidToFriendUserId
 	                    left outer join [EventTransactionSplit] s on s.TransactionId = e.Id

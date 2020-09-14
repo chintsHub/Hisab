@@ -16,19 +16,7 @@ namespace Hisab.UI.Pages.Components.EventCard
 
         public async Task<IViewComponentResult> InvokeAsync(EventCardVm eventCardVm)
         {
-            var events = new List<EventCardVm>()
-            {
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"},
-                new EventCardVm{ EventId = new Guid(), CreatedUserNickName="chints", EventName = "Thailand"}
-
-            };
-
-            
+                    
 
             return View(eventCardVm);
         }

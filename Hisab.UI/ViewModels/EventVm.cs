@@ -23,6 +23,8 @@ namespace Hisab.UI.ViewModels
 
         public string EventMessage { get; set; }
 
+        public string CurrencySymbol { get; set; }
+
     }
     public class EventVm 
     {
@@ -38,7 +40,7 @@ namespace Hisab.UI.ViewModels
         public List<EventFriendVm> Friends { get; set; }
 
         
-
+        public string CurrencySymbol { get; set; }
         
 
 
@@ -71,6 +73,10 @@ namespace Hisab.UI.ViewModels
        
         public int SelectedEventImage { get; set; }
 
+        public string SelectedCurrency { get; set; }
+
+        public List<CurrencyVM> CountryCurrency { get; set; }
+
         public List<EventFriendVm> Friends { get; set; }
 
         public EventSettingsVM()
@@ -80,6 +86,8 @@ namespace Hisab.UI.ViewModels
             EventImages = HisabImageManager.GetEventImages();
 
             Friends = new List<EventFriendVm>();
+
+            CountryCurrency = new List<CurrencyVM>();
         }
     }
 
@@ -122,6 +130,15 @@ namespace Hisab.UI.ViewModels
         public string EventName { get; set; }
 
         public string Url { get; set; }
+
+        public string SelectedCurrency { get; set; }
+
+        public List<CurrencyVM> CountryCurrency { get; set; }
+
+        public NewEventVm()
+        {
+            CountryCurrency = new List<CurrencyVM>();
+        }
     }
 
 }

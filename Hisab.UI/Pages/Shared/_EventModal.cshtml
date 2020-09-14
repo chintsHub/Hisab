@@ -14,12 +14,19 @@
                 <div class="modal-body">
                     <div id="ErrorMessage" class="" role="alert"></div>
 
-                    <div class="form-group">
-                        <label asp-for="@Model.EventName"></label>
-                        <input asp-for="@Model.EventName" class="form-control" placeholder="eg Trip to Thailand" />
+                    <div class="form-group row">
+                        <label asp-for="@Model.EventName" class="col-sm-4 col-form-label">Event Name:</label>
+                        <input asp-for="@Model.EventName" class="form-control col-sm-6" placeholder="eg Trip to Thailand" />
                         <span asp-validation-for="@Model.EventName" class="text-danger"></span>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="expenseDate" class="col-sm-4 col-form-label">Currency:</label>
+                        
+                            <select id="currencySelect" class="form-control col-sm-6" asp-for="@Model.SelectedCurrency" asp-items="@(new SelectList(Model.CountryCurrency,"Code","Name"))">
+                            </select>
+                        
+                    </div>
 
                 </div>
                 <div class="modal-footer">

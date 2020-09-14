@@ -70,9 +70,9 @@
                     <div>
                         <img class="friendImage" src="@settlement.FriendAvatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
                     </div>
-                    <div>
+                    @*<div>
                         @settlement.FriendName
-                    </div>
+                    </div>*@
                 </div>
                 <div class="col-9">
                     <div id="@settlement.FriendId">
@@ -80,16 +80,16 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>@settlement.FriendName</th>
-                                    <th>Amount</th>
+                                    <th>Amount in @Model.CurrencySymbol</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>To Pay</td>
+                                    <td>Pay to @settlement.FriendName</td>
                                     <td>@settlement.AmountPayable</td>
                                 </tr>
                                 <tr>
-                                    <td>To Receive</td>
+                                    <td>Receive from @settlement.FriendName</td>
                                     <td>@settlement.AmountReceivable</td>
                                 </tr>
 

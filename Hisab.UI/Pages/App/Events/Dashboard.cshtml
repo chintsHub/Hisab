@@ -11,7 +11,7 @@
     <div class="container">
         @Html.HiddenFor(x => x.Event.EventId)
         <div class="row">
-            <p id="AllexpenseContent" class=""></p>
+            <p>Total event expenses: @Model.Event.CurrencySymbol<div id="AllexpenseContent" style="padding-top:10px"></div></p>
         </div>
         <div class="row">
             <div class="col-6 col-md-6 eventDashboardTiles">
@@ -22,8 +22,9 @@
                         <div id="expenseSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
+                        <p></p>
                         <div id="expenseContent" class="card-title tileNumbers"></div>
-
+                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
 
 
                     </div>
@@ -41,7 +42,9 @@
                         <div id="MyContributionsSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
+                        <p></p>
                         <div id="MyContributionsContent" class="card-title tileNumbers"></div>
+                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
 
                     </div>
                     <div class="card-footer tileFooter">
@@ -59,8 +62,9 @@
                         <div id="AmountIOweToFriendsSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
+                        <p></p>
                         <div id="AmountIOweToFriendsContent" class="card-title tileNumbers"></div>
-
+                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
                     </div>
                     <div class="card-footer tileFooter">
                         <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
@@ -78,8 +82,9 @@
                         <div id="AmountFriendsOweToMeSpinner" class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div>
+                        <p></p>
                         <div id="AmountFriendsOweToMeContent" class="card-title tileNumbers"></div>
-
+                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
                     </div>
                     <div class="card-footer tileFooter">
                         <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">

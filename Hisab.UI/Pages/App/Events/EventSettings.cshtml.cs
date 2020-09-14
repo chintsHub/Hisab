@@ -42,6 +42,12 @@ namespace Hisab.UI
                 SettingsVM.EventName = eve.EventName;
                 SettingsVM.SelectedEventImage = eve.EventPicId;
                 SettingsVM.EventId = eve.Id;
+                SettingsVM.SelectedCurrency = eve.CurrencyCode;
+
+                foreach (var cur in Currency.GetAll())
+                {
+                    SettingsVM.CountryCurrency.Add(new CurrencyVM() { Code = cur.Key, Name = cur.Value });
+                }
 
                 foreach (var f in eve.Friends)
                 {
@@ -80,7 +86,8 @@ namespace Hisab.UI
                 {
                     EventId = SettingsVM.EventId,
                     EventName = SettingsVM.EventName,
-                    SelectedEventImage = SettingsVM.SelectedEventImage
+                    SelectedEventImage = SettingsVM.SelectedEventImage,
+                    SelectedCurrency = SettingsVM.SelectedCurrency
 
                 };
                 foreach(var f in SettingsVM.Friends)
@@ -100,7 +107,11 @@ namespace Hisab.UI
                 if (result)
                 {
                     EventSettingMessage = "Event settings updated sucessfully.";
-                    //LoadEventSettings(SettingsVM.EventId);
+                    foreach (var cur in Currency.GetAll())
+                    {
+                        SettingsVM.CountryCurrency.Add(new CurrencyVM() { Code = cur.Key, Name = cur.Value });
+                    }
+
                 }
                 else
                 {

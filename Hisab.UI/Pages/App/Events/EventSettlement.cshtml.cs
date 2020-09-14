@@ -26,6 +26,8 @@ namespace Hisab.UI
 
         public List<SettlementAccountVM> SettlementAccounts { get; set; }
 
+        public string CurrencySymbol { get; set; }
+
         [BindProperty]
         public SettlementTransaction SettlementTransaction { get; set; }
 
@@ -47,6 +49,8 @@ namespace Hisab.UI
 
             if (await _eventManager.CheckEventAccess(eve, User.Identity.Name))
             {
+                CurrencySymbol = Currency.GetCurrencySymbolFromCode(eve.CurrencyCode);
+
                 var settlements = await _eventTransactionManager.GetSettlementAccounts(eve, user.Id);
 
                 foreach(var settlement in settlements)

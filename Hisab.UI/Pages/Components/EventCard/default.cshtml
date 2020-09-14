@@ -7,11 +7,18 @@
                    </div>
                    <div class="col-md-7">
                        <div class="card-body">
-                           <h5 class="card-title"> @Model.EventName</h5>
+                           <h5 class="card-title"> @Model.EventName </h5>
                            <p class="card-text">
                                @Model.EventMessage
                            </p>
-                           <a class="nav-link" asp-page="/app/events/Dashboard"  asp-route-id="@Model.EventId">View</a>
+                           
+                           
+                       </div>
+                       <div class="card-footer tileFooter">
+                           <a class="nav-link" style="float:left" asp-page="/app/events/Dashboard" asp-route-id="@Model.EventId">View</a>
+                           <div style="float:right;color:white">@Model.CurrencySymbol</div>
+
+                           <div class="clearfix"></div>
                        </div>
                    </div>
                </div>
