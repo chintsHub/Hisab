@@ -159,6 +159,8 @@ namespace Hisab.Common.BO
         public Guid EventId { get; set; }
 
         EventFriendStatus Status { get; set; }
+
+        public string LoggedInUser { get; set; }
     }
 
     public class UserEventInviteBO

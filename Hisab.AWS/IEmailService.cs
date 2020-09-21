@@ -8,5 +8,7 @@ namespace Hisab.AWS
         Task<HttpStatusCode> SendRegistrationEmail(string toEmail, string name, string registerLink);
 
         Task<HttpStatusCode> SendForgotPasswordLink(string toEmail, string name, string forgotPasswordLink);
+
+        Task<HttpStatusCode> SendInviteEmail(string fromUser, string toEmail);
     }
 }

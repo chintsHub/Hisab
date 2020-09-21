@@ -70,7 +70,7 @@ namespace Hisab.UI
                         SucessMessage = "You are successfully registered. " +
                                                          "We have sent a verification email.";
 
-                                            }
+                    }
                     else
                     {
                         ModelState.AddModelError(string.Empty,$"Error in Registering user:{user.Email}");

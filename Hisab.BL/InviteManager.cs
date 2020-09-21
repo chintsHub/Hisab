@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hisab.AWS;
 using Hisab.Common.BO;
 using Hisab.Dapper;
 using Hisab.Dapper.Identity;
@@ -17,7 +18,7 @@ namespace Hisab.BL
         Task<ManagerResponse> JoinInvite(Guid eventId, Guid userId);
 
 
-        Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail);
+        Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail, string loggedInUser);
 
         Task<List<ManagerResponse>> InviteFriends(List<NewInviteBO> invites);
 
@@ -35,12 +36,14 @@ namespace Hisab.BL
         private IDbConnectionProvider _connectionProvider;
         private UserManager<ApplicationUser> _userManager;
         private IEventManager _eventManager;
+        private IEmailService _emailService;
 
-        public EventInviteManager(IDbConnectionProvider connectionProvider, UserManager<ApplicationUser> userManager, IEventManager eventManager)
+        public EventInviteManager(IDbConnectionProvider connectionProvider, UserManager<ApplicationUser> userManager, IEventManager eventManager, IEmailService emailService)
         {
             _connectionProvider = connectionProvider;
             _userManager = userManager;
             _eventManager = eventManager;
+            _emailService = emailService;
         }
 
         public async Task<List<UserEventInviteBO>> GetUserInvites(Guid userId)
@@ -58,7 +61,7 @@ namespace Hisab.BL
 
        
 
-        public async Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail)
+        public async Task<ManagerResponse> InviteFriend(Guid eventId, string userEmail, string loggedInUser)
         {
             var response = new ManagerResponse();
 
@@ -95,15 +98,15 @@ namespace Hisab.BL
                     {
                         var newInvite = context.EventInviteRepository.InviteFriend(eventId, user.Id, InviteStatus.RequestPending);
 
-                        //create account
-                        //var accountId = context.EventRepository.CreateEventFriendAccount(newEventFriend.EventId, friend);
-
                         context.SaveChanges();
 
                         if (newInvite > 0)
                         {
                             response.Messge = $"Invite send to the user with email address {userEmail} join this event.";
                             response.Success = true;
+
+                            await _emailService.SendInviteEmail(loggedInUser, userEmail);
+
                             return response;
                         }
 
@@ -190,7 +193,7 @@ namespace Hisab.BL
 
             foreach(var invite in invites)
             {
-                var inviteResult = await InviteFriend(invite.EventId, invite.UserEmail);
+                var inviteResult = await InviteFriend(invite.EventId, invite.UserEmail, invite.LoggedInUser);
                 retVal.Add(inviteResult);
             }
 

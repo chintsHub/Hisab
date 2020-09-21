@@ -109,5 +109,49 @@ namespace Hisab.AWS
 
             return body;
         }
+
+        public async Task<HttpStatusCode> SendInviteEmail(string fromUser, string toEmail)
+        {
+            AWSCredentials credentials = new BasicAWSCredentials(_accessKey, _secretKey);
+
+            using (var client = new AmazonSimpleEmailServiceClient(credentials, RegionEndpoint.USEast1))
+            {
+                var destination = new Destination(new List<string> { toEmail });
+                var message = new Message();
+                message.Subject = new Content("Hisaab event invitation");
+
+                message.Body = new Body();
+                message.Body.Html = new Content(GetSendInviteEmailBody(fromUser, "www.hisab.io/login"));
+
+
+
+                var sendRequest = new SendEmailRequest("admin@hisaab.io", destination, message);
+
+                var response = await client.SendEmailAsync(sendRequest);
+
+                return response.HttpStatusCode;
+
+
+
+            }
+        }
+
+        private string GetSendInviteEmailBody(string fromUser, string hisabLink)
+        {
+            string body =
+                "<div style=\"background-color:#008da8;color:#ffffff; padding: 1rem 2%; \">" +
+                  "<div> <h1 style=\"font-size: 2rem;font-weight: 300; letter-spacing: 10px; \"> Hisaab </h1> <h2 style=\"font-size: 1rem;font-weight: 300; \">Managing Trip Expenses, Simplified</h2></div>" +
+
+                "</div>" +
+
+                "<body>" +
+                  $"<div style=\"background-color: #F4F5F7; padding: 15px 32px;   \"> " +
+                  $"Hey there, <br/><br/>" +
+                  $"Your friend {fromUser} has invited you to a Hisaab event. Please click on <i>Join event</i> button to join the event. <br/><br/>" +
+                  $"<a style=\"background-color: #e2ed07;color:#003B5C;padding: 15px 32px; text-align: center;text-decoration: none; display: inline-block; font-size: 16px; \" href={hisabLink}>Join event</a> </div>" +
+                 "</body>";
+
+            return body;
+        }
     }
 }

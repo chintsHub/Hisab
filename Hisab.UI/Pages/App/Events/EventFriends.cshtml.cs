@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hisab.AWS;
 using Hisab.BL;
 using Hisab.Common.BO;
 using Hisab.Dapper.Identity;
@@ -31,6 +32,7 @@ namespace Hisab.UI
         private UserManager<ApplicationUser> _userManager { get; set; }
 
         private IEventManager _eventManager;
+        private IEmailService _emailService;
 
         public List<UserEventInviteVM> PendingRequests { get; set; }
         
@@ -38,11 +40,12 @@ namespace Hisab.UI
         public List<InviteApplicationUserVM> RecommendedFriends { get; set; }
 
 
-        public EventFriendsModel(IEventInviteManager eventInviteManager, UserManager<ApplicationUser> userManager, IEventManager eventManager)
+        public EventFriendsModel(IEventInviteManager eventInviteManager, UserManager<ApplicationUser> userManager, IEventManager eventManager, IEmailService emailService)
         {
             _eventInviteManager = eventInviteManager;
             _userManager = userManager;
             _eventManager = eventManager;
+            _emailService = emailService;
 
             PendingRequests = new List<UserEventInviteVM>();
             RecommendedFriends = new List<InviteApplicationUserVM>();
@@ -115,11 +118,14 @@ namespace Hisab.UI
         {
             if(ModelState.IsValid)
             {
-                var result = await _eventInviteManager.InviteFriend(NewFriend.EventId, NewFriend.FriendEmail);
+                var fromUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                var result = await _eventInviteManager.InviteFriend(NewFriend.EventId, NewFriend.FriendEmail, fromUser.NickName);
 
                 if(result.Success)
                 {
                     InviteFriendMessage = result.Messge;
+                                
+                   
                 }
                 else
                 {
@@ -141,12 +147,13 @@ namespace Hisab.UI
         public async Task<IActionResult> OnPostSendInvites()
         {
             var invites = new List<NewInviteBO>();
+            var fromUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            foreach(var friend in RecommendedFriends)
+            foreach (var friend in RecommendedFriends)
             {
                 if(friend.Checked)
                 {
-                    invites.Add(new NewInviteBO() { EventId = friend.EventId, UserEmail = friend.UserName });
+                    invites.Add(new NewInviteBO() { EventId = friend.EventId, UserEmail = friend.UserName, LoggedInUser = fromUser.NickName });
                     NewFriend.EventId = friend.EventId; // eventId is going to be same
                 }
             }
