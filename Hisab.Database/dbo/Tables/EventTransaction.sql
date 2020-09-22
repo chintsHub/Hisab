@@ -3,7 +3,7 @@
 	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
     [EventId] UNIQUEIDENTIFIER NOT NULL, 
     [CreatedbyUserId] UNIQUEIDENTIFIER NOT NULL, 
-    [TransactionDate] DATE NOT NULL, 
+    [TransactionDate] DATETIME NOT NULL, 
     [TotalAmount] DECIMAL(18, 2) NOT NULL, 
     [Description] VARCHAR(100) NOT NULL, 
     [PaidByUserId] UNIQUEIDENTIFIER NOT NULL, 

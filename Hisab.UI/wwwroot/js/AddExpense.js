@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
    
-
     $('#SlickSlider').on('afterChange', function (event, slick, currentSlide, nextSlide) {
         if (currentSlide === 2) {
             var totalExp = $('#totalExpense').val();
@@ -34,4 +33,6 @@
         }
         
     });
+
+    
 });

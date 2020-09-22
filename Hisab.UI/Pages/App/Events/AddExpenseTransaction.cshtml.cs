@@ -104,7 +104,7 @@ namespace Hisab.UI
                 newTrans.CreatedByUserId = user.Id;
                 newTrans.Description = ExpenseVM.ExpenseDescription;
                 newTrans.EventId = ExpenseVM.EventId;
-                newTrans.TransactionDate = ExpenseVM.ExpenseDate.Date;
+                newTrans.TransactionDate = ExpenseVM.ExpenseDate;
                 newTrans.TotalAmount = ExpenseVM.ExpensePaid;
                 newTrans.PaidByUserId = ExpenseVM.ExpensePaidById;
 
