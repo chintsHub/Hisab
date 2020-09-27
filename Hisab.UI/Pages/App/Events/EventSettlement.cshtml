@@ -121,7 +121,16 @@
                         <i class="fa fa-wallet"></i> settle
                     </button>
                 }
+                @if (settlement.NetAmount == 0)
+                {
 
+                    <div style="color:white">There's nothing to settle</div>
+                }
+                @if (settlement.NetAmount > 0)
+                {
+
+                    <div style="color:white">@settlement.FriendName has not settled the dues</div>
+                }
 
             </div>
 

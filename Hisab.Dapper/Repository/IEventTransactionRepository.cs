@@ -450,8 +450,8 @@ namespace Hisab.Dapper.Repository
         public void DeleteTransaction(Guid transactionId)
         {
 
-            var transactionJournalResult = Connection.Execute($@" delete  FROM [dbo].[EventTransactionJournal] where [TransactionId] = @{nameof(transactionId)}",
-              new { transactionId }, Transaction);
+            //var transactionJournalResult = Connection.Execute($@" delete  FROM [dbo].[EventTransactionJournal] where [TransactionId] = @{nameof(transactionId)}",
+            //  new { transactionId }, Transaction);
 
             var eventFriendJournalResult = Connection.Execute($@" delete  FROM [dbo].[EventFriendJournal] where [TransactionId] = @{nameof(transactionId)}",
               new { transactionId }, Transaction);
