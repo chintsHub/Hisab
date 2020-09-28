@@ -171,7 +171,7 @@ namespace Hisab.BL
                 journals.Add(new EventFriendJournalBO()
                 {
                     EventId = newTransactionBO.EventId,
-                    // Debit Cash Account and credit Accounts payable
+                    // Debit Cash Account and credit Accounts receivable
                     UserDebitAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.Cash).AccountId,
                     UserCreditAccountId = accounts.FirstOrDefault(x => x.UserId == newTransactionBO.PaidToFriendUserId && x.AccountTypeId == ApplicationAccountType.AccountRecievable).AccountId,
                     Amount = newTransactionBO.TotalAmount,

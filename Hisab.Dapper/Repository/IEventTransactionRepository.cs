@@ -523,7 +523,7 @@ namespace Hisab.Dapper.Repository
             var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
                    SELECT
 	                   j.EventId,
-	                   j.[DebitAccount] as AccountId,
+	                   --j.[DebitAccount] as AccountId,
 	                   1 as EventFriendAccountAction,
 					   j.[PayReceiveFriend],
 					  
@@ -538,7 +538,7 @@ namespace Hisab.Dapper.Repository
 						and a.Id = @{nameof(AccountType)} -- Accounts Type
                     group by
 	                    j.EventId,
-	                    j.DebitAccount ,
+	                    --j.DebitAccount ,
 						[PayReceiveFriend]",
               new { eventId, userId, AccountType }, Transaction);
 
@@ -555,7 +555,7 @@ namespace Hisab.Dapper.Repository
             var EventTransactionJournalResult = Connection.Query<EventUserAccountRawBO>($@"
                    SELECT
 	                   j.EventId,
-	                   j.[CreditAccount] as AccountId,
+	                   --j.[CreditAccount] as AccountId,
 	                   1 as EventFriendAccountAction,
 					   j.[PayReceiveFriend],
 					  
@@ -570,7 +570,7 @@ namespace Hisab.Dapper.Repository
 						and a.Id = @{nameof(AccountType)} -- Accounts Type
                     group by
 	                    j.EventId,
-	                    j.CreditAccount,
+	                    --j.CreditAccount,
 						[PayReceiveFriend]		 ",
               new { eventId, userId, AccountType }, Transaction);
 
