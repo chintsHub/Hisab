@@ -76,4 +76,4 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: hisaab-service
         cluster: hisaab-ecs
-        wait-for-service-stability: true
+        wait-for-service-stability: false
