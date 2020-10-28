@@ -55,4 +55,4 @@ var HomePage = /** @class */ (function () {
 //    var page = new HomePage();
 //    page.Init();
 //}, false);
-//# sourceMappingURL=AppHome.js.map
+//# sourceMappingURL=apphome.js.map
