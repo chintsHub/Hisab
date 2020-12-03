@@ -23,8 +23,8 @@ namespace Hisab.UI
         {
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.ColoredConsole()
-                .WriteTo.RollingFile("log-.txt",LogEventLevel.Debug)
+                .WriteTo.ColoredConsole(LogEventLevel.Warning)
+                .WriteTo.RollingFile("log-.txt",LogEventLevel.Warning)
                 .CreateLogger();
 
 
