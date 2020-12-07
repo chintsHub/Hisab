@@ -127,6 +127,9 @@ header {
     header .hisabLogo h2 {
       font-size: 1rem;
       font-weight: 300; }
+    header .hisabLogo img {
+      max-height: 80px;
+      max-width: 100px; }
   header .logoutButton {
     background-color: #e2ed07;
     color: #003B5C; }

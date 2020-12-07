@@ -60,6 +60,13 @@ header {
             font-size: 1rem;
             font-weight: $normalWeight;
         }
+
+        img{
+            max-height:80px;
+            max-width:100px;
+        }
+
+       
     }
 
     .logoutButton {

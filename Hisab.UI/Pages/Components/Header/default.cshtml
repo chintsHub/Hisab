@@ -8,19 +8,20 @@
             </div>
         }
 
-        <div class="hisabLogo">
+    <div class="hisabLogo">
 
-            @if (User.Identity.IsAuthenticated)
-            {
-                <h1><a href="@Url.Page("/App/Events")">Hisaab</a></h1>
+        @*@if (User.Identity.IsAuthenticated)
+        {
+            <h1><a href="@Url.Page("/App/Events")">Hisaab</a></h1>
 
-            }
-            else
-            {
-                <h1><a href="@Url.Page("Index")">Hisaab</a></h1>
-                
-            }
-        </div>
+        }
+        else
+        {
+            <h1><a href="@Url.Page("Index")">Hisaab</a></h1>
+
+        }*@
+        <img  src="~/img/Hisaab Logo.png"  asp-append-version="true">
+    </div>
         <form>
             @if (User.Identity.IsAuthenticated)
             {
