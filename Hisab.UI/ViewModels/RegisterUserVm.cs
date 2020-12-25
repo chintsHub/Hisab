@@ -18,6 +18,7 @@ namespace Hisab.UI.ViewModels
         public string Password { get; set; }
 
         [Required]
+        [MaxLength(20)]
         public string Name { get; set; }
     }
 
