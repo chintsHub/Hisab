@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Azure.KeyVault.Models;
-using Remotion.Linq.Clauses.ResultOperators;
+
 
 namespace Hisab.UI
 {

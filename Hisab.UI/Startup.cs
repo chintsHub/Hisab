@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+
 using Sieve.Models;
 using Sieve.Services;
 
@@ -29,15 +29,23 @@ namespace Hisab.UI
     {
         private IConfiguration _configuration;
 
+        
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+
+            
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
+                //.AddNToastNotifyToastr();
+                         
+
+
             var connectionString = _configuration.GetConnectionString("hisabDb");
             var emailCredentials = _configuration.GetSection("EmailServiceCredentials").Get<EmailServiceCredentials>();
 
@@ -83,19 +91,15 @@ namespace Hisab.UI
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(50);
 
                 options.LoginPath = "/Login";
                 options.AccessDeniedPath = "/App/AccessDenied";
                 options.SlidingExpiration = true;
             });
 
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddNToastNotifyToastr();
 
 
-            
 
             services.AddScoped<IDbConnectionProvider>(sp => new DbConnectionProvider(connectionString));
 
@@ -137,45 +141,28 @@ namespace Hisab.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Error");
-            //    app.UseHsts();
-            //}
-
+            
             app.UseExceptionHandler("/error");
-            //app.UseHsts();
-            //app.UseStatusCodePagesWithReExecute("/StatusCode", "?code={0}");
-
+            
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseNodeModules(env);
+            app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseNToastNotify();
 
-    
-
-           app.UseMvc
-            (options =>
+            app.UseEndpoints(endpoints =>
             {
-                options.MapRoute("Default", "/{controller}/{action}/{id?}",
-                    new { controller = "Home", Action = "Index" });
+                endpoints.MapDefaultControllerRoute().RequireAuthorization();
+                endpoints.MapRazorPages();
             });
 
-
-
-
+           
 
         }
     }

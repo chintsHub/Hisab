@@ -63,6 +63,7 @@ namespace Hisab.UI
                     else
                     {
                         return RedirectToPage("/App/Events");
+                        
                     }
 
                 }

@@ -20,18 +20,18 @@ namespace Hisab.UI
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
         private IEventTransactionManager _transactionManager;
-        private IToastNotification _toastNotification;
+        //private IToastNotification _toastNotification;
 
         [BindProperty]
         public ContributeVM ContributeVM { get; set; }
 
         public AddContributionTransactionModel(IEventManager eventManager, UserManager<ApplicationUser> userManager
-                , IEventTransactionManager transactionManager, IToastNotification toastNotification)
+                , IEventTransactionManager transactionManager)
         {
             _eventManager = eventManager;
             _userManager = userManager;
             _transactionManager = transactionManager;
-            _toastNotification = toastNotification;
+            //_toastNotification = toastNotification;
 
 
         }
@@ -99,7 +99,7 @@ namespace Hisab.UI
                 var result = await _transactionManager.CreateContributeToFriend(newTrans);
                 if (result)
                 {
-                    _toastNotification.AddSuccessToastMessage($"The Amount of {ContributeVM.Amount} is lent to your friend.");
+                    //_toastNotification.AddSuccessToastMessage($"The Amount of {ContributeVM.Amount} is lent to your friend.");
 
                     return RedirectToPage("Dashboard", new { id = ContributeVM.EventId });
                 }

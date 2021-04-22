@@ -10,8 +10,7 @@ using Hisab.UI.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using SQLitePCL;
+
 
 namespace Hisab.UI
 {

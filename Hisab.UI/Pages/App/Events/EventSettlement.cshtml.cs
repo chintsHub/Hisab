@@ -22,7 +22,7 @@ namespace Hisab.UI
         private IEventTransactionManager _eventTransactionManager;
         private UserManager<ApplicationUser> _userManager;
         private IEventManager _eventManager;
-        private IToastNotification _toastNotification;
+        //private IToastNotification _toastNotification;
 
         public List<SettlementAccountVM> SettlementAccounts { get; set; }
 
@@ -31,12 +31,12 @@ namespace Hisab.UI
         [BindProperty]
         public SettlementTransaction SettlementTransaction { get; set; }
 
-        public EventSettlementModel(UserManager<ApplicationUser> userManager, IEventManager eventManager, IEventTransactionManager eventTransactionManager, IToastNotification toastNotification)
+        public EventSettlementModel(UserManager<ApplicationUser> userManager, IEventManager eventManager, IEventTransactionManager eventTransactionManager)
         {
             _eventTransactionManager = eventTransactionManager;
             _userManager = userManager;
             _eventManager = eventManager;
-            _toastNotification = toastNotification;
+            //_toastNotification = toastNotification;
             SettlementAccounts = new List<SettlementAccountVM>();
         }
         public async Task<IActionResult> OnGet(Guid Id)
@@ -98,7 +98,7 @@ namespace Hisab.UI
 
             if (retVal)
             {
-                _toastNotification.AddSuccessToastMessage("Settlement Transaction created successfully");
+                //_toastNotification.AddSuccessToastMessage("Settlement Transaction created successfully");
                 return new JsonResult(new { success = true, 
                                     responseText = $"Congratulations !! You have successfully settled your dues. We have created a settlement transaction which can be found on Transaction page.", 
                                     userId = user.Id,

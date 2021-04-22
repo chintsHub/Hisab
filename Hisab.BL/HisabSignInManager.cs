@@ -17,7 +17,7 @@ namespace Hisab.BL
       
 
         public HisabSignInManager(UserManager<TUser> userManager, IHttpContextAccessor contextAccessor, IUserClaimsPrincipalFactory<TUser> claimsFactory, IOptions<IdentityOptions> optionsAccessor, ILogger<SignInManager<TUser>> logger, IAuthenticationSchemeProvider authenticationSchemeProvider)
-        : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, authenticationSchemeProvider)
+        : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, authenticationSchemeProvider,null)
         {
             _userManager = userManager;
         }

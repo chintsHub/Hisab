@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
 using Hisab.Dapper.Repository;
-using Microsoft.Extensions.Logging;
+
 
 namespace Hisab.Dapper
 {

@@ -23,7 +23,7 @@ namespace Hisab.UI
         private IEventManager _eventManager;
         private UserManager<ApplicationUser> _userManager;
         private IEventTransactionManager _transactionManager;
-        private IToastNotification _toastNotification;
+        //private IToastNotification _toastNotification;
 
         [BindProperty(SupportsGet = true)]
         public ExpenseTransactionVM ExpenseVM { get; set; }
@@ -31,12 +31,12 @@ namespace Hisab.UI
         public string SuccessMessage { get; set; }
         public string ErrorMessage { get; set; }
 
-        public AddExpenseTransactionModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager, IToastNotification toastNotification)
+        public AddExpenseTransactionModel(IEventManager eventManager, UserManager<ApplicationUser> userManager, IEventTransactionManager transactionManager)
         {
             _eventManager = eventManager;
             _userManager = userManager;
             _transactionManager = transactionManager;
-            _toastNotification = toastNotification;
+            //_toastNotification = toastNotification;
 
 
         }
@@ -125,7 +125,7 @@ namespace Hisab.UI
                 if (result.Success)
                 {
                     SuccessMessage = result.Messge;
-                    _toastNotification.AddSuccessToastMessage(result.Messge);
+                    //_toastNotification.AddSuccessToastMessage(result.Messge);
 
                     return RedirectToPage("Dashboard", new { id = ExpenseVM.EventId });
                 }

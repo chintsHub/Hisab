@@ -17,7 +17,7 @@ namespace Hisab.UI
     {
         IEventTransactionManager _transactionManager;
         IEventManager _eventManager;
-        IToastNotification _toastNotification;
+        //IToastNotification _toastNotification;
 
         public List<TransactionVM> Transactions { get; set; }
 
@@ -27,10 +27,10 @@ namespace Hisab.UI
         [BindProperty]
         public UpdateCommentsVM UpdateCommentVm { get; set; }
 
-        public TransactionsModel(IEventTransactionManager transactionManager, IToastNotification toastNotification, IEventManager eventManager)
+        public TransactionsModel(IEventTransactionManager transactionManager, IEventManager eventManager)
         {
             _transactionManager = transactionManager;
-            _toastNotification = toastNotification;
+            //_toastNotification = toastNotification;
             _eventManager = eventManager;
 
             Transactions = new List<TransactionVM>();
@@ -98,7 +98,7 @@ namespace Hisab.UI
 
             if(retVal)
             {
-                _toastNotification.AddSuccessToastMessage("Transaction deleted successfully");
+                //_toastNotification.AddSuccessToastMessage("Transaction deleted successfully");
                 return new JsonResult(new { success = true, responseText = "Transaction Deleted" });
             }
 
@@ -117,7 +117,7 @@ namespace Hisab.UI
 
             if (retVal)
             {
-                _toastNotification.AddSuccessToastMessage("Comments added successfully");
+                //_toastNotification.AddSuccessToastMessage("Comments added successfully");
                 return new JsonResult(new { success = true, transactionId= UpdateCommentVm.TransactionId, responseText = "Comments added successfully" });
             }
 
