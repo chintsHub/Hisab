@@ -28,7 +28,7 @@ COPY . .
 WORKDIR /app/Hisab.UI
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:5.0 AS runtime
+FROM mcr.microsoft.com/dotnet/core/aspnet:5.0-buster-slim AS runtime
 WORKDIR /app
 COPY --from=build /app/Hisab.UI/out ./
 COPY --from=build /app/Hisab.UI/node_modules ./node_modules
