@@ -3795,3 +3795,211 @@ System.InvalidOperationException: Unable to resolve service for type 'NToastNoti
 2021-04-22 13:15:08.803 +10:00 [Information] Executed page "/App/Events/Dashboard" in 25.8693ms
 2021-04-22 13:15:08.804 +10:00 [Information] Executed endpoint '"/App/Events/Dashboard"'
 2021-04-22 13:15:08.805 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/app/events/41346420-b4f7-40ec-ac29-70be91e180f2/dashboard?handler=MyContributions application/json - - 200 - application/json;+charset=utf-8 31.3024ms
+2021-04-22 17:45:26.678 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 04/22/2021 17:45:26, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "Hisab AppPool", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2021-04-22 17:45:26.913 +10:00 [Warning] Using an in-memory repository. Keys will not be persisted to storage.
+2021-04-22 17:45:26.916 +10:00 [Warning] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2021-04-22 17:45:27.841 +10:00 [Warning] User validation failed: "DuplicateUserName".
+2021-04-22 17:45:27.850 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 04/22/2021 17:45:26, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 1016, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "04/22/2021 17:45:26")] }
+2021-04-22 17:45:28.193 +10:00 [Information] Creating key {9dd6ef60-ad6b-4bc1-b4d8-3baaee855c8f} with creation date 2021-04-22 07:45:28Z, activation date 2021-04-22 07:45:28Z, and expiration date 2021-07-21 07:45:28Z.
+2021-04-22 17:45:28.211 +10:00 [Warning] No XML encryptor configured. Key {9dd6ef60-ad6b-4bc1-b4d8-3baaee855c8f} may be persisted to storage in unencrypted form.
+2021-04-22 17:45:28.398 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab - -
+2021-04-22 17:45:28.619 +10:00 [Information] Executing endpoint '"/Index"'
+2021-04-22 17:45:28.775 +10:00 [Information] Route matched with "{page = \"/Index\"}". Executing page "/Index"
+2021-04-22 17:45:28.810 +10:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2021-04-22 17:45:28.814 +10:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:45:29.236 +10:00 [Information] Executed page "/Index" in 455.3532ms
+2021-04-22 17:45:29.243 +10:00 [Information] Executed endpoint '"/Index"'
+2021-04-22 17:45:29.259 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab - - - 200 - text/html;+charset=utf-8 861.6472ms
+2021-04-22 17:45:29.289 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:45:29.325 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U - -
+2021-04-22 17:45:29.326 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc - -
+2021-04-22 17:45:29.328 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8 - -
+2021-04-22 17:45:29.328 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:45:29.334 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:45:29.344 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:45:29.345 +10:00 [Information] Sending file. Request path: '"/img/home_restaurant.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_restaurant.png"'
+2021-04-22 17:45:29.353 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 25.0502ms
+2021-04-22 17:45:29.353 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8 - - - 200 6368 image/png 25.1853ms
+2021-04-22 17:45:29.356 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:45:29.357 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As - -
+2021-04-22 17:45:29.363 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 73.2047ms
+2021-04-22 17:45:29.363 +10:00 [Information] Sending file. Request path: '"/img/home_car.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_car.png"'
+2021-04-22 17:45:29.363 +10:00 [Information] Sending file. Request path: '"/img/homeE.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\homeE.png"'
+2021-04-22 17:45:29.367 +10:00 [Information] Sending file. Request path: '"/img/home_plane.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_plane.png"'
+2021-04-22 17:45:29.369 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As - - - 200 15823 image/png 12.5821ms
+2021-04-22 17:45:29.367 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc - - - 200 12436 image/png 40.0159ms
+2021-04-22 17:45:29.375 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:45:29.373 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U - - - 200 2501 image/png 47.9210ms
+2021-04-22 17:45:29.380 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 46.1976ms
+2021-04-22 17:45:32.042 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/login - -
+2021-04-22 17:45:32.058 +10:00 [Information] Executing endpoint '"/LoginPage"'
+2021-04-22 17:45:32.089 +10:00 [Information] Route matched with "{page = \"/LoginPage\"}". Executing page "/LoginPage"
+2021-04-22 17:45:32.138 +10:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnGet" - ModelState is Valid
+2021-04-22 17:45:32.138 +10:00 [Information] Executed handler method "OnGet", returned result "".
+2021-04-22 17:45:32.141 +10:00 [Information] Executing an implicit handler method - ModelState is Valid
+2021-04-22 17:45:32.141 +10:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:45:32.261 +10:00 [Information] Executed page "/LoginPage" in 171.53ms
+2021-04-22 17:45:32.261 +10:00 [Information] Executed endpoint '"/LoginPage"'
+2021-04-22 17:45:32.262 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/login - - - 200 - text/html;+charset=utf-8 220.2518ms
+2021-04-22 17:45:32.293 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:45:32.310 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:45:32.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - -
+2021-04-22 17:45:32.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - -
+2021-04-22 17:45:32.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:45:32.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:45:32.312 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 18.7706ms
+2021-04-22 17:45:32.331 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:45:32.334 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:45:32.337 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 24.7217ms
+2021-04-22 17:45:32.338 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 26.0889ms
+2021-04-22 17:45:32.362 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - - - 404 - - 49.9479ms
+2021-04-22 17:45:32.362 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - - - 404 - - 49.7807ms
+2021-04-22 17:45:33.100 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - -
+2021-04-22 17:45:33.102 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - - - 404 - - 1.7898ms
+2021-04-22 17:45:33.108 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - -
+2021-04-22 17:45:33.110 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - - - 404 - - 1.2262ms
+2021-04-22 17:45:34.111 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost/Hisab/login application/x-www-form-urlencoded 242
+2021-04-22 17:45:34.111 +10:00 [Information] Executing endpoint '"/LoginPage"'
+2021-04-22 17:45:34.112 +10:00 [Information] Route matched with "{page = \"/LoginPage\"}". Executing page "/LoginPage"
+2021-04-22 17:45:34.242 +10:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnPostAsync" - ModelState is Valid
+2021-04-22 17:45:34.360 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2021-04-22 17:45:34.361 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 04/22/2021 17:45:34, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2021-04-22 17:45:34.363 +10:00 [Information] Executed handler method "OnPostAsync", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2021-04-22 17:45:34.367 +10:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Events".
+2021-04-22 17:45:34.370 +10:00 [Information] Executed page "/LoginPage" in 257.7196ms
+2021-04-22 17:45:34.371 +10:00 [Information] Executed endpoint '"/LoginPage"'
+2021-04-22 17:45:34.373 +10:00 [Information] Request finished HTTP/1.1 POST http://localhost/Hisab/login application/x-www-form-urlencoded 242 - 302 - - 262.4736ms
+2021-04-22 17:45:34.378 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/App/Events - -
+2021-04-22 17:45:34.411 +10:00 [Information] Authorization was successful.
+2021-04-22 17:45:34.414 +10:00 [Information] Executing endpoint '"/App/Events"'
+2021-04-22 17:45:34.426 +10:00 [Information] Route matched with "{page = \"/App/Events\"}". Executing page "/App/Events"
+2021-04-22 17:45:34.428 +10:00 [Information] Executing handler method "Hisab.UI.EventsModel.OnGet" - ModelState is Valid
+2021-04-22 17:45:34.556 +10:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:45:34.668 +10:00 [Information] Executed page "/App/Events" in 242.5305ms
+2021-04-22 17:45:34.669 +10:00 [Information] Executed endpoint '"/App/Events"'
+2021-04-22 17:45:34.671 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/App/Events - - - 200 - text/html;+charset=utf-8 293.2783ms
+2021-04-22 17:45:34.705 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:45:34.707 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:45:34.708 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 3.5075ms
+2021-04-22 17:45:34.738 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/apphome.js?v=hUS0aoLmnUfJeO7zzAOWIG1c8GsDILISvSzLhmXXK1Q - -
+2021-04-22 17:45:34.742 +10:00 [Information] Sending file. Request path: '"/js/apphome.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\apphome.js"'
+2021-04-22 17:45:34.743 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/apphome.js?v=hUS0aoLmnUfJeO7zzAOWIG1c8GsDILISvSzLhmXXK1Q - - - 200 2332 application/javascript 5.1344ms
+2021-04-22 17:45:34.743 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:45:34.743 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:45:34.744 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:45:34.745 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 1.8186ms
+2021-04-22 17:45:34.748 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage2.jpg?v=eV3-fTuaaB0Ef4JG2GYoqK06Ij5p6crpQwzG1NUHp-I - -
+2021-04-22 17:45:34.748 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage1.jpg?v=Q36CfUhM01A7SxMj3bojhXUTikfPF8jQg-Vn611CUYg - -
+2021-04-22 17:45:34.752 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardRoadTrip1.jpg?v=mi7tRd55aEbmd_ReJyueZpOHzWZglC0Li42Gu4KcL8o - -
+2021-04-22 17:45:34.758 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:45:34.759 +10:00 [Information] Sending file. Request path: '"/img/eventCardRoadTrip1.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardRoadTrip1.jpg"'
+2021-04-22 17:45:34.762 +10:00 [Information] Sending file. Request path: '"/img/eventCardImage1.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardImage1.jpg"'
+2021-04-22 17:45:34.763 +10:00 [Information] Sending file. Request path: '"/img/eventCardImage2.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardImage2.jpg"'
+2021-04-22 17:45:34.763 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardRoadTrip1.jpg?v=mi7tRd55aEbmd_ReJyueZpOHzWZglC0Li42Gu4KcL8o - - - 200 12133 image/jpeg 12.4525ms
+2021-04-22 17:45:34.763 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 20.4912ms
+2021-04-22 17:45:34.763 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage2.jpg?v=eV3-fTuaaB0Ef4JG2GYoqK06Ij5p6crpQwzG1NUHp-I - - - 200 54084 image/jpeg 15.8511ms
+2021-04-22 17:45:34.763 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage1.jpg?v=Q36CfUhM01A7SxMj3bojhXUTikfPF8jQg-Vn611CUYg - - - 200 28698 image/jpeg 15.6467ms
+2021-04-22 17:52:39.393 +10:00 [Information] LogDetail { LogType: Diagnostic, Timestamp: 04/22/2021 17:52:39, Message: "Sucessfully built WebHost", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "Hisab AppPool", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2021-04-22 17:52:39.629 +10:00 [Warning] Using an in-memory repository. Keys will not be persisted to storage.
+2021-04-22 17:52:39.631 +10:00 [Warning] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2021-04-22 17:52:40.450 +10:00 [Warning] User validation failed: "DuplicateUserName".
+2021-04-22 17:52:40.458 +10:00 [Information] LogDetail { LogType: Performance, Timestamp: 04/22/2021 17:52:39, Message: "Seeding", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "", ElapseMilliseconds: 913, Exception: null, CorrelationId: null, AdditionalInfo: [("Started": "04/22/2021 17:52:39")] }
+2021-04-22 17:52:40.761 +10:00 [Information] Creating key {363bc0e2-e512-4f2e-a317-6425ea4dc3e2} with creation date 2021-04-22 07:52:40Z, activation date 2021-04-22 07:52:40Z, and expiration date 2021-07-21 07:52:40Z.
+2021-04-22 17:52:40.779 +10:00 [Warning] No XML encryptor configured. Key {363bc0e2-e512-4f2e-a317-6425ea4dc3e2} may be persisted to storage in unencrypted form.
+2021-04-22 17:52:40.995 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab - -
+2021-04-22 17:52:41.245 +10:00 [Information] Executing endpoint '"/Index"'
+2021-04-22 17:52:41.392 +10:00 [Information] Route matched with "{page = \"/Index\"}". Executing page "/Index"
+2021-04-22 17:52:41.433 +10:00 [Information] Executing handler method "Hisab.UI.IndexModel.OnGet" - ModelState is Valid
+2021-04-22 17:52:41.439 +10:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:52:41.852 +10:00 [Information] Executed page "/Index" in 453.8716ms
+2021-04-22 17:52:41.858 +10:00 [Information] Executed endpoint '"/Index"'
+2021-04-22 17:52:41.874 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab - - - 200 - text/html;+charset=utf-8 881.8213ms
+2021-04-22 17:52:41.903 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:52:41.941 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:52:41.941 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U - -
+2021-04-22 17:52:41.941 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8 - -
+2021-04-22 17:52:41.941 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc - -
+2021-04-22 17:52:41.949 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:52:41.977 +10:00 [Information] Sending file. Request path: '"/img/home_car.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_car.png"'
+2021-04-22 17:52:41.977 +10:00 [Information] Sending file. Request path: '"/img/home_restaurant.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_restaurant.png"'
+2021-04-22 17:52:41.977 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:52:41.977 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:52:41.977 +10:00 [Information] Sending file. Request path: '"/img/homeE.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\homeE.png"'
+2021-04-22 17:52:41.979 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_restaurant.png?v=lDoQVzID1CCqbj4rQ6RxM6cstXu8LK3cRq5n-QZGJH8 - - - 200 6368 image/png 38.0582ms
+2021-04-22 17:52:41.979 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 38.1962ms
+2021-04-22 17:52:41.979 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/homeE.png?v=sJYJMFwpkve_acvhP2ZUu2fIbrSFvmL4xzOO3c_jo5U - - - 200 2501 image/png 38.1439ms
+2021-04-22 17:52:41.979 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_car.png?v=-Ys3PJoce4_K-dd0J7g3qfG35u1T8-M_g4Z2WOQ3qGc - - - 200 12436 image/png 37.7037ms
+2021-04-22 17:52:41.980 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 77.3019ms
+2021-04-22 17:52:41.998 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As - -
+2021-04-22 17:52:42.000 +10:00 [Information] Sending file. Request path: '"/img/home_plane.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\home_plane.png"'
+2021-04-22 17:52:42.001 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/home_plane.png?v=GBNOmJdJiDerSwtYmBXL5-EOh9gCaYfzMzUEbGMc-As - - - 200 15823 image/png 2.8172ms
+2021-04-22 17:52:42.005 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:52:42.008 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 58.8869ms
+2021-04-22 17:52:44.984 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/login - -
+2021-04-22 17:52:45.028 +10:00 [Information] Executing endpoint '"/LoginPage"'
+2021-04-22 17:52:45.070 +10:00 [Information] Route matched with "{page = \"/LoginPage\"}". Executing page "/LoginPage"
+2021-04-22 17:52:45.113 +10:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnGet" - ModelState is Valid
+2021-04-22 17:52:45.113 +10:00 [Information] Executed handler method "OnGet", returned result "".
+2021-04-22 17:52:45.118 +10:00 [Information] Executing an implicit handler method - ModelState is Valid
+2021-04-22 17:52:45.119 +10:00 [Information] Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:52:45.248 +10:00 [Information] Executed page "/LoginPage" in 178.2936ms
+2021-04-22 17:52:45.248 +10:00 [Information] Executed endpoint '"/LoginPage"'
+2021-04-22 17:52:45.250 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/login - - - 200 - text/html;+charset=utf-8 265.8813ms
+2021-04-22 17:52:45.286 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:52:45.297 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:52:45.299 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 12.9316ms
+2021-04-22 17:52:45.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:52:45.312 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - -
+2021-04-22 17:52:45.323 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:52:45.323 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - -
+2021-04-22 17:52:45.323 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:52:45.325 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 13.0616ms
+2021-04-22 17:52:45.325 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:52:45.326 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 3.3487ms
+2021-04-22 17:52:45.343 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - - - 404 - - 31.3496ms
+2021-04-22 17:52:45.343 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - - - 404 - - 20.0991ms
+2021-04-22 17:52:46.104 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - -
+2021-04-22 17:52:46.105 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation/dist/jquery.validate.min.js - - - 404 - - 1.8314ms
+2021-04-22 17:52:46.110 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - -
+2021-04-22 17:52:46.112 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js - - - 404 - - 0.9814ms
+2021-04-22 17:52:46.960 +10:00 [Information] Request starting HTTP/1.1 POST http://localhost/Hisab/login application/x-www-form-urlencoded 242
+2021-04-22 17:52:46.960 +10:00 [Information] Executing endpoint '"/LoginPage"'
+2021-04-22 17:52:46.961 +10:00 [Information] Route matched with "{page = \"/LoginPage\"}". Executing page "/LoginPage"
+2021-04-22 17:52:47.076 +10:00 [Information] Executing handler method "Hisab.UI.LoginPageModel.OnPostAsync" - ModelState is Valid
+2021-04-22 17:52:47.201 +10:00 [Information] AuthenticationScheme: "Identity.Application" signed in.
+2021-04-22 17:52:47.205 +10:00 [Information] LogDetail { LogType: Usage, Timestamp: 04/22/2021 17:52:47, Message: "User Logged in", Product: "Hisab", Layer: Server, Location: "", Hostname: "BULLSEYE", UserName: "admin@hisab.io", ElapseMilliseconds: null, Exception: null, CorrelationId: "", AdditionalInfo: null }
+2021-04-22 17:52:47.207 +10:00 [Information] Executed handler method "OnPostAsync", returned result "Microsoft.AspNetCore.Mvc.RedirectToPageResult".
+2021-04-22 17:52:47.210 +10:00 [Information] Executing RedirectToPageResult, redirecting to "/App/Events".
+2021-04-22 17:52:47.211 +10:00 [Information] Executed page "/LoginPage" in 249.898ms
+2021-04-22 17:52:47.211 +10:00 [Information] Executed endpoint '"/LoginPage"'
+2021-04-22 17:52:47.214 +10:00 [Information] Request finished HTTP/1.1 POST http://localhost/Hisab/login application/x-www-form-urlencoded 242 - 302 - - 253.7721ms
+2021-04-22 17:52:47.225 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/App/Events - -
+2021-04-22 17:52:47.259 +10:00 [Information] Authorization was successful.
+2021-04-22 17:52:47.263 +10:00 [Information] Executing endpoint '"/App/Events"'
+2021-04-22 17:52:47.267 +10:00 [Information] Route matched with "{page = \"/App/Events\"}". Executing page "/App/Events"
+2021-04-22 17:52:47.271 +10:00 [Information] Executing handler method "Hisab.UI.EventsModel.OnGet" - ModelState is Valid
+2021-04-22 17:52:47.412 +10:00 [Information] Executed handler method "OnGet", returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2021-04-22 17:52:47.539 +10:00 [Information] Executed page "/App/Events" in 271.4177ms
+2021-04-22 17:52:47.539 +10:00 [Information] Executed endpoint '"/App/Events"'
+2021-04-22 17:52:47.541 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/App/Events - - - 200 - text/html;+charset=utf-8 315.9468ms
+2021-04-22 17:52:47.582 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/css/styles.css - -
+2021-04-22 17:52:47.587 +10:00 [Information] Sending file. Request path: '"/css/styles.css"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\css\styles.css"'
+2021-04-22 17:52:47.588 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/css/styles.css - - - 200 13786 text/css 6.5683ms
+2021-04-22 17:52:47.616 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - -
+2021-04-22 17:52:47.616 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/apphome.js?v=hUS0aoLmnUfJeO7zzAOWIG1c8GsDILISvSzLhmXXK1Q - -
+2021-04-22 17:52:47.621 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - -
+2021-04-22 17:52:47.622 +10:00 [Information] Sending file. Request path: '"/js/apphome.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\apphome.js"'
+2021-04-22 17:52:47.625 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/apphome.js?v=hUS0aoLmnUfJeO7zzAOWIG1c8GsDILISvSzLhmXXK1Q - - - 200 2332 application/javascript 8.4558ms
+2021-04-22 17:52:47.625 +10:00 [Information] Sending file. Request path: '"/img/Hisaab Logo.png"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\Hisaab Logo.png"'
+2021-04-22 17:52:47.626 +10:00 [Information] Sending file. Request path: '"/js/Navigation.js"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\js\Navigation.js"'
+2021-04-22 17:52:47.627 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/Hisaab Logo.png?v=K5fEVR-4bsc8In2lxSey75PnCrtryCLxgdbS_LmFRVU - - - 200 44254 image/png 11.2475ms
+2021-04-22 17:52:47.627 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/js/Navigation.js - - - 200 276 application/javascript 7.7413ms
+2021-04-22 17:52:47.627 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage2.jpg?v=eV3-fTuaaB0Ef4JG2GYoqK06Ij5p6crpQwzG1NUHp-I - -
+2021-04-22 17:52:47.630 +10:00 [Information] Sending file. Request path: '"/img/eventCardImage2.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardImage2.jpg"'
+2021-04-22 17:52:47.631 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardRoadTrip1.jpg?v=mi7tRd55aEbmd_ReJyueZpOHzWZglC0Li42Gu4KcL8o - -
+2021-04-22 17:52:47.631 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage2.jpg?v=eV3-fTuaaB0Ef4JG2GYoqK06Ij5p6crpQwzG1NUHp-I - - - 200 54084 image/jpeg 3.6045ms
+2021-04-22 17:52:47.634 +10:00 [Information] Sending file. Request path: '"/img/eventCardRoadTrip1.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardRoadTrip1.jpg"'
+2021-04-22 17:52:47.638 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardRoadTrip1.jpg?v=mi7tRd55aEbmd_ReJyueZpOHzWZglC0Li42Gu4KcL8o - - - 200 12133 image/jpeg 7.4663ms
+2021-04-22 17:52:47.640 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage1.jpg?v=Q36CfUhM01A7SxMj3bojhXUTikfPF8jQg-Vn611CUYg - -
+2021-04-22 17:52:47.643 +10:00 [Information] Sending file. Request path: '"/img/eventCardImage1.jpg"'. Physical path: '"C:\Chintan\Code\Hisab\Hisab.UI\wwwroot\img\eventCardImage1.jpg"'
+2021-04-22 17:52:47.645 +10:00 [Information] Request finished HTTP/1.1 GET http://localhost/Hisab/img/eventCardImage1.jpg?v=Q36CfUhM01A7SxMj3bojhXUTikfPF8jQg-Vn611CUYg - - - 200 28698 image/jpeg 4.9791ms
