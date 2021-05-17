@@ -129,7 +129,7 @@
 
     <div class="card-columns">
         @*for loop starts here*@
-        @foreach (var friend in Model.Event.Friends)
+        @foreach (var friend in Model.Event.Friends.Where(f => f.IsFriendActive == true))
         {
             <div class="card">
                 <div class="row no-gutters">

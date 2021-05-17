@@ -69,6 +69,7 @@ namespace Hisab.UI
                    
 
                 }
+                
                 ExpenseVM.ExpenseSharedWith.Add(new EventFriendSharedVM()
                 {
                     EventId = f.EventId,

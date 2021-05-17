@@ -60,6 +60,7 @@ namespace Hisab.UI
                         UserId = f.UserId,
                         Email = f.Email,
                         Name = f.NickName,
+                        IsFriendActive = f.IsFriendActive,
                         Status = f.EventFriendStatus.GetDescription(),
                         Avatar = HisabImageManager.GetAvatar(f.Avatar)
                     });

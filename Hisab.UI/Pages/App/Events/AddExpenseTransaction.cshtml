@@ -79,33 +79,37 @@
                     </thead>
                     @for (var i = 0; i < Model.ExpenseVM.ExpenseSharedWith.Count(); i++)
                     {
-                        <tr>
+                        @if (Model.ExpenseVM.ExpenseSharedWith[i].IsFriendActive == true)
+                        {
+                            <tr>
 
-                            <td>
-                                <div class="custom-control custom-checkbox checkbox-xl " style="margin:5px">
-                                    @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].UserId)
-                                    @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].Name)
-                                    @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].Email)
-                                    <input type="checkbox" class="custom-control-input" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
-                                    <label class="custom-control-label" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
-                                        @Model.ExpenseVM.ExpenseSharedWith[i].Name
-                                    </label>
+                                <td>
+                                    <div class="custom-control custom-checkbox checkbox-xl " style="margin:5px">
+                                        @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].UserId)
+                                        @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].Name)
+                                        @Html.HiddenFor(x => x.ExpenseVM.ExpenseSharedWith[i].Email)
+                                        <input type="checkbox" class="custom-control-input" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
+                                        <label class="custom-control-label" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].IsShared">
+                                            @Model.ExpenseVM.ExpenseSharedWith[i].Name
+                                        </label>
 
-                                </div>
+                                    </div>
 
-                            </td>
-                            @*<td>
-                                    <input class="form-control" type="number" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].SharePercent" />
-                                </td>*@
+                                </td>
+                                @*<td>
+                        <input class="form-control" type="number" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].SharePercent" />
+                    </td>*@
 
-                        </tr>
+                            </tr>
+                        }
+
                     }
                     @*<tfoot>
-                            <tr>
-                                <td>Total</td>
-                                <td>100%</td>
-                            </tr>
-                        </tfoot>*@
+            <tr>
+                <td>Total</td>
+                <td>100%</td>
+            </tr>
+        </tfoot>*@
                 </table>
             </div>
             <div>
