@@ -79,8 +79,8 @@
                     </thead>
                     @for (var i = 0; i < Model.ExpenseVM.ExpenseSharedWith.Count(); i++)
                     {
-                        @if (Model.ExpenseVM.ExpenseSharedWith[i].IsFriendActive == true)
-                        {
+                        @*@if (Model.ExpenseVM.ExpenseSharedWith[i].IsFriendActive == true)
+                        {*@
                             <tr>
 
                                 <td>
@@ -96,12 +96,10 @@
                                     </div>
 
                                 </td>
-                                @*<td>
-                        <input class="form-control" type="number" asp-for="@Model.ExpenseVM.ExpenseSharedWith[i].SharePercent" />
-                    </td>*@
+                               
 
                             </tr>
-                        }
+                        //}
 
                     }
                     @*<tfoot>

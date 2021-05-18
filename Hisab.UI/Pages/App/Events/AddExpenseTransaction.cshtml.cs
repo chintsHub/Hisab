@@ -58,7 +58,7 @@ namespace Hisab.UI
             ExpenseVM.EventId = Id;
 
 
-            foreach (var f in eve.Friends.OrderBy(x => x.NickName))
+            foreach (var f in eve.Friends.OrderBy(x => x.NickName).Where(f => f.IsFriendActive))
             {
                 if (f.Email.ToLower() == User.Identity.Name.ToLower())
                 {
