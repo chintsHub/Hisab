@@ -23,7 +23,7 @@
 
 
         var savebutton = modal.find('#settlementTransButton');
-
+        var closebutton = modal.find('#settlementCloseTransButton');
 
         savebutton.click(function OnSaveClick(e) {
             e.preventDefault();
@@ -34,7 +34,7 @@
                 var new_element = old_element.cloneNode(true);
                 old_element.parentNode.replaceChild(new_element, old_element);
 
-                //remove the transaction from UI
+                
                 if (data.success) {
                     var tabDiv = document.getElementById(data.friendId);
                     tabDiv.innerHTML = '<div class="alert alert-success" role="alert">' +  data.responseText + '</div>  ';
@@ -45,6 +45,25 @@
                 $('#settlementModal').modal('toggle');
 
             });
+
+            removeEventListener('click', this, false);
+        });
+
+        closebutton.click(function OnSaveClick(e) {
+            e.preventDefault();
+
+            
+                //hack to prevent event firing multiple times
+                var old_element = document.getElementById("settlementTransButton");
+                var new_element = old_element.cloneNode(true);
+                old_element.parentNode.replaceChild(new_element, old_element);
+
+
+                
+
+                $('#settlementModal').modal('toggle');
+
+            
 
             removeEventListener('click', this, false);
         });
