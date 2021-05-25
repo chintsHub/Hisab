@@ -61,7 +61,7 @@
 
 <div class="container ">
 
-    @foreach (var settlement in Model.SettlementAccounts)
+    @foreach (var settlement in Model.SettlementAccounts.Where(x => x.NetAmount != 0))
     {
         <div class="card">
             <div class="row card-body">
@@ -83,7 +83,7 @@
                                     <th>Amount in @Model.CurrencySymbol</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            @*<tbody>
                                 <tr>
                                     <td>Pay to @settlement.FriendName</td>
                                     <td>@settlement.AmountPayable</td>
@@ -93,10 +93,24 @@
                                     <td>@settlement.AmountReceivable</td>
                                 </tr>
 
-                            </tbody>
+                            </tbody>*@
                             <tfoot>
                                 <tr>
-                                    <td>Net</td>
+                                    <td>
+                                        @if (settlement.NetAmount < 0)
+                                        {
+                                            <div>
+                                                Pay to @settlement.FriendName
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                Receive from @settlement.FriendName
+                                            </div>
+                                        }
+
+                                    </td>
                                     <td>@settlement.NetAmount</td>
                                 </tr>
                             </tfoot>

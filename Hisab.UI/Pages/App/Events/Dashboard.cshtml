@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-6 eventDashboardTiles ">
+            @*<div class="col-6 col-md-6 eventDashboardTiles ">
                 <div class="card ">
                     <div class="card-body">
                         <h5 class="card-text">My Contributions</h5>
@@ -54,28 +54,32 @@
 
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="col-6 col-md-6 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
-                        <h5 class="card-text">I owe Friends</h5>
-                        <div id="AmountIOweToFriendsSpinner" class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
+                        <div class="tileFooter">
+                            <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
+                                <i class="fa fa-handshake"></i> Go to Settlement page
+                            </a>
                         </div>
-                        <p></p>
-                        <div id="AmountIOweToFriendsContent" class="card-title tileNumbers"></div>
-                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
+                        
+                        @*<h5 class="card-text">I owe Friends</h5>
+        <div id="AmountIOweToFriendsSpinner" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <p></p>
+        <div id="AmountIOweToFriendsContent" class="card-title tileNumbers"></div>
+        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>*@
                     </div>
-                    <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-handshake"></i> Settle
-                        </a>
+                    @*<div class="card-footer tileFooter">
+                        
 
 
-                    </div>
+                    </div>*@
                 </div>
             </div>
-            <div class="col-6 col-md-6 eventDashboardTiles">
+            @*<div class="col-6 col-md-6 eventDashboardTiles">
                 <div class="card ">
                     <div class="card-body">
                         <h5 class="card-text">Friends owe me</h5>
@@ -94,7 +98,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div>*@
 
 
 
