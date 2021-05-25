@@ -101,15 +101,20 @@ namespace Hisab.UI
 
             foreach (var friend in recommendedFriends)
             {
-                RecommendedFriends.Add(new InviteApplicationUserVM()
+                if(RecommendedFriends.FirstOrDefault(x => x.Id == friend.Id) == null)
                 {
-                    Id = friend.Id,
-                    NickName = friend.NickName,
-                    UserName = friend.Email,
-                    Avatar = HisabImageManager.GetAvatar((AvatarEnum)friend.AvatarId),
-                    Checked = false,
-                    EventId = eventId
-                });;
+                    RecommendedFriends.Add(new InviteApplicationUserVM()
+                    {
+                        Id = friend.Id,
+                        NickName = friend.NickName,
+                        UserName = friend.Email,
+                        Avatar = HisabImageManager.GetAvatar((AvatarEnum)friend.AvatarId),
+                        Checked = false,
+                        EventId = eventId
+                    });
+                }
+                
+                
             }
         }
 
