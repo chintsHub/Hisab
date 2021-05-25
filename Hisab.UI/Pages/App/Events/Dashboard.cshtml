@@ -55,114 +55,118 @@
                     </div>
                 </div>
             </div>*@
-            <div class="col-6 col-md-6 eventDashboardTiles">
-                <div class="card ">
-                    <div class="card-body">
-                        <div class="tileFooter">
-                            <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
-                                <i class="fa fa-handshake"></i> Go to Settlement page
-                            </a>
-                        </div>
-                        
-                        @*<h5 class="card-text">I owe Friends</h5>
-        <div id="AmountIOweToFriendsSpinner" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-        <p></p>
-        <div id="AmountIOweToFriendsContent" class="card-title tileNumbers"></div>
-        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>*@
-                    </div>
-                    @*<div class="card-footer tileFooter">
-                        
+        <div class="col-6 col-md-6">
 
-
-                    </div>*@
-                </div>
-            </div>
-            @*<div class="col-6 col-md-6 eventDashboardTiles">
-                <div class="card ">
-                    <div class="card-body">
-                        <h5 class="card-text">Friends owe me</h5>
-                        <div id="AmountFriendsOweToMeSpinner" class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <p></p>
-                        <div id="AmountFriendsOweToMeContent" class="card-title tileNumbers"></div>
-                        <div class="tileNumbers">@Model.Event.CurrencySymbol</div>
-                    </div>
-                    <div class="card-footer tileFooter">
-                        <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-handshake"></i> Settle
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>*@
-
-
-
-
-
-
-        </div>
-
-
-    </div>
-
-
-<div class="container friendsContainer">
-
-    @if (Model.IsLoggedInUserTheEventAdmin)
-    {
-        <div class="row">
-
-            <div class="col-12 text-right">
-                <div style="margin:5px">
-                    <p>
-                        <a class="pageButton" asp-page="EventFriends" asp-route-id="@Model.Event.EventId">
-                            <i class="fa fa-plus-square"></i> Invite Friends
-                        </a>
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    }
-
-
-    <div class="card-columns">
-        @*for loop starts here*@
-        @foreach (var friend in Model.Event.Friends.Where(f => f.IsFriendActive == true))
-        {
             <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-2">
-                        <div>
-                            <img class="friendImage" src="@friend.Avatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+
+                            <div>
+                                <p>
+                                    Everyone chipping in money for future expenses?
+                                </p>
+
+
+                            </div>
+
+                        </div>
+                        <div class="carousel-item">
+
+                            <div>
+                                <p>
+                                    Use this option for the money pool or to track money lent to a friend.
+                                </p>
+
+
+
+                            </div>
+
                         </div>
 
+
                     </div>
-                    <div class="col-10">
-                        <div class="card-body">
-                            <div><p>@friend.Name</p></div>
-                            <div><p>@friend.Email</p></div>
-                            <div><p>@friend.Status</p></div>
-                        </div>
-                    </div>
+
+                </div>
+                <div class="tileFooter">
+                    <a asp-page="/app/events/AddContributionTransaction" asp-route-id="@Model.Event.EventId" asp-page-handler="ToFriend">
+                        <i class="fa fa-wallet"></i> Lend money
+                    </a>
                 </div>
             </div>
-        }
+        </div>
+           
+
+
+
+
+
+
+        </div>
+
 
     </div>
 
 
-</div>
+    <div class="container friendsContainer">
+        <div class="row">
+            <div class="col-6 tileFooter">
+                <a asp-page="/app/events/EventSettlement" asp-route-id="@Model.Event.EventId">
+                    <i class="fa fa-handshake"></i> Let's Settle
+                </a>
+            </div>
+            @if (Model.IsLoggedInUserTheEventAdmin)
+            {
 
 
-@section Scripts{
+                <div class="col-6 tileFooter">
+                    <div>
+                        
+                            <a asp-page="EventFriends" asp-route-id="@Model.Event.EventId">
+                                <i class="fa fa-plus-square"></i> Invite Friends
+                            </a>
+                        
+                    </div>
+                </div>
 
-    <script src="~/js/Dashboard.js" asp-append-version="true"></script>
+            }
+        </div>
 
-}
+        <div class="row" style="margin-top:5px">
+
+            <div class="card-columns">
+                @*for loop starts here*@
+                @foreach (var friend in Model.Event.Friends.Where(f => f.IsFriendActive == true))
+                {
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-2">
+                                <div>
+                                    <img class="friendImage" src="@friend.Avatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
+                                </div>
+
+                            </div>
+                            <div class="col-10">
+                                <div class="card-body">
+                                    <div><p>@friend.Name</p></div>
+                                    <div><p>@friend.Email</p></div>
+                                    <div><p>@friend.Status</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+        </div>
+
+
+        @section Scripts{
+
+            <script src="~/js/Dashboard.js" asp-append-version="true"></script>
+
+        }
 
