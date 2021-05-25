@@ -61,6 +61,19 @@
 
 <div class="container ">
 
+    @if (Model.SettlementAccounts.Count(x => x.NetAmount != 0) == 0)
+    {
+        <div class="stitched">
+
+            <p>Hey, It's all clear !!</p>
+
+            <p>You dont have anything to settle.</p>
+
+            
+
+        </div>
+    }
+
     @foreach (var settlement in Model.SettlementAccounts.Where(x => x.NetAmount != 0))
     {
         <div class="card">
@@ -70,9 +83,7 @@
                     <div>
                         <img class="friendImage" src="@settlement.FriendAvatar.AvatarImagePath" alt="Avatar" asp-append-version="true">
                     </div>
-                    @*<div>
-                        @settlement.FriendName
-                    </div>*@
+
                 </div>
                 <div class="col-9">
                     <div id="@settlement.FriendId">
@@ -84,16 +95,16 @@
                                 </tr>
                             </thead>
                             @*<tbody>
-                                <tr>
-                                    <td>Pay to @settlement.FriendName</td>
-                                    <td>@settlement.AmountPayable</td>
-                                </tr>
-                                <tr>
-                                    <td>Receive from @settlement.FriendName</td>
-                                    <td>@settlement.AmountReceivable</td>
-                                </tr>
+                                    <tr>
+                                        <td>Pay to @settlement.FriendName</td>
+                                        <td>@settlement.AmountPayable</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Receive from @settlement.FriendName</td>
+                                        <td>@settlement.AmountReceivable</td>
+                                    </tr>
 
-                            </tbody>*@
+                                </tbody>*@
                             <tfoot>
                                 <tr>
                                     <td>
@@ -135,11 +146,7 @@
                         <i class="fa fa-wallet"></i> settle
                     </button>
                 }
-                @if (settlement.NetAmount == 0)
-                {
 
-                    <div style="color:white">There's nothing to settle</div>
-                }
                 @if (settlement.NetAmount > 0)
                 {
 
