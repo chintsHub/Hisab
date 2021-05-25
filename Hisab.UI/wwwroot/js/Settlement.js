@@ -38,8 +38,10 @@
                 if (data.success) {
                     var tabDiv = document.getElementById(data.friendId);
                     tabDiv.innerHTML = '<div class="alert alert-success" role="alert">' +  data.responseText + '</div>  ';
-                    var settlebutton = document.getElementById(data.userId);
-                    settlebutton.disabled = true;
+                    
+                    var settlebutton = document.getElementById("button_" + data.friendId);
+                    settlebutton.style.display = "none";
+
                 }
                
                 $('#settlementModal').modal('toggle');
